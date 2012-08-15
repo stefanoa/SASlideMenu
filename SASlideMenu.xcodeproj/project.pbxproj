@@ -14,7 +14,24 @@
 		7B8C3FEB15D8D55800E42A41 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C3FEA15D8D55800E42A41 /* main.m */; };
 		7B8C3FEF15D8D55800E42A41 /* SASlideMenuAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C3FEE15D8D55800E42A41 /* SASlideMenuAppDelegate.m */; };
 		7B8C3FF215D8D55800E42A41 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B8C3FF015D8D55800E42A41 /* MainStoryboard.storyboard */; };
-		7B8C3FF515D8D55800E42A41 /* SASlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C3FF415D8D55800E42A41 /* SASlideMenuViewController.m */; };
+		7B8C3FF515D8D55800E42A41 /* ExampleMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C3FF415D8D55800E42A41 /* ExampleMenuViewController.m */; };
+		7B8C400715D8D72900E42A41 /* SASlideMenuInitialSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C3FFD15D8D72900E42A41 /* SASlideMenuInitialSegue.m */; };
+		7B8C400815D8D72900E42A41 /* SASlideMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C3FFF15D8D72900E42A41 /* SASlideMenuCell.m */; };
+		7B8C400915D8D72900E42A41 /* SASlideMenuItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C400215D8D72900E42A41 /* SASlideMenuItemViewController.m */; };
+		7B8C400A15D8D72900E42A41 /* SASlideMenuStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C400415D8D72900E42A41 /* SASlideMenuStoryboardSegue.m */; };
+		7B8C400B15D8D72900E42A41 /* SASlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C400615D8D72900E42A41 /* SASlideMenuViewController.m */; };
+		7B8C401915D8E75300E42A41 /* disclosure.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8C400D15D8E75300E42A41 /* disclosure.png */; };
+		7B8C401A15D8E75300E42A41 /* disclosure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8C400E15D8E75300E42A41 /* disclosure@2x.png */; };
+		7B8C401B15D8E75300E42A41 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8C400F15D8E75300E42A41 /* menu.png */; };
+		7B8C401C15D8E75300E42A41 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8C401015D8E75300E42A41 /* menu@2x.png */; };
+		7B8C401D15D8E75300E42A41 /* menuhighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8C401115D8E75300E42A41 /* menuhighlighted.png */; };
+		7B8C401E15D8E75300E42A41 /* menuhighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8C401215D8E75300E42A41 /* menuhighlighted@2x.png */; };
+		7B8C401F15D8E75300E42A41 /* menuicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8C401315D8E75300E42A41 /* menuicon.png */; };
+		7B8C402015D8E75300E42A41 /* menuicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8C401415D8E75300E42A41 /* menuicon@2x.png */; };
+		7B8C402115D8E75300E42A41 /* row.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8C401515D8E75300E42A41 /* row.png */; };
+		7B8C402215D8E75300E42A41 /* row@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8C401615D8E75300E42A41 /* row@2x.png */; };
+		7B8C402315D8E75300E42A41 /* rowselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8C401715D8E75300E42A41 /* rowselected.png */; };
+		7B8C402415D8E75300E42A41 /* rowselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8C401815D8E75300E42A41 /* rowselected@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,8 +46,31 @@
 		7B8C3FED15D8D55800E42A41 /* SASlideMenuAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SASlideMenuAppDelegate.h; sourceTree = "<group>"; };
 		7B8C3FEE15D8D55800E42A41 /* SASlideMenuAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuAppDelegate.m; sourceTree = "<group>"; };
 		7B8C3FF115D8D55800E42A41 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		7B8C3FF315D8D55800E42A41 /* SASlideMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SASlideMenuViewController.h; sourceTree = "<group>"; };
-		7B8C3FF415D8D55800E42A41 /* SASlideMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuViewController.m; sourceTree = "<group>"; };
+		7B8C3FF315D8D55800E42A41 /* ExampleMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleMenuViewController.h; sourceTree = "<group>"; };
+		7B8C3FF415D8D55800E42A41 /* ExampleMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleMenuViewController.m; sourceTree = "<group>"; };
+		7B8C3FFC15D8D72900E42A41 /* SASlideMenuInitialSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuInitialSegue.h; sourceTree = "<group>"; };
+		7B8C3FFD15D8D72900E42A41 /* SASlideMenuInitialSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuInitialSegue.m; sourceTree = "<group>"; };
+		7B8C3FFE15D8D72900E42A41 /* SASlideMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuCell.h; sourceTree = "<group>"; };
+		7B8C3FFF15D8D72900E42A41 /* SASlideMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuCell.m; sourceTree = "<group>"; };
+		7B8C400015D8D72900E42A41 /* SASlideMenuDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuDataSource.h; sourceTree = "<group>"; };
+		7B8C400115D8D72900E42A41 /* SASlideMenuItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuItemViewController.h; sourceTree = "<group>"; };
+		7B8C400215D8D72900E42A41 /* SASlideMenuItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuItemViewController.m; sourceTree = "<group>"; };
+		7B8C400315D8D72900E42A41 /* SASlideMenuStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuStoryboardSegue.h; sourceTree = "<group>"; };
+		7B8C400415D8D72900E42A41 /* SASlideMenuStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuStoryboardSegue.m; sourceTree = "<group>"; };
+		7B8C400515D8D72900E42A41 /* SASlideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuViewController.h; sourceTree = "<group>"; };
+		7B8C400615D8D72900E42A41 /* SASlideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuViewController.m; sourceTree = "<group>"; };
+		7B8C400D15D8E75300E42A41 /* disclosure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclosure.png; sourceTree = "<group>"; };
+		7B8C400E15D8E75300E42A41 /* disclosure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosure@2x.png"; sourceTree = "<group>"; };
+		7B8C400F15D8E75300E42A41 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
+		7B8C401015D8E75300E42A41 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
+		7B8C401115D8E75300E42A41 /* menuhighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuhighlighted.png; sourceTree = "<group>"; };
+		7B8C401215D8E75300E42A41 /* menuhighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menuhighlighted@2x.png"; sourceTree = "<group>"; };
+		7B8C401315D8E75300E42A41 /* menuicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuicon.png; sourceTree = "<group>"; };
+		7B8C401415D8E75300E42A41 /* menuicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menuicon@2x.png"; sourceTree = "<group>"; };
+		7B8C401515D8E75300E42A41 /* row.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = row.png; sourceTree = "<group>"; };
+		7B8C401615D8E75300E42A41 /* row@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "row@2x.png"; sourceTree = "<group>"; };
+		7B8C401715D8E75300E42A41 /* rowselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rowselected.png; sourceTree = "<group>"; };
+		7B8C401815D8E75300E42A41 /* rowselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rowselected@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,11 +117,12 @@
 		7B8C3FE415D8D55800E42A41 /* SASlideMenu */ = {
 			isa = PBXGroup;
 			children = (
+				7B8C3FFB15D8D61500E42A41 /* SASlideMenu */,
 				7B8C3FED15D8D55800E42A41 /* SASlideMenuAppDelegate.h */,
 				7B8C3FEE15D8D55800E42A41 /* SASlideMenuAppDelegate.m */,
+				7B8C3FF315D8D55800E42A41 /* ExampleMenuViewController.h */,
+				7B8C3FF415D8D55800E42A41 /* ExampleMenuViewController.m */,
 				7B8C3FF015D8D55800E42A41 /* MainStoryboard.storyboard */,
-				7B8C3FF315D8D55800E42A41 /* SASlideMenuViewController.h */,
-				7B8C3FF415D8D55800E42A41 /* SASlideMenuViewController.m */,
 				7B8C3FE515D8D55800E42A41 /* Supporting Files */,
 			);
 			path = SASlideMenu;
@@ -96,6 +137,44 @@
 				7B8C3FEC15D8D55800E42A41 /* SASlideMenu-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7B8C3FFB15D8D61500E42A41 /* SASlideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				7B8C400C15D8E70200E42A41 /* Images */,
+				7B8C3FFC15D8D72900E42A41 /* SASlideMenuInitialSegue.h */,
+				7B8C3FFD15D8D72900E42A41 /* SASlideMenuInitialSegue.m */,
+				7B8C3FFE15D8D72900E42A41 /* SASlideMenuCell.h */,
+				7B8C3FFF15D8D72900E42A41 /* SASlideMenuCell.m */,
+				7B8C400015D8D72900E42A41 /* SASlideMenuDataSource.h */,
+				7B8C400115D8D72900E42A41 /* SASlideMenuItemViewController.h */,
+				7B8C400215D8D72900E42A41 /* SASlideMenuItemViewController.m */,
+				7B8C400315D8D72900E42A41 /* SASlideMenuStoryboardSegue.h */,
+				7B8C400415D8D72900E42A41 /* SASlideMenuStoryboardSegue.m */,
+				7B8C400515D8D72900E42A41 /* SASlideMenuViewController.h */,
+				7B8C400615D8D72900E42A41 /* SASlideMenuViewController.m */,
+			);
+			path = SASlideMenu;
+			sourceTree = "<group>";
+		};
+		7B8C400C15D8E70200E42A41 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				7B8C400D15D8E75300E42A41 /* disclosure.png */,
+				7B8C400E15D8E75300E42A41 /* disclosure@2x.png */,
+				7B8C400F15D8E75300E42A41 /* menu.png */,
+				7B8C401015D8E75300E42A41 /* menu@2x.png */,
+				7B8C401115D8E75300E42A41 /* menuhighlighted.png */,
+				7B8C401215D8E75300E42A41 /* menuhighlighted@2x.png */,
+				7B8C401315D8E75300E42A41 /* menuicon.png */,
+				7B8C401415D8E75300E42A41 /* menuicon@2x.png */,
+				7B8C401515D8E75300E42A41 /* row.png */,
+				7B8C401615D8E75300E42A41 /* row@2x.png */,
+				7B8C401715D8E75300E42A41 /* rowselected.png */,
+				7B8C401815D8E75300E42A41 /* rowselected@2x.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +231,18 @@
 			files = (
 				7B8C3FE915D8D55800E42A41 /* InfoPlist.strings in Resources */,
 				7B8C3FF215D8D55800E42A41 /* MainStoryboard.storyboard in Resources */,
+				7B8C401915D8E75300E42A41 /* disclosure.png in Resources */,
+				7B8C401A15D8E75300E42A41 /* disclosure@2x.png in Resources */,
+				7B8C401B15D8E75300E42A41 /* menu.png in Resources */,
+				7B8C401C15D8E75300E42A41 /* menu@2x.png in Resources */,
+				7B8C401D15D8E75300E42A41 /* menuhighlighted.png in Resources */,
+				7B8C401E15D8E75300E42A41 /* menuhighlighted@2x.png in Resources */,
+				7B8C401F15D8E75300E42A41 /* menuicon.png in Resources */,
+				7B8C402015D8E75300E42A41 /* menuicon@2x.png in Resources */,
+				7B8C402115D8E75300E42A41 /* row.png in Resources */,
+				7B8C402215D8E75300E42A41 /* row@2x.png in Resources */,
+				7B8C402315D8E75300E42A41 /* rowselected.png in Resources */,
+				7B8C402415D8E75300E42A41 /* rowselected@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,7 +255,12 @@
 			files = (
 				7B8C3FEB15D8D55800E42A41 /* main.m in Sources */,
 				7B8C3FEF15D8D55800E42A41 /* SASlideMenuAppDelegate.m in Sources */,
-				7B8C3FF515D8D55800E42A41 /* SASlideMenuViewController.m in Sources */,
+				7B8C3FF515D8D55800E42A41 /* ExampleMenuViewController.m in Sources */,
+				7B8C400715D8D72900E42A41 /* SASlideMenuInitialSegue.m in Sources */,
+				7B8C400815D8D72900E42A41 /* SASlideMenuCell.m in Sources */,
+				7B8C400915D8D72900E42A41 /* SASlideMenuItemViewController.m in Sources */,
+				7B8C400A15D8D72900E42A41 /* SASlideMenuStoryboardSegue.m in Sources */,
+				7B8C400B15D8D72900E42A41 /* SASlideMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +376,7 @@
 				7B8C3FFA15D8D55800E42A41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
