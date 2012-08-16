@@ -59,17 +59,11 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.23999999999999999" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <imageView contentMode="bottomLeft" id="PDG-4P-RYl">
-                                <rect key="frame" x="280" y="0.0" width="320" height="460"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="screenShotImageView" destination="PDG-4P-RYl" id="qGY-me-fIr"/>
                         <outlet property="slideMenuTableView" destination="ZBc-Fy-RBE" id="hJB-WZ-Kuq"/>
-                        <segue destination="3fj-CD-h7K" kind="custom" identifier="initial" customClass="SASlideMenuInitialSegue" id="Yb1-CJ-sab"/>
                         <segue destination="3fj-CD-h7K" kind="custom" identifier="dark" customClass="SASlideMenuStoryboardSegue" id="5ie-DD-Irf"/>
                         <segue destination="UIi-4n-hGr" kind="custom" identifier="light" customClass="SASlideMenuStoryboardSegue" id="Ajt-m0-oNZ"/>
                     </connections>
@@ -77,11 +71,11 @@
             </objects>
             <point key="canvasLocation" x="331" y="77"/>
         </scene>
-        <!--Slide Menu Item View Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="LJq-kU-pn8">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TYk-Ij-ZXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController definesPresentationContext="YES" id="3fj-CD-h7K" customClass="SASlideMenuItemViewController" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="3fj-CD-h7K" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="BPZ-p8-BCH">
                         <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -98,11 +92,11 @@
             </objects>
             <point key="canvasLocation" x="776" y="-210"/>
         </scene>
-        <!--View Controller-->
+        <!--Dark View Controller-->
         <scene sceneID="0le-kl-FE4">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sIO-dH-ZyV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="nfj-qA-Ni2" sceneMemberID="viewController">
+                <viewController id="nfj-qA-Ni2" customClass="DarkViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wxh-56-Z66">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -113,11 +107,11 @@
             </objects>
             <point key="canvasLocation" x="1246" y="-210"/>
         </scene>
-        <!--Slide Menu Item View Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="4Ru-H4-1Ce">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8eQ-W6-5yF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController definesPresentationContext="YES" id="UIi-4n-hGr" customClass="SASlideMenuItemViewController" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="UIi-4n-hGr" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="bCe-ec-VsY">
                         <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -150,6 +144,9 @@
         <image name="disclosure.png" width="20" height="20"/>
     </resources>
     <classes>
+        <class className="DarkViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DarkViewController.h"/>
+        </class>
         <class className="ExampleMenuViewController" superclassName="SASlideMenuViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ExampleMenuViewController.h"/>
         </class>
@@ -160,13 +157,10 @@
                 <relationship kind="outlet" name="itemDescription" candidateClass="UILabel"/>
             </relationships>
         </class>
-        <class className="SASlideMenuItemViewController" superclassName="UINavigationController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SASlideMenuItemViewController.h"/>
-        </class>
         <class className="SASlideMenuViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SASlideMenuViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="screenShotImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="slideMenuTableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="startUpView" candidateClass="UIView"/>
             </relationships>
@@ -177,7 +171,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="Yb1-CJ-sab"/>
-    </inferredMetricsTieBreakers>
 </document>

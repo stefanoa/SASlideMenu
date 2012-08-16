@@ -12,7 +12,6 @@
 
 -(NSInteger) numberOfItems;
 
--(NSString*) initialSegueId;
 -(NSString*) segueIdForIndex:(NSInteger) index;
 -(NSString*) itemNameForIndex:(NSInteger) index;
 

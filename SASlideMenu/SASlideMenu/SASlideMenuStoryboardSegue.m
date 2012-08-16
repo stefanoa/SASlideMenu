@@ -8,8 +8,8 @@
 
 #import "SASlideMenuStoryboardSegue.h"
 #import "SASlideMenuViewController.h"
-#import "SASlideMenuItemViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "SASlideMenuButton.h"
 
 @implementation SASlideMenuStoryboardSegue
 
@@ -17,30 +17,13 @@
 -(void) perform{
     SASlideMenuViewController* source = self.sourceViewController;
     UINavigationController* destination = self.destinationViewController;
+    SASlideMenuButton* menuButton = [[SASlideMenuButton alloc] initWithFrame:CGRectMake(0, 0, 40, 29)];
+    menuButton.delegate = source;
+    UINavigationItem* navigationItem = destination.navigationBar.topItem;
+    navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuButton];
+
+    [source switchToContentViewController:destination];
+    [source addContentViewController:destination withIdentifier:self.identifier];
     
-    UIGraphicsBeginImageContext(destination.view.bounds.size); 
-    [destination.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage* screenShotImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-
-    if (source.segueWillSlideOut) {
-        [UIView animateWithDuration:kSlideCompletelyOutInterval delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [source.screenShotImageView setFrame:CGRectMake(source.view.frame.size.width, 0, source.view.frame.size.width, source.view.frame.size.height)];
-        } completion:^(BOOL done){
-            source.screenShotImageView.image = screenShotImage;
-            [UIView animateWithDuration:kSlideInInterval delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                [source.screenShotImageView setFrame:CGRectMake(0, 0, source.view.frame.size.width, source.view.frame.size.height)];
-            } completion:^(BOOL done){
-                [source presentViewController:destination animated:NO completion:nil];
-            }];
-        }];
-    }else{
-        [UIView animateWithDuration:kSlideInInterval delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [source.screenShotImageView setFrame:CGRectMake(0, 0, source.view.frame.size.width, source.view.frame.size.height)];
-        } completion:^(BOOL done){
-            [source presentViewController:destination animated:NO completion:nil];
-        }];
-    }
-
 }
 @end
