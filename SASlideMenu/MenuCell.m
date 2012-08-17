@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 Stefano Antonelli. All rights reserved.
 //
 
-#import "SASlideMenuCell.h"
+#import "MenuCell.h"
 
-@implementation SASlideMenuCell
+@implementation MenuCell
 
 @synthesize itemDescription;
 @synthesize disclosureImage;

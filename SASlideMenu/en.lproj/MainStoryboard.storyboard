@@ -23,7 +23,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SlideMenuCell" id="YBD-lf-HKO" customClass="SASlideMenuCell">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCell" id="YBD-lf-HKO" customClass="MenuCell">
                                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -53,7 +53,6 @@
                                         <sections/>
                                         <connections>
                                             <outlet property="dataSource" destination="2" id="o01-pT-5gg"/>
-                                            <outlet property="delegate" destination="2" id="UqD-an-99Q"/>
                                         </connections>
                                     </tableView>
                                 </subviews>
@@ -150,8 +149,8 @@
         <class className="ExampleMenuViewController" superclassName="SASlideMenuViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ExampleMenuViewController.h"/>
         </class>
-        <class className="SASlideMenuCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SASlideMenuCell.h"/>
+        <class className="MenuCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="disclosureImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="itemDescription" candidateClass="UILabel"/>
@@ -160,7 +159,7 @@
         <class className="SASlideMenuViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SASlideMenuViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="slideMenuDataSource" candidateClass="NSObject"/>
                 <relationship kind="outlet" name="slideMenuTableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="startUpView" candidateClass="UIView"/>
             </relationships>

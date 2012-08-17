@@ -8,7 +8,6 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-#import "SASlideMenuCell.h"
 #import "SASlideMenuViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -27,7 +26,6 @@
 @implementation SASlideMenuViewController
 
 @synthesize slideMenuTableView;
-@synthesize startUpView;
 @synthesize activeItemId;
 @synthesize slideMenuDataSource;
 
@@ -53,7 +51,6 @@
             [UIView animateWithDuration:kSlideOutInterval delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
                 [movingView setCenter:CGPointMake(size.width+movingView.bounds.size.width/2-kVisiblePortion, [movingView center].y)];
             } completion:^(BOOL completed){}];
-
             
         }else{
             [self switchToContentViewController:selectedContent];
@@ -63,16 +60,14 @@
 
 #pragma mark -
 #pragma mark - UIViewController
--(void) viewWillAppear:(BOOL)animated
-{
+
+-(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (isFirstViewWillAppear) {
-        self.activeItemId = [slideMenuDataSource segueIdForIndex:0];
+        self.activeItemId = [slideMenuDataSource initialSegueId];
         [self performSegueWithIdentifier:self.activeItemId sender:self];
         
         isFirstViewWillAppear = NO;
-    }else {
-        [startUpView removeFromSuperview];
     }
 
 }
@@ -88,11 +83,12 @@
     UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapItem:)];
     [self.shield addGestureRecognizer:tapGesture];
     
+    
     UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panItem:)];
     [panGesture setMaximumNumberOfTouches:2];
     [panGesture setDelegate:self];
     [self.shield addGestureRecognizer:panGesture];
-    
+    self.slideMenuTableView.delegate = self;
 }
 
 -(void) switchToContentViewController:(UIViewController*) content{
@@ -100,28 +96,34 @@
     if (content != selectedContent) {
         [self addChildViewController:content];
         CGRect bounds = self.view.bounds;
-        content.view.frame = CGRectMake(bounds.size.width,0,0,bounds.size.height);
-        
-        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
-            selectedContent.view.frame = CGRectMake(bounds.size.width,0,bounds.size.width,bounds.size.height);
+        if (selectedContent) {
+            content.view.frame = CGRectMake(bounds.size.width,0,0,bounds.size.height);
+            [UIView animateWithDuration:kSlideOutInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
+                selectedContent.view.frame = CGRectMake(bounds.size.width,0,bounds.size.width,bounds.size.height);
             } completion:
-         ^(BOOL completed) {
-             [selectedContent.view removeFromSuperview];
-             [selectedContent removeFromParentViewController];
-             [self.view addSubview:content.view];
-             [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
-                 content.view.frame = CGRectMake(0,0,bounds.size.width,bounds.size.height);
-                 
-             } completion:^(BOOL completed){
-                 selectedContent = content;
-                 [self.shield removeFromSuperview];
+             ^(BOOL completed) {
+                 [selectedContent.view removeFromSuperview];
+                 [selectedContent removeFromParentViewController];
+                 [self.view addSubview:content.view];
+                 [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
+                     content.view.frame = CGRectMake(0,0,bounds.size.width,bounds.size.height);
+                     
+                 } completion:^(BOOL completed){
+                     selectedContent = content;
+                     [self.shield removeFromSuperview];
+                 }];
              }];
-         }];
+        }else{
+            [self.view addSubview:content.view];
+            content.view.frame = CGRectMake(0,0,bounds.size.width,bounds.size.height);
+            selectedContent = content;
+            [self.shield removeFromSuperview];
+        }
         
         
     }else{
         CGRect bounds = self.view.bounds;
-        [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
+        [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
             selectedContent.view.frame = CGRectMake(0,0,bounds.size.width,bounds.size.height);
             
         } completion:^(BOOL completed) {
@@ -148,30 +150,10 @@
 #pragma mark -
 #pragma mark UITableViewDataSource
 
-- (NSInteger) numberOfSectionsInTableView:(UITableView*)tableView {
-	return 1;
-}
-
-- (NSInteger) tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
-	return [self.slideMenuDataSource numberOfItems];
-}
-
-- (UITableViewCell*) tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
-{
-    
-	SASlideMenuCell* cell = (SASlideMenuCell*)[tableView dequeueReusableCellWithIdentifier:@"SlideMenuCell"];
-	
-    cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"row.png"]];
-    cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rowselected.png"]];
-    
-    NSString* itemName = [self.slideMenuDataSource itemNameForIndex:indexPath.row];
-    cell.itemDescription.text = itemName;
-	return cell;
-}
 
 - (void) tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    self.activeItemId= [self.slideMenuDataSource segueIdForIndex:indexPath.row];
+    self.activeItemId= [self.slideMenuDataSource segueIdForIndexPath:indexPath];
     
     UIViewController* content = [controllers objectForKey:self.activeItemId];
     if (!content) {
@@ -189,7 +171,7 @@
     CGRect bounds = self.view.bounds;
     self.shield.frame = bounds;
     [selectedContent.view addSubview:self.shield];
-    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
+    [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
         selectedContent.view.frame = CGRectMake(bounds.size.width-kVisiblePortion,0,bounds.size.width,bounds.size.height);
         
     } completion:nil];

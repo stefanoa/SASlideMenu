@@ -7,7 +7,7 @@
 //
 
 #import "ExampleMenuViewController.h"
-
+#import "MenuCell.h"
 @interface ExampleMenuViewController ()
 
 @end
@@ -29,29 +29,57 @@
     return self;
 }
 
--(NSInteger) numberOfItems{
-    return 2;
+#pragma mark -
+#pragma mark UITableViewDataSource
+
+- (NSInteger) numberOfSectionsInTableView:(UITableView*)tableView {
+	return 1;
 }
 
+- (NSInteger) tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
+	return 2;
+}
+
+- (UITableViewCell*) tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    
+	MenuCell* cell = (MenuCell*)[tableView dequeueReusableCellWithIdentifier:@"MenuCell"];
+	
+    cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"row.png"]];
+    cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rowselected.png"]];
+
+    NSString* itemName;
+    if (indexPath.row == 0) {
+        itemName = @"Dark";
+    }else{
+        itemName =  @"Light";
+    }
+    
+    cell.itemDescription.text = itemName;
+	return cell;
+}
+
+#pragma mark -
+#pragma mark SASlideMenuDataSource
 -(NSString*) initialSegueId{
     return @"dark";
 }
 
--(NSString*) segueIdForIndex:(NSInteger) index{
-    if (index ==0 ) {
+-(NSString*) segueIdForIndexPath:(NSIndexPath*) indexPath{
+    if (indexPath.row ==0 ) {
         return @"dark";
     }else {
         return @"light";
     }
 }
--(NSString*) itemNameForIndex:(NSInteger) index{
-    if (index ==0 ) {
-        return @"Dark";
-    }else {
-        return @"Light";
-    }
-    
-}
 
+-(void) configureMenuButton:(UIButton *)menuButton{
+    menuButton.frame = CGRectMake(0, 0, 40, 29);
+    [menuButton setImage:[UIImage imageNamed:@"menuicon.png"] forState:UIControlStateNormal];
+    [menuButton setBackgroundImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
+    [menuButton setBackgroundImage:[UIImage imageNamed:@"menuhighlighted.png"] forState:UIControlStateHighlighted];
+    [menuButton setAdjustsImageWhenHighlighted:NO];
+    [menuButton setAdjustsImageWhenDisabled:NO];
+}
 
 @end

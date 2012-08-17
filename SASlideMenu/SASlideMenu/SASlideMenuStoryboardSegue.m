@@ -9,7 +9,6 @@
 #import "SASlideMenuStoryboardSegue.h"
 #import "SASlideMenuViewController.h"
 #import <QuartzCore/QuartzCore.h>
-#import "SASlideMenuButton.h"
 
 @implementation SASlideMenuStoryboardSegue
 
@@ -17,8 +16,11 @@
 -(void) perform{
     SASlideMenuViewController* source = self.sourceViewController;
     UINavigationController* destination = self.destinationViewController;
-    SASlideMenuButton* menuButton = [[SASlideMenuButton alloc] initWithFrame:CGRectMake(0, 0, 40, 29)];
-    menuButton.delegate = source;
+    
+    UIButton* menuButton = [[UIButton alloc] init];
+    [source.slideMenuDataSource configureMenuButton:menuButton];
+    [menuButton addTarget:source action:@selector(doSlideOut) forControlEvents:UIControlEventTouchUpInside];
+
     UINavigationItem* navigationItem = destination.navigationBar.topItem;
     navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuButton];
 

@@ -10,9 +10,10 @@
 
 @protocol SASlideMenuDataSource <NSObject>
 
--(NSInteger) numberOfItems;
 
--(NSString*) segueIdForIndex:(NSInteger) index;
--(NSString*) itemNameForIndex:(NSInteger) index;
+-(NSString*) segueIdForIndexPath:(NSIndexPath*) indexPath;
+-(NSString*) initialSegueId;
+
+-(void) configureMenuButton:(UIButton*) menuButton;
 
 @end
