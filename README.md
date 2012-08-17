@@ -2,9 +2,9 @@
 
 Created by **stefanoa**
 
-A simple library to create Slide Menu that can be used in storyboards. Sliding menus are sed in a number of popular application like Facebbok, Path 2.0, Twitter and many others.
+A simple library to create sliding menu that can be used in storyboards. Sliding menus are used in a number of popular application like Facebook, Path 2.0, Twitter and many others.
 
-The repository is an Xcode 4 project that contains an example of the usage of the Library and the Library itself to use in your projects simply add the SASlideMenu subdir to your project you follow the documented example.
+The repository is an Xcode 4 project that contains an example of the usage of the library and the library itself to use in your projects simply add the SASlideMenu subdir to your project and follow the documented example.
 
 
 
