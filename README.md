@@ -10,12 +10,12 @@ The repository is an Xcode 4 project that contains an example of the usage of th
 
 To use it in your projects follow these steps:
 
-. Add the SASlideMenu subdir and his content to your project
-. Add a new class which inherit from SASlideMenuViewController and implement SASlideMenuDatSource
-. Add a new UIViewController to your storyboard and make it of the newly created class
-. Add and configure a table to the controller
-. Connect the table to the **slideMenuTableView** outlet
-. Implement the controller following the **ExampleViewController** provided here
+* Add the SASlideMenu subdir and his content to your project
+* Add a new class that inherit from **SASlideMenuViewController** and implement **SASlideMenuDatSource**
+* Add a new **UIViewController** to your storyboard and make it of the newly created class
+* Add and configure a table to the controller
+* Connect the table to the **slideMenuTableView** outlet
+* Implement the controller following the **ExampleViewController** provided here
 
 Test it and you are done!
 
