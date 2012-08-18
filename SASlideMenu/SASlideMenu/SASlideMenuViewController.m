@@ -91,6 +91,14 @@
     self.slideMenuTableView.delegate = self;
 }
 
+-(void)viewDidUnload
+{
+    [super viewDidUnload];
+    [controllers removeAllObjects];
+}
+-(void) didReceiveMemoryWarning{
+    [controllers removeAllObjects];    
+}
 -(void) switchToContentViewController:(UIViewController*) content{
     
     if (content != selectedContent) {

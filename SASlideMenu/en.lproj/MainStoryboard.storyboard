@@ -61,6 +61,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <connections>
                         <outlet property="slideMenuTableView" destination="ZBc-Fy-RBE" id="hJB-WZ-Kuq"/>
                         <segue destination="3fj-CD-h7K" kind="custom" identifier="dark" customClass="SASlideMenuStoryboardSegue" id="5ie-DD-Irf"/>
@@ -78,7 +79,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="BPZ-p8-BCH">
                         <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="9Jl-lF-dY3">
                         <rect key="frame" x="0.0" y="416" width="320" height="44"/>
@@ -159,9 +160,7 @@
         <class className="SASlideMenuViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SASlideMenuViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="slideMenuDataSource" candidateClass="NSObject"/>
                 <relationship kind="outlet" name="slideMenuTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="startUpView" candidateClass="UIView"/>
             </relationships>
         </class>
     </classes>
