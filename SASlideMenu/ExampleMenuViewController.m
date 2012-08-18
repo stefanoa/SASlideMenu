@@ -33,6 +33,10 @@
     return self;
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
+    return YES;
+}
+
 #pragma mark -
 #pragma mark UITableViewDataSource
 // Implement it has needed by your Menu table

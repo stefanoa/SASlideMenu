@@ -57,6 +57,65 @@
         }
 	}
 }
+-(void) switchToContentViewController:(UIViewController*) content{
+    
+    if (content != selectedContent) {
+        [self addChildViewController:content];
+        CGRect bounds = self.view.bounds;
+        if (selectedContent) {
+            content.view.frame = CGRectMake(bounds.size.width,0,0,bounds.size.height);
+            [selectedContent willMoveToParentViewController:nil];
+            
+            [UIView animateWithDuration:kSlideOutInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
+                selectedContent.view.frame = CGRectMake(bounds.size.width,0,bounds.size.width,bounds.size.height);
+            } completion:
+             ^(BOOL completed) {
+                 [selectedContent.view removeFromSuperview];
+                 [selectedContent removeFromParentViewController];
+                 [self.view addSubview:content.view];
+                 [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
+                     content.view.frame = CGRectMake(0,0,bounds.size.width,bounds.size.height);
+                     
+                 } completion:^(BOOL completed){
+                     selectedContent = content;
+                     [content didMoveToParentViewController:self];
+                     [self.shield removeFromSuperview];
+                 }];
+             }];
+        }else{
+            [self addChildViewController:content];
+            [self.view addSubview:content.view];
+            content.view.frame = CGRectMake(0,0,bounds.size.width,bounds.size.height);
+            selectedContent = content;
+            [self.shield removeFromSuperview];
+            [content didMoveToParentViewController:self];
+        }
+        
+        
+    }else{
+        CGRect bounds = self.view.bounds;
+        [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
+            selectedContent.view.frame = CGRectMake(0,0,bounds.size.width,bounds.size.height);
+            
+        } completion:^(BOOL completed) {
+            [self.shield removeFromSuperview];
+        }];
+        
+    }
+    
+}
+
+
+-(void) addContentViewController:(UIViewController*) content withIdentifier:(NSString*)identifier{
+    CALayer* layer = [content.view layer];
+    layer.shadowColor = [UIColor blackColor].CGColor;
+    layer.shadowOpacity = 0.3;
+    layer.shadowOffset = CGSizeMake(-15, 0);
+    layer.shadowRadius = 10;
+    layer.masksToBounds = NO;
+    
+    [controllers setObject:content forKey:identifier];
+}
 
 #pragma mark -
 #pragma mark - UIViewController
@@ -91,69 +150,10 @@
     self.slideMenuTableView.delegate = self;
 }
 
--(void)viewDidUnload
-{
-    [super viewDidUnload];
+-(void) didReceiveMemoryWarning{
+    [super didReceiveMemoryWarning];
     [controllers removeAllObjects];
 }
--(void) didReceiveMemoryWarning{
-    [controllers removeAllObjects];    
-}
--(void) switchToContentViewController:(UIViewController*) content{
-    
-    if (content != selectedContent) {
-        [self addChildViewController:content];
-        CGRect bounds = self.view.bounds;
-        if (selectedContent) {
-            content.view.frame = CGRectMake(bounds.size.width,0,0,bounds.size.height);
-            [UIView animateWithDuration:kSlideOutInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
-                selectedContent.view.frame = CGRectMake(bounds.size.width,0,bounds.size.width,bounds.size.height);
-            } completion:
-             ^(BOOL completed) {
-                 [selectedContent.view removeFromSuperview];
-                 [selectedContent removeFromParentViewController];
-                 [self.view addSubview:content.view];
-                 [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
-                     content.view.frame = CGRectMake(0,0,bounds.size.width,bounds.size.height);
-                     
-                 } completion:^(BOOL completed){
-                     selectedContent = content;
-                     [self.shield removeFromSuperview];
-                 }];
-             }];
-        }else{
-            [self.view addSubview:content.view];
-            content.view.frame = CGRectMake(0,0,bounds.size.width,bounds.size.height);
-            selectedContent = content;
-            [self.shield removeFromSuperview];
-        }
-        
-        
-    }else{
-        CGRect bounds = self.view.bounds;
-        [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
-            selectedContent.view.frame = CGRectMake(0,0,bounds.size.width,bounds.size.height);
-            
-        } completion:^(BOOL completed) {
-            [self.shield removeFromSuperview];
-        }];
-        
-    }
-    
-}
-
-
--(void) addContentViewController:(UIViewController*) content withIdentifier:(NSString*)identifier{
-    CALayer* layer = [content.view layer];
-    layer.shadowColor = [UIColor blackColor].CGColor;
-    layer.shadowOpacity = 0.3;
-    layer.shadowOffset = CGSizeMake(-15, 0);
-    layer.shadowRadius = 10;
-    layer.masksToBounds = NO;
-
-    [controllers setObject:content forKey:identifier];
-}
-
 
 #pragma mark -
 #pragma mark UITableViewDataSource

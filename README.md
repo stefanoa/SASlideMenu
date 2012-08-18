@@ -19,6 +19,9 @@ To use it in your projects follow these steps:
 
 Test it and you are done!
 
+# Requirements
+
+It needs iOS 5.1 and works only on iPhone
 
 # License
 

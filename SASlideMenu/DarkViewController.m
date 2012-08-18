@@ -39,10 +39,15 @@
 	// Do any additional setup after loading the view.
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
+-(void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    tapCount++;
+    if (tapCount%2 == 0 ) {
+        self.view.backgroundColor = [UIColor darkGrayColor];
+    }else{
+        self.view.backgroundColor = [UIColor blackColor];
+        
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
