@@ -16,7 +16,6 @@
     NSMutableDictionary* controllers;
     UIViewController* selectedContent;
     BOOL isFirstViewWillAppear;
-
 }
 
 @property (nonatomic, strong) UIView* shield;
@@ -45,64 +44,58 @@
     [gesture setTranslation:CGPointZero inView:[panningView superview]];
     if ([gesture state] == UIGestureRecognizerStateEnded){
         CGFloat pcenterx = movingView.center.x;
-        CGSize size = self.view.bounds.size;
+        CGRect bounds = self.view.bounds;
+        CGSize size = bounds.size;
         
         if (pcenterx > size.width ) {
-            [UIView animateWithDuration:kSlideOutInterval delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                [movingView setCenter:CGPointMake(size.width+movingView.bounds.size.width/2-kVisiblePortion, [movingView center].y)];
-            } completion:^(BOOL completed){}];
-            
+            [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
+                selectedContent.view.frame = CGRectMake(kMenuTableSize,0,bounds.size.width,bounds.size.height);
+                
+            } completion:nil];
         }else{
-            [self switchToContentViewController:selectedContent];
+
+            [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
+                selectedContent.view.frame = CGRectMake(0,0,bounds.size.width,bounds.size.height);
+                
+            } completion:^(BOOL completed){
+                [self.shield removeFromSuperview];
+            }];
         }
 	}
 }
 -(void) switchToContentViewController:(UIViewController*) content{
-    
-    if (content != selectedContent) {
-        [self addChildViewController:content];
-        CGRect bounds = self.view.bounds;
-        if (selectedContent) {
-            content.view.frame = CGRectMake(bounds.size.width,0,0,bounds.size.height);
-            [selectedContent willMoveToParentViewController:nil];
-            
-            [UIView animateWithDuration:kSlideOutInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
-                selectedContent.view.frame = CGRectMake(bounds.size.width,0,bounds.size.width,bounds.size.height);
-            } completion:
-             ^(BOOL completed) {
-                 [selectedContent.view removeFromSuperview];
-                 [selectedContent removeFromParentViewController];
-                 [self.view addSubview:content.view];
-                 [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
-                     content.view.frame = CGRectMake(0,0,bounds.size.width,bounds.size.height);
-                     
-                 } completion:^(BOOL completed){
-                     selectedContent = content;
-                     [content didMoveToParentViewController:self];
-                     [self.shield removeFromSuperview];
-                 }];
+    CGRect bounds = self.view.bounds;
+    if (selectedContent) {
+        //Animate out the currently selected UIViewController
+        [UIView animateWithDuration:kSlideOutInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
+            selectedContent.view.frame = CGRectMake(bounds.size.width,0,bounds.size.width,bounds.size.height);
+        } completion:
+         ^(BOOL completed) {
+
+             [selectedContent willMoveToParentViewController:nil];
+             [selectedContent.view removeFromSuperview];
+             [selectedContent removeFromParentViewController];
+             
+             content.view.frame = CGRectMake(bounds.size.width,0,0,bounds.size.height);
+             [self addChildViewController:content];
+             [self.view addSubview:content.view];
+             [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
+                 content.view.frame = CGRectMake(0,0,bounds.size.width,bounds.size.height);
+                 
+             } completion:^(BOOL completed){
+                 selectedContent = content;
+                 [content didMoveToParentViewController:self];
+                 [self.shield removeFromSuperview];
              }];
-        }else{
-            [self addChildViewController:content];
-            [self.view addSubview:content.view];
-            content.view.frame = CGRectMake(0,0,bounds.size.width,bounds.size.height);
-            selectedContent = content;
-            [self.shield removeFromSuperview];
-            [content didMoveToParentViewController:self];
-        }
-        
-        
+         }];
     }else{
-        CGRect bounds = self.view.bounds;
-        [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
-            selectedContent.view.frame = CGRectMake(0,0,bounds.size.width,bounds.size.height);
-            
-        } completion:^(BOOL completed) {
-            [self.shield removeFromSuperview];
-        }];
-        
+        [self addChildViewController:content];
+        [self.view addSubview:content.view];
+        content.view.frame = CGRectMake(0,0,bounds.size.width,bounds.size.height);
+        selectedContent = content;
+        [self.shield removeFromSuperview];
+        [content didMoveToParentViewController:self];
     }
-    
 }
 
 
@@ -162,8 +155,8 @@
 - (void) tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     self.activeItemId= [self.slideMenuDataSource segueIdForIndexPath:indexPath];
-    
     UIViewController* content = [controllers objectForKey:self.activeItemId];
+
     if (!content) {
         [self performSegueWithIdentifier:self.activeItemId sender:self];
     }else{
@@ -171,19 +164,14 @@
     }
 }
 
-
-#pragma mark -
-#pragma mark SASlideMenuButtonDelegate
-
 -(void) doSlideOut{
     CGRect bounds = self.view.bounds;
     self.shield.frame = bounds;
     [selectedContent.view addSubview:self.shield];
     [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
-        selectedContent.view.frame = CGRectMake(bounds.size.width-kVisiblePortion,0,bounds.size.width,bounds.size.height);
+        selectedContent.view.frame = CGRectMake(kMenuTableSize,0,bounds.size.width,bounds.size.height);
         
     } completion:nil];
-
 }
 
 

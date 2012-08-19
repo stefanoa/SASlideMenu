@@ -12,7 +12,7 @@
 #define kSlideInInterval 0.3
 #define kSlideOutInterval 0.1
 #define kVisiblePortion 40
-
+#define kMenuTableSize 280
 
 @interface SASlideMenuViewController : UIViewController <UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource>
 
