@@ -14,9 +14,8 @@
 #define kVisiblePortion 40
 #define kMenuTableSize 280
 
-@interface SASlideMenuViewController : UIViewController <UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface SASlideMenuViewController : UITableViewController <UIGestureRecognizerDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView* slideMenuTableView;
 @property (assign, nonatomic) NSObject<SASlideMenuDataSource>* slideMenuDataSource;
 
 @property (strong, nonatomic) NSString* activeItemId;

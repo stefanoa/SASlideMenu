@@ -24,7 +24,6 @@
 
 @implementation SASlideMenuViewController
 
-@synthesize slideMenuTableView;
 @synthesize activeItemId;
 @synthesize slideMenuDataSource;
 
@@ -140,7 +139,7 @@
     [panGesture setMaximumNumberOfTouches:2];
     [panGesture setDelegate:self];
     [self.shield addGestureRecognizer:panGesture];
-    self.slideMenuTableView.delegate = self;
+    self.tableView.delegate = self;
 }
 
 -(void) didReceiveMemoryWarning{

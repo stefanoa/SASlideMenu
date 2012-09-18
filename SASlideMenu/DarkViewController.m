@@ -41,13 +41,6 @@
 
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    tapCount++;
-    if (tapCount%2 == 0 ) {
-        self.view.backgroundColor = [UIColor darkGrayColor];
-    }else{
-        self.view.backgroundColor = [UIColor blackColor];
-        
-    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
