@@ -13,7 +13,6 @@
 
 
 @interface SASlideMenuViewController (){
-    NSMutableDictionary* controllers;
     UIViewController* selectedContent;
     BOOL isFirstViewWillAppear;
 }
@@ -24,8 +23,8 @@
 
 @implementation SASlideMenuViewController
 
-@synthesize activeItemId;
 @synthesize slideMenuDataSource;
+@synthesize controllers;
 
 #pragma mark -
 #pragma mark - SASlideMenuViewController
@@ -106,7 +105,17 @@
     layer.shadowRadius = 10;
     layer.masksToBounds = NO;
     
-    [controllers setObject:content forKey:identifier];
+    [self.controllers setObject:content forKey:identifier];
+}
+
+-(void) doSlideOut{
+    CGRect bounds = self.view.bounds;
+    self.shield.frame = bounds;
+    [selectedContent.view addSubview:self.shield];
+    [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
+        selectedContent.view.frame = CGRectMake(kMenuTableSize,0,bounds.size.width,bounds.size.height);
+        
+    } completion:nil];
 }
 
 #pragma mark -
@@ -115,9 +124,8 @@
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (isFirstViewWillAppear) {
-        self.activeItemId = [slideMenuDataSource initialSegueId];
-        [self performSegueWithIdentifier:self.activeItemId sender:self];
-        
+        NSString* identifier= [slideMenuDataSource initialSegueId];
+        [self performSegueWithIdentifier:identifier sender:self];
         isFirstViewWillAppear = NO;
     }
 
@@ -144,34 +152,9 @@
 
 -(void) didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
-    [controllers removeAllObjects];
+    [self.controllers removeAllObjects];
 }
 
-#pragma mark -
-#pragma mark UITableViewDataSource
-
-
-- (void) tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
-{
-    self.activeItemId= [self.slideMenuDataSource segueIdForIndexPath:indexPath];
-    UIViewController* content = [controllers objectForKey:self.activeItemId];
-
-    if (!content) {
-        [self performSegueWithIdentifier:self.activeItemId sender:self];
-    }else{
-        [self switchToContentViewController:content];
-    }
-}
-
--(void) doSlideOut{
-    CGRect bounds = self.view.bounds;
-    self.shield.frame = bounds;
-    [selectedContent.view addSubview:self.shield];
-    [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
-        selectedContent.view.frame = CGRectMake(kMenuTableSize,0,bounds.size.width,bounds.size.height);
-        
-    } completion:nil];
-}
 
 
 @end

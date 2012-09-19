@@ -2,7 +2,7 @@
 
 Created by **stefanoa**
 
-A simple library to create sliding menus that can be used in storyboards. Sliding menus are used in a number of popular applications like Facebook, Path 2.0, Glassboard and many others.
+A simple library to create sliding menus that can be used in storyboards and support static cells. Sliding menus are used in a number of popular applications like Facebook, Path 2.0, Glassboard and many others.
 
 The repository is an Xcode 4 project that contains an example of the usage of the library and the library itself.
 
@@ -11,11 +11,9 @@ The repository is an Xcode 4 project that contains an example of the usage of th
 To use it in your projects follow these steps:
 
 * Add the SASlideMenu subdir and his content to your project
-* Add a new class that inherit from **SASlideMenuViewController** and implement **SASlideMenuDatSource**
-* Add a new **UIViewController** to your storyboard and make it of the newly created class
-* Add and configure a table to the controller
-* Connect the table to the **slideMenuTableView** outlet
-* Implement the controller following the **ExampleViewController** provided here
+* Add a new class that inherit from **SASlideMenuViewController** and implement **SASlideMenuDatSource** to define the initial segue and the custom appearence of the Slide Menu button
+* Add a new **UITableViewController** to your storyboard and make it of the newly created class
+* Configure the UITableVIew as needed and connect the cell of the table to the desired UINavigationViewController via a custom segue with class SASlideMenuStoryboardSegue. Assign to the desired initial segue the correct identifier.
 
 Test it and you are done!
 

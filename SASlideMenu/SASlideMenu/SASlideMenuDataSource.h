@@ -11,7 +11,6 @@
 @protocol SASlideMenuDataSource <NSObject>
 
 
--(NSString*) segueIdForIndexPath:(NSIndexPath*) indexPath;
 -(NSString*) initialSegueId;
 
 -(void) configureMenuButton:(UIButton*) menuButton;

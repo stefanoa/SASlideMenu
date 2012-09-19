@@ -15,17 +15,23 @@
 
 -(void) perform{
     SASlideMenuViewController* source = self.sourceViewController;
-    UINavigationController* destination = self.destinationViewController;
+    NSString* identifier = self.identifier;
+    UIViewController* content = [source.controllers objectForKey:identifier];
     
-    UIButton* menuButton = [[UIButton alloc] init];
-    [source.slideMenuDataSource configureMenuButton:menuButton];
-    [menuButton addTarget:source action:@selector(doSlideOut) forControlEvents:UIControlEventTouchUpInside];
-
-    UINavigationItem* navigationItem = destination.navigationBar.topItem;
-    navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuButton];
-
-    [source switchToContentViewController:destination];
-    [source addContentViewController:destination withIdentifier:self.identifier];
-    
+    if (!content) {
+        UINavigationController* destination = self.destinationViewController;
+        
+        
+        UIButton* menuButton = [[UIButton alloc] init];
+        [source.slideMenuDataSource configureMenuButton:menuButton];
+        [menuButton addTarget:source action:@selector(doSlideOut) forControlEvents:UIControlEventTouchUpInside];
+        
+        UINavigationItem* navigationItem = destination.navigationBar.topItem;
+        navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuButton];
+        [source switchToContentViewController:destination];
+        [source addContentViewController:destination withIdentifier:self.identifier];
+    }else{
+        [source switchToContentViewController:content];
+    }    
 }
 @end

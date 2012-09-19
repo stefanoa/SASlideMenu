@@ -17,8 +17,8 @@
 @interface SASlideMenuViewController : UITableViewController <UIGestureRecognizerDelegate>
 
 @property (assign, nonatomic) NSObject<SASlideMenuDataSource>* slideMenuDataSource;
+@property (strong, nonatomic) NSMutableDictionary* controllers;
 
-@property (strong, nonatomic) NSString* activeItemId;
 
 
 -(void) switchToContentViewController:(UIViewController*) content;
