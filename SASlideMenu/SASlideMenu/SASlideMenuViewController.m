@@ -134,7 +134,6 @@
 -(void) viewDidLoad{
     [super viewDidLoad];
 
-
     isFirstViewWillAppear = YES;
     controllers = [[NSMutableDictionary alloc] init];
     self.shield = [[UIView alloc] initWithFrame:CGRectZero];

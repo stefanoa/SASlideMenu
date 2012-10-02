@@ -13,6 +13,9 @@
 		7B05396015E15A7F00D72377 /* menuhighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B05395A15E15A7F00D72377 /* menuhighlighted@2x.png */; };
 		7B05396115E15A7F00D72377 /* menuicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B05395B15E15A7F00D72377 /* menuicon.png */; };
 		7B05396215E15A7F00D72377 /* menuicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B05395C15E15A7F00D72377 /* menuicon@2x.png */; };
+		7B1141A5161B621000549B42 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1141A4161B621000549B42 /* Default-568h@2x.png */; };
+		7B1141A9161B658D00549B42 /* Screenshot-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1141A7161B658D00549B42 /* Screenshot-Landscape.png */; };
+		7B1141AA161B658D00549B42 /* Screenshot-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1141A8161B658D00549B42 /* Screenshot-Portrait.png */; };
 		7B3B2D5415DCE0E1009F4AB8 /* DarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3B2D5315DCE0E1009F4AB8 /* DarkViewController.m */; };
 		7B8C3FDF15D8D55800E42A41 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8C3FDE15D8D55800E42A41 /* UIKit.framework */; };
 		7B8C3FE115D8D55800E42A41 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8C3FE015D8D55800E42A41 /* Foundation.framework */; };
@@ -41,6 +44,9 @@
 		7B05395A15E15A7F00D72377 /* menuhighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menuhighlighted@2x.png"; sourceTree = "<group>"; };
 		7B05395B15E15A7F00D72377 /* menuicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuicon.png; sourceTree = "<group>"; };
 		7B05395C15E15A7F00D72377 /* menuicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menuicon@2x.png"; sourceTree = "<group>"; };
+		7B1141A4161B621000549B42 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		7B1141A7161B658D00549B42 /* Screenshot-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot-Landscape.png"; sourceTree = "<group>"; };
+		7B1141A8161B658D00549B42 /* Screenshot-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot-Portrait.png"; sourceTree = "<group>"; };
 		7B3B2D5215DCE0E1009F4AB8 /* DarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DarkViewController.h; sourceTree = "<group>"; };
 		7B3B2D5315DCE0E1009F4AB8 /* DarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DarkViewController.m; sourceTree = "<group>"; };
 		7B8C3FDA15D8D55800E42A41 /* SASlideMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SASlideMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +95,8 @@
 		7B05395615E15A5E00D72377 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7B1141A7161B658D00549B42 /* Screenshot-Landscape.png */,
+				7B1141A8161B658D00549B42 /* Screenshot-Portrait.png */,
 				7B05395715E15A7F00D72377 /* menu.png */,
 				7B05395815E15A7F00D72377 /* menu@2x.png */,
 				7B05395915E15A7F00D72377 /* menuhighlighted.png */,
@@ -108,6 +116,7 @@
 		7B8C3FCF15D8D55800E42A41 = {
 			isa = PBXGroup;
 			children = (
+				7B1141A4161B621000549B42 /* Default-568h@2x.png */,
 				7BF0A6B915DE682A00B3B57F /* README.md */,
 				7B8C3FE415D8D55800E42A41 /* SASlideMenu */,
 				7B8C3FDD15D8D55800E42A41 /* Frameworks */,
@@ -242,6 +251,9 @@
 				7B05396015E15A7F00D72377 /* menuhighlighted@2x.png in Resources */,
 				7B05396115E15A7F00D72377 /* menuicon.png in Resources */,
 				7B05396215E15A7F00D72377 /* menuicon@2x.png in Resources */,
+				7B1141A5161B621000549B42 /* Default-568h@2x.png in Resources */,
+				7B1141A9161B658D00549B42 /* Screenshot-Landscape.png in Resources */,
+				7B1141AA161B658D00549B42 /* Screenshot-Portrait.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
