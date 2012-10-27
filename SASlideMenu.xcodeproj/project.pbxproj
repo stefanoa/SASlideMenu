@@ -17,6 +17,8 @@
 		7B1141A9161B658D00549B42 /* Screenshot-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1141A7161B658D00549B42 /* Screenshot-Landscape.png */; };
 		7B1141AA161B658D00549B42 /* Screenshot-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1141A8161B658D00549B42 /* Screenshot-Portrait.png */; };
 		7B3B2D5415DCE0E1009F4AB8 /* DarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3B2D5315DCE0E1009F4AB8 /* DarkViewController.m */; };
+		7B56BF49163C2ECF00D9C143 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B56BF48163C2ECF00D9C143 /* Icon.png */; };
+		7B56BF4B163C2EDA00D9C143 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B56BF4A163C2EDA00D9C143 /* Icon@2x.png */; };
 		7B5B88E3163B23B300D02C1F /* ShadesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5B88E2163B23B300D02C1F /* ShadesViewController.m */; };
 		7B8C3FDF15D8D55800E42A41 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8C3FDE15D8D55800E42A41 /* UIKit.framework */; };
 		7B8C3FE115D8D55800E42A41 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8C3FE015D8D55800E42A41 /* Foundation.framework */; };
@@ -50,6 +52,8 @@
 		7B1141A8161B658D00549B42 /* Screenshot-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot-Portrait.png"; sourceTree = "<group>"; };
 		7B3B2D5215DCE0E1009F4AB8 /* DarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DarkViewController.h; sourceTree = "<group>"; };
 		7B3B2D5315DCE0E1009F4AB8 /* DarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DarkViewController.m; sourceTree = "<group>"; };
+		7B56BF48163C2ECF00D9C143 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		7B56BF4A163C2EDA00D9C143 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		7B5B88E1163B23B300D02C1F /* ShadesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadesViewController.h; sourceTree = "<group>"; };
 		7B5B88E2163B23B300D02C1F /* ShadesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadesViewController.m; sourceTree = "<group>"; };
 		7B8C3FDA15D8D55800E42A41 /* SASlideMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SASlideMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +123,8 @@
 		7B8C3FCF15D8D55800E42A41 = {
 			isa = PBXGroup;
 			children = (
+				7B56BF4A163C2EDA00D9C143 /* Icon@2x.png */,
+				7B56BF48163C2ECF00D9C143 /* Icon.png */,
 				7B1141A4161B621000549B42 /* Default-568h@2x.png */,
 				7BF0A6B915DE682A00B3B57F /* README.md */,
 				7B8C3FE415D8D55800E42A41 /* SASlideMenu */,
@@ -259,6 +265,8 @@
 				7B1141A5161B621000549B42 /* Default-568h@2x.png in Resources */,
 				7B1141A9161B658D00549B42 /* Screenshot-Landscape.png in Resources */,
 				7B1141AA161B658D00549B42 /* Screenshot-Portrait.png in Resources */,
+				7B56BF49163C2ECF00D9C143 /* Icon.png in Resources */,
+				7B56BF4B163C2EDA00D9C143 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
