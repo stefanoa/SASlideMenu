@@ -10,6 +10,8 @@
 
 #import "ExampleMenuViewController.h"
 #import "MenuCell.h"
+#import "DarkViewController.h"
+
 @interface ExampleMenuViewController ()
 
 @end
@@ -37,6 +39,13 @@
     return YES;
 }
 
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"dark"]) {
+        UINavigationController* navigationController = segue.destinationViewController;
+        DarkViewController* darkController = (DarkViewController*)navigationController.topViewController;
+        darkController.menuViewController = self;
+    }
+}
 
 #pragma mark -
 #pragma mark SASlideMenuDataSource

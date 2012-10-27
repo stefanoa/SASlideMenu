@@ -9,7 +9,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SASlideMenuViewController.h"
 @interface DarkViewController : UIViewController
 
+@property (nonatomic,strong) SASlideMenuViewController* menuViewController;
 @end

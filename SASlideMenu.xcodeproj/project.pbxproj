@@ -17,6 +17,7 @@
 		7B1141A9161B658D00549B42 /* Screenshot-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1141A7161B658D00549B42 /* Screenshot-Landscape.png */; };
 		7B1141AA161B658D00549B42 /* Screenshot-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1141A8161B658D00549B42 /* Screenshot-Portrait.png */; };
 		7B3B2D5415DCE0E1009F4AB8 /* DarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3B2D5315DCE0E1009F4AB8 /* DarkViewController.m */; };
+		7B5B88E3163B23B300D02C1F /* ShadesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5B88E2163B23B300D02C1F /* ShadesViewController.m */; };
 		7B8C3FDF15D8D55800E42A41 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8C3FDE15D8D55800E42A41 /* UIKit.framework */; };
 		7B8C3FE115D8D55800E42A41 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8C3FE015D8D55800E42A41 /* Foundation.framework */; };
 		7B8C3FE315D8D55800E42A41 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8C3FE215D8D55800E42A41 /* CoreGraphics.framework */; };
@@ -49,6 +50,8 @@
 		7B1141A8161B658D00549B42 /* Screenshot-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot-Portrait.png"; sourceTree = "<group>"; };
 		7B3B2D5215DCE0E1009F4AB8 /* DarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DarkViewController.h; sourceTree = "<group>"; };
 		7B3B2D5315DCE0E1009F4AB8 /* DarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DarkViewController.m; sourceTree = "<group>"; };
+		7B5B88E1163B23B300D02C1F /* ShadesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadesViewController.h; sourceTree = "<group>"; };
+		7B5B88E2163B23B300D02C1F /* ShadesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadesViewController.m; sourceTree = "<group>"; };
 		7B8C3FDA15D8D55800E42A41 /* SASlideMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SASlideMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B8C3FDE15D8D55800E42A41 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7B8C3FE015D8D55800E42A41 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -150,11 +153,13 @@
 				7BF0A6B115DE499F00B3B57F /* MenuCell.m */,
 				7B3B2D5215DCE0E1009F4AB8 /* DarkViewController.h */,
 				7B3B2D5315DCE0E1009F4AB8 /* DarkViewController.m */,
+				7B5B88E1163B23B300D02C1F /* ShadesViewController.h */,
+				7B5B88E2163B23B300D02C1F /* ShadesViewController.m */,
 				7B8C3FF315D8D55800E42A41 /* ExampleMenuViewController.h */,
 				7B8C3FF415D8D55800E42A41 /* ExampleMenuViewController.m */,
-				7B8C3FF015D8D55800E42A41 /* MainStoryboard.storyboard */,
 				7B8C3FED15D8D55800E42A41 /* SASlideMenuAppDelegate.h */,
 				7B8C3FEE15D8D55800E42A41 /* SASlideMenuAppDelegate.m */,
+				7B8C3FF015D8D55800E42A41 /* MainStoryboard.storyboard */,
 				7B05395615E15A5E00D72377 /* Images */,
 				7B8C3FE515D8D55800E42A41 /* Supporting Files */,
 			);
@@ -271,6 +276,7 @@
 				7BF0A68F15DE495500B3B57F /* SASlideMenuStoryboardSegue.m in Sources */,
 				7BF0A69015DE495500B3B57F /* SASlideMenuViewController.m in Sources */,
 				7BF0A6B815DE499F00B3B57F /* MenuCell.m in Sources */,
+				7B5B88E3163B23B300D02C1F /* ShadesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

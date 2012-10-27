@@ -104,6 +104,7 @@
     layer.shadowOffset = CGSizeMake(-15, 0);
     layer.shadowRadius = 10;
     layer.masksToBounds = NO;
+    //layer.shadowPath =[UIBezierPath bezierPathWithRect:layer.bounds].CGPath;
     
     [self.controllers setObject:content forKey:identifier];
 }

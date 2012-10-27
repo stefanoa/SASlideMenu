@@ -15,6 +15,9 @@
 @end
 
 @implementation DarkViewController
+
+@synthesize menuViewController;
+
 -(void) tap{
     tapCount++;
     if (tapCount%2 == 0 ) {
@@ -22,6 +25,7 @@
     }else{
         self.view.backgroundColor = [UIColor blackColor];
     }
+    [menuViewController performSegueWithIdentifier:@"light" sender:self];
 }
 
 -(void)viewDidLoad {
