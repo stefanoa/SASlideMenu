@@ -18,7 +18,9 @@ To use it in your projects follow these steps:
 Test it and you are done!
 
 # Screenshots
-[Portrait](https://github.com/stefanoa/SASlideMenu/blob/master/SASlideMenu/Screenshot-Portrait.png?raw=true "Portrait")
+![Portrait](https://raw.github.com/stefanoa/SASlideMenu/master/SASlideMenu/Screenshot-Portrait.png)
+
+![Landscape](https://raw.github.com/stefanoa/SASlideMenu/master/SASlideMenu/Screenshot-Landscape.png)
 
 # Requirements
 
