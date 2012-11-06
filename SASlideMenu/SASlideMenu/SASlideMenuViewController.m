@@ -46,10 +46,7 @@
         CGSize size = bounds.size;
         
         if (pcenterx > size.width ) {
-            [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
-                selectedContent.view.frame = CGRectMake(kMenuTableSize,0,bounds.size.width,bounds.size.height);
-                
-            } completion:nil];
+            [self doSlideOut];
         }else{
 
             [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
@@ -104,15 +101,17 @@
     layer.shadowOffset = CGSizeMake(-15, 0);
     layer.shadowRadius = 10;
     layer.masksToBounds = NO;
-    //layer.shadowPath =[UIBezierPath bezierPathWithRect:layer.bounds].CGPath;
+    layer.shadowPath =[UIBezierPath bezierPathWithRect:layer.bounds].CGPath;
     
     [self.controllers setObject:content forKey:identifier];
 }
 
 -(void) doSlideOut{
     CGRect bounds = self.view.bounds;
-    self.shield.frame = bounds;
-    [selectedContent.view addSubview:self.shield];
+    if (![selectedContent.view.subviews containsObject:self.shield]) {
+        self.shield.frame = bounds;
+        [selectedContent.view addSubview:self.shield];
+    }
     [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
         selectedContent.view.frame = CGRectMake(kMenuTableSize,0,bounds.size.width,bounds.size.height);
         
@@ -147,6 +146,7 @@
     [panGesture setMaximumNumberOfTouches:2];
     [panGesture setDelegate:self];
     [self.shield addGestureRecognizer:panGesture];
+    
     self.tableView.delegate = self;
 }
 

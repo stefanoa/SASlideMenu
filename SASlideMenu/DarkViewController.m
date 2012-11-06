@@ -25,13 +25,18 @@
     }else{
         self.view.backgroundColor = [UIColor blackColor];
     }
-    [menuViewController performSegueWithIdentifier:@"light" sender:self];
+    //[menuViewController performSegueWithIdentifier:@"light" sender:self];
 }
 
 -(void)viewDidLoad {
     [super viewDidLoad];
     UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
     [self.view addGestureRecognizer:tapGesture];
+    
+    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:menuViewController action:@selector(panItem:)];
+    [panGesture setMaximumNumberOfTouches:2];
+    [panGesture setDelegate:menuViewController];
+    [self.view addGestureRecognizer:panGesture];
 }
 
 -(void) viewWillAppear:(BOOL)animated{

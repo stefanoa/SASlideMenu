@@ -31,6 +31,9 @@
     
 }
 
+-(void) viewWillAppear:(BOOL)animated{
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -53,12 +56,18 @@
     static NSString *CellIdentifier = @"light";
     UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    //cell.textLabel.text = [NSString stringWithFormat:@"%10d",rand()];
     CGFloat hue = ((double) indexPath.section)/10.0;
     CGFloat brightness = 1-((double) indexPath.row)/10.0;
     cell.backgroundColor = [UIColor colorWithHue:hue saturation:1.0 brightness:brightness alpha:1.0];
     return cell;
 }
 
+
+-(void) viewWillLayoutSubviews{
+    CGSize frameSize = self.view.frame.size;
+    CGRect tableFrame = CGRectMake(10, 10, frameSize.width-2*10, frameSize.height-2*10);
+    self.tableContainer.frame = tableFrame;
+    
+}
 
 @end
