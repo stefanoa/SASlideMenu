@@ -37,7 +37,9 @@
     UIView* panningView = gesture.view;
     CGPoint translation = [gesture translationInView:panningView];
     UIView* movingView = selectedContent.view;
-    
+    if (movingView.frame.origin.x + translation.x<0) {
+        translation.x=0.0;
+    }
     [movingView setCenter:CGPointMake([movingView center].x + translation.x, [movingView center].y)];
     [gesture setTranslation:CGPointZero inView:[panningView superview]];
     if ([gesture state] == UIGestureRecognizerStateEnded){
@@ -60,6 +62,7 @@
 }
 -(void) switchToContentViewController:(UIViewController*) content{
     CGRect bounds = self.view.bounds;
+    self.view.userInteractionEnabled = NO;
     if (selectedContent) {
         //Animate out the currently selected UIViewController
         [UIView animateWithDuration:kSlideOutInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
@@ -81,6 +84,7 @@
                  selectedContent = content;
                  [content didMoveToParentViewController:self];
                  [self.shield removeFromSuperview];
+                 self.view.userInteractionEnabled = YES;
              }];
          }];
     }else{
@@ -90,7 +94,9 @@
         selectedContent = content;
         [self.shield removeFromSuperview];
         [content didMoveToParentViewController:self];
+        self.view.userInteractionEnabled = YES;
     }
+
 }
 
 
