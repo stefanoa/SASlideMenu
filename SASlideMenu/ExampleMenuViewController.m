@@ -20,7 +20,7 @@
 
 -(id) initWithCoder:(NSCoder *)aDecoder{
     if (self = [super initWithCoder:aDecoder]) {
-        // Assign self to the slideMenuDataSource beacase self will implement SASlideMeneDatSource 
+        // Assign self to the slideMenuDataSource beacase self will implement SASlideMenuDatSource 
         self.slideMenuDataSource = self;
         
     }
@@ -29,7 +29,7 @@
 
 -(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     if(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]){
-        // Assign self to the slideMenuDataSource beacase self will implement SASlideMeneDatSource
+        // Assign self to the slideMenuDataSource beacase self will implement SASlideMenuDatSource
         self.slideMenuDataSource = self;
     }
     return self;
