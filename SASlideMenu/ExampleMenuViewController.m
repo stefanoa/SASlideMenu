@@ -20,7 +20,7 @@
 
 -(id) initWithCoder:(NSCoder *)aDecoder{
     if (self = [super initWithCoder:aDecoder]) {
-        // Assign self to the slideMenuDataSource beacase self will implement SASlideMenuDatSource 
+        // Assign self to the slideMenuDataSource because self will implement SASlideMenuDatSource 
         self.slideMenuDataSource = self;
         
     }
@@ -29,7 +29,7 @@
 
 -(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     if(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]){
-        // Assign self to the slideMenuDataSource beacase self will implement SASlideMenuDatSource
+        // Assign self to the slideMenuDataSource because self will implement SASlideMenuDataSource
         self.slideMenuDataSource = self;
     }
     return self;
@@ -49,7 +49,7 @@
 
 #pragma mark -
 #pragma mark SASlideMenuDataSource
-// The SASlideMenuDataSource is used to provide the initial segueid that represents the initial visibile view controller and possible additional configuration to the menu button
+// The SASlideMenuDataSource is used to provide the initial segueid that represents the initial visibile view controller and to provide eventual additional configuration to the menu button
 
 
 // This is the segue you want visibile when the controller is loaded the first time
