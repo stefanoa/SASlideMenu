@@ -64,29 +64,47 @@
     [self prepareForSwitchToContentViewController:content];
     
     if (selectedContent) {
-        //Animate out the currently selected UIViewController
-        [UIView animateWithDuration:kSlideOutInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
-            selectedContent.view.frame = CGRectMake(bounds.size.width,0,bounds.size.width,bounds.size.height);
-        } completion:
-         ^(BOOL completed) {
-             
-             [selectedContent willMoveToParentViewController:nil];
-             [selectedContent.view removeFromSuperview];
-             [selectedContent removeFromParentViewController];
-             
-             content.view.frame = CGRectMake(bounds.size.width,0,0,bounds.size.height);
-             [self addChildViewController:content];
-             [self.view addSubview:content.view];
-             [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
-                 content.view.frame = CGRectMake(0,0,bounds.size.width,bounds.size.height);
+        if (selectedContent != content) {
+            //Animate out the currently selected UIViewController
+            [UIView animateWithDuration:kSlideOutInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
+                selectedContent.view.frame = CGRectMake(bounds.size.width,0,bounds.size.width,bounds.size.height);
+            } completion:
+             ^(BOOL completed) {
                  
-             } completion:^(BOOL completed){
-                 selectedContent = content;
-                 [content didMoveToParentViewController:self];
-                 [self.shield removeFromSuperview];
-                 self.view.userInteractionEnabled = YES;
+                 [selectedContent willMoveToParentViewController:nil];
+                 [selectedContent.view removeFromSuperview];
+                 [selectedContent removeFromParentViewController];
+                 
+                 content.view.frame = CGRectMake(bounds.size.width,0,bounds.size.width,bounds.size.height);
+                 [self addChildViewController:content];
+                 [self.view addSubview:content.view];
+                 [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
+                     content.view.frame = CGRectMake(0,0,bounds.size.width,bounds.size.height);
+                     
+                 } completion:^(BOOL completed){
+                     selectedContent = content;
+                     [content didMoveToParentViewController:self];
+                     [self.shield removeFromSuperview];
+                     self.view.userInteractionEnabled = YES;
+                 }];
              }];
-         }];
+        }else{
+            [selectedContent willMoveToParentViewController:nil];
+            [selectedContent.view removeFromSuperview];
+            [selectedContent removeFromParentViewController];
+            
+            [self addChildViewController:content];
+            [self.view addSubview:content.view];
+            [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
+                content.view.frame = CGRectMake(0,0,bounds.size.width,bounds.size.height);
+                
+            } completion:^(BOOL completed){
+                selectedContent = content;
+                [content didMoveToParentViewController:self];
+                [self.shield removeFromSuperview];
+                self.view.userInteractionEnabled = YES;
+            }];
+        }
     }else{
         [self addChildViewController:content];
         [self.view addSubview:content.view];

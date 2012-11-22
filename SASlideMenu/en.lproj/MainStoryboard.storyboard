@@ -193,16 +193,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" id="iqb-0V-juA">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="selectedColoredRow.png" id="sgX-ru-aIh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
-                                                </view>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <outlet property="selectedBackgroundView" destination="iqb-0V-juA" id="3ua-sc-eBd"/>
+                                            <outlet property="selectedBackgroundView" destination="sgX-ru-aIh" id="WJX-r0-ipu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -354,6 +353,7 @@
         <image name="disclosure.png" width="20" height="20"/>
         <image name="row.png" width="1" height="44"/>
         <image name="rowselected.png" width="1" height="44"/>
+        <image name="selectedColoredRow.png" width="320" height="44"/>
     </resources>
     <classes>
         <class className="ColoredViewController" superclassName="UIViewController">
