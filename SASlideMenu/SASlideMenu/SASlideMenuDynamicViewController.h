@@ -19,10 +19,10 @@
 @property (assign, nonatomic) NSObject<SASlideMenuDataSource>* slideMenuDataSource;
 @property (strong, nonatomic) NSMutableDictionary* controllers;
 @property (strong, nonatomic) IBOutlet UITableView* tableView;
-
+@property (strong, nonatomic) NSIndexPath* selectedIndexPath;
 
 -(void) switchToContentViewController:(UIViewController*) content;
--(void) addContentViewController:(UIViewController*) content withIdentifier:(NSString*)identifier;
+-(void) addContentViewController:(UIViewController*) content withIndexPath:(NSIndexPath*)indexPath;
 -(void) doSlideOut;
 
 -(void) prepareForSwitchToContentViewController:(UIViewController*) content;

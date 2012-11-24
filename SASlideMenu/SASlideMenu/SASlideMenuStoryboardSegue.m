@@ -7,16 +7,19 @@
 //
 
 #import "SASlideMenuStoryboardSegue.h"
-#import "SASlideMenuViewController.h"
+#import "SASlideMenuDynamicViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation SASlideMenuStoryboardSegue
 
 
 -(void) perform{
-    SASlideMenuViewController* source = self.sourceViewController;
-    NSString* identifier = self.identifier;
-    UIViewController* content = [source.controllers objectForKey:identifier];
+    SASlideMenuDynamicViewController* source = self.sourceViewController;
+
+    UIViewController* content;
+    if (source.selectedIndexPath) {
+        content = [source.controllers objectForKey:source.selectedIndexPath];
+    }
     
     if (!content) {
         UINavigationController* destination = self.destinationViewController;
@@ -29,7 +32,8 @@
         UINavigationItem* navigationItem = destination.navigationBar.topItem;
         navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuButton];
         [source switchToContentViewController:destination];
-        [source addContentViewController:destination withIdentifier:self.identifier];
+        
+        [source addContentViewController:destination withIndexPath:source.selectedIndexPath];
     }else{
         [source switchToContentViewController:content];
     }    

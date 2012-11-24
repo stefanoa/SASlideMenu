@@ -135,7 +135,7 @@
     }
     self.selectedHue = hue;
     self.selectedBrightness = brightness;
-    [self performSegueWithIdentifier:@"colored" sender:self];
+    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
 

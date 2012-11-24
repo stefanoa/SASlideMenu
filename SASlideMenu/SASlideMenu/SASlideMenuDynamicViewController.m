@@ -118,7 +118,7 @@
 }
 
 
--(void) addContentViewController:(UIViewController*) content withIdentifier:(NSString*)identifier{
+-(void) addContentViewController:(UIViewController*) content withIndexPath:(NSIndexPath*)indexPath{
     CALayer* layer = [content.view layer];
     layer.shadowColor = [UIColor blackColor].CGColor;
     layer.shadowOpacity = 0.3;
@@ -126,8 +126,9 @@
     layer.shadowRadius = 10;
     layer.masksToBounds = NO;
     layer.shadowPath =[UIBezierPath bezierPathWithRect:layer.bounds].CGPath;
-    
-    [self.controllers setObject:content forKey:identifier];
+    if (indexPath) {
+        [self.controllers setObject:content forKey:indexPath];
+    }
 }
 
 -(void) doSlideOut{
@@ -141,20 +142,21 @@
         
     } completion:nil];
 }
--(void) prepareForSwitchToContentViewController:(UIViewController*) content{
-    
-}
+-(void) prepareForSwitchToContentViewController:(UIViewController*) content{}
+
 #pragma mark -
 #pragma mark - UITableViewDelegate
+
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSString* segueId = [self.slideMenuDataSource sugueIDForIndexPath:indexPath];
-    if (segueId) {
-        UIViewController* content = [self.controllers objectForKey:segueId];
-        if (content) {
-            [self switchToContentViewController:content];
-        }
+    self.selectedIndexPath = indexPath;
+    UIViewController* content = [self.controllers objectForKey:indexPath];
+    if (content) {
+        [self switchToContentViewController:content];
+    }else{
+        NSString* segueId = [self.slideMenuDataSource sugueIDForIndexPath:indexPath];
+        UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        [self performSegueWithIdentifier:segueId sender:cell];
     }
-    [self performSegueWithIdentifier:segueId sender:self];
 }
 
 #pragma mark -
