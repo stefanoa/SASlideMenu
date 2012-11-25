@@ -75,10 +75,18 @@
 }
 // It maps each indexPath to the segueId to be used. The segue is performed only the first time the controller needs to loaded, subsequent switch to the content controller will use the already loaded controller
 
--(NSString*) sugueIDForIndexPath:(NSIndexPath *)indexPath{
+-(NSString*) sugueIdForIndexPath:(NSIndexPath *)indexPath{
     return @"colored";
 }
-
+-(Boolean) slideOutThenIn{
+    return NO;
+}
+-(Boolean) allowContentViewControllerCachingForIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row ==0) {
+        return NO;
+    }
+    return YES;
+}
 #pragma mark -
 #pragma mark UITableViewDataSource
 
@@ -115,8 +123,6 @@
 }
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"item"];
-    //NSInteger percentage = (indexPath.row*100)/3;
-    //cell.textLabel.text = [NSString stringWithFormat:@"%d%%",percentage];
     return cell;
 }
 

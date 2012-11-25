@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SASlideMenuViewController.h"
+#import "SASlideMenuStaticViewController.h"
 #import "SASlideMenuDataSource.h"
-@interface ExampleMenuViewController :SASlideMenuViewController<SASlideMenuDataSource>
+@interface ExampleStaticMenuViewController :SASlideMenuStaticViewController<SASlideMenuDataSource>
 
 @end

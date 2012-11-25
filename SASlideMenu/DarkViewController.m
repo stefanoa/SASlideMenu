@@ -17,6 +17,13 @@
 @implementation DarkViewController
 
 @synthesize menuViewController;
+-(id) initWithCoder:(NSCoder *)aDecoder{
+    if (self = [super initWithCoder:aDecoder]) {
+        NSLog(@"[%@ initWithCoder:]",self);
+
+    }
+    return self;
+}
 
 -(void) tap{
     tapCount++;
@@ -25,21 +32,19 @@
     }else{
         self.view.backgroundColor = [UIColor blackColor];
     }
-    //[menuViewController performSegueWithIdentifier:@"light" sender:self];
+    NSLog(@"[%@ tap]",self);
+
 }
 
 -(void)viewDidLoad {
     [super viewDidLoad];
     UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
     [self.view addGestureRecognizer:tapGesture];
-    
-    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:menuViewController action:@selector(panItem:)];
-    [panGesture setMaximumNumberOfTouches:2];
-    [panGesture setDelegate:menuViewController];
-    [self.view addGestureRecognizer:panGesture];
+    NSLog(@"[%@ viewDidLoad]",self);
 }
 
 -(void) viewWillAppear:(BOOL)animated{
+    NSLog(@"[%@ viewWillAppear:]",self);
     [super viewWillAppear:animated];
 }
 

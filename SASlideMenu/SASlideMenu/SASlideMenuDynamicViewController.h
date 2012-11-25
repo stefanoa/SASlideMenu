@@ -9,10 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "SASlideMenuDataSource.h"
 
-#define kSlideInInterval 0.3
-#define kSlideOutInterval 0.1
-#define kVisiblePortion 40
-#define kMenuTableSize 280
 
 @interface SASlideMenuDynamicViewController : UIViewController <UIGestureRecognizerDelegate,UITableViewDelegate>
 
@@ -21,9 +17,9 @@
 @property (strong, nonatomic) IBOutlet UITableView* tableView;
 @property (strong, nonatomic) NSIndexPath* selectedIndexPath;
 
--(void) switchToContentViewController:(UIViewController*) content;
+-(void) switchToContentViewController:(UINavigationController*) content;
 -(void) addContentViewController:(UIViewController*) content withIndexPath:(NSIndexPath*)indexPath;
--(void) doSlideOut;
+-(void) doSlideToSide;
 
 -(void) prepareForSwitchToContentViewController:(UIViewController*) content;
 @end

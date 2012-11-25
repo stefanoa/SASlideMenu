@@ -8,15 +8,15 @@
 //  Copyright (c) 2012 Stefano Antonelli. All rights reserved.
 //
 
-#import "ExampleMenuViewController.h"
+#import "ExampleStaticMenuViewController.h"
 #import "MenuCell.h"
 #import "DarkViewController.h"
 
-@interface ExampleMenuViewController ()
+@interface ExampleStaticMenuViewController ()
 
 @end
 
-@implementation ExampleMenuViewController
+@implementation ExampleStaticMenuViewController
 
 -(id) initWithCoder:(NSCoder *)aDecoder{
     if (self = [super initWithCoder:aDecoder]) {

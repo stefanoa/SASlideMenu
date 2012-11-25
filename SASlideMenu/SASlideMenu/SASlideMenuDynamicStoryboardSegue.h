@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 
-@interface SASlideMenuStoryboardSegue: UIStoryboardSegue
+@interface SASlideMenuDynamicStoryboardSegue: UIStoryboardSegue
 
 @end

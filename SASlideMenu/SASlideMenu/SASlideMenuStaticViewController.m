@@ -1,5 +1,5 @@
 //
-//  SASlideMenuViewController.m
+//  SASlideMenuStaticViewController.m
 //  SASlideMenu
 //
 //  Created by Stefano Antonelli on 7/29/12.
@@ -8,11 +8,11 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-#import "SASlideMenuViewController.h"
+#import "SASlideMenuStaticViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 
-@interface SASlideMenuViewController (){
+@interface SASlideMenuStaticViewController (){
     UIViewController* selectedContent;
     BOOL isFirstViewWillAppear;
 }
@@ -21,10 +21,9 @@
 
 @end
 
-@implementation SASlideMenuViewController
+@implementation SASlideMenuStaticViewController
 
 @synthesize slideMenuDataSource;
-@synthesize controllers;
 
 #pragma mark -
 #pragma mark - SASlideMenuViewController
@@ -50,7 +49,7 @@
         if (pcenterx > size.width ) {
             [self doSlideOut];
         }else{
-
+            
             [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
                 selectedContent.view.frame = CGRectMake(0,0,bounds.size.width,bounds.size.height);
                 
@@ -61,8 +60,11 @@
 	}
 }
 -(void) switchToContentViewController:(UIViewController*) content{
+    
     CGRect bounds = self.view.bounds;
     self.view.userInteractionEnabled = NO;
+    [self prepareForSwitchToContentViewController:content];
+    
     if (selectedContent) {
         if (selectedContent != content) {
             //Animate out the currently selected UIViewController
@@ -103,7 +105,7 @@
                 [content didMoveToParentViewController:self];
                 [self.shield removeFromSuperview];
                 self.view.userInteractionEnabled = YES;
-            }];            
+            }];
         }
     }else{
         [self addChildViewController:content];
@@ -114,11 +116,11 @@
         [content didMoveToParentViewController:self];
         self.view.userInteractionEnabled = YES;
     }
-
+    
 }
 
 
--(void) addContentViewController:(UIViewController*) content withIdentifier:(NSString*)identifier{
+-(void) addContentViewController:(UIViewController*) content withIndexPath:(NSIndexPath*)indexPath{
     CALayer* layer = [content.view layer];
     layer.shadowColor = [UIColor blackColor].CGColor;
     layer.shadowOpacity = 0.3;
@@ -126,8 +128,6 @@
     layer.shadowRadius = 10;
     layer.masksToBounds = NO;
     layer.shadowPath =[UIBezierPath bezierPathWithRect:layer.bounds].CGPath;
-    
-    [self.controllers setObject:content forKey:identifier];
 }
 
 -(void) doSlideOut{
@@ -141,6 +141,7 @@
         
     } completion:nil];
 }
+-(void) prepareForSwitchToContentViewController:(UIViewController*) content{}
 
 #pragma mark -
 #pragma mark - UIViewController
@@ -159,7 +160,6 @@
     [super viewDidLoad];
 
     isFirstViewWillAppear = YES;
-    controllers = [[NSMutableDictionary alloc] init];
     self.shield = [[UIView alloc] initWithFrame:CGRectZero];
 
     UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapItem:)];
@@ -173,12 +173,4 @@
     
     self.tableView.delegate = self;
 }
-
--(void) didReceiveMemoryWarning{
-    [super didReceiveMemoryWarning];
-    [self.controllers removeAllObjects];
-}
-
-
-
 @end

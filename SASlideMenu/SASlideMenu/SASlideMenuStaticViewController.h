@@ -1,5 +1,5 @@
 //
-//  SASlideMenuViewController.h
+//  SASlideMenuStaticViewController.h
 //  SASlideMenu
 //
 //  Created by Stefano Antonelli on 7/29/12.
@@ -14,15 +14,12 @@
 #define kVisiblePortion 40
 #define kMenuTableSize 280
 
-@interface SASlideMenuViewController : UITableViewController <UIGestureRecognizerDelegate>
+@interface SASlideMenuStaticViewController : UITableViewController <UIGestureRecognizerDelegate>
 
 @property (assign, nonatomic) NSObject<SASlideMenuDataSource>* slideMenuDataSource;
-@property (strong, nonatomic) NSMutableDictionary* controllers;
-
 
 
 -(void) switchToContentViewController:(UIViewController*) content;
--(void) addContentViewController:(UIViewController*) content withIdentifier:(NSString*)identifier;
 -(void) doSlideOut;
 
 @end
