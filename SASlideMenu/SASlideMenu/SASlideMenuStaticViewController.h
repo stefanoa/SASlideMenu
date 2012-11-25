@@ -20,6 +20,6 @@
 
 
 -(void) switchToContentViewController:(UIViewController*) content;
--(void) doSlideOut;
+-(void) doSlideToSide;
 
 @end

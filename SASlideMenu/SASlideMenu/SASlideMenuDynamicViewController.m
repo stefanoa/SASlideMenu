@@ -28,6 +28,9 @@
 @synthesize slideMenuDataSource;
 @synthesize controllers;
 
+#pragma mark -
+#pragma mark - SASlideMenuDynamicViewController
+
 -(void) slideOut:(UINavigationController*) controller{
     CGRect bounds = self.view.bounds;
     controller.view.frame = CGRectMake(bounds.size.width,0.0,bounds.size.width,bounds.size.height);
@@ -47,16 +50,12 @@
      [self.shield removeFromSuperview];
      [controller.visibleViewController.view addSubview:self.shield];
      self.shield.frame = controller.visibleViewController.view.bounds;
-     CGRect frame = self.shield.frame;
-     NSLog(@"[%f,%f,%f,%f]",frame.origin.x,frame.origin.y,frame.size.width,frame.size.height);    
 }
 
 -(void) completeSlideToSide:(UINavigationController*) controller{
     [self.shield removeFromSuperview];
     [controller.view addSubview:self.shield];
     self.shield.frame = controller.view.bounds;
-    CGRect frame = self.shield.frame;
-    NSLog(@"[%f,%f,%f,%f]",frame.origin.x,frame.origin.y,frame.size.width,frame.size.height);    
 }
 
 -(void) doSlideToSide{
@@ -88,8 +87,6 @@
     }];
 }
 
-#pragma mark -
-#pragma mark - SASlideMenuDynamicViewController
 
 -(void) tapItem:(UIPanGestureRecognizer*)gesture{
     [self switchToContentViewController:selectedContent];

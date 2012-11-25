@@ -18,7 +18,7 @@
     
     UIButton* menuButton = [[UIButton alloc] init];
     [source.slideMenuDataSource configureMenuButton:menuButton];
-    [menuButton addTarget:source action:@selector(doSlideOut) forControlEvents:UIControlEventTouchUpInside];
+    [menuButton addTarget:source action:@selector(doSlideToSide) forControlEvents:UIControlEventTouchUpInside];
     
     UINavigationItem* navigationItem = destination.navigationBar.topItem;
     navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuButton];

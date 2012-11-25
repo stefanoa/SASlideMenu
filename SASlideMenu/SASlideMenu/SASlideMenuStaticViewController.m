@@ -13,7 +13,7 @@
 
 
 @interface SASlideMenuStaticViewController (){
-    UIViewController* selectedContent;
+    UINavigationController* selectedContent;
     BOOL isFirstViewWillAppear;
 }
 
@@ -26,7 +26,64 @@
 @synthesize slideMenuDataSource;
 
 #pragma mark -
-#pragma mark - SASlideMenuViewController
+#pragma mark - SASlideMenuStaticViewController
+
+-(void) slideOut:(UINavigationController*) controller{
+    CGRect bounds = self.view.bounds;
+    controller.view.frame = CGRectMake(bounds.size.width,0.0,bounds.size.width,bounds.size.height);
+}
+
+-(void) slideToSide:(UINavigationController*) controller{
+    CGRect bounds = self.view.bounds;
+    controller.view.frame = CGRectMake(kMenuTableSize,0.0,bounds.size.width,bounds.size.height);
+}
+
+-(void) slideIn:(UINavigationController*) controller{
+    CGRect bounds = self.view.bounds;
+    controller.view.frame = CGRectMake(0.0,0.0,bounds.size.width,bounds.size.height);
+}
+
+-(void) completeSlideIn:(UINavigationController*) controller{
+    [self.shield removeFromSuperview];
+    [controller.visibleViewController.view addSubview:self.shield];
+    self.shield.frame = controller.visibleViewController.view.bounds;
+}
+
+-(void) completeSlideToSide:(UINavigationController*) controller{
+    [self.shield removeFromSuperview];
+    [controller.view addSubview:self.shield];
+    self.shield.frame = controller.view.bounds;
+}
+
+-(void) doSlideToSide{
+    [UIView animateWithDuration:kSlideInInterval
+                          delay:0.0
+                        options:UIViewAnimationCurveEaseInOut
+                     animations:^{
+                         [self slideToSide:selectedContent];
+                     }
+                     completion:^(BOOL finished) {
+                         [self completeSlideToSide:selectedContent];
+                     }];
+}
+
+-(void) doSlideOut:(void (^)(BOOL completed))completion{
+    [UIView animateWithDuration:kSlideOutInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
+        [self slideOut:selectedContent];
+    } completion:completion];
+}
+
+-(void) doSlideIn:(void (^)(BOOL completed))completion{
+    [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
+        [self slideIn:selectedContent];
+    } completion:^(BOOL finished) {
+        if (completion) {
+            completion(finished);
+        }
+        [self completeSlideIn:selectedContent];
+    }];
+}
+
 
 -(void) tapItem:(UIPanGestureRecognizer*)gesture{
     [self switchToContentViewController:selectedContent];
@@ -47,76 +104,53 @@
         CGSize size = bounds.size;
         
         if (pcenterx > size.width ) {
-            [self doSlideOut];
+            [self doSlideToSide];
         }else{
-            
-            [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
-                selectedContent.view.frame = CGRectMake(0,0,bounds.size.width,bounds.size.height);
-                
-            } completion:^(BOOL completed){
-                [self.shield removeFromSuperview];
-            }];
+            [self doSlideIn:nil];
         }
 	}
 }
--(void) switchToContentViewController:(UIViewController*) content{
-    
+
+-(void) switchToContentViewController:(UINavigationController*) content{
     CGRect bounds = self.view.bounds;
     self.view.userInteractionEnabled = NO;
+    
     [self prepareForSwitchToContentViewController:content];
     
-    if (selectedContent) {
-        if (selectedContent != content) {
-            //Animate out the currently selected UIViewController
-            [UIView animateWithDuration:kSlideOutInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
-                selectedContent.view.frame = CGRectMake(bounds.size.width,0,bounds.size.width,bounds.size.height);
-            } completion:
-             ^(BOOL completed) {
-                 
-                 [selectedContent willMoveToParentViewController:nil];
-                 [selectedContent.view removeFromSuperview];
-                 [selectedContent removeFromParentViewController];
-                 
-                 content.view.frame = CGRectMake(bounds.size.width,0,bounds.size.width,bounds.size.height);
-                 [self addChildViewController:content];
-                 [self.view addSubview:content.view];
-                 [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
-                     content.view.frame = CGRectMake(0,0,bounds.size.width,bounds.size.height);
-                     
-                 } completion:^(BOOL completed){
-                     selectedContent = content;
-                     [content didMoveToParentViewController:self];
-                     [self.shield removeFromSuperview];
-                     self.view.userInteractionEnabled = YES;
-                 }];
-             }];
-        }else{
+    Boolean slideOutThenIn = NO;
+    if ([slideMenuDataSource respondsToSelector:@selector(slideOutThenIn)]){
+        slideOutThenIn = [slideMenuDataSource slideOutThenIn];
+    }
+    
+    if (slideOutThenIn) {
+        //Animate out the currently selected UIViewController
+        [self doSlideOut:^(BOOL completed) {
             [selectedContent willMoveToParentViewController:nil];
             [selectedContent.view removeFromSuperview];
             [selectedContent removeFromParentViewController];
             
+            content.view.frame = CGRectMake(bounds.size.width,0,bounds.size.width,bounds.size.height);
             [self addChildViewController:content];
             [self.view addSubview:content.view];
-            [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
-                content.view.frame = CGRectMake(0,0,bounds.size.width,bounds.size.height);
-                
-            } completion:^(BOOL completed){
-                selectedContent = content;
+            selectedContent = content;
+            [self doSlideIn:^(BOOL completed) {
                 [content didMoveToParentViewController:self];
-                [self.shield removeFromSuperview];
                 self.view.userInteractionEnabled = YES;
             }];
-        }
+        }];
     }else{
+        [selectedContent willMoveToParentViewController:nil];
+        [selectedContent.view removeFromSuperview];
+        [selectedContent removeFromParentViewController];
+        [self slideToSide:content];
         [self addChildViewController:content];
         [self.view addSubview:content.view];
-        content.view.frame = CGRectMake(0,0,bounds.size.width,bounds.size.height);
         selectedContent = content;
-        [self.shield removeFromSuperview];
-        [content didMoveToParentViewController:self];
-        self.view.userInteractionEnabled = YES;
-    }
-    
+        [self doSlideIn:^(BOOL completed) {
+            [content didMoveToParentViewController:self];
+            self.view.userInteractionEnabled = YES;
+        }];
+    }    
 }
 
 
@@ -130,17 +164,6 @@
     layer.shadowPath =[UIBezierPath bezierPathWithRect:layer.bounds].CGPath;
 }
 
--(void) doSlideOut{
-    CGRect bounds = self.view.bounds;
-    if (![selectedContent.view.subviews containsObject:self.shield]) {
-        self.shield.frame = bounds;
-        [selectedContent.view addSubview:self.shield];
-    }
-    [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
-        selectedContent.view.frame = CGRectMake(kMenuTableSize,0,bounds.size.width,bounds.size.height);
-        
-    } completion:nil];
-}
 -(void) prepareForSwitchToContentViewController:(UIViewController*) content{}
 
 #pragma mark -
@@ -161,10 +184,6 @@
 
     isFirstViewWillAppear = YES;
     self.shield = [[UIView alloc] initWithFrame:CGRectZero];
-
-    UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapItem:)];
-    [self.shield addGestureRecognizer:tapGesture];
-    
     
     UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panItem:)];
     [panGesture setMaximumNumberOfTouches:2];
