@@ -54,7 +54,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"light";
-    UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:CellIdentifier];
     
     CGFloat hue = ((double) indexPath.section)/10.0;
     CGFloat brightness = 1-((double) indexPath.row)/10.0;
