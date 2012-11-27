@@ -11,4 +11,5 @@
 
 @interface ExampleDynamicMenuViewController : SASlideMenuDynamicViewController<SASlideMenuDataSource,UITableViewDataSource>
 
+-(void) tap:(id) sender;
 @end

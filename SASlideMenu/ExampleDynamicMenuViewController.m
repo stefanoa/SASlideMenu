@@ -42,6 +42,9 @@
     return self;
 }
 
+-(void)tap:(id)sender{
+    
+}
 -(BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
     return YES;
 }
@@ -73,6 +76,15 @@
     [menuButton setAdjustsImageWhenHighlighted:NO];
     [menuButton setAdjustsImageWhenDisabled:NO];
 }
+
+-(void) configureRightMenuButton:(UIButton *)menuButton{
+    menuButton.frame = CGRectMake(0, 0, 40, 29);
+    [menuButton setImage:[UIImage imageNamed:@"menuright.png"] forState:UIControlStateNormal];
+    [menuButton setBackgroundImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
+    [menuButton setBackgroundImage:[UIImage imageNamed:@"menuhighlighted.png"] forState:UIControlStateHighlighted];
+    [menuButton setAdjustsImageWhenHighlighted:NO];
+    [menuButton setAdjustsImageWhenDisabled:NO];
+}
 // It maps each indexPath to the segueId to be used. The segue is performed only the first time the controller needs to loaded, subsequent switch to the content controller will use the already loaded controller
 
 -(NSString*) sugueIdForIndexPath:(NSIndexPath *)indexPath{
@@ -87,6 +99,10 @@
     }
     return YES;
 }
+-(Boolean) hasRightMenuForIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
 #pragma mark -
 #pragma mark UITableViewDataSource
 

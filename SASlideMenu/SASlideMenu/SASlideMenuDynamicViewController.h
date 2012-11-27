@@ -15,11 +15,13 @@
 @property (assign, nonatomic) NSObject<SASlideMenuDataSource>* slideMenuDataSource;
 @property (strong, nonatomic) NSMutableDictionary* controllers;
 @property (strong, nonatomic) IBOutlet UITableView* tableView;
+@property (strong, nonatomic) UINavigationController* rightMenu;
 @property (strong, nonatomic) NSIndexPath* selectedIndexPath;
 
 -(void) switchToContentViewController:(UINavigationController*) content;
 -(void) addContentViewController:(UIViewController*) content withIndexPath:(NSIndexPath*)indexPath;
 -(void) doSlideToSide;
+-(void) rightMenuAction;
 
 -(void) prepareForSwitchToContentViewController:(UIViewController*) content;
 @end

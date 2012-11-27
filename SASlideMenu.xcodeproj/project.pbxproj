@@ -22,6 +22,17 @@
 		7B28D2AE165E27A3000EE929 /* selectedColoredRow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B28D2AC165E27A3000EE929 /* selectedColoredRow.png */; };
 		7B28D2AF165E27A3000EE929 /* selectedColoredRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B28D2AD165E27A3000EE929 /* selectedColoredRow@2x.png */; };
 		7B28D2CB1660EDD7000EE929 /* SASlideMenuStaticStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B28D2CA1660EDD6000EE929 /* SASlideMenuStaticStoryboardSegue.m */; };
+		7B28D2D91662B8D9000EE929 /* SASlideMenuRightMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B28D2D81662B8D8000EE929 /* SASlideMenuRightMenuSegue.m */; };
+		7B28D2E91664D41E000EE929 /* rowcircle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B28D2E21664D418000EE929 /* rowcircle.png */; };
+		7B28D2EA1664D41E000EE929 /* rowcircle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B28D2E31664D418000EE929 /* rowcircle@2x.png */; };
+		7B28D2EB1664D41E000EE929 /* rowpenta.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B28D2E41664D419000EE929 /* rowpenta.png */; };
+		7B28D2EC1664D41E000EE929 /* rowpenta@@x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B28D2E51664D41A000EE929 /* rowpenta@@x.png */; };
+		7B28D2ED1664D41E000EE929 /* rowpenta@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B28D2E61664D41B000EE929 /* rowpenta@2x.png */; };
+		7B28D2EE1664D41E000EE929 /* rowsquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B28D2E71664D41C000EE929 /* rowsquare.png */; };
+		7B28D2EF1664D41E000EE929 /* rowsquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B28D2E81664D41D000EE929 /* rowsquare@2x.png */; };
+		7B28D2F61664E6FE000EE929 /* menuright.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B28D2F41664E6FD000EE929 /* menuright.png */; };
+		7B28D2F71664E6FE000EE929 /* menuright@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B28D2F51664E6FE000EE929 /* menuright@2x.png */; };
+		7B28D2FA1664EE3A000EE929 /* ColoredDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B28D2F91664EE39000EE929 /* ColoredDetailViewController.m */; };
 		7B3B2D5415DCE0E1009F4AB8 /* DarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3B2D5315DCE0E1009F4AB8 /* DarkViewController.m */; };
 		7B56BF49163C2ECF00D9C143 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B56BF48163C2ECF00D9C143 /* Icon.png */; };
 		7B56BF4B163C2EDA00D9C143 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B56BF4A163C2EDA00D9C143 /* Icon@2x.png */; };
@@ -66,6 +77,19 @@
 		7B28D2AD165E27A3000EE929 /* selectedColoredRow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selectedColoredRow@2x.png"; sourceTree = "<group>"; };
 		7B28D2C91660EDD6000EE929 /* SASlideMenuStaticStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuStaticStoryboardSegue.h; sourceTree = "<group>"; };
 		7B28D2CA1660EDD6000EE929 /* SASlideMenuStaticStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuStaticStoryboardSegue.m; sourceTree = "<group>"; };
+		7B28D2D71662B8D8000EE929 /* SASlideMenuRightMenuSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuRightMenuSegue.h; sourceTree = "<group>"; };
+		7B28D2D81662B8D8000EE929 /* SASlideMenuRightMenuSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuRightMenuSegue.m; sourceTree = "<group>"; };
+		7B28D2E21664D418000EE929 /* rowcircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rowcircle.png; sourceTree = "<group>"; };
+		7B28D2E31664D418000EE929 /* rowcircle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rowcircle@2x.png"; sourceTree = "<group>"; };
+		7B28D2E41664D419000EE929 /* rowpenta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rowpenta.png; sourceTree = "<group>"; };
+		7B28D2E51664D41A000EE929 /* rowpenta@@x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rowpenta@@x.png"; sourceTree = "<group>"; };
+		7B28D2E61664D41B000EE929 /* rowpenta@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rowpenta@2x.png"; sourceTree = "<group>"; };
+		7B28D2E71664D41C000EE929 /* rowsquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rowsquare.png; sourceTree = "<group>"; };
+		7B28D2E81664D41D000EE929 /* rowsquare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rowsquare@2x.png"; sourceTree = "<group>"; };
+		7B28D2F41664E6FD000EE929 /* menuright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuright.png; sourceTree = "<group>"; };
+		7B28D2F51664E6FE000EE929 /* menuright@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menuright@2x.png"; sourceTree = "<group>"; };
+		7B28D2F81664EE37000EE929 /* ColoredDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColoredDetailViewController.h; sourceTree = "<group>"; };
+		7B28D2F91664EE39000EE929 /* ColoredDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColoredDetailViewController.m; sourceTree = "<group>"; };
 		7B3B2D5215DCE0E1009F4AB8 /* DarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DarkViewController.h; sourceTree = "<group>"; };
 		7B3B2D5315DCE0E1009F4AB8 /* DarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DarkViewController.m; sourceTree = "<group>"; };
 		7B56BF48163C2ECF00D9C143 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -118,6 +142,15 @@
 		7B05395615E15A5E00D72377 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7B28D2F41664E6FD000EE929 /* menuright.png */,
+				7B28D2F51664E6FE000EE929 /* menuright@2x.png */,
+				7B28D2E21664D418000EE929 /* rowcircle.png */,
+				7B28D2E31664D418000EE929 /* rowcircle@2x.png */,
+				7B28D2E41664D419000EE929 /* rowpenta.png */,
+				7B28D2E51664D41A000EE929 /* rowpenta@@x.png */,
+				7B28D2E61664D41B000EE929 /* rowpenta@2x.png */,
+				7B28D2E71664D41C000EE929 /* rowsquare.png */,
+				7B28D2E81664D41D000EE929 /* rowsquare@2x.png */,
 				7B28D2AC165E27A3000EE929 /* selectedColoredRow.png */,
 				7B28D2AD165E27A3000EE929 /* selectedColoredRow@2x.png */,
 				7B1141A7161B658D00549B42 /* Screenshot-Landscape.png */,
@@ -181,6 +214,8 @@
 				7B5B88E2163B23B300D02C1F /* ShadesViewController.m */,
 				7B28D2A5165CCB10000EE929 /* ColoredViewController.h */,
 				7B28D2A6165CCB10000EE929 /* ColoredViewController.m */,
+				7B28D2F81664EE37000EE929 /* ColoredDetailViewController.h */,
+				7B28D2F91664EE39000EE929 /* ColoredDetailViewController.m */,
 				7B8C3FF315D8D55800E42A41 /* ExampleStaticMenuViewController.h */,
 				7B8C3FF415D8D55800E42A41 /* ExampleStaticMenuViewController.m */,
 				7B28D2A2165BF464000EE929 /* ExampleDynamicMenuViewController.h */,
@@ -217,6 +252,8 @@
 				7BF0A68D15DE495500B3B57F /* SASlideMenuStaticViewController.m */,
 				7B28D2C91660EDD6000EE929 /* SASlideMenuStaticStoryboardSegue.h */,
 				7B28D2CA1660EDD6000EE929 /* SASlideMenuStaticStoryboardSegue.m */,
+				7B28D2D71662B8D8000EE929 /* SASlideMenuRightMenuSegue.h */,
+				7B28D2D81662B8D8000EE929 /* SASlideMenuRightMenuSegue.m */,
 			);
 			path = SASlideMenu;
 			sourceTree = "<group>";
@@ -295,6 +332,15 @@
 				7B56BF4B163C2EDA00D9C143 /* Icon@2x.png in Resources */,
 				7B28D2AE165E27A3000EE929 /* selectedColoredRow.png in Resources */,
 				7B28D2AF165E27A3000EE929 /* selectedColoredRow@2x.png in Resources */,
+				7B28D2E91664D41E000EE929 /* rowcircle.png in Resources */,
+				7B28D2EA1664D41E000EE929 /* rowcircle@2x.png in Resources */,
+				7B28D2EB1664D41E000EE929 /* rowpenta.png in Resources */,
+				7B28D2EC1664D41E000EE929 /* rowpenta@@x.png in Resources */,
+				7B28D2ED1664D41E000EE929 /* rowpenta@2x.png in Resources */,
+				7B28D2EE1664D41E000EE929 /* rowsquare.png in Resources */,
+				7B28D2EF1664D41E000EE929 /* rowsquare@2x.png in Resources */,
+				7B28D2F61664E6FE000EE929 /* menuright.png in Resources */,
+				7B28D2F71664E6FE000EE929 /* menuright@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +363,8 @@
 				7B28D2A4165BF465000EE929 /* ExampleDynamicMenuViewController.m in Sources */,
 				7B28D2A7165CCB11000EE929 /* ColoredViewController.m in Sources */,
 				7B28D2CB1660EDD7000EE929 /* SASlideMenuStaticStoryboardSegue.m in Sources */,
+				7B28D2D91662B8D9000EE929 /* SASlideMenuRightMenuSegue.m in Sources */,
+				7B28D2FA1664EE3A000EE929 /* ColoredDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

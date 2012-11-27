@@ -7,33 +7,43 @@
 //
 
 #import "ColoredViewController.h"
+#import "ColoredDetailViewController.h"
 
 @interface ColoredViewController ()
 
 @end
 
 @implementation ColoredViewController
--(void) tap{
-    NSLog(@"tap");
-}
-
 -(id) initWithCoder:(NSCoder *)aDecoder{
     if (self = [super initWithCoder:aDecoder]) {
-        NSLog(@"[%@ initWithCoder:]",self);
         
     }
     return self;
 }
 
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    ColoredDetailViewController* detailViewConroller = segue.destinationViewController;
+    UIColor* backgroundColor = self.view.backgroundColor;
+    CGFloat hue, brightness, saturation,alpha;
+    [backgroundColor getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
+    detailViewConroller.hueValue = hue;
+    detailViewConroller.brightnessValue = brightness;
+    detailViewConroller.saturationValue = saturation;
+    detailViewConroller.color = backgroundColor;
+
+}
+-(void) tap{
+    [self performSegueWithIdentifier:@"detail" sender:self];
+    
+}
+
 -(void)viewDidLoad {
     [super viewDidLoad];
-    UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
-    [self.view addGestureRecognizer:tapGesture];
-    NSLog(@"[%@ viewDidLoad]",self);
+    UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
+    [self.view addGestureRecognizer:tapRecognizer];
 }
 
 -(void) viewWillAppear:(BOOL)animated{
-    NSLog(@"[%@ viewWillAppear:]",self);
     [super viewWillAppear:animated];
 }
 

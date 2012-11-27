@@ -16,7 +16,9 @@
 -(void) configureMenuButton:(UIButton*) menuButton;
 
 @optional
--(NSString*) sugueIdForIndexPath:(NSIndexPath*)indexPath;
+-(NSString*) sugueIdForIndexPath:(NSIndexPath*) indexPath;
+-(Boolean) hasRightMenuForIndexPath:(NSIndexPath*) indexPath;
+-(void) configureRightMenuButton:(UIButton*) menuButton;
 
 -(Boolean) slideOutThenIn;
 -(Boolean) allowContentViewControllerCachingForIndexPath:(NSIndexPath*) indexPath;
