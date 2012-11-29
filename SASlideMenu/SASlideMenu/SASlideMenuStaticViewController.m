@@ -123,35 +123,46 @@
         slideOutThenIn = [slideMenuDataSource slideOutThenIn];
     }
     
+    Boolean sameContent = content == selectedContent;
+    
     if (slideOutThenIn) {
         //Animate out the currently selected UIViewController
         [self doSlideOut:^(BOOL completed) {
-            [selectedContent willMoveToParentViewController:nil];
-            [selectedContent.view removeFromSuperview];
-            [selectedContent removeFromParentViewController];
+            if(!sameContent) {
+                [selectedContent willMoveToParentViewController:nil];
+                [selectedContent.view removeFromSuperview];
+                [selectedContent removeFromParentViewController];
+                
+                content.view.frame = CGRectMake(bounds.size.width,0,bounds.size.width,bounds.size.height);
+                [self addChildViewController:content];
+                [self.view addSubview:content.view];
+                selectedContent = content;
+            }
             
-            content.view.frame = CGRectMake(bounds.size.width,0,bounds.size.width,bounds.size.height);
-            [self addChildViewController:content];
-            [self.view addSubview:content.view];
-            selectedContent = content;
             [self doSlideIn:^(BOOL completed) {
-                [content didMoveToParentViewController:self];
+                if(!sameContent) {
+                    [content didMoveToParentViewController:self];
+                }
                 self.view.userInteractionEnabled = YES;
             }];
         }];
     }else{
-        [selectedContent willMoveToParentViewController:nil];
-        [selectedContent.view removeFromSuperview];
-        [selectedContent removeFromParentViewController];
-        [self slideToSide:content];
-        [self addChildViewController:content];
-        [self.view addSubview:content.view];
-        selectedContent = content;
+        if(!sameContent) {
+            [selectedContent willMoveToParentViewController:nil];
+            [selectedContent.view removeFromSuperview];
+            [selectedContent removeFromParentViewController];
+            [self slideToSide:content];
+            [self addChildViewController:content];
+            [self.view addSubview:content.view];
+            selectedContent = content;
+        }
         [self doSlideIn:^(BOOL completed) {
-            [content didMoveToParentViewController:self];
+            if(!sameContent) {
+                [content didMoveToParentViewController:self];
+            }
             self.view.userInteractionEnabled = YES;
         }];
-    }    
+    }
 }
 
 -(void) prepareForSwitchToContentViewController:(UIViewController*) content{}
