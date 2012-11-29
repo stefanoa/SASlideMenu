@@ -39,6 +39,18 @@
         }
         
     }
+    if ([source.slideMenuDataSource respondsToSelector:@selector(configureSlideLayer:)]) {
+        [source.slideMenuDataSource configureSlideLayer:[destination.view layer]];
+    }else{
+        CALayer* layer = destination.view.layer;
+        layer.shadowColor = [UIColor blackColor].CGColor;
+        layer.shadowOpacity = 0.3;
+        layer.shadowOffset = CGSizeMake(-15, 0);
+        layer.shadowRadius = 10;
+        layer.masksToBounds = NO;
+        layer.shadowPath =[UIBezierPath bezierPathWithRect:layer.bounds].CGPath;
+    }
+
     [source switchToContentViewController:destination];
     [source addContentViewController:destination withIndexPath:source.selectedIndexPath];
 }

@@ -30,6 +30,7 @@ typedef enum {
     BOOL isFirstViewWillAppear;
     SASlideMenuState state;
     SASlideMenuPanningState panningState;
+    CGFloat slideMenuVisibleWidth;
     
 }
 
@@ -252,13 +253,6 @@ typedef enum {
 
 
 -(void) addContentViewController:(UIViewController*) content withIndexPath:(NSIndexPath*)indexPath{
-    CALayer* layer = [content.view layer];
-    layer.shadowColor = [UIColor blackColor].CGColor;
-    layer.shadowOpacity = 0.3;
-    layer.shadowOffset = CGSizeMake(-15, 0);
-    layer.shadowRadius = 10;
-    layer.masksToBounds = NO;
-    layer.shadowPath =[UIBezierPath bezierPathWithRect:layer.bounds].CGPath;
     Boolean allowContentViewControllerCaching = YES;
     if (indexPath) {
         if ([slideMenuDataSource respondsToSelector:@selector(allowContentViewControllerCachingForIndexPath:)]) {
@@ -322,6 +316,12 @@ typedef enum {
     [panGesture setDelegate:self];
     [self.shield addGestureRecognizer:panGesture];
     
+    if ([self.slideMenuDataSource respondsToSelector:@selector(slideMenuVisibleWidth)]) {
+        slideMenuVisibleWidth = [self.slideMenuDataSource slideMenuVisibleWidth];
+    }else{
+        slideMenuVisibleWidth = kMenuTableSize;
+    }
+
     [self performSegueWithIdentifier:@"rightMenu" sender:self];
 }
 

@@ -18,8 +18,10 @@
 @optional
 -(NSString*) sugueIdForIndexPath:(NSIndexPath*) indexPath;
 -(Boolean) hasRightMenuForIndexPath:(NSIndexPath*) indexPath;
--(void) configureRightMenuButton:(UIButton*) menuButton;
 
+-(void) configureRightMenuButton:(UIButton*) menuButton;
+-(void) configureSlideLayer:(CALayer*) layer;
+-(CGFloat) slideMenuVisibleWidth;
 -(Boolean) slideOutThenIn;
 -(Boolean) allowContentViewControllerCachingForIndexPath:(NSIndexPath*) indexPath;
 @end

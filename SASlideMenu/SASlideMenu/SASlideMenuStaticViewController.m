@@ -15,6 +15,7 @@
 @interface SASlideMenuStaticViewController (){
     UINavigationController* selectedContent;
     BOOL isFirstViewWillAppear;
+    CGFloat slideMenuVisibleWidth;
 }
 
 @property (nonatomic, strong) UIView* shield;
@@ -35,7 +36,7 @@
 
 -(void) slideToSide:(UINavigationController*) controller{
     CGRect bounds = self.view.bounds;
-    controller.view.frame = CGRectMake(kMenuTableSize,0.0,bounds.size.width,bounds.size.height);
+    controller.view.frame = CGRectMake(slideMenuVisibleWidth,0.0,bounds.size.width,bounds.size.height);
 }
 
 -(void) slideIn:(UINavigationController*) controller{
@@ -153,17 +154,6 @@
     }    
 }
 
-
--(void) addContentViewController:(UIViewController*) content withIndexPath:(NSIndexPath*)indexPath{
-    CALayer* layer = [content.view layer];
-    layer.shadowColor = [UIColor blackColor].CGColor;
-    layer.shadowOpacity = 0.3;
-    layer.shadowOffset = CGSizeMake(-15, 0);
-    layer.shadowRadius = 10;
-    layer.masksToBounds = NO;
-    layer.shadowPath =[UIBezierPath bezierPathWithRect:layer.bounds].CGPath;
-}
-
 -(void) prepareForSwitchToContentViewController:(UIViewController*) content{}
 
 #pragma mark -
@@ -190,6 +180,11 @@
     [panGesture setDelegate:self];
     [self.shield addGestureRecognizer:panGesture];
     
+    if ([self.slideMenuDataSource respondsToSelector:@selector(slideMenuVisibleWidth)]) {
+        slideMenuVisibleWidth = [self.slideMenuDataSource slideMenuVisibleWidth];
+    }else{
+        slideMenuVisibleWidth = kMenuTableSize;
+    }
     self.tableView.delegate = self;
 }
 @end
