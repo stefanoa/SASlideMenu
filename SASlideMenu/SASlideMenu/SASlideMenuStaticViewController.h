@@ -11,11 +11,12 @@
 
 #define kSlideInInterval 0.3
 #define kSlideOutInterval 0.1
-#define kVisiblePortion 40
-#define kMenuTableSize 280
+#define kVisiblePortion 50
+#define kMenuTableWidth 280
 
 @interface SASlideMenuStaticViewController : UITableViewController <UIGestureRecognizerDelegate>
 
+@property (nonatomic) int menuTableVisibleWidth;
 @property (assign, nonatomic) NSObject<SASlideMenuDataSource>* slideMenuDataSource;
 
 
