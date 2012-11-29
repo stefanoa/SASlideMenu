@@ -25,6 +25,23 @@
 
 @synthesize slideMenuDataSource;
 
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+		self.menuTableVisibleWidth=kMenuTableWidth;
+		
+    }
+    return self;
+}
+-(id) initWithCoder:(NSCoder *)aDecoder{
+    if (self = [super initWithCoder:aDecoder]) {
+       self.menuTableVisibleWidth=kMenuTableWidth;        
+    }
+    return self;
+}
+
 #pragma mark -
 #pragma mark - SASlideMenuStaticViewController
 
@@ -35,7 +52,7 @@
 
 -(void) slideToSide:(UINavigationController*) controller{
     CGRect bounds = self.view.bounds;
-    controller.view.frame = CGRectMake(kMenuTableSize,0.0,bounds.size.width,bounds.size.height);
+    controller.view.frame = CGRectMake(self.menuTableVisibleWidth,0.0,bounds.size.width,bounds.size.height);
 }
 
 -(void) slideIn:(UINavigationController*) controller{
