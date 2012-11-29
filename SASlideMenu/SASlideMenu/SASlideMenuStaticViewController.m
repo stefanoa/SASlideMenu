@@ -47,6 +47,7 @@
 -(void) completeSlideIn:(UINavigationController*) controller{
     [self.shield removeFromSuperview];
     [controller.visibleViewController.view addSubview:self.shield];
+    [controller.visibleViewController.view sendSubviewToBack:self.shield];
     self.shield.frame = controller.visibleViewController.view.bounds;
 }
 

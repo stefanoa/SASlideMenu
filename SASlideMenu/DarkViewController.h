@@ -12,5 +12,8 @@
 #import "SASlideMenuStaticViewController.h"
 @interface DarkViewController : UIViewController
 
-@property (nonatomic,strong) SASlideMenuStaticViewController* menuViewController;
+@property (nonatomic,strong) IBOutlet UISlider *darknessSlider;
+
+-(IBAction) changeDarkness:(id) sender;
+
 @end
