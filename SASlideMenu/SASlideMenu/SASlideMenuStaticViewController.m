@@ -73,6 +73,13 @@
 }
 
 -(void) doSlideToSide{
+	
+	selectedContent.view.layer.shadowOffset = CGSizeMake(-1, -1);
+	selectedContent.view.layer.shadowRadius = 5;
+	selectedContent.view.layer.shadowOpacity = 0.5;
+	selectedContent.view.layer.shadowColor = [[UIColor blackColor] CGColor];
+	
+	selectedContent.view.layer.shadowPath = [UIBezierPath bezierPathWithRect:selectedContent.view.bounds].CGPath;
     [UIView animateWithDuration:kSlideInInterval
                           delay:0.0
                         options:UIViewAnimationCurveEaseInOut
