@@ -25,6 +25,23 @@
 
 @synthesize slideMenuDataSource;
 
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+		self.menuTableVisibleWidth=kMenuTableWidth;
+		
+    }
+    return self;
+}
+-(id) initWithCoder:(NSCoder *)aDecoder{
+    if (self = [super initWithCoder:aDecoder]) {
+       self.menuTableVisibleWidth=kMenuTableWidth;        
+    }
+    return self;
+}
+
 #pragma mark -
 #pragma mark - SASlideMenuStaticViewController
 
@@ -35,7 +52,7 @@
 
 -(void) slideToSide:(UINavigationController*) controller{
     CGRect bounds = self.view.bounds;
-    controller.view.frame = CGRectMake(kMenuTableSize,0.0,bounds.size.width,bounds.size.height);
+    controller.view.frame = CGRectMake(self.menuTableVisibleWidth,0.0,bounds.size.width,bounds.size.height);
 }
 
 -(void) slideIn:(UINavigationController*) controller{
@@ -56,6 +73,13 @@
 }
 
 -(void) doSlideToSide{
+	
+	selectedContent.view.layer.shadowOffset = CGSizeMake(-1, -1);
+	selectedContent.view.layer.shadowRadius = 5;
+	selectedContent.view.layer.shadowOpacity = 0.5;
+	selectedContent.view.layer.shadowColor = [[UIColor blackColor] CGColor];
+	
+	selectedContent.view.layer.shadowPath = [UIBezierPath bezierPathWithRect:selectedContent.view.bounds].CGPath;
     [UIView animateWithDuration:kSlideInInterval
                           delay:0.0
                         options:UIViewAnimationCurveEaseInOut
