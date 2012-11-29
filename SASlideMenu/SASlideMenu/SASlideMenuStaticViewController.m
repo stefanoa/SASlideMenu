@@ -19,6 +19,7 @@
 }
 
 @property (nonatomic, strong) UIView* shield;
+@property (nonatomic, strong) UIView* shieldWithMenu;
 
 @end
 
@@ -45,7 +46,7 @@
 }
 
 -(void) completeSlideIn:(UINavigationController*) controller{
-    [self.shield removeFromSuperview];
+    [self.shieldWithMenu removeFromSuperview];
     [controller.visibleViewController.view addSubview:self.shield];
     [controller.visibleViewController.view sendSubviewToBack:self.shield];
     self.shield.frame = controller.visibleViewController.view.bounds;
@@ -53,8 +54,8 @@
 
 -(void) completeSlideToSide:(UINavigationController*) controller{
     [self.shield removeFromSuperview];
-    [controller.view addSubview:self.shield];
-    self.shield.frame = controller.view.bounds;
+    [controller.view addSubview:self.shieldWithMenu];
+    self.shieldWithMenu.frame = controller.view.bounds;
 }
 
 -(void) doSlideToSide{
@@ -89,6 +90,10 @@
 
 -(void) tapItem:(UIPanGestureRecognizer*)gesture{
     [self switchToContentViewController:selectedContent];
+}
+
+-(void) tapShield:(UITapGestureRecognizer*)gesture{
+    [self doSlideIn:nil];
 }
 
 -(void) panItem:(UIPanGestureRecognizer*)gesture{
@@ -175,7 +180,16 @@
 
     isFirstViewWillAppear = YES;
     self.shield = [[UIView alloc] initWithFrame:CGRectZero];
+    self.shieldWithMenu= [[UIView alloc] initWithFrame:CGRectZero];
     
+    UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapShield:)];
+    [self.shieldWithMenu addGestureRecognizer:tapGesture];
+    [tapGesture setDelegate:self];
+    UIPanGestureRecognizer* panGestureMenu = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panItem:)];
+    [panGestureMenu setMaximumNumberOfTouches:2];
+    [panGestureMenu setDelegate:self];
+    [self.shieldWithMenu addGestureRecognizer:panGestureMenu];
+
     UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panItem:)];
     [panGesture setMaximumNumberOfTouches:2];
     [panGesture setDelegate:self];
