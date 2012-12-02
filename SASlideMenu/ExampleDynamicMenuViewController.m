@@ -124,7 +124,7 @@
     return 4;
 }
 -(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    CGFloat brightness = 1-((double) indexPath.row)/3;
+    CGFloat brightness = 1-((double) indexPath.row)/5;
     NSInteger section = indexPath.section;
     CGFloat hue=0;
     if (section == 0) {
@@ -145,7 +145,7 @@
 #pragma mark -
 #pragma mark UITableViewDelegate
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    CGFloat brightness = 1-((double) indexPath.row)/3;
+    CGFloat brightness = 1-((double) indexPath.row)/5;
     NSInteger section = indexPath.section;
     CGFloat hue=0;
     if (section == 0) {

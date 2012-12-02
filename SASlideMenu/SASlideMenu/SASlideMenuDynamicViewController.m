@@ -71,6 +71,7 @@ typedef enum {
     [self.shieldWithMenu removeFromSuperview];
     
     [controller.visibleViewController.view addSubview:self.shield];
+    [controller.visibleViewController.view sendSubviewToBack:self.shield];
     self.shield.frame = controller.visibleViewController.view.bounds;
     state = SASlideMenuStateContent;
 }
