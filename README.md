@@ -7,7 +7,9 @@ A simple library to create sliding menus that can be used in storyboards and sup
 The repository is an Xcode 4 project that contains two example of the usage of the library and the library itself.
 
 # Usage
-You can create two type of SASlide menu, Static and Dynamic. The Static type support static cells, you can add static items and directly connect them via segues to your desired view controller, however the static type must inherit from UITableViewController and if too many items are added the menu will scroll with also the content, which is not desiderable. The Dynamic type support unlimeted tables of menu items, content controller caching and right side menu, however it requires a little more code.
+You can create two type of SASlide menu, Static and Dynamic. The Static type support static cells, you can add static items and directly connect them via segues to your desired view controller, however the static type must inherit from UITableViewController and if too many items are added the content will scroll with the menu, which is not desiderable.
+The Dynamic type support unlimited tables of menu items, content controller caching and right side menu. 
+However, it requires a little more code.
 
 To use them in your in your projects follow these steps:
 
@@ -16,7 +18,9 @@ To use them in your in your projects follow these steps:
 * Add a new class that inherit from **SASlideMenuDynamicViewController** and implement **SASlideMenuDatSource**.
 * Add a new **UIViewController** to your storyboard and make it of the newly created class, it will be the SASlideMenu view controller
 * Add a UITableView to the controller and connect it to the tableView outlet, connect  the dataSource and delegate outlet to the view controller
-* Connect the SASlideMenu view controller to the desired view controllers using the **SASlideMenuDynamicStoryboardSegue**, remember to define also the segue identifier for each segue, correctly map the **indexPath** of the menu item to the desired segue identifier in the **-(NSString*) sugueIdForIndexPath:(NSIndexPath*) indexPath;** method of the **SASlideMenuDataSource**
+* Connect the SASlideMenu view controller to the desired view controllers using the **SASlideMenuDynamicStoryboardSegue**, remember to define also the segue identifier for each segue, correctly map the **indexPath** of the menu item to the desired segue identifier in the **-(NSString*) sugueIdForIndexPath:(NSIndexPath*) indexPath;** method of the **SASlideMenuDataSource**. Always embed the view controllers you want to trigger from the menu into **UINavigationViewController**.
+* To add a right menu, connect a View Controller to the menu view controller using a **SASlideMenuRightMenuSegue** and set the suegue identifier to **rightMenu**.
+* Eventually implement the optional methods of **SASlideMenuDataSource**, see the code for more details.
 
 #Static (see ExampleStaticMenuViewController)
 
@@ -36,7 +40,7 @@ Test it and you are done!
 
 # Requirements
 
-It needs iOS 5.1 and works also on iPad
+It needs iOS 5.1
 # License
 
 **SASlideMenu** is available under the MIT license:
