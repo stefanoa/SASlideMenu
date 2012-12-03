@@ -45,6 +45,9 @@
 		7B8C3FEF15D8D55800E42A41 /* SASlideMenuAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C3FEE15D8D55800E42A41 /* SASlideMenuAppDelegate.m */; };
 		7B8C3FF215D8D55800E42A41 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B8C3FF015D8D55800E42A41 /* MainStoryboard.storyboard */; };
 		7B8C3FF515D8D55800E42A41 /* ExampleStaticMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C3FF415D8D55800E42A41 /* ExampleStaticMenuViewController.m */; };
+		7BDBF41A166CB2B600FDA327 /* Screenshot-Dynamic-Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BDBF417166CB2B600FDA327 /* Screenshot-Dynamic-Menu.png */; };
+		7BDBF41B166CB2B600FDA327 /* Screenshot-Dynamic-Right.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BDBF418166CB2B600FDA327 /* Screenshot-Dynamic-Right.png */; };
+		7BDBF41C166CB2B600FDA327 /* Screenshot-Static-Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BDBF419166CB2B600FDA327 /* Screenshot-Static-Menu.png */; };
 		7BF0A68F15DE495500B3B57F /* SASlideMenuDynamicStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF0A68B15DE495500B3B57F /* SASlideMenuDynamicStoryboardSegue.m */; };
 		7BF0A69015DE495500B3B57F /* SASlideMenuStaticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF0A68D15DE495500B3B57F /* SASlideMenuStaticViewController.m */; };
 		7BF0A6B215DE499F00B3B57F /* disclosure.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF0A6AA15DE499F00B3B57F /* disclosure.png */; };
@@ -109,6 +112,9 @@
 		7B8C3FF115D8D55800E42A41 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		7B8C3FF315D8D55800E42A41 /* ExampleStaticMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleStaticMenuViewController.h; sourceTree = "<group>"; };
 		7B8C3FF415D8D55800E42A41 /* ExampleStaticMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleStaticMenuViewController.m; sourceTree = "<group>"; };
+		7BDBF417166CB2B600FDA327 /* Screenshot-Dynamic-Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot-Dynamic-Menu.png"; sourceTree = "<group>"; };
+		7BDBF418166CB2B600FDA327 /* Screenshot-Dynamic-Right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot-Dynamic-Right.png"; sourceTree = "<group>"; };
+		7BDBF419166CB2B600FDA327 /* Screenshot-Static-Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot-Static-Menu.png"; sourceTree = "<group>"; };
 		7BF0A68915DE495500B3B57F /* SASlideMenuDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuDataSource.h; sourceTree = "<group>"; };
 		7BF0A68A15DE495500B3B57F /* SASlideMenuDynamicStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuDynamicStoryboardSegue.h; sourceTree = "<group>"; };
 		7BF0A68B15DE495500B3B57F /* SASlideMenuDynamicStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuDynamicStoryboardSegue.m; sourceTree = "<group>"; };
@@ -142,6 +148,9 @@
 		7B05395615E15A5E00D72377 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7BDBF417166CB2B600FDA327 /* Screenshot-Dynamic-Menu.png */,
+				7BDBF418166CB2B600FDA327 /* Screenshot-Dynamic-Right.png */,
+				7BDBF419166CB2B600FDA327 /* Screenshot-Static-Menu.png */,
 				7B28D2F41664E6FD000EE929 /* menuright.png */,
 				7B28D2F51664E6FE000EE929 /* menuright@2x.png */,
 				7B28D2E21664D418000EE929 /* rowcircle.png */,
@@ -341,6 +350,9 @@
 				7B28D2EF1664D41E000EE929 /* rowsquare@2x.png in Resources */,
 				7B28D2F61664E6FE000EE929 /* menuright.png in Resources */,
 				7B28D2F71664E6FE000EE929 /* menuright@2x.png in Resources */,
+				7BDBF41A166CB2B600FDA327 /* Screenshot-Dynamic-Menu.png in Resources */,
+				7BDBF41B166CB2B600FDA327 /* Screenshot-Dynamic-Right.png in Resources */,
+				7BDBF41C166CB2B600FDA327 /* Screenshot-Static-Menu.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
