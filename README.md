@@ -29,7 +29,9 @@ Test it and you are done!
 
 # Screenshots
 ![Dynamic](https://raw.github.com/stefanoa/SASlideMenu/master/SASlideMenu/Screenshot-Dynamic-Menu.png)
+
 ![Dynamic Right Menu](https://raw.github.com/stefanoa/SASlideMenu/master/SASlideMenu/Screenshot-Dynamic-Right.png)
+
 ![Static](https://raw.github.com/stefanoa/SASlideMenu/master/SASlideMenu/Screenshot-Static-Menu.png)
 
 # Requirements
