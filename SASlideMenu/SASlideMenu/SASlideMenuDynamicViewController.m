@@ -176,6 +176,11 @@ typedef enum {
             translation.x =0.0;
         }
     }
+    if (translation.x>0 && movingView.frame.origin.x >=slideMenuVisibleWidth) {
+        if (panningState == SASlideMenuPanningStateRight) {
+            translation.x=0.0;
+        }
+    }
     if (movingView.frame.origin.x+translation.x >0) {
         if (state == SASlideMenuStateRightMenu || panningState == SASlideMenuPanningStateLeft) {
             translation.x =0.0;

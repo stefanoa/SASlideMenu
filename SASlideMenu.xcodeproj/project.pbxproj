@@ -781,6 +781,7 @@
 				7BDBF441166CC79400FDA327 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7BDBF487166CDEB100FDA327 /* Build configuration list for PBXNativeTarget "SASlideMenuStatic" */ = {
 			isa = XCConfigurationList;
@@ -789,6 +790,7 @@
 				7BDBF489166CDEB100FDA327 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
