@@ -103,6 +103,10 @@
     if (movingView.frame.origin.x + translation.x<0) {
         translation.x=0.0;
     }
+    if (translation.x>0 && movingView.frame.origin.x >=slideMenuVisibleWidth) {
+        translation.x=0.0;
+    }
+
     [movingView setCenter:CGPointMake([movingView center].x + translation.x, [movingView center].y)];
     [gesture setTranslation:CGPointZero inView:[panningView superview]];
     if ([gesture state] == UIGestureRecognizerStateEnded){
