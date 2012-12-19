@@ -59,6 +59,9 @@
 }
 
 -(void) doSlideToSide{
+	if ([slideMenuDataSource respondsToSelector:@selector(slideMenuWillSlide)]){
+        [slideMenuDataSource slideMenuWillSlide];
+    }
     [UIView animateWithDuration:kSlideInInterval
                           delay:0.0
                         options:UIViewAnimationCurveEaseInOut
@@ -71,12 +74,18 @@
 }
 
 -(void) doSlideOut:(void (^)(BOOL completed))completion{
+	if ([slideMenuDataSource respondsToSelector:@selector(slideMenuWillSlide)]){
+        [slideMenuDataSource slideMenuWillSlide];
+    }
     [UIView animateWithDuration:kSlideOutInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
         [self slideOut:selectedContent];
     } completion:completion];
 }
 
 -(void) doSlideIn:(void (^)(BOOL completed))completion{
+	if ([slideMenuDataSource respondsToSelector:@selector(slideMenuWillSlide)]){
+        [slideMenuDataSource slideMenuWillSlide];
+    }
     [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
         [self slideIn:selectedContent];
     } completion:^(BOOL finished) {
