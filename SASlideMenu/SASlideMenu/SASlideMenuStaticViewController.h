@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SASlideMenuDataSource.h"
+#import "SASlideMenuDelegate.h"
 
 #define kSlideInInterval 0.3
 #define kSlideOutInterval 0.1
@@ -17,6 +18,7 @@
 @interface SASlideMenuStaticViewController : UITableViewController <UIGestureRecognizerDelegate>
 
 @property (assign, nonatomic) NSObject<SASlideMenuDataSource>* slideMenuDataSource;
+@property (assign, nonatomic) NSObject<SASlideMenuDelegate>* slideMenuDelegate;
 
 
 -(void) switchToContentViewController:(UIViewController*) content;

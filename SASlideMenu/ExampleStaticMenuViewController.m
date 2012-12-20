@@ -22,7 +22,7 @@
     if (self = [super initWithCoder:aDecoder]) {
         // Assign self to the slideMenuDataSource because self will implement SASlideMenuDatSource 
         self.slideMenuDataSource = self;
-        
+        self.slideMenuDelegate = self;
     }
     return self;
 }
@@ -66,6 +66,30 @@
     layer.shadowRadius = 10;
     layer.masksToBounds = NO;
     layer.shadowPath =[UIBezierPath bezierPathWithRect:layer.bounds].CGPath;
+}
+
+#pragma mark -
+#pragma mark SASlideMenuDelegate
+
+-(void) slideMenuWillSlideIn{
+    NSLog(@"slideMenuWillSlideIn");
+}
+-(void) slideMenuDidSlideIn{
+    NSLog(@"slideMenuDidSlideIn");
+}
+-(void) slideMenuWillSlideToSide{
+    NSLog(@"slideMenuWillSlideToSide");    
+}
+-(void) slideMenuDidSlideToSide{
+    NSLog(@"slideMenuDidSlideToSide");
+    
+}
+-(void) slideMenuWillSlideOut{
+    NSLog(@"slideMenuWillSlideOut");
+    
+}
+-(void) slideMenuDidSlideOut{
+    NSLog(@"slideMenuDidSlideOut");
 }
 
 @end

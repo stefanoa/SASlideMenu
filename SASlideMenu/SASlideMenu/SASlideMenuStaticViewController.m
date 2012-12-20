@@ -26,6 +26,7 @@
 @implementation SASlideMenuStaticViewController
 
 @synthesize slideMenuDataSource;
+@synthesize slideMenuDelegate;
 
 #pragma mark -
 #pragma mark - SASlideMenuStaticViewController
@@ -59,6 +60,9 @@
 }
 
 -(void) doSlideToSide{
+    if ([slideMenuDelegate respondsToSelector:@selector(slideMenuWillSlideToSide)]){
+        [slideMenuDelegate slideMenuWillSlideToSide];
+    }
     [UIView animateWithDuration:kSlideInInterval
                           delay:0.0
                         options:UIViewAnimationCurveEaseInOut
@@ -67,16 +71,32 @@
                      }
                      completion:^(BOOL finished) {
                          [self completeSlideToSide:selectedContent];
+                         if ([slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideToSide)]){
+                             [slideMenuDelegate slideMenuDidSlideToSide];
+                         }
                      }];
 }
 
 -(void) doSlideOut:(void (^)(BOOL completed))completion{
+    if ([slideMenuDelegate respondsToSelector:@selector(slideMenuWillSlideOut)]){
+        [slideMenuDelegate slideMenuWillSlideToSide];
+    }
     [UIView animateWithDuration:kSlideOutInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
         [self slideOut:selectedContent];
-    } completion:completion];
+    } completion:^(BOOL finished) {
+        if (completion) {
+            completion(finished);
+            if ([slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideOut)]){
+                [slideMenuDelegate slideMenuDidSlideOut];
+            }
+        }
+    }];
 }
 
 -(void) doSlideIn:(void (^)(BOOL completed))completion{
+    if ([slideMenuDelegate respondsToSelector:@selector(slideMenuWillSlideIn)]){
+        [slideMenuDelegate slideMenuWillSlideIn];
+    }
     [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
         [self slideIn:selectedContent];
     } completion:^(BOOL finished) {
@@ -84,6 +104,10 @@
             completion(finished);
         }
         [self completeSlideIn:selectedContent];
+        if ([slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideIn)]){
+            [slideMenuDelegate slideMenuDidSlideIn];
+        }
+
     }];
 }
 
@@ -144,6 +168,7 @@
             [self addChildViewController:content];
             [self.view addSubview:content.view];
             selectedContent = content;
+            
             [self doSlideIn:^(BOOL completed) {
                 [content didMoveToParentViewController:self];
                 self.view.userInteractionEnabled = YES;

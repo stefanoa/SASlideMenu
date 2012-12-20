@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "SASlideMenuStaticViewController.h"
 #import "SASlideMenuDataSource.h"
-@interface ExampleStaticMenuViewController :SASlideMenuStaticViewController<SASlideMenuDataSource>
+@interface ExampleStaticMenuViewController :SASlideMenuStaticViewController<SASlideMenuDataSource,SASlideMenuDelegate>
 
 @end

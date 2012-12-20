@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "SASlideMenuDataSource.h"
-
+#import "SASlideMenuDelegate.h"
 
 @interface SASlideMenuDynamicViewController : UIViewController <UIGestureRecognizerDelegate,UITableViewDelegate>
 
 @property (assign, nonatomic) NSObject<SASlideMenuDataSource>* slideMenuDataSource;
+@property (assign, nonatomic) NSObject<SASlideMenuDelegate>* slideMenuDelegate;
+
 @property (strong, nonatomic) NSMutableDictionary* controllers;
 @property (strong, nonatomic) IBOutlet UITableView* tableView;
 @property (strong, nonatomic) UINavigationController* rightMenu;

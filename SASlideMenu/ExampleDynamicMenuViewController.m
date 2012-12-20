@@ -25,6 +25,7 @@
     if (self = [super initWithCoder:aDecoder]) {
         // Assign self to the slideMenuDataSource because self will implement SASlideMenuDatSource
         self.slideMenuDataSource = self;
+        self.slideMenuDelegate = self;
         self.selectedBrightness = 0.3;
         self.selectedHue = 0.0;
         
@@ -159,6 +160,33 @@
     self.selectedBrightness = brightness;
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
+#pragma mark -
+#pragma mark SASlideMenuDelegate
 
-
+-(void) slideMenuWillSlideIn{
+    NSLog(@"slideMenuWillSlideIn");
+}
+-(void) slideMenuDidSlideIn{
+    NSLog(@"slideMenuDidSlideIn");
+}
+-(void) slideMenuWillSlideToSide{
+    NSLog(@"slideMenuWillSlideToSide");
+}
+-(void) slideMenuDidSlideToSide{
+    NSLog(@"slideMenuDidSlideToSide");
+    
+}
+-(void) slideMenuWillSlideOut{
+    NSLog(@"slideMenuWillSlideOut");
+    
+}
+-(void) slideMenuDidSlideOut{
+    NSLog(@"slideMenuDidSlideOut");
+}
+-(void) slideMenuWillSlideToLeft{
+    NSLog(@"slideMenuWillSlideToLeft");    
+}
+-(void) slideMenuDidSlideToLeft{
+    NSLog(@"slideMenuDidSlideToLeft");
+}
 @end
