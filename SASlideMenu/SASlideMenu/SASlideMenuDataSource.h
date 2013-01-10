@@ -25,6 +25,4 @@
 -(Boolean) slideOutThenIn;
 -(Boolean) allowContentViewControllerCachingForIndexPath:(NSIndexPath*) indexPath;
 
-//Delegate methods
--(void)slideMenuWillSlide;
 @end
