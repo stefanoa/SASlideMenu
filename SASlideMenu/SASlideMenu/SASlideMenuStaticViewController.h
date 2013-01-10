@@ -19,7 +19,7 @@
 
 @property (assign, nonatomic) NSObject<SASlideMenuDataSource>* slideMenuDataSource;
 @property (assign, nonatomic) NSObject<SASlideMenuDelegate>* slideMenuDelegate;
-
+@property (nonatomic)  CGFloat slideMenuVisibleWidth;
 
 -(void) switchToContentViewController:(UIViewController*) content;
 -(void) doSlideToSide;

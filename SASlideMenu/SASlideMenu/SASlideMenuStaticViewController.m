@@ -15,7 +15,7 @@
 @interface SASlideMenuStaticViewController (){
     UINavigationController* selectedContent;
     BOOL isFirstViewWillAppear;
-    CGFloat slideMenuVisibleWidth;
+
 }
 
 @property (nonatomic, strong) UIView* shield;
@@ -31,6 +31,14 @@
 #pragma mark -
 #pragma mark - SASlideMenuStaticViewController
 
+-(float)slideMenuVisibleWidth{
+	if ([self.slideMenuDataSource respondsToSelector:@selector(slideMenuVisibleWidth)]) {
+        self.slideMenuVisibleWidth = [self.slideMenuDataSource slideMenuVisibleWidth];
+    }else{
+        self.slideMenuVisibleWidth = kMenuTableSize;
+    }
+	return self.slideMenuVisibleWidth;
+}
 -(void) slideOut:(UINavigationController*) controller{
     CGRect bounds = self.view.bounds;
     controller.view.frame = CGRectMake(bounds.size.width,0.0,bounds.size.width,bounds.size.height);
@@ -38,7 +46,7 @@
 
 -(void) slideToSide:(UINavigationController*) controller{
     CGRect bounds = self.view.bounds;
-    controller.view.frame = CGRectMake(slideMenuVisibleWidth,0.0,bounds.size.width,bounds.size.height);
+    controller.view.frame = CGRectMake(self.slideMenuVisibleWidth,0.0,bounds.size.width,bounds.size.height);
 }
 
 -(void) slideIn:(UINavigationController*) controller{
@@ -127,7 +135,7 @@
     if (movingView.frame.origin.x + translation.x<0) {
         translation.x=0.0;
     }
-    if (translation.x>0 && movingView.frame.origin.x >=slideMenuVisibleWidth) {
+    if (translation.x>0 && movingView.frame.origin.x >=self.slideMenuVisibleWidth) {
         translation.x=0.0;
     }
 
@@ -224,11 +232,7 @@
     [panGesture setDelegate:self];
     [self.shield addGestureRecognizer:panGesture];
     
-    if ([self.slideMenuDataSource respondsToSelector:@selector(slideMenuVisibleWidth)]) {
-        slideMenuVisibleWidth = [self.slideMenuDataSource slideMenuVisibleWidth];
-    }else{
-        slideMenuVisibleWidth = kMenuTableSize;
-    }
+
     self.tableView.delegate = self;
 }
 @end
