@@ -8,8 +8,8 @@
 
 #import "SASlideMenuDynamicViewController.h"
 #import "SASlideMenuDataSource.h"
-
-@interface ExampleDynamicMenuViewController : SASlideMenuDynamicViewController<SASlideMenuDataSource,UITableViewDataSource>
+#import "SASlideMenuDelegate.h"
+@interface ExampleDynamicMenuViewController : SASlideMenuDynamicViewController<SASlideMenuDataSource,SASlideMenuDelegate, UITableViewDataSource>
 
 -(void) tap:(id) sender;
 @end

@@ -42,6 +42,7 @@ typedef enum {
 @implementation SASlideMenuDynamicViewController
 
 @synthesize slideMenuDataSource;
+@synthesize slideMenuDelegate;
 @synthesize controllers;
 
 #pragma mark -
@@ -91,17 +92,6 @@ typedef enum {
     state = SASlideMenuStateRightMenu;
 }
 
--(void) doSlideToSide{
-    [UIView animateWithDuration:kSlideInInterval
-                          delay:0.0
-                        options:UIViewAnimationCurveEaseInOut
-                     animations:^{
-        [self slideToSide:selectedContent];
-    }
-                     completion:^(BOOL finished) {
-        [self completeSlideToSide:selectedContent];
-    }];
-}
 -(void) addRightMenu{
     CGRect bounds = self.view.bounds;
     CGRect frame  = CGRectMake(kVisiblePortion, 0, bounds.size.width-kVisiblePortion, bounds.size.height);
@@ -115,8 +105,29 @@ typedef enum {
     [self addRightMenu];
     [self doSlideToLeftSide];
 }
+-(void) doSlideToSide{
+    if ([slideMenuDelegate respondsToSelector:@selector(slideMenuWillSlideToSide)]){
+        [slideMenuDelegate slideMenuWillSlideToSide];
+    }
+    [UIView animateWithDuration:kSlideInInterval
+                          delay:0.0
+                        options:UIViewAnimationCurveEaseInOut
+                     animations:^{
+                         [self slideToSide:selectedContent];
+                     }
+                     completion:^(BOOL finished) {
+                         [self completeSlideToSide:selectedContent];
+                         if ([slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideToSide)]){
+                             [slideMenuDelegate slideMenuDidSlideToSide];
+                         }
+
+                     }];
+}
 
 -(void) doSlideToLeftSide{
+    if ([slideMenuDelegate respondsToSelector:@selector(slideMenuWillSlideToLeft)]){
+        [slideMenuDelegate slideMenuWillSlideToLeft];
+    }
    
     [UIView animateWithDuration:kSlideInInterval
                           delay:0.0
@@ -126,16 +137,34 @@ typedef enum {
                      }
                      completion:^(BOOL finished) {
                          [self completeSlideToLeftSide:selectedContent];
+                         if ([slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideToLeft)]){
+                             [slideMenuDelegate slideMenuDidSlideToLeft];
+                         }
+
                      }];
 }
 
 -(void) doSlideOut:(void (^)(BOOL completed))completion{
+    if ([slideMenuDelegate respondsToSelector:@selector(slideMenuWillSlideOut)]){
+        [slideMenuDelegate slideMenuWillSlideOut];
+    }
     [UIView animateWithDuration:kSlideOutInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
         [self slideOut:selectedContent];
-    } completion:completion];
+    } completion:^(BOOL finished) {
+        if (completion) {
+            completion(finished);
+        }
+        if ([slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideOut)]){
+            [slideMenuDelegate slideMenuDidSlideOut];
+        }
+        
+    }];
 }
 
 -(void) doSlideIn:(void (^)(BOOL completed))completion{
+    if ([slideMenuDelegate respondsToSelector:@selector(slideMenuWillSlideIn)]){
+        [slideMenuDelegate slideMenuWillSlideIn];
+    }
     [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
         [self slideIn:selectedContent];
     } completion:^(BOOL finished) {
@@ -148,6 +177,10 @@ typedef enum {
             [self.rightMenu removeFromParentViewController];
         }
         [self completeSlideIn:selectedContent];
+        if ([slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideIn)]){
+            [slideMenuDelegate slideMenuDidSlideIn];
+        }
+        
     }];
 }
 
