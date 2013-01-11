@@ -19,5 +19,6 @@
 
 -(void) switchToContentViewController:(UIViewController*) content;
 -(void) doSlideToSide;
-
+-(void) doSlideIn:(void (^)(BOOL completed))completion;
+-(void) doSlideOut:(void (^)(BOOL completed))completion;
 @end
