@@ -11,8 +11,8 @@
 
 #define kSlideInInterval 0.3
 #define kSlideOutInterval 0.1
-#define kVisiblePortion 40
 #define kMenuTableSize 280
+
 typedef enum {
     SASlideMenuStateContent,
     SASlideMenuStateMenu,
@@ -30,7 +30,6 @@ typedef enum {
     BOOL isFirstViewWillAppear;
     SASlideMenuState state;
     SASlideMenuPanningState panningState;
-    CGFloat slideMenuVisibleWidth;
     
 }
 
@@ -47,6 +46,13 @@ typedef enum {
 
 #pragma mark -
 #pragma mark - SASlideMenuDynamicViewController
+-(CGFloat) menuSize{
+    if ([self.slideMenuDataSource respondsToSelector:@selector(slideMenuVisibleWidth)]){
+        return [self.slideMenuDataSource slideMenuVisibleWidth];
+    }else{
+        return kMenuTableSize;
+    }
+}
 
 -(void) slideOut:(UINavigationController*) controller{
     CGRect bounds = self.view.bounds;
@@ -55,12 +61,14 @@ typedef enum {
 
 -(void) slideToLeftSide:(UINavigationController*) controller{
     CGRect bounds = self.view.bounds;
-    controller.view.frame = CGRectMake(kVisiblePortion-bounds.size.width,0.0,bounds.size.width,bounds.size.height);
+    CGFloat menuSize = [self menuSize];
+    controller.view.frame = CGRectMake(-menuSize,0.0,bounds.size.width,bounds.size.height);
 }
 
 -(void) slideToSide:(UINavigationController*) controller{
     CGRect bounds = self.view.bounds;
-    controller.view.frame = CGRectMake(kMenuTableSize,0.0,bounds.size.width,bounds.size.height);
+    CGFloat menuSize = [self menuSize];
+    controller.view.frame = CGRectMake(menuSize,0.0,bounds.size.width,bounds.size.height);
 }
 
 -(void) slideIn:(UINavigationController*) controller{
@@ -94,8 +102,13 @@ typedef enum {
 
 -(void) addRightMenu{
     CGRect bounds = self.view.bounds;
-    CGRect frame  = CGRectMake(kVisiblePortion, 0, bounds.size.width-kVisiblePortion, bounds.size.height);
+    CGFloat menuSize = [self menuSize];
+
+    CGFloat visiblePortion = bounds.size.width-menuSize;
+    CGRect frame  = CGRectMake(visiblePortion, 0, menuSize, bounds.size.height);
     self.rightMenu.view.frame = frame;
+    self.rightMenu.view.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleHeight;
+
     [self addChildViewController:self.rightMenu];
     [self.view insertSubview:self.rightMenu.view belowSubview:selectedContent.view];
     state = SASlideMenuStateRightMenu;
@@ -209,7 +222,7 @@ typedef enum {
             translation.x =0.0;
         }
     }
-    if (translation.x>0 && movingView.frame.origin.x >=slideMenuVisibleWidth) {
+    if (translation.x>0 && movingView.frame.origin.x >=[self menuSize]) {
         if (panningState == SASlideMenuPanningStateRight) {
             translation.x=0.0;
         }
@@ -219,9 +232,11 @@ typedef enum {
             translation.x =0.0;
         }
     }
-    if ((-movingView.frame.origin.x-translation.x)>(self.view.frame.size.width-kVisiblePortion)) {
+    CGFloat menuSize = [self menuSize];
+    CGFloat visiblePortion = self.view.bounds.size.width - menuSize;
+    if ((-movingView.frame.origin.x-translation.x)>(self.view.frame.size.width-visiblePortion)) {
         if (panningState == SASlideMenuPanningStateLeft) {
-            translation.x = kVisiblePortion- self.view.frame.size.width-movingView.frame.origin.x;
+            translation.x = visiblePortion- self.view.frame.size.width-movingView.frame.origin.x;
         }
     }
     [movingView setCenter:CGPointMake([movingView center].x + translation.x, [movingView center].y)];
@@ -323,6 +338,16 @@ typedef enum {
 #pragma mark -
 #pragma mark - UIViewController
 
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
+    CGRect bounds = self.view.bounds;
+    CGFloat menuSize = [self menuSize];
+    if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
+        CGRect rightFrame = CGRectMake(bounds.size.width-menuSize, 0, menuSize, bounds.size.height);
+        self.rightMenu.view.frame = rightFrame;
+        self.shieldWithMenu.frame = CGRectMake(0, 0, bounds.size.width, bounds.size.height);
+    }
+}
+
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (isFirstViewWillAppear) {
@@ -355,11 +380,6 @@ typedef enum {
     [panGesture setDelegate:self];
     [self.shield addGestureRecognizer:panGesture];
     
-    if ([self.slideMenuDataSource respondsToSelector:@selector(slideMenuVisibleWidth)]) {
-        slideMenuVisibleWidth = [self.slideMenuDataSource slideMenuVisibleWidth];
-    }else{
-        slideMenuVisibleWidth = kMenuTableSize;
-    }
 
     [self performSegueWithIdentifier:@"rightMenu" sender:self];
 }

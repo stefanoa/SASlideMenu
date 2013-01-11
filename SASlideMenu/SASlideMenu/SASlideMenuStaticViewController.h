@@ -10,10 +10,6 @@
 #import "SASlideMenuDataSource.h"
 #import "SASlideMenuDelegate.h"
 
-#define kSlideInInterval 0.3
-#define kSlideOutInterval 0.1
-#define kVisiblePortion 40
-#define kMenuTableSize 280
 
 @interface SASlideMenuStaticViewController : UITableViewController <UIGestureRecognizerDelegate>
 
