@@ -24,4 +24,5 @@
 -(CGFloat) slideMenuVisibleWidth;
 -(Boolean) slideOutThenIn;
 -(Boolean) allowContentViewControllerCachingForIndexPath:(NSIndexPath*) indexPath;
+
 @end
