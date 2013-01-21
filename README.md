@@ -18,7 +18,6 @@ To use it in your project follow these steps:
 * To add Content ViewController you have to to do the following:
  * Create your content view controller and embed it in a **UINavigationController**
  * Connet it to the SASlideMenuViewController via a SASlideMenuContentSegue. If you are using static cells simply connect from the corresponding cell. If you are using dynamic cell prototype connect it from the VieController and assign an identifier that will be returned in the **sugueIdForIndexPath:** method linked to the desired indexPath.
-* Override
 * To add a right menu, connect a new **UINavigationController** containing a **UITableViewController** to the menu view controller using a **SASlideMenuRightMenuSegue** and set the segue identifier to **rightMenu**. The new view controller will contain the right menu and will allow navigation.
 
 Test it and you are done!
