@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="C3g-DQ-fRD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="VKh-QN-AtT">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
+        <!--Slide Menu Root View Controller-->
+        <scene sceneID="iWD-XT-9aQ">
+            <objects>
+                <viewController id="VKh-QN-AtT" customClass="SASlideMenuRootViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Iy-73-w7Q">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="C3g-DQ-fRD" kind="custom" identifier="leftMenu" customClass="SASlideMenuLeftMenuSegue" id="PVD-2Y-rxg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4r5-SS-30D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1215" y="-340"/>
+        </scene>
         <!--Example Static Menu View Controller-->
         <scene sceneID="0pQ-K8-zlO">
             <objects>
@@ -48,7 +65,7 @@
                                             <outlet property="backgroundView" destination="uAM-3m-M2T" id="bii-rk-cub"/>
                                             <outlet property="disclosureImage" destination="kqn-D2-Ux9" id="gt9-Za-aDW"/>
                                             <outlet property="selectedBackgroundView" destination="hCN-FM-76I" id="N0d-qH-PN3"/>
-                                            <segue destination="doc-P0-YCL" kind="custom" identifier="dark" customClass="SASlideMenuStaticStoryboardSegue" id="Iyq-dF-d6Z"/>
+                                            <segue destination="doc-P0-YCL" kind="custom" identifier="dark" customClass="SASlideContentSegue" id="Iyq-dF-d6Z"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Y5R-hn-9ln" customClass="MenuCell">
@@ -84,7 +101,7 @@
                                             <outlet property="backgroundView" destination="jJO-1q-bSw" id="gaZ-GN-biu"/>
                                             <outlet property="disclosureImage" destination="wgh-IC-uH4" id="Kw8-Nk-3yX"/>
                                             <outlet property="selectedBackgroundView" destination="a6A-9P-Yas" id="c2a-vN-2AG"/>
-                                            <segue destination="FgT-Db-JXl" kind="custom" identifier="light" customClass="SASlideMenuStaticStoryboardSegue" id="hVV-uQ-EUz"/>
+                                            <segue destination="FgT-Db-JXl" kind="custom" identifier="light" customClass="SASlideContentSegue" id="hVV-uQ-EUz"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="EGj-9f-HYm" customClass="MenuCell">
@@ -120,7 +137,7 @@
                                             <outlet property="backgroundView" destination="Ave-6G-f2k" id="fdb-pf-WU8"/>
                                             <outlet property="disclosureImage" destination="PM1-63-jf9" id="dH4-iU-Gef"/>
                                             <outlet property="selectedBackgroundView" destination="9Of-bR-Ha6" id="jkF-i0-F05"/>
-                                            <segue destination="79Z-YM-vAE" kind="custom" identifier="shades" customClass="SASlideMenuStaticStoryboardSegue" id="kDO-qq-npi"/>
+                                            <segue destination="79Z-YM-vAE" kind="custom" identifier="shades" customClass="SASlideContentSegue" id="kDO-qq-npi"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -304,7 +321,7 @@
                 <relationship kind="outlet" name="darknessSlider" candidateClass="UISlider"/>
             </relationships>
         </class>
-        <class className="ExampleStaticMenuViewController" superclassName="SASlideMenuStaticViewController">
+        <class className="ExampleStaticMenuViewController" superclassName="SASlideMenuViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ExampleStaticMenuViewController.h"/>
         </class>
         <class className="MenuCell" superclassName="UITableViewCell">
@@ -314,8 +331,11 @@
                 <relationship kind="outlet" name="itemDescription" candidateClass="UILabel"/>
             </relationships>
         </class>
-        <class className="SASlideMenuStaticViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SASlideMenuStaticViewController.h"/>
+        <class className="SASlideMenuRootViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SASlideMenuRootViewController.h"/>
+        </class>
+        <class className="SASlideMenuViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SASlideMenuViewController.h"/>
         </class>
         <class className="ShadesViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ShadesViewController.h"/>

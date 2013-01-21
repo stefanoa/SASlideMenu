@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7BC688BF16A6FD08004ED00D /* SASlideMenuRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC688BE16A6FD08004ED00D /* SASlideMenuRootViewController.m */; };
+		7BC688FC16A99DB2004ED00D /* SASlideContentSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC688F416A99DA3004ED00D /* SASlideContentSegue.m */; };
+		7BC688FD16A99DB2004ED00D /* SASlideMenuLeftMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC688F616A99DA3004ED00D /* SASlideMenuLeftMenuSegue.m */; };
+		7BC688FE16A99DB2004ED00D /* SASlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC688F816A99DA4004ED00D /* SASlideMenuViewController.m */; };
+		7BC688FF16A99DB3004ED00D /* SASlideContentSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC688F416A99DA3004ED00D /* SASlideContentSegue.m */; };
+		7BC6890016A99DB3004ED00D /* SASlideMenuLeftMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC688F616A99DA3004ED00D /* SASlideMenuLeftMenuSegue.m */; };
+		7BC6890116A99DB3004ED00D /* SASlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC688F816A99DA4004ED00D /* SASlideMenuViewController.m */; };
+		7BC6890216A9F51C004ED00D /* SASlideMenuRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC688BE16A6FD08004ED00D /* SASlideMenuRootViewController.m */; };
 		7BDBF424166CC79300FDA327 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8C3FDE15D8D55800E42A41 /* UIKit.framework */; };
 		7BDBF425166CC79300FDA327 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8C3FE015D8D55800E42A41 /* Foundation.framework */; };
 		7BDBF426166CC79300FDA327 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8C3FE215D8D55800E42A41 /* CoreGraphics.framework */; };
@@ -17,12 +25,7 @@
 		7BDBF436166CC79400FDA327 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BDBF435166CC79400FDA327 /* Default@2x.png */; };
 		7BDBF438166CC79400FDA327 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BDBF437166CC79400FDA327 /* Default-568h@2x.png */; };
 		7BDBF43B166CC79400FDA327 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BDBF439166CC79400FDA327 /* MainStoryboard.storyboard */; };
-		7BDBF43E166CC79400FDA327 /* SASlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDBF43D166CC79400FDA327 /* SASlideMenuViewController.m */; };
 		7BDBF442166CC7ED00FDA327 /* ExampleDynamicMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B28D2A3165BF464000EE929 /* ExampleDynamicMenuViewController.m */; };
-		7BDBF443166CC85E00FDA327 /* SASlideMenuDynamicStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF0A68B15DE495500B3B57F /* SASlideMenuDynamicStoryboardSegue.m */; };
-		7BDBF444166CC85E00FDA327 /* SASlideMenuDynamicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B28D29F165BE211000EE929 /* SASlideMenuDynamicViewController.m */; };
-		7BDBF445166CC85E00FDA327 /* SASlideMenuStaticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF0A68D15DE495500B3B57F /* SASlideMenuStaticViewController.m */; };
-		7BDBF446166CC85E00FDA327 /* SASlideMenuStaticStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B28D2CA1660EDD6000EE929 /* SASlideMenuStaticStoryboardSegue.m */; };
 		7BDBF447166CC85E00FDA327 /* SASlideMenuRightMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B28D2D81662B8D8000EE929 /* SASlideMenuRightMenuSegue.m */; };
 		7BDBF448166CC88E00FDA327 /* ColoredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B28D2A6165CCB10000EE929 /* ColoredViewController.m */; };
 		7BDBF449166CC88E00FDA327 /* ColoredDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B28D2F91664EE39000EE929 /* ColoredDetailViewController.m */; };
@@ -64,11 +67,6 @@
 		7BDBF47E166CDEB100FDA327 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BDBF47D166CDEB100FDA327 /* Default@2x.png */; };
 		7BDBF480166CDEB100FDA327 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BDBF47F166CDEB100FDA327 /* Default-568h@2x.png */; };
 		7BDBF483166CDEB100FDA327 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BDBF481166CDEB100FDA327 /* MainStoryboard.storyboard */; };
-		7BDBF486166CDEB100FDA327 /* SASlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDBF485166CDEB100FDA327 /* SASlideMenuViewController.m */; };
-		7BDBF48A166CDF7600FDA327 /* SASlideMenuDynamicStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF0A68B15DE495500B3B57F /* SASlideMenuDynamicStoryboardSegue.m */; };
-		7BDBF48B166CDF7600FDA327 /* SASlideMenuDynamicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B28D29F165BE211000EE929 /* SASlideMenuDynamicViewController.m */; };
-		7BDBF48C166CDF7600FDA327 /* SASlideMenuStaticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF0A68D15DE495500B3B57F /* SASlideMenuStaticViewController.m */; };
-		7BDBF48D166CDF7600FDA327 /* SASlideMenuStaticStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B28D2CA1660EDD6000EE929 /* SASlideMenuStaticStoryboardSegue.m */; };
 		7BDBF48E166CDF7600FDA327 /* SASlideMenuRightMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B28D2D81662B8D8000EE929 /* SASlideMenuRightMenuSegue.m */; };
 		7BDBF48F166CDF8200FDA327 /* Screenshot-Dynamic-Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BDBF417166CB2B600FDA327 /* Screenshot-Dynamic-Menu.png */; };
 		7BDBF490166CDF8200FDA327 /* Screenshot-Dynamic-Right.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BDBF418166CB2B600FDA327 /* Screenshot-Dynamic-Right.png */; };
@@ -118,16 +116,12 @@
 		7B1141A4161B621000549B42 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		7B1141A7161B658D00549B42 /* Screenshot-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot-Landscape.png"; sourceTree = "<group>"; };
 		7B1141A8161B658D00549B42 /* Screenshot-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot-Portrait.png"; sourceTree = "<group>"; };
-		7B28D29E165BE211000EE929 /* SASlideMenuDynamicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuDynamicViewController.h; sourceTree = "<group>"; };
-		7B28D29F165BE211000EE929 /* SASlideMenuDynamicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuDynamicViewController.m; sourceTree = "<group>"; };
 		7B28D2A2165BF464000EE929 /* ExampleDynamicMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExampleDynamicMenuViewController.h; path = ../SASlideMenu/ExampleDynamicMenuViewController.h; sourceTree = "<group>"; };
 		7B28D2A3165BF464000EE929 /* ExampleDynamicMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExampleDynamicMenuViewController.m; path = ../SASlideMenu/ExampleDynamicMenuViewController.m; sourceTree = "<group>"; };
 		7B28D2A5165CCB10000EE929 /* ColoredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColoredViewController.h; path = ../SASlideMenu/ColoredViewController.h; sourceTree = "<group>"; };
 		7B28D2A6165CCB10000EE929 /* ColoredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColoredViewController.m; path = ../SASlideMenu/ColoredViewController.m; sourceTree = "<group>"; };
 		7B28D2AC165E27A3000EE929 /* selectedColoredRow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectedColoredRow.png; sourceTree = "<group>"; };
 		7B28D2AD165E27A3000EE929 /* selectedColoredRow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selectedColoredRow@2x.png"; sourceTree = "<group>"; };
-		7B28D2C91660EDD6000EE929 /* SASlideMenuStaticStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuStaticStoryboardSegue.h; sourceTree = "<group>"; };
-		7B28D2CA1660EDD6000EE929 /* SASlideMenuStaticStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuStaticStoryboardSegue.m; sourceTree = "<group>"; };
 		7B28D2D71662B8D8000EE929 /* SASlideMenuRightMenuSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuRightMenuSegue.h; sourceTree = "<group>"; };
 		7B28D2D81662B8D8000EE929 /* SASlideMenuRightMenuSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuRightMenuSegue.m; sourceTree = "<group>"; };
 		7B28D2E21664D418000EE929 /* rowcircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rowcircle.png; sourceTree = "<group>"; };
@@ -159,6 +153,14 @@
 		7B8C3FEE15D8D55800E42A41 /* SASlideMenuAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuAppDelegate.m; sourceTree = "<group>"; };
 		7B8C3FF315D8D55800E42A41 /* ExampleStaticMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ExampleStaticMenuViewController.h; path = ../SASlideMenu/ExampleStaticMenuViewController.h; sourceTree = "<group>"; };
 		7B8C3FF415D8D55800E42A41 /* ExampleStaticMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ExampleStaticMenuViewController.m; path = ../SASlideMenu/ExampleStaticMenuViewController.m; sourceTree = "<group>"; };
+		7BC688BD16A6FD08004ED00D /* SASlideMenuRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuRootViewController.h; sourceTree = "<group>"; };
+		7BC688BE16A6FD08004ED00D /* SASlideMenuRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuRootViewController.m; sourceTree = "<group>"; };
+		7BC688F316A99DA3004ED00D /* SASlideContentSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideContentSegue.h; sourceTree = "<group>"; };
+		7BC688F416A99DA3004ED00D /* SASlideContentSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideContentSegue.m; sourceTree = "<group>"; };
+		7BC688F516A99DA3004ED00D /* SASlideMenuLeftMenuSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuLeftMenuSegue.h; sourceTree = "<group>"; };
+		7BC688F616A99DA3004ED00D /* SASlideMenuLeftMenuSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuLeftMenuSegue.m; sourceTree = "<group>"; };
+		7BC688F716A99DA4004ED00D /* SASlideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuViewController.h; sourceTree = "<group>"; };
+		7BC688F816A99DA4004ED00D /* SASlideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuViewController.m; sourceTree = "<group>"; };
 		7BDBF417166CB2B600FDA327 /* Screenshot-Dynamic-Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot-Dynamic-Menu.png"; sourceTree = "<group>"; };
 		7BDBF418166CB2B600FDA327 /* Screenshot-Dynamic-Right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot-Dynamic-Right.png"; sourceTree = "<group>"; };
 		7BDBF419166CB2B600FDA327 /* Screenshot-Static-Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot-Static-Menu.png"; sourceTree = "<group>"; };
@@ -173,8 +175,6 @@
 		7BDBF435166CC79400FDA327 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		7BDBF437166CC79400FDA327 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		7BDBF43A166CC79400FDA327 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		7BDBF43C166CC79400FDA327 /* SASlideMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SASlideMenuViewController.h; sourceTree = "<group>"; };
-		7BDBF43D166CC79400FDA327 /* SASlideMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuViewController.m; sourceTree = "<group>"; };
 		7BDBF46A166CDEB100FDA327 /* SASlideMenuStatic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SASlideMenuStatic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BDBF471166CDEB100FDA327 /* SASlideMenuStatic-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SASlideMenuStatic-Info.plist"; sourceTree = "<group>"; };
 		7BDBF473166CDEB100FDA327 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -186,13 +186,7 @@
 		7BDBF47D166CDEB100FDA327 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		7BDBF47F166CDEB100FDA327 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		7BDBF482166CDEB100FDA327 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		7BDBF484166CDEB100FDA327 /* SASlideMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SASlideMenuViewController.h; sourceTree = "<group>"; };
-		7BDBF485166CDEB100FDA327 /* SASlideMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuViewController.m; sourceTree = "<group>"; };
 		7BF0A68915DE495500B3B57F /* SASlideMenuDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuDataSource.h; sourceTree = "<group>"; };
-		7BF0A68A15DE495500B3B57F /* SASlideMenuDynamicStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuDynamicStoryboardSegue.h; sourceTree = "<group>"; };
-		7BF0A68B15DE495500B3B57F /* SASlideMenuDynamicStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuDynamicStoryboardSegue.m; sourceTree = "<group>"; };
-		7BF0A68C15DE495500B3B57F /* SASlideMenuStaticViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuStaticViewController.h; sourceTree = "<group>"; };
-		7BF0A68D15DE495500B3B57F /* SASlideMenuStaticViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuStaticViewController.m; sourceTree = "<group>"; };
 		7BF0A6AA15DE499F00B3B57F /* disclosure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclosure.png; sourceTree = "<group>"; };
 		7BF0A6AB15DE499F00B3B57F /* disclosure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosure@2x.png"; sourceTree = "<group>"; };
 		7BF0A6AC15DE499F00B3B57F /* row.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = row.png; sourceTree = "<group>"; };
@@ -331,8 +325,6 @@
 				7B28D2A3165BF464000EE929 /* ExampleDynamicMenuViewController.m */,
 				7BDBF430166CC79400FDA327 /* SASlideMenuAppDelegate.h */,
 				7BDBF431166CC79400FDA327 /* SASlideMenuAppDelegate.m */,
-				7BDBF43C166CC79400FDA327 /* SASlideMenuViewController.h */,
-				7BDBF43D166CC79400FDA327 /* SASlideMenuViewController.m */,
 				7BDBF439166CC79400FDA327 /* MainStoryboard.storyboard */,
 				7BDBF428166CC79300FDA327 /* Supporting Files */,
 			);
@@ -366,8 +358,6 @@
 				7B8C3FF415D8D55800E42A41 /* ExampleStaticMenuViewController.m */,
 				7BDBF478166CDEB100FDA327 /* SASlideMenuAppDelegate.h */,
 				7BDBF479166CDEB100FDA327 /* SASlideMenuAppDelegate.m */,
-				7BDBF484166CDEB100FDA327 /* SASlideMenuViewController.h */,
-				7BDBF485166CDEB100FDA327 /* SASlideMenuViewController.m */,
 				7BDBF481166CDEB100FDA327 /* MainStoryboard.storyboard */,
 				7BDBF470166CDEB100FDA327 /* Supporting Files */,
 			);
@@ -391,18 +381,18 @@
 		7BF0A68615DE492E00B3B57F /* SASlideMenu */ = {
 			isa = PBXGroup;
 			children = (
+				7BC688F316A99DA3004ED00D /* SASlideContentSegue.h */,
+				7BC688F416A99DA3004ED00D /* SASlideContentSegue.m */,
+				7BC688F516A99DA3004ED00D /* SASlideMenuLeftMenuSegue.h */,
+				7BC688F616A99DA3004ED00D /* SASlideMenuLeftMenuSegue.m */,
+				7BC688F716A99DA4004ED00D /* SASlideMenuViewController.h */,
+				7BC688F816A99DA4004ED00D /* SASlideMenuViewController.m */,
 				7BF0A68915DE495500B3B57F /* SASlideMenuDataSource.h */,
 				7B5CA6EE1682121B006E6993 /* SASlideMenuDelegate.h */,
-				7BF0A68A15DE495500B3B57F /* SASlideMenuDynamicStoryboardSegue.h */,
-				7BF0A68B15DE495500B3B57F /* SASlideMenuDynamicStoryboardSegue.m */,
-				7B28D29E165BE211000EE929 /* SASlideMenuDynamicViewController.h */,
-				7B28D29F165BE211000EE929 /* SASlideMenuDynamicViewController.m */,
-				7BF0A68C15DE495500B3B57F /* SASlideMenuStaticViewController.h */,
-				7BF0A68D15DE495500B3B57F /* SASlideMenuStaticViewController.m */,
-				7B28D2C91660EDD6000EE929 /* SASlideMenuStaticStoryboardSegue.h */,
-				7B28D2CA1660EDD6000EE929 /* SASlideMenuStaticStoryboardSegue.m */,
 				7B28D2D71662B8D8000EE929 /* SASlideMenuRightMenuSegue.h */,
 				7B28D2D81662B8D8000EE929 /* SASlideMenuRightMenuSegue.m */,
+				7BC688BD16A6FD08004ED00D /* SASlideMenuRootViewController.h */,
+				7BC688BE16A6FD08004ED00D /* SASlideMenuRootViewController.m */,
 			);
 			path = SASlideMenu;
 			sourceTree = "<group>";
@@ -566,15 +556,14 @@
 			files = (
 				7BDBF42E166CC79300FDA327 /* main.m in Sources */,
 				7BDBF432166CC79400FDA327 /* SASlideMenuAppDelegate.m in Sources */,
-				7BDBF43E166CC79400FDA327 /* SASlideMenuViewController.m in Sources */,
 				7BDBF442166CC7ED00FDA327 /* ExampleDynamicMenuViewController.m in Sources */,
-				7BDBF443166CC85E00FDA327 /* SASlideMenuDynamicStoryboardSegue.m in Sources */,
-				7BDBF444166CC85E00FDA327 /* SASlideMenuDynamicViewController.m in Sources */,
-				7BDBF445166CC85E00FDA327 /* SASlideMenuStaticViewController.m in Sources */,
-				7BDBF446166CC85E00FDA327 /* SASlideMenuStaticStoryboardSegue.m in Sources */,
 				7BDBF447166CC85E00FDA327 /* SASlideMenuRightMenuSegue.m in Sources */,
 				7BDBF448166CC88E00FDA327 /* ColoredViewController.m in Sources */,
 				7BDBF449166CC88E00FDA327 /* ColoredDetailViewController.m in Sources */,
+				7BC688BF16A6FD08004ED00D /* SASlideMenuRootViewController.m in Sources */,
+				7BC688FF16A99DB3004ED00D /* SASlideContentSegue.m in Sources */,
+				7BC6890016A99DB3004ED00D /* SASlideMenuLeftMenuSegue.m in Sources */,
+				7BC6890116A99DB3004ED00D /* SASlideMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,16 +573,15 @@
 			files = (
 				7BDBF476166CDEB100FDA327 /* main.m in Sources */,
 				7BDBF47A166CDEB100FDA327 /* SASlideMenuAppDelegate.m in Sources */,
-				7BDBF486166CDEB100FDA327 /* SASlideMenuViewController.m in Sources */,
-				7BDBF48A166CDF7600FDA327 /* SASlideMenuDynamicStoryboardSegue.m in Sources */,
-				7BDBF48B166CDF7600FDA327 /* SASlideMenuDynamicViewController.m in Sources */,
-				7BDBF48C166CDF7600FDA327 /* SASlideMenuStaticViewController.m in Sources */,
-				7BDBF48D166CDF7600FDA327 /* SASlideMenuStaticStoryboardSegue.m in Sources */,
 				7BDBF48E166CDF7600FDA327 /* SASlideMenuRightMenuSegue.m in Sources */,
 				7BDBF4AB166CDFEC00FDA327 /* DarkViewController.m in Sources */,
 				7BDBF4AC166CDFEC00FDA327 /* ShadesViewController.m in Sources */,
 				7BDBF4AD166CDFEC00FDA327 /* ExampleStaticMenuViewController.m in Sources */,
 				7BDBF4AE166CE03000FDA327 /* MenuCell.m in Sources */,
+				7BC688FC16A99DB2004ED00D /* SASlideContentSegue.m in Sources */,
+				7BC688FD16A99DB2004ED00D /* SASlideMenuLeftMenuSegue.m in Sources */,
+				7BC688FE16A99DB2004ED00D /* SASlideMenuViewController.m in Sources */,
+				7BC6890216A9F51C004ED00D /* SASlideMenuRootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

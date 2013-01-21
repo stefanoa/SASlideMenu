@@ -7,12 +7,13 @@
 //
 
 #import "SASlideMenuRightMenuSegue.h"
-#import "SASlideMenuDynamicViewController.h"
+#import "SASlideMenuRootViewController.h"
+
 @implementation SASlideMenuRightMenuSegue
 -(void) perform{
     
-    SASlideMenuDynamicViewController* source = self.sourceViewController;
-    UINavigationController* destination = self.destinationViewController;
+    SASlideMenuRootViewController* source = self.sourceViewController;
+    UIViewController* destination = self.destinationViewController;
 
     source.rightMenu = destination;
 }

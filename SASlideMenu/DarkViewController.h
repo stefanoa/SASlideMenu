@@ -9,7 +9,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SASlideMenuStaticViewController.h"
+
 @interface DarkViewController : UIViewController
 
 @property (nonatomic,strong) IBOutlet UISlider *darknessSlider;

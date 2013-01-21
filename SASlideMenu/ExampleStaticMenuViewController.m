@@ -44,7 +44,6 @@
 #pragma mark SASlideMenuDataSource
 // The SASlideMenuDataSource is used to provide the initial segueid that represents the initial visibile view controller and to provide eventual additional configuration to the menu button
 
-
 // This is the segue you want visibile when the controller is loaded the first time
 -(NSString*) initialSegueId{
     return @"dark";
@@ -59,6 +58,7 @@
     [menuButton setAdjustsImageWhenHighlighted:NO];
     [menuButton setAdjustsImageWhenDisabled:NO];
 }
+
 -(void) configureSlideLayer:(CALayer *)layer{
     layer.shadowColor = [UIColor blackColor].CGColor;
     layer.shadowOpacity = 0.3;
@@ -66,6 +66,10 @@
     layer.shadowRadius = 10;
     layer.masksToBounds = NO;
     layer.shadowPath =[UIBezierPath bezierPathWithRect:layer.bounds].CGPath;
+}
+
+-(CGFloat) slideMenuVisibleWidth{
+    return 280;
 }
 
 #pragma mark -
