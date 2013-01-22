@@ -56,7 +56,7 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="JVI-DT-Ljn" kind="custom" identifier="colored" customClass="SASlideContentSegue" id="cqe-Zw-acr"/>
+                        <segue destination="JVI-DT-Ljn" kind="custom" identifier="colored" customClass="SASlideMenuContentSegue" id="cqe-Zw-acr"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="typ-Df-k7W" userLabel="First Responder" sceneMemberID="firstResponder"/>

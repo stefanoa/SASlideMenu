@@ -241,10 +241,12 @@ typedef enum {
         }
     }
     CGFloat menuSize = [self menuSize];
-    CGFloat visiblePortion = self.view.bounds.size.width - menuSize;
-    if ((-movingView.frame.origin.x-translation.x)>(self.view.frame.size.width-visiblePortion)) {
+    CGRect bounds = self.view.bounds;
+    CGPoint origin = movingView.frame.origin;
+    CGFloat visiblePortion = bounds.size.width - menuSize;
+    if ((-origin.x-translation.x)>(bounds.size.width-visiblePortion)) {
         if (panningState == SASlideMenuPanningStateLeft) {
-            translation.x = visiblePortion- self.view.frame.size.width-movingView.frame.origin.x;
+            translation.x = visiblePortion- bounds.size.width-movingView.frame.origin.x;
         }
     }
     [movingView setCenter:CGPointMake([movingView center].x + translation.x, [movingView center].y)];
@@ -327,7 +329,15 @@ typedef enum {
 
 #pragma mark -
 #pragma mark UIViewController
-
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
+    CGRect bounds = self.view.bounds;
+    CGFloat menuSize = [self menuSize];
+    if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
+        CGRect rightFrame = CGRectMake(bounds.size.width-menuSize, 0, menuSize, bounds.size.height);
+        self.rightMenu.view.frame = rightFrame;
+        self.shieldWithMenu.frame = CGRectMake(0, 0, bounds.size.width, bounds.size.height);
+    }
+}
 -(void) viewDidLoad{
     [super viewDidLoad];
     

@@ -18,8 +18,8 @@
 #pragma mark UITableViewDelegate
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([self.slideMenuDataSource respondsToSelector:@selector(segueIdWithIndexPath:)]) {
-        NSString* segueId = [self.slideMenuDataSource sugueIdForIndexPath:indexPath];
+    if ([self.slideMenuDataSource respondsToSelector:@selector(segueIdForIndexPath:)]) {
+        NSString* segueId = [self.slideMenuDataSource segueIdForIndexPath:indexPath];
         [self performSegueWithIdentifier:segueId sender:self];        
     }
 }

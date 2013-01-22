@@ -88,7 +88,7 @@
 }
 // It maps each indexPath to the segueId to be used. The segue is performed only the first time the controller needs to loaded, subsequent switch to the content controller will use the already loaded controller
 
--(NSString*) sugueIdForIndexPath:(NSIndexPath *)indexPath{
+-(NSString*) segueIdForIndexPath:(NSIndexPath *)indexPath{
     return @"colored";
 }
 -(Boolean) slideOutThenIn{

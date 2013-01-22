@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Stefano Antonelli. All rights reserved.
 //
 #import <QuartzCore/QuartzCore.h>
-#import "SASlideContentSegue.h"
+#import "SASlideMenuContentSegue.h"
 #import "SASlideMenuRootViewController.h"
 #import "SASlideMenuViewController.h"
 
-@implementation SASlideContentSegue
+@implementation SASlideMenuContentSegue
 
 -(void) perform{
     /*

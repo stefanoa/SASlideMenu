@@ -17,7 +17,7 @@
 @optional
 -(void) prepareForSwitchToContentViewController:(UIViewController *)content;
 
--(NSString*) sugueIdForIndexPath:(NSIndexPath*) indexPath;
+-(NSString*) segueIdForIndexPath:(NSIndexPath*) indexPath;
 -(Boolean) hasRightMenuForIndexPath:(NSIndexPath*) indexPath;
 
 -(void) configureRightMenuButton:(UIButton*) menuButton;
