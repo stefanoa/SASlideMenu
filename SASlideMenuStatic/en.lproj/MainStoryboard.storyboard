@@ -65,7 +65,7 @@
                                             <outlet property="backgroundView" destination="uAM-3m-M2T" id="bii-rk-cub"/>
                                             <outlet property="disclosureImage" destination="kqn-D2-Ux9" id="gt9-Za-aDW"/>
                                             <outlet property="selectedBackgroundView" destination="hCN-FM-76I" id="N0d-qH-PN3"/>
-                                            <segue destination="doc-P0-YCL" kind="custom" identifier="dark" customClass="SASlideContentSegue" id="Iyq-dF-d6Z"/>
+                                            <segue destination="doc-P0-YCL" kind="custom" identifier="dark" customClass="SASlideMenuContentSegue" id="Iyq-dF-d6Z"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Y5R-hn-9ln" customClass="MenuCell">
@@ -101,7 +101,7 @@
                                             <outlet property="backgroundView" destination="jJO-1q-bSw" id="gaZ-GN-biu"/>
                                             <outlet property="disclosureImage" destination="wgh-IC-uH4" id="Kw8-Nk-3yX"/>
                                             <outlet property="selectedBackgroundView" destination="a6A-9P-Yas" id="c2a-vN-2AG"/>
-                                            <segue destination="FgT-Db-JXl" kind="custom" identifier="light" customClass="SASlideContentSegue" id="hVV-uQ-EUz"/>
+                                            <segue destination="FgT-Db-JXl" kind="custom" identifier="light" customClass="SASlideMenuContentSegue" id="hVV-uQ-EUz"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="EGj-9f-HYm" customClass="MenuCell">
@@ -137,7 +137,7 @@
                                             <outlet property="backgroundView" destination="Ave-6G-f2k" id="fdb-pf-WU8"/>
                                             <outlet property="disclosureImage" destination="PM1-63-jf9" id="dH4-iU-Gef"/>
                                             <outlet property="selectedBackgroundView" destination="9Of-bR-Ha6" id="jkF-i0-F05"/>
-                                            <segue destination="79Z-YM-vAE" kind="custom" identifier="shades" customClass="SASlideContentSegue" id="kDO-qq-npi"/>
+                                            <segue destination="79Z-YM-vAE" kind="custom" identifier="shades" customClass="SASlideMenuContentSegue" id="kDO-qq-npi"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -313,37 +313,6 @@
         <image name="row.png" width="1" height="44"/>
         <image name="rowselected.png" width="1" height="44"/>
     </resources>
-    <classes>
-        <class className="DarkViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DarkViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="changeDarkness:"/>
-                <relationship kind="outlet" name="darknessSlider" candidateClass="UISlider"/>
-            </relationships>
-        </class>
-        <class className="ExampleStaticMenuViewController" superclassName="SASlideMenuViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExampleStaticMenuViewController.h"/>
-        </class>
-        <class className="MenuCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="disclosureImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="itemDescription" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SASlideMenuRootViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SASlideMenuRootViewController.h"/>
-        </class>
-        <class className="SASlideMenuViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SASlideMenuViewController.h"/>
-        </class>
-        <class className="ShadesViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ShadesViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableContainer" candidateClass="UIView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
