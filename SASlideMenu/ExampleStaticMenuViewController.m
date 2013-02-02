@@ -68,7 +68,7 @@
     layer.shadowPath =[UIBezierPath bezierPathWithRect:layer.bounds].CGPath;
 }
 
--(CGFloat) slideMenuVisibleWidth{
+-(CGFloat) leftMenuVisibleWidth{
     return 280;
 }
 

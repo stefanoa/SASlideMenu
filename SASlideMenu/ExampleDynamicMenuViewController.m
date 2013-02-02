@@ -89,6 +89,9 @@
 // It maps each indexPath to the segueId to be used. The segue is performed only the first time the controller needs to loaded, subsequent switch to the content controller will use the already loaded controller
 
 -(NSString*) segueIdForIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section > 0) {
+        return @"coloredNoRightMenu";
+    }
     return @"colored";
 }
 -(Boolean) slideOutThenIn{
@@ -100,7 +103,11 @@
     }
     return YES;
 }
--(Boolean) hasRightMenuForIndexPath:(NSIndexPath *)indexPath{
+
+-(Boolean) hasRightMenuForSegueId:(NSString *)segueId{
+    if ([segueId isEqualToString:@"coloredNoRightMenu"]) {
+        return NO;
+    }
     return YES;
 }
 
@@ -143,6 +150,14 @@
     return cell;
 }
 
+-(CGFloat) leftMenuVisibleWidth{
+    return 280;
+}
+
+-(CGFloat) rightMenuVisibleWidth{
+    return 300;
+}
+
 #pragma mark -
 #pragma mark UITableViewDelegate
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -173,12 +188,10 @@
     NSLog(@"slideMenuWillSlideToSide");
 }
 -(void) slideMenuDidSlideToSide{
-    NSLog(@"slideMenuDidSlideToSide");
-    
+    NSLog(@"slideMenuDidSlideToSide");    
 }
 -(void) slideMenuWillSlideOut{
     NSLog(@"slideMenuWillSlideOut");
-    
 }
 -(void) slideMenuDidSlideOut{
     NSLog(@"slideMenuDidSlideOut");

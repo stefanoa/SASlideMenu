@@ -45,9 +45,16 @@ typedef enum {
 #pragma mark -
 #pragma mark SASlideMenuRootViewController
 
--(CGFloat) menuSize{
-    if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(slideMenuVisibleWidth)]){
-        return [self.leftMenu.slideMenuDataSource slideMenuVisibleWidth];
+-(CGFloat) leftMenuSize{
+    if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(leftMenuVisibleWidth)]){
+        return [self.leftMenu.slideMenuDataSource leftMenuVisibleWidth];
+    }else{
+        return kMenuTableSize;
+    }
+}
+-(CGFloat) rightMenuSize{
+    if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(rightMenuVisibleWidth)]){
+        return [self.leftMenu.slideMenuDataSource rightMenuVisibleWidth];
     }else{
         return kMenuTableSize;
     }
@@ -59,13 +66,13 @@ typedef enum {
 }
 -(void) slideToLeftSide:(UINavigationController*) controller{
     CGRect bounds = self.view.bounds;
-    CGFloat menuSize = [self menuSize];
+    CGFloat menuSize = [self rightMenuSize];
     controller.view.frame = CGRectMake(-menuSize,0.0,bounds.size.width,bounds.size.height);
 }
 
 -(void) slideToSide:(UINavigationController*) controller{
     CGRect bounds = self.view.bounds;
-    CGFloat menuSize = [self menuSize];
+    CGFloat menuSize = [self leftMenuSize];
     controller.view.frame = CGRectMake(menuSize,0.0,bounds.size.width,bounds.size.height);
 }
 
@@ -178,7 +185,7 @@ typedef enum {
 }
 -(void) addRightMenu{
     CGRect bounds = self.view.bounds;
-    CGFloat menuSize = [self menuSize];
+    CGFloat menuSize = [self rightMenuSize];
     
     CGFloat visiblePortion = bounds.size.width-menuSize;
     CGRect frame  = CGRectMake(visiblePortion, 0, menuSize, bounds.size.height);
@@ -206,14 +213,10 @@ typedef enum {
     UIView* panningView = gesture.view;
     CGPoint translation = [gesture translationInView:panningView];
     UIView* movingView = self.selectedContent.view;
+    
     if ([gesture state] == UIGestureRecognizerStateBegan) {
         if (movingView.frame.origin.x + translation.x < 0 ) {
-            Boolean hasRightMenu = NO;
-            if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(hasRightMenuForIndexPath:)] && self.rightMenu != nil) {
-                hasRightMenu = [self.leftMenu.slideMenuDataSource hasRightMenuForIndexPath:self.selectedIndexPath];
-            }
-
-            if (hasRightMenu) {
+            if (self.isRightMenuEnabled && self.rightMenu != nil) {
                 panningState = SASlideMenuPanningStateLeft;
                 [self addRightMenu];
             }else{
@@ -230,7 +233,7 @@ typedef enum {
             translation.x =0.0;
         }
     }
-    if (translation.x>0 && movingView.frame.origin.x >=[self menuSize]) {
+    if (translation.x>0 && movingView.frame.origin.x >=[self leftMenuSize]) {
         if (panningState == SASlideMenuPanningStateRight) {
             translation.x=0.0;
         }
@@ -240,7 +243,7 @@ typedef enum {
             translation.x =0.0;
         }
     }
-    CGFloat menuSize = [self menuSize];
+    CGFloat menuSize = [self leftMenuSize];
     CGRect bounds = self.view.bounds;
     CGPoint origin = movingView.frame.origin;
     CGFloat visiblePortion = bounds.size.width - menuSize;
@@ -331,17 +334,19 @@ typedef enum {
 #pragma mark UIViewController
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
     CGRect bounds = self.view.bounds;
-    CGFloat menuSize = [self menuSize];
+    CGFloat menuSize = [self leftMenuSize];
     if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
         CGRect rightFrame = CGRectMake(bounds.size.width-menuSize, 0, menuSize, bounds.size.height);
         self.rightMenu.view.frame = rightFrame;
         self.shieldWithMenu.frame = CGRectMake(0, 0, bounds.size.width, bounds.size.height);
     }
 }
+
 -(void) viewDidLoad{
     [super viewDidLoad];
     
     controllers = [[NSMutableDictionary alloc] init];
+    
     self.shield = [[UIView alloc] initWithFrame:CGRectZero];
     self.shieldWithMenu = [[UIView alloc] initWithFrame:CGRectZero];
     state = SASlideMenuStateMenu;
@@ -360,9 +365,9 @@ typedef enum {
     [panGesture setDelegate:self];
     [self.shield addGestureRecognizer:panGesture];
     
-    
     [self performSegueWithIdentifier:@"leftMenu" sender:self];
-    if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(hasRightMenuForIndexPath:)]) {
+    self.isRightMenuEnabled = NO;
+    if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(hasRightMenuForSegueId:)]) {
         [self performSegueWithIdentifier:@"rightMenu" sender:self];
     }
 }

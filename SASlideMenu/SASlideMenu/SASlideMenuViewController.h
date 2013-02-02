@@ -18,4 +18,5 @@
 @property (assign, nonatomic) NSObject<SASlideMenuDataSource>* slideMenuDataSource;
 @property (assign, nonatomic) NSObject<SASlideMenuDelegate>* slideMenuDelegate;
 
+
 @end

@@ -18,12 +18,14 @@
 -(void) prepareForSwitchToContentViewController:(UIViewController *)content;
 
 -(NSString*) segueIdForIndexPath:(NSIndexPath*) indexPath;
--(Boolean) hasRightMenuForIndexPath:(NSIndexPath*) indexPath;
+-(Boolean) hasRightMenuForSegueId:(NSString*) segueId;
 
 -(void) configureRightMenuButton:(UIButton*) menuButton;
 -(void) configureSlideLayer:(CALayer*) layer;
 
--(CGFloat) slideMenuVisibleWidth;
+-(CGFloat) leftMenuVisibleWidth;
+-(CGFloat) rightMenuVisibleWidth;
+
 -(Boolean) slideOutThenIn;
 
 -(Boolean) allowContentViewControllerCachingForIndexPath:(NSIndexPath*) indexPath;

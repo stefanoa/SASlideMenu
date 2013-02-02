@@ -13,13 +13,7 @@
 @implementation SASlideMenuContentSegue
 
 -(void) perform{
-    /*
-    SASlideMenuViewController* menuController = self.sourceViewController;
-    SASlideMenuRootViewController* rootController = menuController.rootController;
-    UINavigationController* contentController = self.destinationViewController;
-    
-    [rootController presentContent:contentController withID:self.identifier];
-    */
+ 
     SASlideMenuViewController* source = self.sourceViewController;
     SASlideMenuRootViewController* rootController = source.rootController;
     UINavigationController* destination = self.destinationViewController;
@@ -32,8 +26,10 @@
     navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuButton];
     
     Boolean hasRightMenu = NO;
-    if ([rootController.leftMenu.slideMenuDataSource respondsToSelector:@selector(hasRightMenuForIndexPath:)]) {
-        hasRightMenu = [rootController.leftMenu.slideMenuDataSource hasRightMenuForIndexPath:rootController.selectedIndexPath];
+    NSIndexPath* selectedIndexPath = [rootController.leftMenu.tableView indexPathForSelectedRow];
+
+    if ([rootController.leftMenu.slideMenuDataSource respondsToSelector:@selector(hasRightMenuForSegueId:)]) {
+        hasRightMenu = [rootController.leftMenu.slideMenuDataSource hasRightMenuForSegueId:self.identifier];
     }
     if (hasRightMenu) {
         if ([rootController.leftMenu.slideMenuDataSource respondsToSelector:@selector(configureRightMenuButton:)]) {
@@ -44,8 +40,8 @@
             UINavigationItem* navigationItem = destination.navigationBar.topItem;
             navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightMenuButton];
         }
-        
     }
+
     if([rootController.leftMenu.slideMenuDataSource respondsToSelector:@selector(configureSlideLayer:)]) {
         [rootController.leftMenu.slideMenuDataSource configureSlideLayer:[destination.view layer]];        
     }else{
@@ -59,8 +55,19 @@
     }
     
     [rootController switchToContentViewController:destination];
+
     if ([rootController.leftMenu.slideMenuDataSource respondsToSelector:@selector(sugueIdForIndexPath:)]) {
-        [rootController addContentViewController:destination withIndexPath:rootController.selectedIndexPath];        
+        [rootController addContentViewController:destination withIndexPath:selectedIndexPath];        
+    }
+    if ([rootController.leftMenu.slideMenuDataSource respondsToSelector:@selector(hasRightMenuForSegueId:)]) {
+        Boolean hasRightMenu = [rootController.leftMenu.slideMenuDataSource hasRightMenuForSegueId:self.identifier];
+        if (hasRightMenu) {
+            rootController.isRightMenuEnabled = YES;
+        }else{
+            rootController.isRightMenuEnabled = NO;
+        }
+    }else{
+        rootController.isRightMenuEnabled = NO;
     }
 }
 

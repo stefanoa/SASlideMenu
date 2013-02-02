@@ -14,12 +14,12 @@
 
 @property (strong, nonatomic) SASlideMenuViewController* leftMenu;
 @property (strong, nonatomic) UIViewController* rightMenu;
-
-@property (strong, nonatomic) NSIndexPath* selectedIndexPath;
+@property (assign, nonatomic) Boolean isRightMenuEnabled;
 
 
 -(void) switchToContentViewController:(UINavigationController*) content;
 -(void) addContentViewController:(UIViewController*) content withIndexPath:(NSIndexPath*)indexPath;
+
 -(void) doSlideToSide;
 -(void) rightMenuAction;
 
