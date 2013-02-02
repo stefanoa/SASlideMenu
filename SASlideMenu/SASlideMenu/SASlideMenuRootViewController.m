@@ -334,7 +334,7 @@ typedef enum {
 #pragma mark UIViewController
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
     CGRect bounds = self.view.bounds;
-    CGFloat menuSize = [self leftMenuSize];
+    CGFloat menuSize = [self rightMenuSize];
     if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
         CGRect rightFrame = CGRectMake(bounds.size.width-menuSize, 0, menuSize, bounds.size.height);
         self.rightMenu.view.frame = rightFrame;
