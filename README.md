@@ -11,7 +11,7 @@ You can use SASlide menu with both static cells and dynamic cell prototypes. In 
 To use it in your project follow these steps:
 
 * Add the SASlideMenu subdir and his content to your project
-* Add a new class that inherit from **SASlideMenuViewController** and implement **SASlideMenuDatSource** and **SASlideMenuDelegate**. **SASlideMenuDataSource** is where you will code your customization while **SASlideMenuDelegate** is where you will add your code to implement the behavior of your app related to the SASlideMenu events. There are a minimum **SASlideMenuDataSource** methods that are required while the **SASlideMenuDelegate** is entirely optional.
+* Add a new class that inherit from **SASlideMenuViewController** and implement **SASlideMenuDataSource** and **SASlideMenuDelegate**. **SASlideMenuDataSource** is where you will code your customization while **SASlideMenuDelegate** is where you will add your code to implement the behavior of your app related to the SASlideMenu events. There are a minimum **SASlideMenuDataSource** methods that are required while the **SASlideMenuDelegate** is entirely optional.
 * Add a new **SASlideMenuRootViewController** in your storyboard
 * Add a **UITableViewController** and make it of the **SASlideMenuViewController** subclass you already implemented and customize it in accordance with your needs.
 * Connect the **SASlideMenuRootViewController** with your subclass with a custom segue of type **SASlideMenuLeftMenuSegue**, set the segue identifier to **leftMenu**.
