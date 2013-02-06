@@ -62,10 +62,6 @@
 // The SASlideMenuDataSource provides the initial segueid that represents the initial visibile view controller, the eventual additional configuration to the menu button and the mapping for each indexPath to the segues for the content controllers
 
 
-// This is the segue you want visibile when the controller is loaded the first time
--(NSString*) initialSegueId{
-    return @"colored";
-}
 
 
 // It configure the menu button. The beahviour of the button should not be modified
@@ -86,6 +82,11 @@
     [menuButton setAdjustsImageWhenHighlighted:NO];
     [menuButton setAdjustsImageWhenDisabled:NO];
 }
+// This is the segue you want visibile when the controller is loaded the first time
+-(NSString*) initialSegueId{
+    return @"colored";
+}
+
 // It maps each indexPath to the segueId to be used. The segue is performed only the first time the controller needs to loaded, subsequent switch to the content controller will use the already loaded controller
 
 -(NSString*) segueIdForIndexPath:(NSIndexPath *)indexPath{

@@ -8,14 +8,15 @@
 
 #import "SASlideMenuRightMenuSegue.h"
 #import "SASlideMenuRootViewController.h"
-
+#import "SASlideMenuRightMenuViewController.h"
 @implementation SASlideMenuRightMenuSegue
 -(void) perform{
     
     SASlideMenuRootViewController* source = self.sourceViewController;
-    UIViewController* destination = self.destinationViewController;
+    SASlideMenuRightMenuViewController* destination = self.destinationViewController;
 
     source.rightMenu = destination;
+    destination.rootController = source;
 }
 
 @end

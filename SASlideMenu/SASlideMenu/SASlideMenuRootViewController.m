@@ -7,12 +7,14 @@
 //
 
 #import "SASlideMenuRootViewController.h"
-
+#import "SASlideMenuNavigationController.h"
+#import "SASlideMenuRightMenuViewController.h"
 #define kSlideInInterval 0.3
 #define kSlideOutInterval 0.1
 #define kMenuTableSize 280
 
 typedef enum {
+    SASlideMenuStateInitial,
     SASlideMenuStateContent,
     SASlideMenuStateMenu,
     SASlideMenuStateRightMenu
@@ -206,7 +208,7 @@ typedef enum {
     [self doSlideIn:nil];
 }
 -(void) tapItem:(UITapGestureRecognizer*)gesture{
-    [self switchToContentViewController:self.selectedContent];
+    [self switchToContentViewController:self.selectedContent animated:YES];
 }
 
 -(void) panItem:(UIPanGestureRecognizer*)gesture{
@@ -275,7 +277,8 @@ typedef enum {
         
 	}
 }
--(void) switchToContentViewController:(UINavigationController*) content{
+
+-(void) switchToContentViewController:(UINavigationController*) content animated:(Boolean) animated{
     CGRect bounds = self.view.bounds;
     self.view.userInteractionEnabled = NO;
     if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(prepareForSwitchToContentViewController:)]) {
@@ -286,15 +289,28 @@ typedef enum {
     if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(slideOutThenIn)]){
         slideOutThenIn = [self.leftMenu.slideMenuDataSource slideOutThenIn];
     }
-    
-    if (slideOutThenIn) {
-        //Animate out the currently selected UIViewController
-        [self doSlideOut:^(BOOL completed) {
+    if (state != SASlideMenuStateInitial) {
+        if (slideOutThenIn) {
+            //Animate out the currently selected UIViewController
+            [self doSlideOut:^(BOOL completed) {
+                [self.selectedContent willMoveToParentViewController:nil];
+                [self.selectedContent.view removeFromSuperview];
+                [self.selectedContent removeFromParentViewController];
+                
+                content.view.frame = CGRectMake(bounds.size.width,0,bounds.size.width,bounds.size.height);
+                [self addChildViewController:content];
+                [self.view addSubview:content.view];
+                self.selectedContent = content;
+                [self doSlideIn:^(BOOL completed) {
+                    [content didMoveToParentViewController:self];
+                    self.view.userInteractionEnabled = YES;
+                }];
+            }];
+        }else{
             [self.selectedContent willMoveToParentViewController:nil];
             [self.selectedContent.view removeFromSuperview];
             [self.selectedContent removeFromParentViewController];
-            
-            content.view.frame = CGRectMake(bounds.size.width,0,bounds.size.width,bounds.size.height);
+            [self slideToSide:content];
             [self addChildViewController:content];
             [self.view addSubview:content.view];
             self.selectedContent = content;
@@ -302,7 +318,8 @@ typedef enum {
                 [content didMoveToParentViewController:self];
                 self.view.userInteractionEnabled = YES;
             }];
-        }];
+        }
+        
     }else{
         [self.selectedContent willMoveToParentViewController:nil];
         [self.selectedContent.view removeFromSuperview];
@@ -311,10 +328,22 @@ typedef enum {
         [self addChildViewController:content];
         [self.view addSubview:content.view];
         self.selectedContent = content;
-        [self doSlideIn:^(BOOL completed) {
-            [content didMoveToParentViewController:self];
-            self.view.userInteractionEnabled = YES;
-        }];
+        if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuWillSlideIn)]){
+            [self.leftMenu.slideMenuDelegate slideMenuWillSlideIn];
+        }
+        [self slideIn:self.selectedContent];
+        if (state == SASlideMenuStateRightMenu) {
+            [self.rightMenu willMoveToParentViewController:nil];
+            [self.rightMenu.view removeFromSuperview];
+            [self.rightMenu removeFromParentViewController];
+        }
+        [self completeSlideIn:self.selectedContent];
+        if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideIn)]){
+            [self.leftMenu.slideMenuDelegate slideMenuDidSlideIn];
+        }
+        [content didMoveToParentViewController:self];
+        self.view.userInteractionEnabled = YES;
+        
     }
 }
 
@@ -328,6 +357,40 @@ typedef enum {
             [controllers setObject:content forKey:indexPath];
         }
     }
+}
+
+-(void) pushNavigationController:(SASlideMenuNavigationController*)navigationController{
+    SASlideMenuRootViewController* root = self;
+    root.navigationController = navigationController;
+    navigationController.rootController = root;
+    
+    NSArray* ctrls = navigationController.viewControllers;
+    UIViewController* empty = [[UIViewController alloc] init];
+    NSArray* newControllers = [NSArray arrayWithObjects:empty,[ctrls objectAtIndex:0],nil];
+    [navigationController setViewControllers:newControllers animated:NO];
+    navigationController.lastController =[ctrls objectAtIndex:0];
+    
+    CGRect bounds = root.view.bounds;
+    navigationController.view.frame = CGRectMake(bounds.size.width,0.0,bounds.size.width,bounds.size.height);
+    [root addChildViewController:navigationController];
+    [root.view addSubview:navigationController.view];
+    
+    [UIView animateWithDuration:kSlideOutInterval animations:^{
+        navigationController.view.frame = CGRectMake(0.0,0.0,bounds.size.width,bounds.size.height);
+    } completion:^(BOOL finished) {
+        [navigationController didMoveToParentViewController:root];
+    }];
+
+}
+-(void) popNavigationController{
+    CGRect bounds = self.view.bounds;
+    [self.navigationController willMoveToParentViewController:nil];
+    [UIView animateWithDuration:kSlideOutInterval animations:^{
+        self.navigationController.view.frame = CGRectMake(bounds.size.width, 0, bounds.size.width, bounds.size.height);
+    } completion:^(BOOL finished) {
+        [self.navigationController.view removeFromSuperview];
+        [self.navigationController removeFromParentViewController];
+    }];
 }
 
 #pragma mark -
@@ -349,7 +412,7 @@ typedef enum {
     
     self.shield = [[UIView alloc] initWithFrame:CGRectZero];
     self.shieldWithMenu = [[UIView alloc] initWithFrame:CGRectZero];
-    state = SASlideMenuStateMenu;
+    state = SASlideMenuStateInitial;
     panningState = SASlideMenuPanningStateStopped;
     
     UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapShield:)];
@@ -371,6 +434,7 @@ typedef enum {
         [self performSegueWithIdentifier:@"rightMenu" sender:self];
     }
 }
+
 -(void) didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     [controllers removeAllObjects];
