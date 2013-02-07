@@ -208,7 +208,7 @@ typedef enum {
     [self doSlideIn:nil];
 }
 -(void) tapItem:(UITapGestureRecognizer*)gesture{
-    [self switchToContentViewController:self.selectedContent animated:YES];
+    [self switchToContentViewController:self.selectedContent];
 }
 
 -(void) panItem:(UIPanGestureRecognizer*)gesture{
@@ -278,7 +278,7 @@ typedef enum {
 	}
 }
 
--(void) switchToContentViewController:(UINavigationController*) content animated:(Boolean) animated{
+-(void) switchToContentViewController:(UINavigationController*) content{
     CGRect bounds = self.view.bounds;
     self.view.userInteractionEnabled = NO;
     if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(prepareForSwitchToContentViewController:)]) {

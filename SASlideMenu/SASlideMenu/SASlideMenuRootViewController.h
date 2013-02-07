@@ -19,7 +19,7 @@
 @property (assign, nonatomic) Boolean isRightMenuEnabled;
 @property (strong, nonatomic) SASlideMenuNavigationController* navigationController;
 
--(void) switchToContentViewController:(UINavigationController*) content animated:(Boolean) animated;
+-(void) switchToContentViewController:(UINavigationController*) content;
 -(void) addContentViewController:(UIViewController*) content withIndexPath:(NSIndexPath*)indexPath;
 -(void) popNavigationController;
 -(void) pushNavigationController:(SASlideMenuNavigationController*)navigationController;
