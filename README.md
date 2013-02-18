@@ -10,8 +10,60 @@ The repository is an Xcode 4 project that contains two example of the usage of t
 You can use SASlide menu with both static cells and dynamic cell prototypes. In the project yuo will find two different target that use both type of cells to create a slide menu.
 To use it in your project follow these steps:
 
-* Add the SASlideMenu subdir and his content to your project
-* Add a new class that inherit from **SASlideMenuViewController** and implement **SASlideMenuDatSource** and **SASlideMenuDelegate**. **SASlideMenuDataSource** is where you will code your customization while **SASlideMenuDelegate** is where you will add your code to implement the behavior of your app related to the SASlideMenu events. There are a minimum **SASlideMenuDataSource** methods that are required while the **SASlideMenuDelegate** is entirely optional.
+* Add the SASlideMenu subdir and it's contents to your project
+* Add a new class that inherits from **SASlideMenuViewController** and include/implement **SASlideMenuDataSource** and **SASlideMenuDelegate**.
+  * **SASlideMenuDataSource** is where you will code your customization while **SASlideMenuDelegate** is where you will add your code to implement the behavior of your app related to the **SASlideMenu** events.
+  * There are a minimum number of **SASlideMenuDataSource** methods that are required, while the **SASlideMenuDelegate** is entirely optional.
+
+
+```
+#import "SASlideMenuDataSource.h"
+#import "SASlideMenuDelegate.h"
+```
+
+```
+@protocol SASlideMenuDataSource <NSObject>
+
+@required
+-(NSString*) initialSegueId;
+-(void) configureMenuButton:(UIButton*) menuButton;
+
+@optional
+-(void) prepareForSwitchToContentViewController:(UIViewController *)content;
+
+-(NSString*) segueIdForIndexPath:(NSIndexPath*) indexPath;
+-(Boolean) hasRightMenuForIndexPath:(NSIndexPath*) indexPath;
+
+-(void) configureRightMenuButton:(UIButton*) menuButton;
+-(void) configureSlideLayer:(CALayer*) layer;
+
+-(CGFloat) slideMenuVisibleWidth;
+-(Boolean) slideOutThenIn;
+
+-(Boolean) allowContentViewControllerCachingForIndexPath:(NSIndexPath*) indexPath;
+@end
+```
+
+```
+@protocol SASlideMenuDelegate <NSObject>
+
+@optional
+
+-(void)slideMenuWillSlideToSide;
+-(void)slideMenuDidSlideToSide;
+
+-(void)slideMenuWillSlideIn;
+-(void)slideMenuDidSlideIn;
+
+-(void)slideMenuWillSlideOut;
+-(void)slideMenuDidSlideOut;
+
+-(void) slideMenuWillSlideToLeft;
+-(void) slideMenuDidSlideToLeft;
+
+@end
+```
+
 * Add a new **SASlideMenuRootViewController** in your storyboard
 * Add a **UITableViewController** and make it of the **SASlideMenuViewController** subclass you already implemented and customize it in accordance with your needs.
 * Connect the **SASlideMenuRootViewController** with your subclass with a custom segue of type **SASlideMenuLeftMenuSegue**, set the segue identifier to **leftMenu**.
