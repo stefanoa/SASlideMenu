@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ColoredDetailViewController : UIViewController
+@interface ColoredDetailViewController : UITableViewController
 @property(nonatomic,strong) IBOutlet UIView* colorBox;
 @property(nonatomic,strong) IBOutlet UILabel* hue;
 @property(nonatomic,strong) IBOutlet UILabel* brightness;

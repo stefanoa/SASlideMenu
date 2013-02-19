@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B27435A16D2820600F89C69 /* LightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B27435916D2820600F89C69 /* LightViewController.m */; };
+		7B27435C16D3638300F89C69 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 7B27435B16D3638300F89C69 /* CHANGELOG.md */; };
 		7BC688BF16A6FD08004ED00D /* SASlideMenuRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC688BE16A6FD08004ED00D /* SASlideMenuRootViewController.m */; };
 		7BC688FC16A99DB2004ED00D /* SASlideMenuContentSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC688F416A99DA3004ED00D /* SASlideMenuContentSegue.m */; };
 		7BC688FD16A99DB2004ED00D /* SASlideMenuLeftMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC688F616A99DA3004ED00D /* SASlideMenuLeftMenuSegue.m */; };
@@ -121,6 +123,9 @@
 		7B1141A4161B621000549B42 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		7B1141A7161B658D00549B42 /* Screenshot-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot-Landscape.png"; sourceTree = "<group>"; };
 		7B1141A8161B658D00549B42 /* Screenshot-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot-Portrait.png"; sourceTree = "<group>"; };
+		7B27435816D2820600F89C69 /* LightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightViewController.h; sourceTree = "<group>"; };
+		7B27435916D2820600F89C69 /* LightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightViewController.m; sourceTree = "<group>"; };
+		7B27435B16D3638300F89C69 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
 		7B28D2A2165BF464000EE929 /* ExampleDynamicMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExampleDynamicMenuViewController.h; path = ../SASlideMenu/ExampleDynamicMenuViewController.h; sourceTree = "<group>"; };
 		7B28D2A3165BF464000EE929 /* ExampleDynamicMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExampleDynamicMenuViewController.m; path = ../SASlideMenu/ExampleDynamicMenuViewController.m; sourceTree = "<group>"; };
 		7B28D2A5165CCB10000EE929 /* ColoredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColoredViewController.h; path = ../SASlideMenu/ColoredViewController.h; sourceTree = "<group>"; };
@@ -277,6 +282,7 @@
 				7B56BF48163C2ECF00D9C143 /* Icon.png */,
 				7B1141A4161B621000549B42 /* Default-568h@2x.png */,
 				7BF0A6B915DE682A00B3B57F /* README.md */,
+				7B27435B16D3638300F89C69 /* CHANGELOG.md */,
 				7B8C3FE415D8D55800E42A41 /* SASlideMenu */,
 				7BDBF427166CC79300FDA327 /* SASlideMenuDynamic */,
 				7BDBF46F166CDEB100FDA327 /* SASlideMenuStatic */,
@@ -367,6 +373,8 @@
 				7BF0A6B115DE499F00B3B57F /* MenuCell.m */,
 				7B3B2D5215DCE0E1009F4AB8 /* DarkViewController.h */,
 				7B3B2D5315DCE0E1009F4AB8 /* DarkViewController.m */,
+				7B27435816D2820600F89C69 /* LightViewController.h */,
+				7B27435916D2820600F89C69 /* LightViewController.m */,
 				7B5B88E1163B23B300D02C1F /* ShadesViewController.h */,
 				7B5B88E2163B23B300D02C1F /* ShadesViewController.m */,
 				7B8C3FF315D8D55800E42A41 /* ExampleStaticMenuViewController.h */,
@@ -396,6 +404,8 @@
 		7BF0A68615DE492E00B3B57F /* SASlideMenu */ = {
 			isa = PBXGroup;
 			children = (
+				7BF0A68915DE495500B3B57F /* SASlideMenuDataSource.h */,
+				7B5CA6EE1682121B006E6993 /* SASlideMenuDelegate.h */,
 				7BC688F316A99DA3004ED00D /* SASlideMenuContentSegue.h */,
 				7BC688F416A99DA3004ED00D /* SASlideMenuContentSegue.m */,
 				7BC688F516A99DA3004ED00D /* SASlideMenuLeftMenuSegue.h */,
@@ -406,8 +416,6 @@
 				7BFEA28616C0FACF00455A22 /* SASlideMenuPushSegue.m */,
 				7BC688F716A99DA4004ED00D /* SASlideMenuViewController.h */,
 				7BC688F816A99DA4004ED00D /* SASlideMenuViewController.m */,
-				7BF0A68915DE495500B3B57F /* SASlideMenuDataSource.h */,
-				7B5CA6EE1682121B006E6993 /* SASlideMenuDelegate.h */,
 				7BC688BD16A6FD08004ED00D /* SASlideMenuRootViewController.h */,
 				7BC688BE16A6FD08004ED00D /* SASlideMenuRootViewController.m */,
 				7BFEA28816C1545000455A22 /* SASlideMenuRightMenuViewController.h */,
@@ -462,7 +470,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = SASlideMenu;
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Stefano Antonelli";
 			};
 			buildConfigurationList = 7B8C3FD415D8D55800E42A41 /* Build configuration list for PBXProject "SASlideMenu" */;
@@ -565,6 +573,7 @@
 				7BDBF4AA166CDF8200FDA327 /* rowselected@2x.png in Resources */,
 				7BDBF4B1166CE51200FDA327 /* Icon.png in Resources */,
 				7BDBF4B2166CE51900FDA327 /* Icon@2x.png in Resources */,
+				7B27435C16D3638300F89C69 /* CHANGELOG.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,6 +617,7 @@
 				7BC688FE16A99DB2004ED00D /* SASlideMenuViewController.m in Sources */,
 				7BC6890216A9F51C004ED00D /* SASlideMenuRootViewController.m in Sources */,
 				7BFEA28E16C2573F00455A22 /* SASlideMenuNavigationController.m in Sources */,
+				7B27435A16D2820600F89C69 /* LightViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,6 +674,9 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -691,6 +704,9 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;

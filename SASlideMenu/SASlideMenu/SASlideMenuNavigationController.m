@@ -16,7 +16,7 @@
 
 -(UIViewController *)popViewControllerAnimated:(BOOL)animated{
     if (self.topViewController == self.lastController) {
-        [self.rootController popNavigationController];
+        [self.rootController popRightNavigationController];
         return nil;
     }else{
         return [super popViewControllerAnimated:animated];

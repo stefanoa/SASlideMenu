@@ -26,12 +26,14 @@
     navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuButton];
     
     Boolean hasRightMenu = NO;
+    rootController.isRightMenuEnabled = NO;
     NSIndexPath* selectedIndexPath = [rootController.leftMenu.tableView indexPathForSelectedRow];
 
-    if ([rootController.leftMenu.slideMenuDataSource respondsToSelector:@selector(hasRightMenuForSegueId:)]) {
-        hasRightMenu = [rootController.leftMenu.slideMenuDataSource hasRightMenuForSegueId:self.identifier];
+    if ([rootController.leftMenu.slideMenuDataSource respondsToSelector:@selector(hasRightMenuForIndexPath:)]) {
+        hasRightMenu = [rootController.leftMenu.slideMenuDataSource hasRightMenuForIndexPath:selectedIndexPath];
     }
     if (hasRightMenu) {
+        rootController.isRightMenuEnabled = YES;
         if ([rootController.leftMenu.slideMenuDataSource respondsToSelector:@selector(configureRightMenuButton:)]) {
             UIButton* rightMenuButton = [[UIButton alloc] init];
             [rootController.leftMenu.slideMenuDataSource configureRightMenuButton:rightMenuButton];
@@ -56,19 +58,16 @@
     
     [rootController switchToContentViewController:destination];
 
-    if ([rootController.leftMenu.slideMenuDataSource respondsToSelector:@selector(sugueIdForIndexPath:)]) {
+    if ([rootController.leftMenu.slideMenuDataSource respondsToSelector:@selector(segueIdForIndexPath:)]) {
         [rootController addContentViewController:destination withIndexPath:selectedIndexPath];        
     }
-    if ([rootController.leftMenu.slideMenuDataSource respondsToSelector:@selector(hasRightMenuForSegueId:)]) {
-        Boolean hasRightMenu = [rootController.leftMenu.slideMenuDataSource hasRightMenuForSegueId:self.identifier];
-        if (hasRightMenu) {
-            rootController.isRightMenuEnabled = YES;
-        }else{
-            rootController.isRightMenuEnabled = NO;
-        }
-    }else{
-        rootController.isRightMenuEnabled = NO;
-    }
+       
+    UIPanGestureRecognizer* panGesture= [[UIPanGestureRecognizer alloc] initWithTarget:rootController action:@selector(panItem:)];
+    [panGesture setMaximumNumberOfTouches:2];
+    [panGesture setDelegate:source];
+    [panGesture setCancelsTouchesInView:NO];
+    
+    [destination.view addGestureRecognizer:panGesture];
 }
 
 @end

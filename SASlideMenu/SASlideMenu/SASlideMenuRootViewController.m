@@ -113,7 +113,7 @@ typedef enum {
     }
     [UIView animateWithDuration:kSlideInInterval
                           delay:0.0
-                        options:UIViewAnimationCurveEaseInOut
+                        options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
                          [self slideToSide:self.selectedContent];
                      }
@@ -133,7 +133,7 @@ typedef enum {
     
     [UIView animateWithDuration:kSlideInInterval
                           delay:0.0
-                        options:UIViewAnimationCurveEaseInOut
+                        options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
                          [self slideToLeftSide:self.selectedContent];
                      }
@@ -150,7 +150,7 @@ typedef enum {
     if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuWillSlideOut)]){
         [self.leftMenu.slideMenuDelegate slideMenuWillSlideOut];
     }
-    [UIView animateWithDuration:kSlideOutInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
+    [UIView animateWithDuration:kSlideOutInterval delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self slideOut:self.selectedContent];
     } completion:^(BOOL finished) {
         if (completion) {
@@ -167,7 +167,7 @@ typedef enum {
     if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuWillSlideIn)]){
         [self.leftMenu.slideMenuDelegate slideMenuWillSlideIn];
     }
-    [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
+    [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self slideIn:self.selectedContent];
     } completion:^(BOOL finished) {
         if (completion) {
@@ -278,6 +278,10 @@ typedef enum {
 	}
 }
 
+-(UINavigationController*) controllerForIndexPath:(NSIndexPath*) indexPath{
+    return [controllers objectForKey:indexPath];
+}
+
 -(void) switchToContentViewController:(UINavigationController*) content{
     CGRect bounds = self.view.bounds;
     self.view.userInteractionEnabled = NO;
@@ -289,9 +293,10 @@ typedef enum {
     if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(slideOutThenIn)]){
         slideOutThenIn = [self.leftMenu.slideMenuDataSource slideOutThenIn];
     }
-    if (state != SASlideMenuStateInitial) {
+    BOOL hideContentOnStartup = ![self.leftMenu.slideMenuDataSource respondsToSelector:@selector(selectedIndexPath)];
+    
+    if (state != SASlideMenuStateInitial || hideContentOnStartup) {
         if (slideOutThenIn) {
-            //Animate out the currently selected UIViewController
             [self doSlideOut:^(BOOL completed) {
                 [self.selectedContent willMoveToParentViewController:nil];
                 [self.selectedContent.view removeFromSuperview];
@@ -359,7 +364,7 @@ typedef enum {
     }
 }
 
--(void) pushNavigationController:(SASlideMenuNavigationController*)navigationController{
+-(void) pushRightNavigationController:(SASlideMenuNavigationController*)navigationController{
     SASlideMenuRootViewController* root = self;
     root.navigationController = navigationController;
     navigationController.rootController = root;
@@ -382,7 +387,8 @@ typedef enum {
     }];
 
 }
--(void) popNavigationController{
+
+-(void) popRightNavigationController{
     CGRect bounds = self.view.bounds;
     [self.navigationController willMoveToParentViewController:nil];
     [UIView animateWithDuration:kSlideOutInterval animations:^{
@@ -417,20 +423,17 @@ typedef enum {
     
     UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapShield:)];
     [self.shieldWithMenu addGestureRecognizer:tapGesture];
-    [tapGesture setDelegate:self];
     UIPanGestureRecognizer* panGestureMenu = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panItem:)];
     [panGestureMenu setMaximumNumberOfTouches:2];
-    [panGestureMenu setDelegate:self];
     [self.shieldWithMenu addGestureRecognizer:panGestureMenu];
     
     UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panItem:)];
     [panGesture setMaximumNumberOfTouches:2];
-    [panGesture setDelegate:self];
     [self.shield addGestureRecognizer:panGesture];
     
     [self performSegueWithIdentifier:@"leftMenu" sender:self];
     self.isRightMenuEnabled = NO;
-    if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(hasRightMenuForSegueId:)]) {
+    if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(hasRightMenuForIndexPath:)]) {
         [self performSegueWithIdentifier:@"rightMenu" sender:self];
     }
 }

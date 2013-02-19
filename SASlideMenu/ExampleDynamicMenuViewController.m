@@ -27,8 +27,7 @@
         self.slideMenuDataSource = self;
         self.slideMenuDelegate = self;
         self.selectedBrightness = 0.3;
-        self.selectedHue = 0.0;
-        
+        self.selectedHue = 0.0;        
     }
     return self;
 }
@@ -50,19 +49,16 @@
     return YES;
 }
 
--(void) prepareForSwitchToContentViewController:(UIViewController *)content{
-    UINavigationController* navigationController = (UINavigationController*)content;
-    ColoredViewController* coloredViewController = (ColoredViewController*) navigationController.topViewController;
-    
-    [coloredViewController setBackgroundHue:selectedHue brightness:selectedBrightness];
-}
 #pragma mark -
 #pragma mark SASlideMenuDataSource
 
-// The SASlideMenuDataSource provides the initial segueid that represents the initial visibile view controller, the eventual additional configuration to the menu button and the mapping for each indexPath to the segues for the content controllers
-
-
-
+-(void) prepareForSwitchToContentViewController:(UINavigationController *)content{
+    UIViewController* controller = [content.viewControllers objectAtIndex:0];
+    if ([controller isKindOfClass:[ColoredViewController class]]) {
+        ColoredViewController* coloredViewController = (ColoredViewController*) controller;
+        [coloredViewController setBackgroundHue:selectedHue brightness:selectedBrightness];
+    }
+}
 
 // It configure the menu button. The beahviour of the button should not be modified
 -(void) configureMenuButton:(UIButton *)menuButton{
@@ -74,6 +70,7 @@
     [menuButton setAdjustsImageWhenDisabled:NO];
 }
 
+// It configure the right menu button. The beahviour of the button should not be modified
 -(void) configureRightMenuButton:(UIButton *)menuButton{
     menuButton.frame = CGRectMake(0, 0, 40, 29);
     [menuButton setImage:[UIImage imageNamed:@"menuright.png"] forState:UIControlStateNormal];
@@ -82,9 +79,10 @@
     [menuButton setAdjustsImageWhenHighlighted:NO];
     [menuButton setAdjustsImageWhenDisabled:NO];
 }
+
 // This is the segue you want visibile when the controller is loaded the first time
--(NSString*) initialSegueId{
-    return @"colored";
+-(NSIndexPath*) selectedIndexPath{
+    return [NSIndexPath indexPathForRow:0 inSection:0];
 }
 
 // It maps each indexPath to the segueId to be used. The segue is performed only the first time the controller needs to loaded, subsequent switch to the content controller will use the already loaded controller
@@ -95,9 +93,11 @@
     }
     return @"colored";
 }
+
 -(Boolean) slideOutThenIn{
     return NO;
 }
+//Enable caching for the Controller at the provided indexPath
 -(Boolean) allowContentViewControllerCachingForIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row ==0) {
         return NO;
@@ -105,11 +105,13 @@
     return YES;
 }
 
--(Boolean) hasRightMenuForSegueId:(NSString *)segueId{
-    if ([segueId isEqualToString:@"coloredNoRightMenu"]) {
-        return NO;
+//Enable the right menu for the controller linked to the Segue indentified by the provided segueId
+-(Boolean) hasRightMenuForIndexPath:(NSIndexPath *)indexPath{
+
+    if (indexPath.section == 0) {
+        return YES;
     }
-    return YES;
+    return NO;
 }
 
 #pragma mark -

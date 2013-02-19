@@ -7,7 +7,7 @@
 //
 
 #import "SASlideMenuViewController.h"
-
+#import "SASlideMenuRootViewController.h"
 @interface SASlideMenuViewController ()
 
 @end
@@ -15,10 +15,49 @@
 @implementation SASlideMenuViewController
 
 #pragma mark -
+#pragma mark SASlideMenuViewController
+
+-(void)selectContentAtIndexPath:(NSIndexPath *)indexPath scrollPosition:(UITableViewScrollPosition)scrollPosition{
+    if ([self.slideMenuDataSource respondsToSelector:@selector(segueIdForIndexPath:)]) {
+        [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:scrollPosition];
+        
+        if ([self.slideMenuDataSource respondsToSelector:@selector(allowContentViewControllerCachingForIndexPath:)] ) {
+            if ([self.slideMenuDataSource allowContentViewControllerCachingForIndexPath:indexPath]) {
+                
+            }
+            UINavigationController* controller = [self.rootController controllerForIndexPath:indexPath];
+            if (controller) {
+                [self.rootController switchToContentViewController:controller];
+                return;
+            }
+        }
+        NSString* segueId = [self.slideMenuDataSource segueIdForIndexPath:indexPath];
+        [self performSegueWithIdentifier:segueId sender:self];
+    }
+}
+
+#pragma mark -
+#pragma mark UIGestureRecognizerDelegate
+
+-(BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
+    return YES;
+}
+
+#pragma mark -
 #pragma mark UITableViewDelegate
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.slideMenuDataSource respondsToSelector:@selector(segueIdForIndexPath:)]) {
+        if ([self.slideMenuDataSource respondsToSelector:@selector(allowContentViewControllerCachingForIndexPath:)] ) {
+            if ([self.slideMenuDataSource allowContentViewControllerCachingForIndexPath:indexPath]) {
+                
+            }
+            UINavigationController* controller = [self.rootController controllerForIndexPath:indexPath];
+            if (controller) {
+                [self.rootController switchToContentViewController:controller];
+                return;
+            }
+        }
         NSString* segueId = [self.slideMenuDataSource segueIdForIndexPath:indexPath];
         [self performSegueWithIdentifier:segueId sender:self];        
     }

@@ -18,7 +18,7 @@
     SASlideMenuRootViewController* root = source.rootController;
     SASlideMenuNavigationController* destination = self.destinationViewController;
     
-    [root pushNavigationController:destination];
+    [root pushRightNavigationController:destination];
 }
 
 @end

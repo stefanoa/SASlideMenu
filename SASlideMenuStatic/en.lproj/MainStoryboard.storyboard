@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="VKh-QN-AtT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="VKh-QN-AtT">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--Slide Menu Root View Controller-->
@@ -19,7 +19,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4r5-SS-30D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1215" y="-340"/>
+            <point key="canvasLocation" x="-1223" y="-243"/>
         </scene>
         <!--Example Static Menu View Controller-->
         <scene sceneID="0pQ-K8-zlO">
@@ -65,7 +65,6 @@
                                             <outlet property="backgroundView" destination="uAM-3m-M2T" id="bii-rk-cub"/>
                                             <outlet property="disclosureImage" destination="kqn-D2-Ux9" id="gt9-Za-aDW"/>
                                             <outlet property="selectedBackgroundView" destination="hCN-FM-76I" id="N0d-qH-PN3"/>
-                                            <segue destination="doc-P0-YCL" kind="custom" identifier="dark" customClass="SASlideMenuContentSegue" id="Iyq-dF-d6Z"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Y5R-hn-9ln" customClass="MenuCell">
@@ -101,7 +100,6 @@
                                             <outlet property="backgroundView" destination="jJO-1q-bSw" id="gaZ-GN-biu"/>
                                             <outlet property="disclosureImage" destination="wgh-IC-uH4" id="Kw8-Nk-3yX"/>
                                             <outlet property="selectedBackgroundView" destination="a6A-9P-Yas" id="c2a-vN-2AG"/>
-                                            <segue destination="FgT-Db-JXl" kind="custom" identifier="light" customClass="SASlideMenuContentSegue" id="hVV-uQ-EUz"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="EGj-9f-HYm" customClass="MenuCell">
@@ -137,7 +135,6 @@
                                             <outlet property="backgroundView" destination="Ave-6G-f2k" id="fdb-pf-WU8"/>
                                             <outlet property="disclosureImage" destination="PM1-63-jf9" id="dH4-iU-Gef"/>
                                             <outlet property="selectedBackgroundView" destination="9Of-bR-Ha6" id="jkF-i0-F05"/>
-                                            <segue destination="79Z-YM-vAE" kind="custom" identifier="shades" customClass="SASlideMenuContentSegue" id="kDO-qq-npi"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -149,10 +146,15 @@
                         </connections>
                     </tableView>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <connections>
+                        <segue destination="doc-P0-YCL" kind="custom" identifier="dark" customClass="SASlideMenuContentSegue" id="POg-Df-gpJ"/>
+                        <segue destination="FgT-Db-JXl" kind="custom" identifier="light" customClass="SASlideMenuContentSegue" id="jgz-po-BPx"/>
+                        <segue destination="79Z-YM-vAE" kind="custom" identifier="shades" customClass="SASlideMenuContentSegue" id="0IC-8a-lf6"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L1Z-u4-a1O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-737" y="-340"/>
+            <point key="canvasLocation" x="-745" y="-243"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bZ3-Hh-inT">
@@ -227,7 +229,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PmC-ed-kt2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-177" y="414"/>
+            <point key="canvasLocation" x="-180" y="414"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VmR-Dj-S6u">
@@ -243,22 +245,39 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KSr-DZ-dpv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-177" y="-340"/>
+            <point key="canvasLocation" x="-180" y="-243"/>
         </scene>
-        <!--View Controller-->
+        <!--Light View Controller-->
         <scene sceneID="73w-vS-Yma">
             <objects>
-                <viewController id="CJX-Z9-Ud1" sceneMemberID="viewController">
+                <viewController id="CJX-Z9-Ud1" customClass="LightViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KiK-IR-cBq">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xWG-5D-zlw">
+                                <rect key="frame" x="115" y="154" width="92" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Back to Dark">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tap:" destination="CJX-Z9-Ud1" eventType="touchUpInside" id="Zu3-xd-KNr"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZWg-I4-oI8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="osR-NV-VvG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="290" y="-340"/>
+            <point key="canvasLocation" x="290" y="-243"/>
         </scene>
         <!--Shades View Controller-->
         <scene sceneID="3Xd-6J-ylE">
@@ -305,7 +324,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hld-U0-TVs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="284" y="414"/>
+            <point key="canvasLocation" x="290" y="414"/>
         </scene>
     </scenes>
     <resources>
@@ -323,6 +342,12 @@
         </class>
         <class className="ExampleStaticMenuViewController" superclassName="SASlideMenuViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ExampleStaticMenuViewController.h"/>
+        </class>
+        <class className="LightViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LightViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="tap:"/>
+            </relationships>
         </class>
         <class className="MenuCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuCell.h"/>

@@ -11,7 +11,7 @@
 #import "ExampleStaticMenuViewController.h"
 #import "MenuCell.h"
 #import "DarkViewController.h"
-
+#import "LightViewController.h"
 @interface ExampleStaticMenuViewController ()
 
 @end
@@ -44,9 +44,23 @@
 #pragma mark SASlideMenuDataSource
 // The SASlideMenuDataSource is used to provide the initial segueid that represents the initial visibile view controller and to provide eventual additional configuration to the menu button
 
-// This is the segue you want visibile when the controller is loaded the first time
--(NSString*) initialSegueId{
-    return @"dark";
+// This is the indexPath selected at start-up
+-(NSIndexPath*) selectedIndexPath{
+    return [NSIndexPath indexPathForRow:0 inSection:0];
+}
+
+-(NSString*) segueIdForIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0) {
+        return @"dark";
+    }else if (indexPath.row == 1){
+        return @"light";
+    }else{
+        return @"shades";
+    }
+}
+
+-(Boolean) allowContentViewControllerCachingForIndexPath:(NSIndexPath *)indexPath{
+    return YES;
 }
 
 // This is used to configure the menu button. The beahviour of the button should not be modified
@@ -71,7 +85,13 @@
 -(CGFloat) leftMenuVisibleWidth{
     return 280;
 }
-
+-(void) prepareForSwitchToContentViewController:(UINavigationController *)content{
+    UIViewController* controller = [content.viewControllers objectAtIndex:0];
+    if ([controller isKindOfClass:[LightViewController class]]) {
+        LightViewController* lightViewController = (LightViewController*)controller;
+        lightViewController.menuViewController = self;
+    }
+}
 #pragma mark -
 #pragma mark SASlideMenuDelegate
 

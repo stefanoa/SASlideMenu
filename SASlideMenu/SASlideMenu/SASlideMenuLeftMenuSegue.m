@@ -29,8 +29,12 @@
         
     } completion:^(BOOL finished) {
         [leftMenu didMoveToParentViewController:rootViewController];
-        NSString* initiaSegueId = [rootViewController.leftMenu.slideMenuDataSource initialSegueId];
-        [leftMenu performSegueWithIdentifier:initiaSegueId sender:leftMenu];
+        if ([rootViewController.leftMenu.slideMenuDataSource respondsToSelector:@selector(selectedIndexPath)]) {
+            NSIndexPath* selectedIndexPath = [rootViewController.leftMenu.slideMenuDataSource selectedIndexPath];
+            [leftMenu.tableView selectRowAtIndexPath:selectedIndexPath animated:NO scrollPosition:UITableViewScrollPositionTop];
+            NSString* initialSegueId = [rootViewController.leftMenu.slideMenuDataSource segueIdForIndexPath:selectedIndexPath];
+            [leftMenu performSegueWithIdentifier:initialSegueId sender:leftMenu];
+        }
     }];
 }
 
