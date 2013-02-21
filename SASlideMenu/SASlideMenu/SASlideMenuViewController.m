@@ -20,16 +20,15 @@
 -(void)selectContentAtIndexPath:(NSIndexPath *)indexPath scrollPosition:(UITableViewScrollPosition)scrollPosition{
     if ([self.slideMenuDataSource respondsToSelector:@selector(segueIdForIndexPath:)]) {
         [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:scrollPosition];
-        
-        if ([self.slideMenuDataSource respondsToSelector:@selector(allowContentViewControllerCachingForIndexPath:)] ) {
-            if ([self.slideMenuDataSource allowContentViewControllerCachingForIndexPath:indexPath]) {
-                
-            }
-            UINavigationController* controller = [self.rootController controllerForIndexPath:indexPath];
-            if (controller) {
-                [self.rootController switchToContentViewController:controller];
-                return;
-            }
+     
+        Boolean disableContentViewControllerCaching= NO;
+        if ([self.slideMenuDataSource respondsToSelector:@selector(disableContentViewControllerCachingForIndexPath::)]) {
+            disableContentViewControllerCaching = [self.slideMenuDataSource disableContentViewControllerCachingForIndexPath:indexPath];
+        }
+        UINavigationController* controller = [self.rootController controllerForIndexPath:indexPath];
+        if (controller) {
+            [self.rootController switchToContentViewController:controller];
+            return;
         }
         NSString* segueId = [self.slideMenuDataSource segueIdForIndexPath:indexPath];
         [self performSegueWithIdentifier:segueId sender:self];
@@ -48,15 +47,10 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.slideMenuDataSource respondsToSelector:@selector(segueIdForIndexPath:)]) {
-        if ([self.slideMenuDataSource respondsToSelector:@selector(allowContentViewControllerCachingForIndexPath:)] ) {
-            if ([self.slideMenuDataSource allowContentViewControllerCachingForIndexPath:indexPath]) {
-                
-            }
-            UINavigationController* controller = [self.rootController controllerForIndexPath:indexPath];
-            if (controller) {
-                [self.rootController switchToContentViewController:controller];
-                return;
-            }
+        UINavigationController* controller = [self.rootController controllerForIndexPath:indexPath];
+        if (controller) {
+            [self.rootController switchToContentViewController:controller];
+            return;
         }
         NSString* segueId = [self.slideMenuDataSource segueIdForIndexPath:indexPath];
         [self performSegueWithIdentifier:segueId sender:self];        

@@ -33,7 +33,6 @@ typedef enum {
 }
 
 @property (nonatomic,strong) UINavigationController* selectedContent;
-@property (nonatomic, strong) UIView* shield;
 @property (nonatomic, strong) UIView* shieldWithMenu;
 
 @end
@@ -85,15 +84,10 @@ typedef enum {
 
 -(void) completeSlideIn:(UINavigationController*) controller{
     [self.shieldWithMenu removeFromSuperview];
-    
-    [controller.visibleViewController.view addSubview:self.shield];
-    [controller.visibleViewController.view sendSubviewToBack:self.shield];
-    self.shield.frame = controller.visibleViewController.view.bounds;
     state = SASlideMenuStateContent;
 }
 
 -(void) completeSlideToSide:(UINavigationController*) controller{
-    [self.shield removeFromSuperview];
     [controller.view addSubview:self.shieldWithMenu];
     self.shieldWithMenu.frame = controller.view.bounds;
     state = SASlideMenuStateMenu;
@@ -101,7 +95,6 @@ typedef enum {
 }
 
 -(void) completeSlideToLeftSide:(UINavigationController*) controller{
-    [self.shield removeFromSuperview];
     [controller.view addSubview:self.shieldWithMenu];
     self.shieldWithMenu.frame = controller.view.bounds;
     state = SASlideMenuStateRightMenu;
@@ -353,12 +346,12 @@ typedef enum {
 }
 
 -(void) addContentViewController:(UIViewController*) content withIndexPath:(NSIndexPath*)indexPath{
-    Boolean allowContentViewControllerCaching = YES;
+    Boolean disableContentViewControllerCaching= NO;
     if (indexPath) {
-        if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(allowContentViewControllerCachingForIndexPath:)]) {
-            allowContentViewControllerCaching = [self.leftMenu.slideMenuDataSource allowContentViewControllerCachingForIndexPath:indexPath];
+        if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(disableContentViewControllerCachingForIndexPath:)]) {
+            disableContentViewControllerCaching = [self.leftMenu.slideMenuDataSource disableContentViewControllerCachingForIndexPath:indexPath];
         }
-        if (allowContentViewControllerCaching) {
+        if (!disableContentViewControllerCaching) {
             [controllers setObject:content forKey:indexPath];
         }
     }
@@ -380,7 +373,7 @@ typedef enum {
     [root addChildViewController:navigationController];
     [root.view addSubview:navigationController.view];
     
-    [UIView animateWithDuration:kSlideOutInterval animations:^{
+    [UIView animateWithDuration:kSlideInInterval animations:^{
         navigationController.view.frame = CGRectMake(0.0,0.0,bounds.size.width,bounds.size.height);
     } completion:^(BOOL finished) {
         [navigationController didMoveToParentViewController:root];
@@ -391,7 +384,7 @@ typedef enum {
 -(void) popRightNavigationController{
     CGRect bounds = self.view.bounds;
     [self.navigationController willMoveToParentViewController:nil];
-    [UIView animateWithDuration:kSlideOutInterval animations:^{
+    [UIView animateWithDuration:kSlideInInterval animations:^{
         self.navigationController.view.frame = CGRectMake(bounds.size.width, 0, bounds.size.width, bounds.size.height);
     } completion:^(BOOL finished) {
         [self.navigationController.view removeFromSuperview];
@@ -416,7 +409,6 @@ typedef enum {
     
     controllers = [[NSMutableDictionary alloc] init];
     
-    self.shield = [[UIView alloc] initWithFrame:CGRectZero];
     self.shieldWithMenu = [[UIView alloc] initWithFrame:CGRectZero];
     state = SASlideMenuStateInitial;
     panningState = SASlideMenuPanningStateStopped;
@@ -426,11 +418,7 @@ typedef enum {
     UIPanGestureRecognizer* panGestureMenu = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panItem:)];
     [panGestureMenu setMaximumNumberOfTouches:2];
     [self.shieldWithMenu addGestureRecognizer:panGestureMenu];
-    
-    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panItem:)];
-    [panGesture setMaximumNumberOfTouches:2];
-    [self.shield addGestureRecognizer:panGesture];
-    
+
     [self performSegueWithIdentifier:@"leftMenu" sender:self];
     self.isRightMenuEnabled = NO;
     if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(hasRightMenuForIndexPath:)]) {

@@ -569,35 +569,6 @@
         <image name="rowsquare.png" width="308" height="44"/>
         <image name="selectedColoredRow.png" width="320" height="44"/>
     </resources>
-    <classes>
-        <class className="ColoredDetailViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ColoredDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="brightness" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="colorBox" candidateClass="UIView"/>
-                <relationship kind="outlet" name="hue" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="saturation" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ColoredViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ColoredViewController.h"/>
-        </class>
-        <class className="ExampleDynamicMenuViewController" superclassName="SASlideMenuViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExampleDynamicMenuViewController.h"/>
-        </class>
-        <class className="SASlideMenuNavigationController" superclassName="UINavigationController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SASlideMenuNavigationController.h"/>
-        </class>
-        <class className="SASlideMenuRightMenuViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SASlideMenuRightMenuViewController.h"/>
-        </class>
-        <class className="SASlideMenuRootViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SASlideMenuRootViewController.h"/>
-        </class>
-        <class className="SASlideMenuViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SASlideMenuViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

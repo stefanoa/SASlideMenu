@@ -61,13 +61,19 @@
     if ([rootController.leftMenu.slideMenuDataSource respondsToSelector:@selector(segueIdForIndexPath:)]) {
         [rootController addContentViewController:destination withIndexPath:selectedIndexPath];        
     }
-       
-    UIPanGestureRecognizer* panGesture= [[UIPanGestureRecognizer alloc] initWithTarget:rootController action:@selector(panItem:)];
-    [panGesture setMaximumNumberOfTouches:2];
-    [panGesture setDelegate:source];
-    [panGesture setCancelsTouchesInView:NO];
+    Boolean disablePanGesture= NO;
+    if ([rootController.leftMenu.slideMenuDataSource respondsToSelector:@selector(disablePanGestureForIndexPath:)]) {
+        disablePanGesture = [rootController.leftMenu.slideMenuDataSource disablePanGestureForIndexPath:selectedIndexPath];
+    }
+    if (!disablePanGesture) {
+        UIPanGestureRecognizer* panGesture= [[UIPanGestureRecognizer alloc] initWithTarget:rootController action:@selector(panItem:)];
+        [panGesture setMaximumNumberOfTouches:2];
+        [panGesture setDelegate:source];
+        [panGesture setCancelsTouchesInView:NO];
+        
+        [destination.view addGestureRecognizer:panGesture];
+    }
     
-    [destination.view addGestureRecognizer:panGesture];
 }
 
 @end

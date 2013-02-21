@@ -97,15 +97,15 @@
 -(Boolean) slideOutThenIn{
     return NO;
 }
-//Enable caching for the Controller at the provided indexPath
--(Boolean) allowContentViewControllerCachingForIndexPath:(NSIndexPath *)indexPath{
+//Disable caching for the controller at the first row of each section
+-(Boolean) disableContentViewControllerCachingForIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row ==0) {
-        return NO;
+        return YES;
     }
-    return YES;
+    return NO;
 }
 
-//Enable the right menu for the controller linked to the Segue indentified by the provided segueId
+//Enable the right menu for the the view controller in the first section
 -(Boolean) hasRightMenuForIndexPath:(NSIndexPath *)indexPath{
 
     if (indexPath.section == 0) {
@@ -145,9 +145,9 @@
     }else if (section==2){
         hue = 0.66;
     }
-    cell.backgroundColor = [UIColor colorWithHue:hue saturation:1.0 brightness:brightness alpha:1.0];
-    
+    cell.backgroundColor = [UIColor colorWithHue:hue saturation:1.0 brightness:brightness alpha:1.0];    
 }
+
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"item"];
     return cell;

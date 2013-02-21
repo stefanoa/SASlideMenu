@@ -63,6 +63,13 @@
     return YES;
 }
 
+-(Boolean) disablePanGestureForIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row ==0) {
+        return YES;
+    }
+    return NO;
+}
+
 // This is used to configure the menu button. The beahviour of the button should not be modified
 -(void) configureMenuButton:(UIButton *)menuButton{
     menuButton.frame = CGRectMake(0, 0, 40, 29);

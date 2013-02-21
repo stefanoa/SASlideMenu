@@ -10,7 +10,6 @@
 @protocol SASlideMenuDataSource <NSObject>
 
 @optional
-
 //It is used to prepare the Content View Controller before it will be displayed.
 //It is called for each selection of the menu.
 -(void) prepareForSwitchToContentViewController:(UINavigationController *)content;
@@ -42,7 +41,10 @@
 // If it returns true when switching between content view controller the deselected one will slide out before the selected one will slide in.
 -(Boolean) slideOutThenIn;
 
-// It is used to selectively allow content view controller caching.
--(Boolean) allowContentViewControllerCachingForIndexPath:(NSIndexPath*) indexPath;
+// It is used to selectively disable content view controller caching. If not implemented the view controller are cached.
+-(Boolean) disableContentViewControllerCachingForIndexPath:(NSIndexPath*) indexPath;
+
+// It is used to selectively disable the pan gesture that slide the view controller. If not implemented the pan gesture is active for all the view controller.
+-(Boolean) disablePanGestureForIndexPath:(NSIndexPath*) indexPath;
 
 @end
