@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7B27435A16D2820600F89C69 /* LightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B27435916D2820600F89C69 /* LightViewController.m */; };
 		7B27435C16D3638300F89C69 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 7B27435B16D3638300F89C69 /* CHANGELOG.md */; };
+		7B27436B16D7801E00F89C69 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B27436A16D7801E00F89C69 /* FirstViewController.m */; };
 		7BC688BF16A6FD08004ED00D /* SASlideMenuRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC688BE16A6FD08004ED00D /* SASlideMenuRootViewController.m */; };
 		7BC688FC16A99DB2004ED00D /* SASlideMenuContentSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC688F416A99DA3004ED00D /* SASlideMenuContentSegue.m */; };
 		7BC688FD16A99DB2004ED00D /* SASlideMenuLeftMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC688F616A99DA3004ED00D /* SASlideMenuLeftMenuSegue.m */; };
@@ -126,6 +127,8 @@
 		7B27435816D2820600F89C69 /* LightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightViewController.h; sourceTree = "<group>"; };
 		7B27435916D2820600F89C69 /* LightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightViewController.m; sourceTree = "<group>"; };
 		7B27435B16D3638300F89C69 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
+		7B27436916D7801E00F89C69 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		7B27436A16D7801E00F89C69 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		7B28D2A2165BF464000EE929 /* ExampleDynamicMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExampleDynamicMenuViewController.h; path = ../SASlideMenu/ExampleDynamicMenuViewController.h; sourceTree = "<group>"; };
 		7B28D2A3165BF464000EE929 /* ExampleDynamicMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExampleDynamicMenuViewController.m; path = ../SASlideMenu/ExampleDynamicMenuViewController.m; sourceTree = "<group>"; };
 		7B28D2A5165CCB10000EE929 /* ColoredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColoredViewController.h; path = ../SASlideMenu/ColoredViewController.h; sourceTree = "<group>"; };
@@ -340,6 +343,8 @@
 				7B28D2A6165CCB10000EE929 /* ColoredViewController.m */,
 				7B28D2F81664EE37000EE929 /* ColoredDetailViewController.h */,
 				7B28D2F91664EE39000EE929 /* ColoredDetailViewController.m */,
+				7B27436916D7801E00F89C69 /* FirstViewController.h */,
+				7B27436A16D7801E00F89C69 /* FirstViewController.m */,
 				7B28D2A2165BF464000EE929 /* ExampleDynamicMenuViewController.h */,
 				7B28D2A3165BF464000EE929 /* ExampleDynamicMenuViewController.m */,
 				7BDBF430166CC79400FDA327 /* SASlideMenuAppDelegate.h */,
@@ -598,6 +603,7 @@
 				7BFEA28716C0FACF00455A22 /* SASlideMenuPushSegue.m in Sources */,
 				7BFEA28A16C1545000455A22 /* SASlideMenuRightMenuViewController.m in Sources */,
 				7BFEA28D16C2573F00455A22 /* SASlideMenuNavigationController.m in Sources */,
+				7B27436B16D7801E00F89C69 /* FirstViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

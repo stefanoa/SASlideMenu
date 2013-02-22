@@ -15,8 +15,8 @@
 @interface SASlideMenuViewController : UITableViewController<UIGestureRecognizerDelegate>
 
 @property(nonatomic,strong) SASlideMenuRootViewController* rootController;
-@property (assign, nonatomic) NSObject<SASlideMenuDataSource>* slideMenuDataSource;
-@property (assign, nonatomic) NSObject<SASlideMenuDelegate>* slideMenuDelegate;
+@property (strong, nonatomic) NSObject<SASlideMenuDataSource>* slideMenuDataSource;
+@property (strong, nonatomic) NSObject<SASlideMenuDelegate>* slideMenuDelegate;
 
 -(void)selectContentAtIndexPath:(NSIndexPath *)indexPath scrollPosition:(UITableViewScrollPosition)scrollPosition;
 
