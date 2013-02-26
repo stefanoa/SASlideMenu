@@ -81,22 +81,28 @@ typedef enum {
     CGRect bounds = self.view.bounds;
     controller.view.frame = CGRectMake(0.0,0.0,bounds.size.width,bounds.size.height);
 }
+-(void) addShield:(UINavigationController*) controller{
+    [controller.view addSubview:self.shieldWithMenu];
+    self.shieldWithMenu.frame = controller.view.bounds;
+
+}
+-(void) removeShield:(UINavigationController*) controller{
+    [self.shieldWithMenu removeFromSuperview];
+}
 
 -(void) completeSlideIn:(UINavigationController*) controller{
-    [self.shieldWithMenu removeFromSuperview];
+    [self removeShield:controller];
     state = SASlideMenuStateContent;
 }
 
 -(void) completeSlideToSide:(UINavigationController*) controller{
-    [controller.view addSubview:self.shieldWithMenu];
-    self.shieldWithMenu.frame = controller.view.bounds;
+    [self addShield:controller];
     state = SASlideMenuStateMenu;
     
 }
 
 -(void) completeSlideToLeftSide:(UINavigationController*) controller{
-    [controller.view addSubview:self.shieldWithMenu];
-    self.shieldWithMenu.frame = controller.view.bounds;
+    [self addShield:controller];
     state = SASlideMenuStateRightMenu;
 }
 
@@ -415,9 +421,10 @@ typedef enum {
     
     UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapShield:)];
     [self.shieldWithMenu addGestureRecognizer:tapGesture];
-    UIPanGestureRecognizer* panGestureMenu = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panItem:)];
-    [panGestureMenu setMaximumNumberOfTouches:2];
-    [self.shieldWithMenu addGestureRecognizer:panGestureMenu];
+    
+    UIPanGestureRecognizer* menuPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panItem:)];
+    [menuPanGesture setMaximumNumberOfTouches:2];
+    [self.shieldWithMenu addGestureRecognizer:menuPanGesture];
 
     [self performSegueWithIdentifier:@"leftMenu" sender:self];
     self.isRightMenuEnabled = NO;
