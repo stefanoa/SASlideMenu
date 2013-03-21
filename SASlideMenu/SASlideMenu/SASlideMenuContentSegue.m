@@ -27,7 +27,7 @@
     
     Boolean hasRightMenu = NO;
     rootController.isRightMenuEnabled = NO;
-    NSIndexPath* selectedIndexPath = [rootController.leftMenu.tableView indexPathForSelectedRow];
+    NSIndexPath* selectedIndexPath = [rootController.leftMenu indexPathForSelectedRow];
 
     if ([rootController.leftMenu.slideMenuDataSource respondsToSelector:@selector(hasRightMenuForIndexPath:)]) {
         hasRightMenu = [rootController.leftMenu.slideMenuDataSource hasRightMenuForIndexPath:selectedIndexPath];
