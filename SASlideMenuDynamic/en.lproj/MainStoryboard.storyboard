@@ -47,7 +47,7 @@
                     <connections>
                         <outlet property="viewTable" destination="RUZ-Ge-NLM" id="eX2-Ki-KAl"/>
                         <segue destination="JVI-DT-Ljn" kind="custom" identifier="colored" customClass="SASlideMenuContentSegue" id="wo1-AL-Zbf"/>
-                        <segue destination="Z0V-YF-3O4" kind="custom" customClass="SASlideMenuContentSegue" id="4Yz-bg-lIk"/>
+                        <segue destination="Z0V-YF-3O4" kind="custom" identifier="coloredNoRightMenu" customClass="SASlideMenuContentSegue" id="4Yz-bg-lIk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M27-DX-HJO" userLabel="First Responder" sceneMemberID="firstResponder"/>
