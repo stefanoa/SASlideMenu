@@ -15,6 +15,6 @@
 @implementation LightViewController
 
 -(IBAction)tap:(id)sender{
-    [self.menuViewController selectContentAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] scrollPosition:UITableViewScrollPositionTop];
+    [self.menuViewController selectContentAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 }
 @end

@@ -13,27 +13,27 @@
 #import "DarkViewController.h"
 #import "LightViewController.h"
 @interface ExampleStaticMenuViewController ()
-
+<SASlideMenuDataSource,SASlideMenuDelegate, UITableViewDataSource, UITableViewDelegate>
+@property(nonatomic,strong) IBOutlet UITableView * viewTable;
 @end
 
 @implementation ExampleStaticMenuViewController
 
--(id) initWithCoder:(NSCoder *)aDecoder{
-    if (self = [super initWithCoder:aDecoder]) {
-        // Assign self to the slideMenuDataSource because self will implement SASlideMenuDatSource 
-        self.slideMenuDataSource = self;
-        self.slideMenuDelegate = self;
-    }
-    return self;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section; {
+  return 3;
 }
 
--(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
-    if(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]){
-        // Assign self to the slideMenuDataSource because self will implement SASlideMenuDataSource
-        self.slideMenuDataSource = self;
-    }
-    return self;
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath; {
+  MenuCell * cell = [tableView dequeueReusableCellWithIdentifier:@"MenuCell" forIndexPath:indexPath];
+  return cell;
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath; {
+  [self selectContentAtIndexPath:indexPath];
+}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
     return YES;

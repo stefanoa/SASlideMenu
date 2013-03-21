@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="VKh-QN-AtT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="VKh-QN-AtT">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -14,7 +14,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="C3g-DQ-fRD" kind="custom" identifier="leftMenu" customClass="SASlideMenuLeftMenuSegue" id="PVD-2Y-rxg"/>
+                        <segue destination="Ewn-ci-hp7" kind="custom" identifier="leftMenu" customClass="SASlideMenuLeftMenuSegue" id="lTl-Xq-juT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4r5-SS-30D" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -22,39 +22,41 @@
             <point key="canvasLocation" x="-1223" y="-243"/>
         </scene>
         <!--Example Static Menu View Controller-->
-        <scene sceneID="0pQ-K8-zlO">
+        <scene sceneID="IGx-1q-Z3N">
             <objects>
-                <tableViewController storyboardIdentifier="Static" id="C3g-DQ-fRD" customClass="ExampleStaticMenuViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bounces="NO" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="O8j-gz-Sfk">
+                <viewController storyboardIdentifier="Static" id="Ewn-ci-hp7" customClass="ExampleStaticMenuViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qch-Nm-Lfa">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.19898437499999999" alpha="1" colorSpace="calibratedWhite"/>
-                        <sections>
-                            <tableViewSection id="oDp-mW-YFf">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Yao-AR-fRV" customClass="MenuCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="t6B-hA-S4r">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.19898437499999999" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCell" id="dDU-3S-7BU" customClass="MenuCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rowselected.png" id="hCN-FM-76I">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rowselected.png" id="k0x-0s-eKF">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="row.png" id="uAM-3m-M2T">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="row.png" id="SeP-SR-CUc">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Dark" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Fnc-Dq-dWr">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Dark" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="JgL-EP-sT9">
                                                     <rect key="frame" x="20" y="11" width="211" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="disclosure.png" id="kqn-D2-Ux9">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="disclosure.png" id="u09-lX-8BZ">
                                                     <rect key="frame" x="250" y="12" width="20" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -62,104 +64,93 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <outlet property="backgroundView" destination="uAM-3m-M2T" id="bii-rk-cub"/>
-                                            <outlet property="disclosureImage" destination="kqn-D2-Ux9" id="gt9-Za-aDW"/>
-                                            <outlet property="selectedBackgroundView" destination="hCN-FM-76I" id="N0d-qH-PN3"/>
+                                            <outlet property="backgroundView" destination="SeP-SR-CUc" id="jlS-Bk-Lgy"/>
+                                            <outlet property="disclosureImage" destination="u09-lX-8BZ" id="evQ-Ms-U3E"/>
+                                            <outlet property="selectedBackgroundView" destination="k0x-0s-eKF" id="9wb-BA-AAd"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Y5R-hn-9ln" customClass="MenuCell">
-                                        <rect key="frame" x="0.0" y="44" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rowselected.png" id="a6A-9P-Yas">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="row.png" id="jJO-1q-bSw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="disclosure.png" id="wgh-IC-uH4">
-                                                    <rect key="frame" x="250" y="10" width="20" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Light" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="KbX-ze-Lzv">
-                                                    <rect key="frame" x="20" y="11" width="211" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <connections>
-                                            <outlet property="backgroundView" destination="jJO-1q-bSw" id="gaZ-GN-biu"/>
-                                            <outlet property="disclosureImage" destination="wgh-IC-uH4" id="Kw8-Nk-3yX"/>
-                                            <outlet property="selectedBackgroundView" destination="a6A-9P-Yas" id="c2a-vN-2AG"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="EGj-9f-HYm" customClass="MenuCell">
-                                        <rect key="frame" x="0.0" y="88" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rowselected.png" id="9Of-bR-Ha6">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="row.png" id="Ave-6G-f2k">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="disclosure.png" id="PM1-63-jf9">
-                                                    <rect key="frame" x="250" y="10" width="20" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Shades" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="IRv-6F-pnO">
-                                                    <rect key="frame" x="20" y="11" width="211" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <connections>
-                                            <outlet property="backgroundView" destination="Ave-6G-f2k" id="fdb-pf-WU8"/>
-                                            <outlet property="disclosureImage" destination="PM1-63-jf9" id="dH4-iU-Gef"/>
-                                            <outlet property="selectedBackgroundView" destination="9Of-bR-Ha6" id="jkF-i0-F05"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Ewn-ci-hp7" id="cdI-WV-Oja"/>
+                                    <outlet property="delegate" destination="Ewn-ci-hp7" id="dcD-LF-ayY"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="doc-P0-YCL" kind="custom" identifier="dark" customClass="SASlideMenuContentSegue" id="Ymu-Md-G0T"/>
+                        <segue destination="79Z-YM-vAE" kind="custom" identifier="shades" customClass="SASlideMenuContentSegue" id="RBT-Pg-3mb"/>
+                        <segue destination="FgT-Db-JXl" kind="custom" identifier="light" customClass="SASlideMenuContentSegue" id="dcC-D8-zN1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pDt-St-hwb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-757" y="-850"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="0pQ-K8-zlO">
+            <objects>
+                <tableViewController storyboardIdentifier="" id="C3g-DQ-fRD" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="O8j-gz-Sfk">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.19898437499999999" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCell" id="Yao-AR-fRV" customClass="MenuCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rowselected.png" id="hCN-FM-76I">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="row.png" id="uAM-3m-M2T">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Dark" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Fnc-Dq-dWr">
+                                            <rect key="frame" x="20" y="11" width="211" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="disclosure.png" id="kqn-D2-Ux9">
+                                            <rect key="frame" x="250" y="12" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <outlet property="backgroundView" destination="uAM-3m-M2T" id="bii-rk-cub"/>
+                                    <outlet property="disclosureImage" destination="kqn-D2-Ux9" id="gt9-Za-aDW"/>
+                                    <outlet property="selectedBackgroundView" destination="hCN-FM-76I" id="N0d-qH-PN3"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="C3g-DQ-fRD" id="6Qn-nj-kpk"/>
                             <outlet property="delegate" destination="C3g-DQ-fRD" id="fNz-SL-hmC"/>
                         </connections>
                     </tableView>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
-                    <connections>
-                        <segue destination="doc-P0-YCL" kind="custom" identifier="dark" customClass="SASlideMenuContentSegue" id="POg-Df-gpJ"/>
-                        <segue destination="FgT-Db-JXl" kind="custom" identifier="light" customClass="SASlideMenuContentSegue" id="jgz-po-BPx"/>
-                        <segue destination="79Z-YM-vAE" kind="custom" identifier="shades" customClass="SASlideMenuContentSegue" id="0IC-8a-lf6"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L1Z-u4-a1O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-745" y="-243"/>
+            <point key="canvasLocation" x="-863" y="-107"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bZ3-Hh-inT">
             <objects>
                 <navigationController definesPresentationContext="YES" id="doc-P0-YCL" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="YAc-JW-JsL"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="N6o-yJ-8r8">
                         <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -342,6 +333,9 @@
         </class>
         <class className="ExampleStaticMenuViewController" superclassName="SASlideMenuViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ExampleStaticMenuViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="viewTable" candidateClass="UITableView"/>
+            </relationships>
         </class>
         <class className="LightViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LightViewController.h"/>
@@ -359,8 +353,12 @@
         <class className="SASlideMenuRootViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SASlideMenuRootViewController.h"/>
         </class>
-        <class className="SASlideMenuViewController" superclassName="UITableViewController">
+        <class className="SASlideMenuViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SASlideMenuViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="slideMenuDataSource"/>
+                <relationship kind="outlet" name="slideMenuDelegate"/>
+            </relationships>
         </class>
         <class className="ShadesViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ShadesViewController.h"/>

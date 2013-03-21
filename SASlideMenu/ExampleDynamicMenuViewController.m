@@ -10,10 +10,10 @@
 #import "ColoredViewController.h"
 
 @interface ExampleDynamicMenuViewController ()
-
+<SASlideMenuDataSource,SASlideMenuDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic) CGFloat selectedHue;
 @property (nonatomic) CGFloat selectedBrightness;
-
+@property(nonatomic,strong) IBOutlet UITableView * viewTable;
 @end
 
 @implementation ExampleDynamicMenuViewController
@@ -23,24 +23,12 @@
 
 -(id) initWithCoder:(NSCoder *)aDecoder{
     if (self = [super initWithCoder:aDecoder]) {
-        // Assign self to the slideMenuDataSource because self will implement SASlideMenuDatSource
-        self.slideMenuDataSource = self;
-        self.slideMenuDelegate = self;
-        self.selectedBrightness = 0.3;
-        self.selectedHue = 0.0;        
+      self.selectedBrightness = 0.3;
+      self.selectedHue = 0.0;      
     }
     return self;
 }
 
--(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
-    if(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]){
-        // Assign self to the slideMenuDataSource because self will implement SASlideMenuDataSource
-        self.slideMenuDataSource = self;
-        self.selectedBrightness = 0.3;
-        self.selectedHue = 0.0;
-    }
-    return self;
-}
 
 -(void)tap:(id)sender{
     
@@ -149,7 +137,7 @@
 }
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"item"];
+    UITableViewCell* cell = [self.viewTable dequeueReusableCellWithIdentifier:@"item"];
     return cell;
 }
 
@@ -176,7 +164,7 @@
     }
     self.selectedHue = hue;
     self.selectedBrightness = brightness;
-    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    [self selectContentAtIndexPath:indexPath];
 }
 #pragma mark -
 #pragma mark SASlideMenuDelegate

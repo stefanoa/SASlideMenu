@@ -9,17 +9,44 @@
 #import "SASlideMenuViewController.h"
 #import "SASlideMenuRootViewController.h"
 @interface SASlideMenuViewController ()
-
+<SASlideMenuDataSource, SASlideMenuDelegate>
+-(void)setup;
 @end
 
 @implementation SASlideMenuViewController
 
 #pragma mark -
+#pragma mark Init
+-(void)setup; {
+  if(self.slideMenuDataSource == nil)
+    self.slideMenuDataSource = self;
+  if(self.slideMenuDelegate == nil)
+    self.slideMenuDelegate = self;
+
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder; {
+  self = [super initWithCoder:aDecoder];
+  if (self) {
+    [self setup];
+  }
+  return self;
+}
+
+-(id)init; {
+  self = [super self];
+  if (self) {
+    [self setup];
+  }
+  return self;
+}
+
+#pragma mark -
 #pragma mark SASlideMenuViewController
 
--(void)selectContentAtIndexPath:(NSIndexPath *)indexPath scrollPosition:(UITableViewScrollPosition)scrollPosition{
+-(void)selectContentAtIndexPath:(NSIndexPath *)indexPath {
     if ([self.slideMenuDataSource respondsToSelector:@selector(segueIdForIndexPath:)]) {
-        [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:scrollPosition];
+        [self didSelectRowAtIndexPath:indexPath];
      
         Boolean disableContentViewControllerCaching= NO;
         if ([self.slideMenuDataSource respondsToSelector:@selector(disableContentViewControllerCachingForIndexPath::)]) {
@@ -48,7 +75,7 @@
 #pragma mark -
 #pragma mark UITableViewDelegate
 
--(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+-(void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.slideMenuDataSource respondsToSelector:@selector(segueIdForIndexPath:)]) {
         UINavigationController* controller = [self.rootController controllerForIndexPath:indexPath];
         if (controller) {
