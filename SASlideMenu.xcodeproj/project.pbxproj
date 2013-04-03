@@ -10,6 +10,58 @@
 		7B27435A16D2820600F89C69 /* LightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B27435916D2820600F89C69 /* LightViewController.m */; };
 		7B27435C16D3638300F89C69 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 7B27435B16D3638300F89C69 /* CHANGELOG.md */; };
 		7B27436B16D7801E00F89C69 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B27436A16D7801E00F89C69 /* FirstViewController.m */; };
+		7B38FC1916F0797400B7DFC3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8C3FDE15D8D55800E42A41 /* UIKit.framework */; };
+		7B38FC1A16F0797400B7DFC3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8C3FE015D8D55800E42A41 /* Foundation.framework */; };
+		7B38FC1B16F0797400B7DFC3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8C3FE215D8D55800E42A41 /* CoreGraphics.framework */; };
+		7B38FC2116F0797400B7DFC3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B38FC1F16F0797400B7DFC3 /* InfoPlist.strings */; };
+		7B38FC2316F0797400B7DFC3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B38FC2216F0797400B7DFC3 /* main.m */; };
+		7B38FC2716F0797400B7DFC3 /* ExampleiPadAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B38FC2616F0797400B7DFC3 /* ExampleiPadAppDelegate.m */; };
+		7B38FC2916F0797400B7DFC3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B38FC2816F0797400B7DFC3 /* Default.png */; };
+		7B38FC2B16F0797400B7DFC3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B38FC2A16F0797400B7DFC3 /* Default@2x.png */; };
+		7B38FC2D16F0797400B7DFC3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B38FC2C16F0797400B7DFC3 /* Default-568h@2x.png */; };
+		7B38FC3016F0797400B7DFC3 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B38FC2E16F0797400B7DFC3 /* MainStoryboard_iPhone.storyboard */; };
+		7B38FC3316F0797400B7DFC3 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B38FC3116F0797400B7DFC3 /* MainStoryboard_iPad.storyboard */; };
+		7B38FC3616F0797400B7DFC3 /* ExampleiPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B38FC3516F0797400B7DFC3 /* ExampleiPadViewController.m */; };
+		7B38FC3A16F07D0F00B7DFC3 /* ColoredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B28D2A6165CCB10000EE929 /* ColoredViewController.m */; };
+		7B38FC3B16F07D3600B7DFC3 /* SASlideMenuContentSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC688F416A99DA3004ED00D /* SASlideMenuContentSegue.m */; };
+		7B38FC3C16F07D3600B7DFC3 /* SASlideMenuLeftMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC688F616A99DA3004ED00D /* SASlideMenuLeftMenuSegue.m */; };
+		7B38FC3D16F07D3600B7DFC3 /* SASlideMenuRightMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B28D2D81662B8D8000EE929 /* SASlideMenuRightMenuSegue.m */; };
+		7B38FC3E16F07D3600B7DFC3 /* SASlideMenuPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFEA28616C0FACF00455A22 /* SASlideMenuPushSegue.m */; };
+		7B38FC3F16F07D3600B7DFC3 /* SASlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC688F816A99DA4004ED00D /* SASlideMenuViewController.m */; };
+		7B38FC4016F07D3600B7DFC3 /* SASlideMenuRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC688BE16A6FD08004ED00D /* SASlideMenuRootViewController.m */; };
+		7B38FC4116F07D3600B7DFC3 /* SASlideMenuRightMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFEA28916C1545000455A22 /* SASlideMenuRightMenuViewController.m */; };
+		7B38FC4216F07D3600B7DFC3 /* SASlideMenuNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFEA28C16C2573F00455A22 /* SASlideMenuNavigationController.m */; };
+		7B38FC4316F07D5000B7DFC3 /* SASlideMenuPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFEA28616C0FACF00455A22 /* SASlideMenuPushSegue.m */; };
+		7B38FC4416F07D5B00B7DFC3 /* SASlideMenuRightMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFEA28916C1545000455A22 /* SASlideMenuRightMenuViewController.m */; };
+		7B38FC4516F07D9200B7DFC3 /* ColoredDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B28D2F91664EE39000EE929 /* ColoredDetailViewController.m */; };
+		7B38FC4616F07E5F00B7DFC3 /* Screenshot-Dynamic-Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BDBF417166CB2B600FDA327 /* Screenshot-Dynamic-Menu.png */; };
+		7B38FC4716F07E5F00B7DFC3 /* Screenshot-Dynamic-Right.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BDBF418166CB2B600FDA327 /* Screenshot-Dynamic-Right.png */; };
+		7B38FC4816F07E5F00B7DFC3 /* Screenshot-Static-Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BDBF419166CB2B600FDA327 /* Screenshot-Static-Menu.png */; };
+		7B38FC4916F07E5F00B7DFC3 /* menuright.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B28D2F41664E6FD000EE929 /* menuright.png */; };
+		7B38FC4A16F07E5F00B7DFC3 /* menuright@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B28D2F51664E6FE000EE929 /* menuright@2x.png */; };
+		7B38FC4B16F07E5F00B7DFC3 /* rowcircle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B28D2E21664D418000EE929 /* rowcircle.png */; };
+		7B38FC4C16F07E5F00B7DFC3 /* rowcircle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B28D2E31664D418000EE929 /* rowcircle@2x.png */; };
+		7B38FC4D16F07E5F00B7DFC3 /* rowpenta.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B28D2E41664D419000EE929 /* rowpenta.png */; };
+		7B38FC4E16F07E5F00B7DFC3 /* rowpenta@@x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B28D2E51664D41A000EE929 /* rowpenta@@x.png */; };
+		7B38FC4F16F07E5F00B7DFC3 /* rowpenta@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B28D2E61664D41B000EE929 /* rowpenta@2x.png */; };
+		7B38FC5016F07E5F00B7DFC3 /* rowsquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B28D2E71664D41C000EE929 /* rowsquare.png */; };
+		7B38FC5116F07E5F00B7DFC3 /* rowsquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B28D2E81664D41D000EE929 /* rowsquare@2x.png */; };
+		7B38FC5216F07E5F00B7DFC3 /* selectedColoredRow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B28D2AC165E27A3000EE929 /* selectedColoredRow.png */; };
+		7B38FC5316F07E5F00B7DFC3 /* selectedColoredRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B28D2AD165E27A3000EE929 /* selectedColoredRow@2x.png */; };
+		7B38FC5416F07E5F00B7DFC3 /* Screenshot-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1141A7161B658D00549B42 /* Screenshot-Landscape.png */; };
+		7B38FC5516F07E5F00B7DFC3 /* Screenshot-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1141A8161B658D00549B42 /* Screenshot-Portrait.png */; };
+		7B38FC5616F07E5F00B7DFC3 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B05395715E15A7F00D72377 /* menu.png */; };
+		7B38FC5716F07E5F00B7DFC3 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B05395815E15A7F00D72377 /* menu@2x.png */; };
+		7B38FC5816F07E5F00B7DFC3 /* menuhighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B05395915E15A7F00D72377 /* menuhighlighted.png */; };
+		7B38FC5916F07E5F00B7DFC3 /* menuhighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B05395A15E15A7F00D72377 /* menuhighlighted@2x.png */; };
+		7B38FC5A16F07E5F00B7DFC3 /* menuicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B05395B15E15A7F00D72377 /* menuicon.png */; };
+		7B38FC5B16F07E5F00B7DFC3 /* menuicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B05395C15E15A7F00D72377 /* menuicon@2x.png */; };
+		7B38FC5C16F07E5F00B7DFC3 /* disclosure.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF0A6AA15DE499F00B3B57F /* disclosure.png */; };
+		7B38FC5D16F07E5F00B7DFC3 /* disclosure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF0A6AB15DE499F00B3B57F /* disclosure@2x.png */; };
+		7B38FC5E16F07E5F00B7DFC3 /* row.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF0A6AC15DE499F00B3B57F /* row.png */; };
+		7B38FC5F16F07E5F00B7DFC3 /* row@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF0A6AD15DE499F00B3B57F /* row@2x.png */; };
+		7B38FC6016F07E5F00B7DFC3 /* rowselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF0A6AE15DE499F00B3B57F /* rowselected.png */; };
+		7B38FC6116F07E5F00B7DFC3 /* rowselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF0A6AF15DE499F00B3B57F /* rowselected@2x.png */; };
 		7BC688BF16A6FD08004ED00D /* SASlideMenuRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC688BE16A6FD08004ED00D /* SASlideMenuRootViewController.m */; };
 		7BC688FC16A99DB2004ED00D /* SASlideMenuContentSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC688F416A99DA3004ED00D /* SASlideMenuContentSegue.m */; };
 		7BC688FD16A99DB2004ED00D /* SASlideMenuLeftMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC688F616A99DA3004ED00D /* SASlideMenuLeftMenuSegue.m */; };
@@ -148,6 +200,20 @@
 		7B28D2F51664E6FE000EE929 /* menuright@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menuright@2x.png"; sourceTree = "<group>"; };
 		7B28D2F81664EE37000EE929 /* ColoredDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColoredDetailViewController.h; path = ../SASlideMenu/ColoredDetailViewController.h; sourceTree = "<group>"; };
 		7B28D2F91664EE39000EE929 /* ColoredDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColoredDetailViewController.m; path = ../SASlideMenu/ColoredDetailViewController.m; sourceTree = "<group>"; };
+		7B38FC1816F0797400B7DFC3 /* SASlideMenuiPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SASlideMenuiPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B38FC1E16F0797400B7DFC3 /* SASlideMenuiPad-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SASlideMenuiPad-Info.plist"; sourceTree = "<group>"; };
+		7B38FC2016F0797400B7DFC3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7B38FC2216F0797400B7DFC3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7B38FC2416F0797400B7DFC3 /* SASlideMenuiPad-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SASlideMenuiPad-Prefix.pch"; sourceTree = "<group>"; };
+		7B38FC2516F0797400B7DFC3 /* ExampleiPadAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleiPadAppDelegate.h; sourceTree = "<group>"; };
+		7B38FC2616F0797400B7DFC3 /* ExampleiPadAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleiPadAppDelegate.m; sourceTree = "<group>"; };
+		7B38FC2816F0797400B7DFC3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		7B38FC2A16F0797400B7DFC3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		7B38FC2C16F0797400B7DFC3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		7B38FC2F16F0797400B7DFC3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		7B38FC3216F0797400B7DFC3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		7B38FC3416F0797400B7DFC3 /* ExampleiPadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleiPadViewController.h; sourceTree = "<group>"; };
+		7B38FC3516F0797400B7DFC3 /* ExampleiPadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleiPadViewController.m; sourceTree = "<group>"; };
 		7B3B2D5215DCE0E1009F4AB8 /* DarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DarkViewController.h; path = ../SASlideMenu/DarkViewController.h; sourceTree = "<group>"; };
 		7B3B2D5315DCE0E1009F4AB8 /* DarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DarkViewController.m; path = ../SASlideMenu/DarkViewController.m; sourceTree = "<group>"; };
 		7B56BF48163C2ECF00D9C143 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -220,6 +286,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7B38FC1516F0797400B7DFC3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B38FC1916F0797400B7DFC3 /* UIKit.framework in Frameworks */,
+				7B38FC1A16F0797400B7DFC3 /* Foundation.framework in Frameworks */,
+				7B38FC1B16F0797400B7DFC3 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7BDBF41F166CC79300FDA327 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -278,6 +354,34 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		7B38FC1C16F0797400B7DFC3 /* SASlideMenuiPad */ = {
+			isa = PBXGroup;
+			children = (
+				7B38FC2516F0797400B7DFC3 /* ExampleiPadAppDelegate.h */,
+				7B38FC2616F0797400B7DFC3 /* ExampleiPadAppDelegate.m */,
+				7B38FC2E16F0797400B7DFC3 /* MainStoryboard_iPhone.storyboard */,
+				7B38FC3116F0797400B7DFC3 /* MainStoryboard_iPad.storyboard */,
+				7B38FC3416F0797400B7DFC3 /* ExampleiPadViewController.h */,
+				7B38FC3516F0797400B7DFC3 /* ExampleiPadViewController.m */,
+				7B38FC1D16F0797400B7DFC3 /* Supporting Files */,
+			);
+			path = SASlideMenuiPad;
+			sourceTree = "<group>";
+		};
+		7B38FC1D16F0797400B7DFC3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7B38FC1E16F0797400B7DFC3 /* SASlideMenuiPad-Info.plist */,
+				7B38FC1F16F0797400B7DFC3 /* InfoPlist.strings */,
+				7B38FC2216F0797400B7DFC3 /* main.m */,
+				7B38FC2416F0797400B7DFC3 /* SASlideMenuiPad-Prefix.pch */,
+				7B38FC2816F0797400B7DFC3 /* Default.png */,
+				7B38FC2A16F0797400B7DFC3 /* Default@2x.png */,
+				7B38FC2C16F0797400B7DFC3 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		7B8C3FCF15D8D55800E42A41 = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +393,7 @@
 				7B8C3FE415D8D55800E42A41 /* SASlideMenu */,
 				7BDBF427166CC79300FDA327 /* SASlideMenuDynamic */,
 				7BDBF46F166CDEB100FDA327 /* SASlideMenuStatic */,
+				7B38FC1C16F0797400B7DFC3 /* SASlideMenuiPad */,
 				7B8C3FDD15D8D55800E42A41 /* Frameworks */,
 				7B8C3FDB15D8D55800E42A41 /* Products */,
 			);
@@ -299,6 +404,7 @@
 			children = (
 				7BDBF422166CC79300FDA327 /* SASlideMenuDynamic.app */,
 				7BDBF46A166CDEB100FDA327 /* SASlideMenuStatic.app */,
+				7B38FC1816F0797400B7DFC3 /* SASlideMenuiPad.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -434,6 +540,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7B38FC1716F0797400B7DFC3 /* SASlideMenuiPad */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B38FC3716F0797400B7DFC3 /* Build configuration list for PBXNativeTarget "SASlideMenuiPad" */;
+			buildPhases = (
+				7B38FC1416F0797400B7DFC3 /* Sources */,
+				7B38FC1516F0797400B7DFC3 /* Frameworks */,
+				7B38FC1616F0797400B7DFC3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SASlideMenuiPad;
+			productName = SASlideMenuiPad;
+			productReference = 7B38FC1816F0797400B7DFC3 /* SASlideMenuiPad.app */;
+			productType = "com.apple.product-type.application";
+		};
 		7BDBF421166CC79300FDA327 /* SASlideMenuDynamic */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7BDBF43F166CC79400FDA327 /* Build configuration list for PBXNativeTarget "SASlideMenuDynamic" */;
@@ -492,11 +615,53 @@
 			targets = (
 				7BDBF421166CC79300FDA327 /* SASlideMenuDynamic */,
 				7BDBF469166CDEB100FDA327 /* SASlideMenuStatic */,
+				7B38FC1716F0797400B7DFC3 /* SASlideMenuiPad */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7B38FC1616F0797400B7DFC3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B38FC2116F0797400B7DFC3 /* InfoPlist.strings in Resources */,
+				7B38FC2916F0797400B7DFC3 /* Default.png in Resources */,
+				7B38FC2B16F0797400B7DFC3 /* Default@2x.png in Resources */,
+				7B38FC2D16F0797400B7DFC3 /* Default-568h@2x.png in Resources */,
+				7B38FC3016F0797400B7DFC3 /* MainStoryboard_iPhone.storyboard in Resources */,
+				7B38FC3316F0797400B7DFC3 /* MainStoryboard_iPad.storyboard in Resources */,
+				7B38FC4616F07E5F00B7DFC3 /* Screenshot-Dynamic-Menu.png in Resources */,
+				7B38FC4716F07E5F00B7DFC3 /* Screenshot-Dynamic-Right.png in Resources */,
+				7B38FC4816F07E5F00B7DFC3 /* Screenshot-Static-Menu.png in Resources */,
+				7B38FC4916F07E5F00B7DFC3 /* menuright.png in Resources */,
+				7B38FC4A16F07E5F00B7DFC3 /* menuright@2x.png in Resources */,
+				7B38FC4B16F07E5F00B7DFC3 /* rowcircle.png in Resources */,
+				7B38FC4C16F07E5F00B7DFC3 /* rowcircle@2x.png in Resources */,
+				7B38FC4D16F07E5F00B7DFC3 /* rowpenta.png in Resources */,
+				7B38FC4E16F07E5F00B7DFC3 /* rowpenta@@x.png in Resources */,
+				7B38FC4F16F07E5F00B7DFC3 /* rowpenta@2x.png in Resources */,
+				7B38FC5016F07E5F00B7DFC3 /* rowsquare.png in Resources */,
+				7B38FC5116F07E5F00B7DFC3 /* rowsquare@2x.png in Resources */,
+				7B38FC5216F07E5F00B7DFC3 /* selectedColoredRow.png in Resources */,
+				7B38FC5316F07E5F00B7DFC3 /* selectedColoredRow@2x.png in Resources */,
+				7B38FC5416F07E5F00B7DFC3 /* Screenshot-Landscape.png in Resources */,
+				7B38FC5516F07E5F00B7DFC3 /* Screenshot-Portrait.png in Resources */,
+				7B38FC5616F07E5F00B7DFC3 /* menu.png in Resources */,
+				7B38FC5716F07E5F00B7DFC3 /* menu@2x.png in Resources */,
+				7B38FC5816F07E5F00B7DFC3 /* menuhighlighted.png in Resources */,
+				7B38FC5916F07E5F00B7DFC3 /* menuhighlighted@2x.png in Resources */,
+				7B38FC5A16F07E5F00B7DFC3 /* menuicon.png in Resources */,
+				7B38FC5B16F07E5F00B7DFC3 /* menuicon@2x.png in Resources */,
+				7B38FC5C16F07E5F00B7DFC3 /* disclosure.png in Resources */,
+				7B38FC5D16F07E5F00B7DFC3 /* disclosure@2x.png in Resources */,
+				7B38FC5E16F07E5F00B7DFC3 /* row.png in Resources */,
+				7B38FC5F16F07E5F00B7DFC3 /* row@2x.png in Resources */,
+				7B38FC6016F07E5F00B7DFC3 /* rowselected.png in Resources */,
+				7B38FC6116F07E5F00B7DFC3 /* rowselected@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7BDBF420166CC79300FDA327 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -585,6 +750,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7B38FC1416F0797400B7DFC3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B38FC2316F0797400B7DFC3 /* main.m in Sources */,
+				7B38FC2716F0797400B7DFC3 /* ExampleiPadAppDelegate.m in Sources */,
+				7B38FC3616F0797400B7DFC3 /* ExampleiPadViewController.m in Sources */,
+				7B38FC3A16F07D0F00B7DFC3 /* ColoredViewController.m in Sources */,
+				7B38FC3B16F07D3600B7DFC3 /* SASlideMenuContentSegue.m in Sources */,
+				7B38FC3C16F07D3600B7DFC3 /* SASlideMenuLeftMenuSegue.m in Sources */,
+				7B38FC3D16F07D3600B7DFC3 /* SASlideMenuRightMenuSegue.m in Sources */,
+				7B38FC3E16F07D3600B7DFC3 /* SASlideMenuPushSegue.m in Sources */,
+				7B38FC3F16F07D3600B7DFC3 /* SASlideMenuViewController.m in Sources */,
+				7B38FC4016F07D3600B7DFC3 /* SASlideMenuRootViewController.m in Sources */,
+				7B38FC4116F07D3600B7DFC3 /* SASlideMenuRightMenuViewController.m in Sources */,
+				7B38FC4216F07D3600B7DFC3 /* SASlideMenuNavigationController.m in Sources */,
+				7B38FC4516F07D9200B7DFC3 /* ColoredDetailViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7BDBF41E166CC79300FDA327 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -624,12 +809,38 @@
 				7BC6890216A9F51C004ED00D /* SASlideMenuRootViewController.m in Sources */,
 				7BFEA28E16C2573F00455A22 /* SASlideMenuNavigationController.m in Sources */,
 				7B27435A16D2820600F89C69 /* LightViewController.m in Sources */,
+				7B38FC4316F07D5000B7DFC3 /* SASlideMenuPushSegue.m in Sources */,
+				7B38FC4416F07D5B00B7DFC3 /* SASlideMenuRightMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		7B38FC1F16F0797400B7DFC3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7B38FC2016F0797400B7DFC3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		7B38FC2E16F0797400B7DFC3 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7B38FC2F16F0797400B7DFC3 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		7B38FC3116F0797400B7DFC3 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7B38FC3216F0797400B7DFC3 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
 		7B8C3FE715D8D55800E42A41 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -673,6 +884,39 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		7B38FC3816F0797400B7DFC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SASlideMenuiPad/SASlideMenuiPad-Prefix.pch";
+				INFOPLIST_FILE = "SASlideMenuiPad/SASlideMenuiPad-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		7B38FC3916F0797400B7DFC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SASlideMenuiPad/SASlideMenuiPad-Prefix.pch";
+				INFOPLIST_FILE = "SASlideMenuiPad/SASlideMenuiPad-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		7B8C3FF615D8D55800E42A41 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -793,6 +1037,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7B38FC3716F0797400B7DFC3 /* Build configuration list for PBXNativeTarget "SASlideMenuiPad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B38FC3816F0797400B7DFC3 /* Debug */,
+				7B38FC3916F0797400B7DFC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		7B8C3FD415D8D55800E42A41 /* Build configuration list for PBXProject "SASlideMenu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

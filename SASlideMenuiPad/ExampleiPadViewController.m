@@ -1,37 +1,22 @@
 //
-//  ExampleDynamicMenuViewController.m
-//  SASlideMenu
+//  ExampleiPadViewController.m
+//  SASlideMenuiPad
 //
-//  Created by Stefano Antonelli on 11/20/12.
-//  Copyright (c) 2012 Stefano Antonelli. All rights reserved.
+//  Created by Stefano Antonelli on 3/13/13.
+//  Copyright (c) 2013 Stefano Antonelli. All rights reserved.
 //
 
-#import "ExampleDynamicMenuViewController.h"
+#import "ExampleiPadViewController.h"
 #import "ColoredViewController.h"
+#import "SASlideMenuRootViewController.h"
 
-@interface ExampleDynamicMenuViewController ()<SASlideMenuDataSource,SASlideMenuDelegate, UITableViewDataSource>
-
+@interface ExampleiPadViewController ()
 @property (nonatomic) CGFloat selectedHue;
 @property (nonatomic) CGFloat selectedBrightness;
 
 @end
 
-@implementation ExampleDynamicMenuViewController
-
-@synthesize selectedHue;
-@synthesize selectedBrightness;
-
--(id) initWithCoder:(NSCoder *)aDecoder{
-    if (self = [super initWithCoder:aDecoder]) {
-        self.selectedBrightness = 0.3;
-        self.selectedHue = 0.0;        
-    }
-    return self;
-}
-
--(void)tap:(id)sender{
-    
-}
+@implementation ExampleiPadViewController
 
 -(BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
     return YES;
@@ -44,7 +29,7 @@
     UIViewController* controller = [content.viewControllers objectAtIndex:0];
     if ([controller isKindOfClass:[ColoredViewController class]]) {
         ColoredViewController* coloredViewController = (ColoredViewController*) controller;
-        [coloredViewController setBackgroundHue:selectedHue brightness:selectedBrightness];
+        [coloredViewController setBackgroundHue:self.selectedHue brightness:self.selectedBrightness];
     }
 }
 
@@ -76,30 +61,7 @@
 // It maps each indexPath to the segueId to be used. The segue is performed only the first time the controller needs to loaded, subsequent switch to the content controller will use the already loaded controller
 
 -(NSString*) segueIdForIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section > 0) {
-        return @"coloredNoRightMenu";
-    }
     return @"colored";
-}
-
--(Boolean) slideOutThenIn{
-    return NO;
-}
-//Disable caching for the controller at the first row of each section
--(Boolean) disableContentViewControllerCachingForIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row ==0) {
-        return YES;
-    }
-    return NO;
-}
-
-//Enable the right menu for the the view controller in the first section
--(Boolean) hasRightMenuForIndexPath:(NSIndexPath *)indexPath{
-
-    if (indexPath.section == 0) {
-        return YES;
-    }
-    return NO;
 }
 
 #pragma mark -
@@ -133,7 +95,7 @@
     }else if (section==2){
         hue = 0.66;
     }
-    cell.backgroundColor = [UIColor colorWithHue:hue saturation:1.0 brightness:brightness alpha:1.0];    
+    cell.backgroundColor = [UIColor colorWithHue:hue saturation:1.0 brightness:brightness alpha:1.0];
 }
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -142,7 +104,7 @@
 }
 
 -(CGFloat) leftMenuVisibleWidth{
-    return 280;
+    return 600;
 }
 
 -(CGFloat) rightMenuVisibleWidth{
@@ -166,6 +128,7 @@
     self.selectedBrightness = brightness;
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
+
 #pragma mark -
 #pragma mark SASlideMenuDelegate
 
@@ -179,7 +142,7 @@
     NSLog(@"slideMenuWillSlideToSide");
 }
 -(void) slideMenuDidSlideToSide{
-    NSLog(@"slideMenuDidSlideToSide");    
+    NSLog(@"slideMenuDidSlideToSide");
 }
 -(void) slideMenuWillSlideOut{
     NSLog(@"slideMenuWillSlideOut");
@@ -188,9 +151,10 @@
     NSLog(@"slideMenuDidSlideOut");
 }
 -(void) slideMenuWillSlideToLeft{
-    NSLog(@"slideMenuWillSlideToLeft");    
+    NSLog(@"slideMenuWillSlideToLeft");
 }
 -(void) slideMenuDidSlideToLeft{
     NSLog(@"slideMenuDidSlideToLeft");
 }
+
 @end

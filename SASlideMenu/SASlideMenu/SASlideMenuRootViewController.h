@@ -14,10 +14,10 @@
 @interface SASlideMenuRootViewController : UIViewController<UITableViewDelegate>
 
 
-@property (strong, nonatomic) SASlideMenuViewController* leftMenu;
-@property (strong, nonatomic) UIViewController* rightMenu;
-@property (assign, nonatomic) Boolean isRightMenuEnabled;
-@property (strong, nonatomic) SASlideMenuNavigationController* navigationController;
+@property (nonatomic,strong) SASlideMenuViewController* leftMenu;
+@property (nonatomic,strong) UIViewController* rightMenu;
+@property (nonatomic,assign) Boolean isRightMenuEnabled;
+@property (nonatomic,strong) SASlideMenuNavigationController* navigationController;
 
 -(void) switchToContentViewController:(UINavigationController*) content;
 -(void) addContentViewController:(UIViewController*) content withIndexPath:(NSIndexPath*)indexPath;

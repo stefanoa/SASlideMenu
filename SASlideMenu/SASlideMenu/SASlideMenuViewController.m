@@ -8,11 +8,36 @@
 
 #import "SASlideMenuViewController.h"
 #import "SASlideMenuRootViewController.h"
-@interface SASlideMenuViewController ()
+@interface SASlideMenuViewController ()<SASlideMenuDataSource,SASlideMenuDelegate>
 
 @end
 
 @implementation SASlideMenuViewController
+#pragma mark -
+#pragma mark Init
+-(void)setup; {
+    if(self.slideMenuDataSource == nil)
+        self.slideMenuDataSource = self;
+    if(self.slideMenuDelegate == nil)
+        self.slideMenuDelegate = self;
+    
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder; {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+
+-(id)init; {
+    self = [super self];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
 
 #pragma mark -
 #pragma mark SASlideMenuViewController

@@ -12,28 +12,11 @@
 #import "MenuCell.h"
 #import "DarkViewController.h"
 #import "LightViewController.h"
-@interface ExampleStaticMenuViewController ()
+@interface ExampleStaticMenuViewController() <SASlideMenuDataSource,SASlideMenuDelegate> 
 
 @end
 
 @implementation ExampleStaticMenuViewController
-
--(id) initWithCoder:(NSCoder *)aDecoder{
-    if (self = [super initWithCoder:aDecoder]) {
-        // Assign self to the slideMenuDataSource because self will implement SASlideMenuDatSource 
-        self.slideMenuDataSource = self;
-        self.slideMenuDelegate = self;
-    }
-    return self;
-}
-
--(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
-    if(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]){
-        // Assign self to the slideMenuDataSource because self will implement SASlideMenuDataSource
-        self.slideMenuDataSource = self;
-    }
-    return self;
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
     return YES;
