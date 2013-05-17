@@ -7,11 +7,11 @@ A simple library to create sliding menus that can be used in storyboards and sup
 The repository is an Xcode 4 project that contains two example of the usage of the library and the library itself.
 
 # Usage
-You can use SASlide menu with both static cells and dynamic cell prototypes. In the project yuo will find two different target that use both type of cells to create a slide menu.
+You can use SASlide menu with both static cells and dynamic cell prototypes. In the project you will find two different target that use both type of cells to create a slide menu.
 To use it in your project follow these steps:
 * Add the SASlideMenu subdir and it's contents to your project
 * Add a new class that inherits from **SASlideMenuViewController** and include/implement **SASlideMenuDataSource** and **SASlideMenuDelegate**.
-  * **SASlideMenuDataSource** is where you will code your customization while **SASlideMenuDelegate** is where you will add your code to implement the behavior of your app related to the **SASlideMenu** events.
+  * **SASlideMenuDataSource** is where you will code your customizationyuo while **SASlideMenuDelegate** is where you will add your code to implement the behavior of your app related to the **SASlideMenu** events.
 
 * Add a new **SASlideMenuRootViewController** in your storyboard
 * Add a **UITableViewController** and make it of the **SASlideMenuViewController** subclass you already implemented and customize it in accordance with your needs.
