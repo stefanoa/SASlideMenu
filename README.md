@@ -5,7 +5,11 @@ Created by **stefanoa**
 A simple library to create sliding menus that can be used in storyboards and support static cells. Sliding menus are used in a number of popular applications like Facebook, Path 2.0, GMail, Glassboard and many others.
 
 The repository is an Xcode 4 project that contains two example of the usage of the library and the library itself.
-
+<!-- MacBuildServer Install Button -->
+<div class="macbuildserver-block">
+    <a class="macbuildserver-button" href="http://macbuildserver.com/project/github/build/?xcode_project=SASlideMenu.xcodeproj&amp;target=SASlideMenuDynamic&amp;repo_url=git%3A%2F%2Fgithub.com%2Fstefanoa%2FSASlideMenu.git&amp;build_conf=Release" target="_blank"><img src="http://com.macbuildserver.github.s3-website-us-east-1.amazonaws.com/button_up.png"/></a><br/><sup><a href="http://macbuildserver.com/github/opensource/" target="_blank">by MacBuildServer</a></sup>
+</div>
+<!-- MacBuildServer Install Button -->
 # Usage
 You can use SASlide menu with both static cells and dynamic cell prototypes. In the project you will find two different target that use both type of cells to create a slide menu.
 To use it in your project follow these steps:
