@@ -984,6 +984,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -999,6 +1000,7 @@
 				INFOPLIST_FILE = "SASlideMenuDynamic/SASlideMenuDynamic-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1044,6 +1046,7 @@
 				7B38FC3916F0797400B7DFC3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7B8C3FD415D8D55800E42A41 /* Build configuration list for PBXProject "SASlideMenu" */ = {
 			isa = XCConfigurationList;
