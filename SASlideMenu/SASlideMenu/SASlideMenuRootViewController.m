@@ -12,6 +12,8 @@
 #define kSlideInInterval 0.3
 #define kSlideOutInterval 0.1
 #define kMenuTableSize 280
+#define kSwipeMinDetectionSpeed 0.6f
+
 
 typedef enum {
     SASlideMenuStateInitial,
@@ -29,6 +31,9 @@ typedef enum {
 @interface SASlideMenuRootViewController (){
     SASlideMenuState state;
     SASlideMenuPanningState panningState;
+    CGFloat panningPreviousPosition;
+    NSDate* panningPreviousEventDate;
+    CGFloat panningXSpeed;  // panning speed expressed in px/ms 
     NSMutableDictionary* controllers;
 }
 
@@ -195,7 +200,6 @@ typedef enum {
     
     [self addChildViewController:self.rightMenu];
     [self.view insertSubview:self.rightMenu.view belowSubview:self.selectedContent.view];
-    state = SASlideMenuStateRightMenu;
 }
 
 -(void) rightMenuAction{
@@ -216,65 +220,89 @@ typedef enum {
     UIView* movingView = self.selectedContent.view;
     
     if ([gesture state] == UIGestureRecognizerStateBegan) {
+        NSString* panningStateString;
+
         if (movingView.frame.origin.x + translation.x < 0 ) {
             if (self.isRightMenuEnabled && self.rightMenu != nil) {
                 panningState = SASlideMenuPanningStateLeft;
                 [self addRightMenu];
+                panningStateString = @"PanningStateLeft";
             }else{
                 translation.x = 0.0;
                 panningState = SASlideMenuPanningStateRight;
+                panningStateString = @"PanningStateRight";
             }
         }else{
             panningState = SASlideMenuPanningStateRight;
+            panningStateString = @"PanningStateRight";
+        }
+        NSLog(@"PanningState : %@", panningStateString);
+    }
+    
+    //when showing the left menu
+    if (panningState == SASlideMenuPanningStateRight) {
+        if (movingView.frame.origin.x + translation.x < 0 ) {
+            //cap min left to 0
+            NSLog(@"cap to left");
+            translation.x = 0.0;
+        } else if (movingView.frame.origin.x + translation.x > [self leftMenuSize]) {
+            //cap max left to leftMenuSize
+            NSLog(@"cap to right");
+            translation.x= 0.0;
         }
     }
     
-    if (movingView.frame.origin.x + translation.x < 0 ) {
-        if (panningState == SASlideMenuPanningStateRight) {
-            translation.x =0.0;
+    //when showing the right menu
+    if (panningState == SASlideMenuPanningStateLeft) {
+        if (movingView.frame.origin.x+translation.x > 0) {
+            //cap the min left to 0
+            translation.x = 0.0;
+        } else if (movingView.frame.origin.x + translation.x < -[self rightMenuSize]) {
+            //cap the max left to -rightMenuSize
+            translation.x = 0.0;
         }
     }
-    if (translation.x>0 && movingView.frame.origin.x >=[self leftMenuSize]) {
-        if (panningState == SASlideMenuPanningStateRight) {
-            translation.x=0.0;
-        }
-    }
-    if (movingView.frame.origin.x+translation.x >0) {
-        if (state == SASlideMenuStateRightMenu || panningState == SASlideMenuPanningStateLeft) {
-            translation.x =0.0;
-        }
-    }
-    CGFloat menuSize = [self leftMenuSize];
-    CGRect bounds = self.view.bounds;
-    CGPoint origin = movingView.frame.origin;
-    CGFloat visiblePortion = bounds.size.width - menuSize;
-    if ((-origin.x-translation.x)>(bounds.size.width-visiblePortion)) {
-        if (panningState == SASlideMenuPanningStateLeft) {
-            translation.x = visiblePortion- bounds.size.width-movingView.frame.origin.x;
-        }
-    }
+    
     [movingView setCenter:CGPointMake([movingView center].x + translation.x, [movingView center].y)];
     [gesture setTranslation:CGPointZero inView:[panningView superview]];
     if ([gesture state] == UIGestureRecognizerStateEnded){
-        CGFloat pcenterx = movingView.center.x;
-        CGRect bounds = self.view.bounds;
-        CGSize size = bounds.size;
+        //Decide on which side to slide the view
+        //There are 2 conditions to slide the view on a side :
+        //  - The move speed is high enough.
+        //  - The move speed is not high enough, but the view has been dragged more than half of the way to the side.
+        CGFloat originx = movingView.frame.origin.x;
         if (panningState == SASlideMenuPanningStateRight) {
-            if (pcenterx > size.width ) {
-                [self doSlideToSide];
-            }else{
+            if (panningXSpeed < -kSwipeMinDetectionSpeed) {
                 [self doSlideIn:nil];
+            } else if (panningXSpeed > kSwipeMinDetectionSpeed) {
+                [self doSlideToSide];
+            } else if (originx < [self leftMenuSize] / 2.0f) {
+                 [self doSlideIn:nil];
+            } else {
+                [self doSlideToSide];
             }
         }
         if (panningState == SASlideMenuPanningStateLeft) {
-            if (pcenterx < 0 ) {
-                [self doSlideToLeftSide];
-            }else{
+            if (panningXSpeed > kSwipeMinDetectionSpeed) {
                 [self doSlideIn:nil];
+            } else if (panningXSpeed < -kSwipeMinDetectionSpeed) {
+                [self doSlideToLeftSide];
+            } else if (originx > -[self rightMenuSize] / 2.0f) {
+                [self doSlideIn:nil];
+            } else {
+                [self doSlideToLeftSide];
             }
         }
-        
-	}
+    }
+    
+    //calculate pan move speed
+    if (panningPreviousEventDate != nil) {
+        CGFloat movement = movingView.frame.origin.x - panningPreviousPosition;
+        NSTimeInterval movementDuration = [[NSDate date] timeIntervalSinceDate:panningPreviousEventDate] * 1000.0f;
+        panningXSpeed = movement / movementDuration;
+    }
+    panningPreviousEventDate = [NSDate date];
+    panningPreviousPosition = movingView.frame.origin.x;
 }
 
 -(UINavigationController*) controllerForIndexPath:(NSIndexPath*) indexPath{
