@@ -236,18 +236,15 @@ typedef enum {
             panningState = SASlideMenuPanningStateRight;
             panningStateString = @"PanningStateRight";
         }
-        NSLog(@"PanningState : %@", panningStateString);
     }
     
     //when showing the left menu
     if (panningState == SASlideMenuPanningStateRight) {
         if (movingView.frame.origin.x + translation.x < 0 ) {
             //cap min left to 0
-            NSLog(@"cap to left");
             translation.x = 0.0;
         } else if (movingView.frame.origin.x + translation.x > [self leftMenuSize]) {
             //cap max left to leftMenuSize
-            NSLog(@"cap to right");
             translation.x= 0.0;
         }
     }
