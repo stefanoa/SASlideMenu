@@ -453,9 +453,6 @@ typedef enum {
 
     [self performSegueWithIdentifier:@"leftMenu" sender:self];
     self.isRightMenuEnabled = NO;
-    if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(hasRightMenuForIndexPath:)]) {
-        [self performSegueWithIdentifier:@"rightMenu" sender:self];
-    }
 }
 
 -(void) didReceiveMemoryWarning{

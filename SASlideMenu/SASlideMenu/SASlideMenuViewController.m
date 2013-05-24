@@ -39,6 +39,18 @@
     return self;
 }
 
+- (void)loadContentAtIndexPath:(NSIndexPath*)indexPath {
+    if ([self.slideMenuDataSource respondsToSelector:@selector(segueIdForIndexPath:)]) {
+        UINavigationController* controller = [self.rootController controllerForIndexPath:indexPath];
+        if (controller) {
+            [self.rootController switchToContentViewController:controller];
+            return;
+        }
+        NSString* segueId = [self.slideMenuDataSource segueIdForIndexPath:indexPath];
+        [self performSegueWithIdentifier:segueId sender:self];
+    }
+}
+
 #pragma mark -
 #pragma mark SASlideMenuViewController
 
@@ -50,13 +62,8 @@
         if ([self.slideMenuDataSource respondsToSelector:@selector(disableContentViewControllerCachingForIndexPath::)]) {
             disableContentViewControllerCaching = [self.slideMenuDataSource disableContentViewControllerCachingForIndexPath:indexPath];
         }
-        UINavigationController* controller = [self.rootController controllerForIndexPath:indexPath];
-        if (controller) {
-            [self.rootController switchToContentViewController:controller];
-            return;
-        }
-        NSString* segueId = [self.slideMenuDataSource segueIdForIndexPath:indexPath];
-        [self performSegueWithIdentifier:segueId sender:self];
+
+        [self loadContentAtIndexPath:indexPath];
     }
 }
 
@@ -74,15 +81,7 @@
 #pragma mark UITableViewDelegate
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([self.slideMenuDataSource respondsToSelector:@selector(segueIdForIndexPath:)]) {
-        UINavigationController* controller = [self.rootController controllerForIndexPath:indexPath];
-        if (controller) {
-            [self.rootController switchToContentViewController:controller];
-            return;
-        }
-        NSString* segueId = [self.slideMenuDataSource segueIdForIndexPath:indexPath];
-        [self performSegueWithIdentifier:segueId sender:self];        
-    }
+    [self loadContentAtIndexPath:indexPath];
 }
 
 @end

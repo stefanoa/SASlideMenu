@@ -61,6 +61,13 @@
     if ([rootController.leftMenu.slideMenuDataSource respondsToSelector:@selector(segueIdForIndexPath:)]) {
         [rootController addContentViewController:destination withIndexPath:selectedIndexPath];        
     }
+
+    //We do that after switchToContentViewController.
+    //because we need destination.parentViewController to be initialized.
+    if (hasRightMenu) {
+        [destination performSegueWithIdentifier:@"rightMenu" sender:rootController];
+    }
+    
     Boolean disablePanGesture= NO;
     if ([rootController.leftMenu.slideMenuDataSource respondsToSelector:@selector(disablePanGestureForIndexPath:)]) {
         disablePanGesture = [rootController.leftMenu.slideMenuDataSource disablePanGestureForIndexPath:selectedIndexPath];
@@ -71,7 +78,6 @@
         [panGesture setDelegate:source];
         [destination.view addGestureRecognizer:panGesture];
     }
-    
 }
 
 @end
