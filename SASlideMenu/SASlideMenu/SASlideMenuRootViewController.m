@@ -177,7 +177,8 @@ typedef enum {
         if (completion) {
             completion(finished);
         }
-        if (panningState == SASlideMenuPanningStateLeft) {
+        if (panningState == SASlideMenuPanningStateLeft
+            || state == SASlideMenuStateRightMenu) {
             [self removeRightMenu];
         }
         [self completeSlideIn:self.selectedContent];
@@ -218,7 +219,7 @@ typedef enum {
     [self switchToContentViewController:self.selectedContent];
 }
 
--(void) panItem:(UIPanGestureRecognizer*)gesture{
+-(void) panItem:(UIPanGestureRecognizer*)gesture{    
     UIView* panningView = gesture.view;
     CGPoint translation = [gesture translationInView:panningView];
     UIView* movingView = self.selectedContent.view;
@@ -240,33 +241,7 @@ typedef enum {
             panningState = SASlideMenuPanningStateRight;
             panningStateString = @"PanningStateRight";
         }
-    }
-    
-    //when showing the left menu
-    if (panningState == SASlideMenuPanningStateRight) {
-        if (movingView.frame.origin.x + translation.x < 0 ) {
-            //cap min left to 0
-            translation.x = 0.0;
-        } else if (movingView.frame.origin.x + translation.x > [self leftMenuSize]) {
-            //cap max left to leftMenuSize
-            translation.x= 0.0;
-        }
-    }
-    
-    //when showing the right menu
-    if (panningState == SASlideMenuPanningStateLeft) {
-        if (movingView.frame.origin.x+translation.x > 0) {
-            //cap the min left to 0
-            translation.x = 0.0;
-        } else if (movingView.frame.origin.x + translation.x < -[self rightMenuSize]) {
-            //cap the max left to -rightMenuSize
-            translation.x = 0.0;
-        }
-    }
-    
-    [movingView setCenter:CGPointMake([movingView center].x + translation.x, [movingView center].y)];
-    [gesture setTranslation:CGPointZero inView:[panningView superview]];
-    if ([gesture state] == UIGestureRecognizerStateEnded){
+    } else if ([gesture state] == UIGestureRecognizerStateEnded){
         //Decide on which side to slide the view
         //There are 2 conditions to slide the view on a side :
         //  - The move speed is high enough.
@@ -278,7 +253,7 @@ typedef enum {
             } else if (panningXSpeed > kSwipeMinDetectionSpeed) {
                 [self doSlideToSide];
             } else if (originx < [self leftMenuSize] / 2.0f) {
-                 [self doSlideIn:nil];
+                [self doSlideIn:nil];
             } else {
                 [self doSlideToSide];
             }
@@ -294,16 +269,41 @@ typedef enum {
                 [self doSlideToLeftSide];
             }
         }
+    } else {
+        //when showing the left menu
+        if (panningState == SASlideMenuPanningStateRight) {
+            if (movingView.frame.origin.x + translation.x < 0 ) {
+                //cap min left to 0
+                translation.x = 0.0;
+            } else if (movingView.frame.origin.x + translation.x > [self leftMenuSize]) {
+                //cap max left to leftMenuSize
+                translation.x= 0.0;
+            }
+        }
+        
+        //when showing the right menu
+        if (panningState == SASlideMenuPanningStateLeft) {
+            if (movingView.frame.origin.x+translation.x > 0) {
+                //cap the min left to 0
+                translation.x = 0.0;
+            } else if (movingView.frame.origin.x + translation.x < -[self rightMenuSize]) {
+                //cap the max left to -rightMenuSize
+                translation.x = 0.0;
+            }
+        }
+        
+        [movingView setCenter:CGPointMake([movingView center].x + translation.x, [movingView center].y)];
+        [gesture setTranslation:CGPointZero inView:[panningView superview]];
+        
+        //calculate pan move speed
+        if (panningPreviousEventDate != nil) {
+            CGFloat movement = movingView.frame.origin.x - panningPreviousPosition;
+            NSTimeInterval movementDuration = [[NSDate date] timeIntervalSinceDate:panningPreviousEventDate] * 1000.0f;
+            panningXSpeed = movement / movementDuration;
+        }
+        panningPreviousEventDate = [NSDate date];
+        panningPreviousPosition = movingView.frame.origin.x;
     }
-    
-    //calculate pan move speed
-    if (panningPreviousEventDate != nil) {
-        CGFloat movement = movingView.frame.origin.x - panningPreviousPosition;
-        NSTimeInterval movementDuration = [[NSDate date] timeIntervalSinceDate:panningPreviousEventDate] * 1000.0f;
-        panningXSpeed = movement / movementDuration;
-    }
-    panningPreviousEventDate = [NSDate date];
-    panningPreviousPosition = movingView.frame.origin.x;
 }
 
 -(UINavigationController*) controllerForIndexPath:(NSIndexPath*) indexPath{
