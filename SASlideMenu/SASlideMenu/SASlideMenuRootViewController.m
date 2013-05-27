@@ -177,10 +177,8 @@ typedef enum {
         if (completion) {
             completion(finished);
         }
-        if (state == SASlideMenuStateRightMenu) {
-            [self.rightMenu willMoveToParentViewController:nil];
-            [self.rightMenu.view removeFromSuperview];
-            [self.rightMenu removeFromParentViewController];
+        if (panningState == SASlideMenuPanningStateLeft) {
+            [self removeRightMenu];
         }
         [self completeSlideIn:self.selectedContent];
         if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideIn)]){
@@ -200,6 +198,12 @@ typedef enum {
     
     [self addChildViewController:self.rightMenu];
     [self.view insertSubview:self.rightMenu.view belowSubview:self.selectedContent.view];
+}
+
+- (void)removeRightMenu {
+    [self.rightMenu willMoveToParentViewController:nil];
+    [self.rightMenu.view removeFromSuperview];
+    [self.rightMenu removeFromParentViewController];
 }
 
 -(void) rightMenuAction{
