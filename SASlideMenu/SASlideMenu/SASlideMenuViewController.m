@@ -9,7 +9,7 @@
 #import "SASlideMenuViewController.h"
 #import "SASlideMenuRootViewController.h"
 @interface SASlideMenuViewController ()<SASlideMenuDataSource,SASlideMenuDelegate>
-
+@property (nonatomic) NSIndexPath* currentContentIndexPath;
 @end
 
 @implementation SASlideMenuViewController
@@ -39,6 +39,19 @@
     return self;
 }
 
+- (void)loadContentAtIndexPath:(NSIndexPath*)indexPath {
+    if ([self.slideMenuDataSource respondsToSelector:@selector(segueIdForIndexPath:)]) {
+        UINavigationController* controller = [self.rootController controllerForIndexPath:indexPath];
+        if (controller) {
+            [self.rootController switchToContentViewController:controller];
+            return;
+        }
+        NSString* segueId = [self.slideMenuDataSource segueIdForIndexPath:indexPath];
+        [self performSegueWithIdentifier:segueId sender:self];
+        self.currentContentIndexPath = indexPath;
+    }
+}
+
 #pragma mark -
 #pragma mark SASlideMenuViewController
 
@@ -50,18 +63,21 @@
         if ([self.slideMenuDataSource respondsToSelector:@selector(disableContentViewControllerCachingForIndexPath::)]) {
             disableContentViewControllerCaching = [self.slideMenuDataSource disableContentViewControllerCachingForIndexPath:indexPath];
         }
-        UINavigationController* controller = [self.rootController controllerForIndexPath:indexPath];
-        if (controller) {
-            [self.rootController switchToContentViewController:controller];
-            return;
-        }
-        NSString* segueId = [self.slideMenuDataSource segueIdForIndexPath:indexPath];
-        [self performSegueWithIdentifier:segueId sender:self];
+
+        [self loadContentAtIndexPath:indexPath];
     }
 }
 
 #pragma mark -
 #pragma mark UIGestureRecognizerDelegate
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    BOOL shouldRespondToGesture = YES;
+    if ([self.slideMenuDataSource respondsToSelector:@selector(shouldRespondToGesture:forIndexPath:)]) {
+        shouldRespondToGesture = [self.slideMenuDataSource shouldRespondToGesture:gestureRecognizer
+                                                                     forIndexPath:self.currentContentIndexPath];
+    }
+    return shouldRespondToGesture;
+}
 
 -(BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
     if ([otherGestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
@@ -74,15 +90,7 @@
 #pragma mark UITableViewDelegate
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([self.slideMenuDataSource respondsToSelector:@selector(segueIdForIndexPath:)]) {
-        UINavigationController* controller = [self.rootController controllerForIndexPath:indexPath];
-        if (controller) {
-            [self.rootController switchToContentViewController:controller];
-            return;
-        }
-        NSString* segueId = [self.slideMenuDataSource segueIdForIndexPath:indexPath];
-        [self performSegueWithIdentifier:segueId sender:self];        
-    }
+    [self loadContentAtIndexPath:indexPath];
 }
 
 @end
