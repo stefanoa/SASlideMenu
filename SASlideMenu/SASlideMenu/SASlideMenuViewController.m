@@ -9,7 +9,7 @@
 #import "SASlideMenuViewController.h"
 #import "SASlideMenuRootViewController.h"
 @interface SASlideMenuViewController ()<SASlideMenuDataSource,SASlideMenuDelegate>
-
+@property (nonatomic) NSIndexPath* currentContentIndexPath;
 @end
 
 @implementation SASlideMenuViewController
@@ -48,6 +48,7 @@
         }
         NSString* segueId = [self.slideMenuDataSource segueIdForIndexPath:indexPath];
         [self performSegueWithIdentifier:segueId sender:self];
+        self.currentContentIndexPath = indexPath;
     }
 }
 
@@ -69,6 +70,14 @@
 
 #pragma mark -
 #pragma mark UIGestureRecognizerDelegate
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    BOOL shouldRespondToGesture = YES;
+    if ([self.slideMenuDataSource respondsToSelector:@selector(shouldRespondToGesture:forIndexPath:)]) {
+        shouldRespondToGesture = [self.slideMenuDataSource shouldRespondToGesture:gestureRecognizer
+                                                                     forIndexPath:self.currentContentIndexPath];
+    }
+    return shouldRespondToGesture;
+}
 
 -(BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
     if ([otherGestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
