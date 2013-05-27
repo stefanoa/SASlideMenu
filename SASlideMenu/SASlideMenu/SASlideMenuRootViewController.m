@@ -35,6 +35,9 @@ typedef enum {
     NSDate* panningPreviousEventDate;
     CGFloat panningXSpeed;  // panning speed expressed in px/ms 
     NSMutableDictionary* controllers;
+    
+    UIPanGestureRecognizer* menuPanGesture;
+    UITapGestureRecognizer* tapGesture;
 }
 
 @property (nonatomic,strong) UINavigationController* selectedContent;
@@ -115,6 +118,7 @@ typedef enum {
     if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuWillSlideToSide)]){
         [self.leftMenu.slideMenuDelegate slideMenuWillSlideToSide];
     }
+    [self disableGestureRecognizers];
     [UIView animateWithDuration:kSlideInInterval
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseInOut
@@ -126,7 +130,7 @@ typedef enum {
                          if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideToSide)]){
                              [self.leftMenu.slideMenuDelegate slideMenuDidSlideToSide];
                          }
-                         
+                         [self enableGestureRecognizers];
                      }];
 }
 
@@ -134,7 +138,7 @@ typedef enum {
     if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuWillSlideToLeft)]){
         [self.leftMenu.slideMenuDelegate slideMenuWillSlideToLeft];
     }
-    
+    [self disableGestureRecognizers];
     [UIView animateWithDuration:kSlideInInterval
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseInOut
@@ -146,7 +150,7 @@ typedef enum {
                          if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideToLeft)]){
                              [self.leftMenu.slideMenuDelegate slideMenuDidSlideToLeft];
                          }
-                         
+                         [self enableGestureRecognizers];
                      }];
 }
 
@@ -154,6 +158,7 @@ typedef enum {
     if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuWillSlideOut)]){
         [self.leftMenu.slideMenuDelegate slideMenuWillSlideOut];
     }
+    [self disableGestureRecognizers];
     [UIView animateWithDuration:kSlideOutInterval delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self slideOut:self.selectedContent];
     } completion:^(BOOL finished) {
@@ -163,7 +168,7 @@ typedef enum {
         if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideOut)]){
             [self.leftMenu.slideMenuDelegate slideMenuDidSlideOut];
         }
-        
+        [self enableGestureRecognizers];
     }];
 }
 
@@ -171,6 +176,7 @@ typedef enum {
     if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuWillSlideIn)]){
         [self.leftMenu.slideMenuDelegate slideMenuWillSlideIn];
     }
+    [self disableGestureRecognizers];
     [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self slideIn:self.selectedContent];
     } completion:^(BOOL finished) {
@@ -185,9 +191,20 @@ typedef enum {
         if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideIn)]){
             [self.leftMenu.slideMenuDelegate slideMenuDidSlideIn];
         }
-        
+        [self enableGestureRecognizers];
     }];
 }
+
+- (void)disableGestureRecognizers {
+    [tapGesture setEnabled:NO];
+    [menuPanGesture setEnabled:NO];
+}
+
+- (void)enableGestureRecognizers {
+    [tapGesture setEnabled:YES];
+    [menuPanGesture setEnabled:YES];
+}
+
 -(void) addRightMenu{
     CGRect bounds = self.view.bounds;
     CGFloat menuSize = [self rightMenuSize];
@@ -448,10 +465,10 @@ typedef enum {
     state = SASlideMenuStateInitial;
     panningState = SASlideMenuPanningStateStopped;
     
-    UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapShield:)];
+    tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapShield:)];
     [self.shieldWithMenu addGestureRecognizer:tapGesture];
     
-    UIPanGestureRecognizer* menuPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panItem:)];
+    menuPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panItem:)];
     [menuPanGesture setMaximumNumberOfTouches:2];
     [self.shieldWithMenu addGestureRecognizer:menuPanGesture];
 
