@@ -24,18 +24,15 @@
     rootViewController.leftMenu = leftMenu;
     
     leftMenu.rootController = rootViewController;
-    [UIView animateWithDuration:1.0 animations:^{
-        leftMenu.view.alpha = 1.0;
-        
-    } completion:^(BOOL finished) {
-        [leftMenu didMoveToParentViewController:rootViewController];
-        if ([rootViewController.leftMenu.slideMenuDataSource respondsToSelector:@selector(selectedIndexPath)]) {
-            NSIndexPath* selectedIndexPath = [rootViewController.leftMenu.slideMenuDataSource selectedIndexPath];
-            [leftMenu.tableView selectRowAtIndexPath:selectedIndexPath animated:NO scrollPosition:UITableViewScrollPositionTop];
-            NSString* initialSegueId = [rootViewController.leftMenu.slideMenuDataSource segueIdForIndexPath:selectedIndexPath];
-            [leftMenu performSegueWithIdentifier:initialSegueId sender:leftMenu];
-        }
-    }];
+   
+    [leftMenu didMoveToParentViewController:rootViewController];
+    if ([rootViewController.leftMenu.slideMenuDataSource respondsToSelector:@selector(selectedIndexPath)]) {
+        NSIndexPath* selectedIndexPath = [rootViewController.leftMenu.slideMenuDataSource selectedIndexPath];
+        [leftMenu.tableView selectRowAtIndexPath:selectedIndexPath animated:NO scrollPosition:UITableViewScrollPositionTop];
+        NSString* initialSegueId = [rootViewController.leftMenu.slideMenuDataSource segueIdForIndexPath:selectedIndexPath];
+        [leftMenu performSegueWithIdentifier:initialSegueId sender:leftMenu];
+    }
+   
 }
 
 @end
