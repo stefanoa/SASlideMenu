@@ -11,7 +11,7 @@
 
 @class SASlideMenuNavigationController;
 @class SASlideMenuViewController;
-@interface SASlideMenuRootViewController : UIViewController<UITableViewDelegate>
+@interface SASlideMenuRootViewController : UIViewController
 
 
 @property (nonatomic,strong) SASlideMenuViewController* leftMenu;

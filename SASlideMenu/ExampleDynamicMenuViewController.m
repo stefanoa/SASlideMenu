@@ -76,10 +76,19 @@
 // It maps each indexPath to the segueId to be used. The segue is performed only the first time the controller needs to loaded, subsequent switch to the content controller will use the already loaded controller
 
 -(NSString*) segueIdForIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section > 0) {
-        return @"coloredNoRightMenu";
+    NSString* result;
+    switch (indexPath.section) {
+        case 0:
+            result = @"red";
+            break;
+        case 1:
+            result = @"green";
+            break;
+        default:
+            result = @"blue";
+            break;
     }
-    return @"colored";
+    return result;
 }
 
 -(Boolean) slideOutThenIn{
@@ -96,10 +105,7 @@
 //Enable the right menu for the the view controller in the first section
 -(Boolean) hasRightMenuForIndexPath:(NSIndexPath *)indexPath{
 
-    if (indexPath.section == 0) {
-        return YES;
-    }
-    return NO;
+    return YES;
 }
 
 #pragma mark -
@@ -147,6 +153,12 @@
 
 -(CGFloat) rightMenuVisibleWidth{
     return 300;
+}
+
+//restricts pan gesture interation to 50px on the left and right of the view.
+-(Boolean) shouldRespondToGesture:(UIGestureRecognizer*) gesture forIndexPath:(NSIndexPath*)indexPath {
+    CGPoint touchPosition = [gesture locationInView:self.view];
+    return (touchPosition.x < 50.0 || touchPosition.x > self.view.bounds.size.width - 50.0f);
 }
 
 #pragma mark -
