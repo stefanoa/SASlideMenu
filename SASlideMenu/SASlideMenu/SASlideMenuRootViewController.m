@@ -12,7 +12,7 @@
 #define kSlideInInterval 0.3
 #define kSlideOutInterval 0.1
 #define kMenuTableSize 280
-#define kSwipeMinDetectionSpeed 0.6f
+#define kSwipeMinDetectionSpeed 0.1f
 
 
 typedef enum {
@@ -242,21 +242,17 @@ typedef enum {
     UIView* movingView = self.selectedContent.view;
     
     if ([gesture state] == UIGestureRecognizerStateBegan) {
-        NSString* panningStateString;
 
         if (movingView.frame.origin.x + translation.x < 0 ) {
             if (self.isRightMenuEnabled && self.rightMenu != nil) {
                 panningState = SASlideMenuPanningStateLeft;
                 [self addRightMenu];
-                panningStateString = @"PanningStateLeft";
             }else{
                 translation.x = 0.0;
                 panningState = SASlideMenuPanningStateRight;
-                panningStateString = @"PanningStateRight";
             }
         }else{
             panningState = SASlideMenuPanningStateRight;
-            panningStateString = @"PanningStateRight";
         }
     } else if ([gesture state] == UIGestureRecognizerStateEnded){
         //Decide on which side to slide the view
@@ -472,8 +468,8 @@ typedef enum {
     [menuPanGesture setMaximumNumberOfTouches:2];
     [self.shieldWithMenu addGestureRecognizer:menuPanGesture];
 
-    [self performSegueWithIdentifier:@"leftMenu" sender:self];
     self.isRightMenuEnabled = NO;
+    [self performSegueWithIdentifier:@"leftMenu" sender:self];
 }
 
 -(void) didReceiveMemoryWarning{
