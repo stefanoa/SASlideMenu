@@ -347,7 +347,7 @@ typedef enum {
                 [self addChildViewController:content];
                 [self.view addSubview:content.view];
                 self.selectedContent = content;
-                [self doSlideIn:^(BOOL completed) {
+                [self doSlideIn:^(BOOL slideInCompleted) {
                     [content didMoveToParentViewController:self];
                     self.view.userInteractionEnabled = YES;
                 }];
