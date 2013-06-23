@@ -19,7 +19,9 @@
     UINavigationController* destination = self.destinationViewController;
 
     UIButton* menuButton = [[UIButton alloc] init];
-    [rootController.leftMenu.slideMenuDataSource configureMenuButton:menuButton];
+    if ([rootController.leftMenu.slideMenuDataSource respondsToSelector:@selector(configureMenuButton:)]) {
+        [rootController.leftMenu.slideMenuDataSource configureMenuButton:menuButton];
+    }
     [menuButton addTarget:rootController action:@selector(doSlideToSide) forControlEvents:UIControlEventTouchUpInside];
     
     UINavigationItem* navigationItem = destination.navigationBar.topItem;

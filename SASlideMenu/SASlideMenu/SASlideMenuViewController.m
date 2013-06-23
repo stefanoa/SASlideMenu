@@ -60,7 +60,7 @@
         [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:scrollPosition];
      
         Boolean disableContentViewControllerCaching= NO;
-        if ([self.slideMenuDataSource respondsToSelector:@selector(disableContentViewControllerCachingForIndexPath::)]) {
+        if ([self.slideMenuDataSource respondsToSelector:@selector(disableContentViewControllerCachingForIndexPath:)]) {
             disableContentViewControllerCaching = [self.slideMenuDataSource disableContentViewControllerCachingForIndexPath:indexPath];
         }
 
