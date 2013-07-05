@@ -13,5 +13,7 @@
 @synthesize itemDescription;
 @synthesize disclosureImage;
 
-
+-(void) layoutSubviews{
+    [super layoutSubviews];
+}
 @end

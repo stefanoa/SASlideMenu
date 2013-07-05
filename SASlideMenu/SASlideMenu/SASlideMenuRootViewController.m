@@ -9,8 +9,7 @@
 #import "SASlideMenuRootViewController.h"
 #import "SASlideMenuNavigationController.h"
 #import "SASlideMenuRightMenuViewController.h"
-#define kSlideInInterval 0.3
-#define kSlideOutInterval 0.1
+
 #define kMenuTableSize 280
 #define kSwipeMinDetectionSpeed 0.1f
 
@@ -68,7 +67,6 @@ typedef enum {
         return kMenuTableSize;
     }
 }
-
 -(void) slideOut:(UINavigationController*) controller{
     CGRect bounds = self.view.bounds;
     controller.view.frame = CGRectMake(bounds.size.width,0.0,bounds.size.width,bounds.size.height);
@@ -78,7 +76,6 @@ typedef enum {
     CGFloat menuSize = [self rightMenuSize];
     controller.view.frame = CGRectMake(-menuSize,0.0,bounds.size.width,bounds.size.height);
 }
-
 -(void) slideToSide:(UINavigationController*) controller{
     CGRect bounds = self.view.bounds;
     CGFloat menuSize = [self leftMenuSize];
@@ -119,7 +116,12 @@ typedef enum {
         [self.leftMenu.slideMenuDelegate slideMenuWillSlideToSide];
     }
     [self disableGestureRecognizers];
-    [UIView animateWithDuration:kSlideInInterval
+    CGFloat duration = kSlideInInterval;
+    if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(slideInAnimationDuration)]) {
+        duration = [self.leftMenu.slideMenuDataSource slideInAnimationDuration];
+    }
+    
+    [UIView animateWithDuration:duration
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
@@ -139,7 +141,12 @@ typedef enum {
         [self.leftMenu.slideMenuDelegate slideMenuWillSlideToLeft];
     }
     [self disableGestureRecognizers];
-    [UIView animateWithDuration:kSlideInInterval
+    CGFloat duration = kSlideInInterval;
+    if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(slideInAnimationDuration)]) {
+        duration = [self.leftMenu.slideMenuDataSource slideInAnimationDuration];
+    }
+
+    [UIView animateWithDuration:duration
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
@@ -159,7 +166,12 @@ typedef enum {
         [self.leftMenu.slideMenuDelegate slideMenuWillSlideOut];
     }
     [self disableGestureRecognizers];
-    [UIView animateWithDuration:kSlideOutInterval delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    CGFloat duration = kSlideOutInterval;
+
+    if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(slideOutAnimationDuration)]) {
+        duration = [self.leftMenu.slideMenuDataSource slideOutAnimationDuration];
+    }
+    [UIView animateWithDuration:duration delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self slideOut:self.selectedContent];
     } completion:^(BOOL finished) {
         if (completion) {
@@ -177,7 +189,12 @@ typedef enum {
         [self.leftMenu.slideMenuDelegate slideMenuWillSlideIn];
     }
     [self disableGestureRecognizers];
-    [UIView animateWithDuration:kSlideInInterval delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    CGFloat duration = kSlideInInterval;
+    if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(slideInAnimationDuration)]) {
+        duration = [self.leftMenu.slideMenuDataSource slideInAnimationDuration];
+    }
+    
+    [UIView animateWithDuration:duration delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self slideIn:self.selectedContent];
     } completion:^(BOOL finished) {
         if (completion) {
@@ -420,8 +437,12 @@ typedef enum {
     navigationController.view.frame = CGRectMake(bounds.size.width,0.0,bounds.size.width,bounds.size.height);
     [root addChildViewController:navigationController];
     [root.view addSubview:navigationController.view];
-    
-    [UIView animateWithDuration:kSlideInInterval animations:^{
+    CGFloat duration = kSlideInInterval;
+    if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(slideInAnimationDuration)]) {
+        duration = [self.leftMenu.slideMenuDataSource slideInAnimationDuration];
+    }
+
+    [UIView animateWithDuration:duration animations:^{
         navigationController.view.frame = CGRectMake(0.0,0.0,bounds.size.width,bounds.size.height);
     } completion:^(BOOL finished) {
         [navigationController didMoveToParentViewController:root];
@@ -432,7 +453,11 @@ typedef enum {
 -(void) popRightNavigationController{
     CGRect bounds = self.view.bounds;
     [self.navigationController willMoveToParentViewController:nil];
-    [UIView animateWithDuration:kSlideInInterval animations:^{
+    CGFloat duration = kSlideInInterval;
+    if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(slideInAnimationDuration)]) {
+        duration = [self.leftMenu.slideMenuDataSource slideInAnimationDuration];
+    }
+    [UIView animateWithDuration:duration animations:^{
         self.navigationController.view.frame = CGRectMake(bounds.size.width, 0, bounds.size.width, bounds.size.height);
     } completion:^(BOOL finished) {
         [self.navigationController.view removeFromSuperview];

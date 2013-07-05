@@ -32,6 +32,12 @@
 // It is used to provide a custom configuration for the content CALayer, useful to change shadow style.
 -(void) configureSlideLayer:(CALayer*) layer;
 
+// The duration of the animation
+-(CGFloat) slideInAnimationDuration;
+
+// The duration of the animation
+-(CGFloat) slideOutAnimationDuration;
+
 // The visibile widht of the left menu
 -(CGFloat) leftMenuVisibleWidth;
 
