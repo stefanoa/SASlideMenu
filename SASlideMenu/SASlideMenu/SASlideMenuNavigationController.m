@@ -22,4 +22,10 @@
         return [super popViewControllerAnimated:animated];
     }
 }
+
+-(NSArray*) popToRootViewControllerAnimated:(BOOL)animated{
+    NSArray* vcs = [super popToRootViewControllerAnimated:animated];
+    [self.rootController popRightNavigationController];
+    return vcs;
+}
 @end

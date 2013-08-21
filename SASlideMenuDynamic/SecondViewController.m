@@ -1,18 +1,18 @@
 //
-//  FirstViewController.m
+//  SecondViewController.m
 //  SASlideMenu
 //
-//  Created by Stefano Antonelli on 2/22/13.
+//  Created by Stefano Antonelli on 8/21/13.
 //  Copyright (c) 2013 Stefano Antonelli. All rights reserved.
 //
 
-#import "FirstViewController.h"
+#import "SecondViewController.h"
 
-@interface FirstViewController ()
+@interface SecondViewController ()
 
 @end
 
-@implementation FirstViewController
+@implementation SecondViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,8 +36,7 @@
 }
 
 -(IBAction)tap:(id)sender{
-    UINavigationController* navController = self.navigationController;
-    [navController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end

@@ -112,8 +112,8 @@ typedef enum {
 }
 
 -(void) doSlideToSide{
-    if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuWillSlideToSide)]){
-        [self.leftMenu.slideMenuDelegate slideMenuWillSlideToSide];
+    if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuWillSlideToSide:)]){
+        [self.leftMenu.slideMenuDelegate slideMenuWillSlideToSide:self.selectedContent];
     }
     [self disableGestureRecognizers];
     CGFloat duration = kSlideInInterval;
@@ -129,16 +129,16 @@ typedef enum {
                      }
                      completion:^(BOOL finished) {
                          [self completeSlideToSide:self.selectedContent];
-                         if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideToSide)]){
-                             [self.leftMenu.slideMenuDelegate slideMenuDidSlideToSide];
+                         if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideToSide:)]){
+                             [self.leftMenu.slideMenuDelegate slideMenuDidSlideToSide:self.selectedContent];
                          }
                          [self enableGestureRecognizers];
                      }];
 }
 
 -(void) doSlideToLeftSide{
-    if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuWillSlideToLeft)]){
-        [self.leftMenu.slideMenuDelegate slideMenuWillSlideToLeft];
+    if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuWillSlideToLeft:)]){
+        [self.leftMenu.slideMenuDelegate slideMenuWillSlideToLeft:self.selectedContent];
     }
     [self disableGestureRecognizers];
     CGFloat duration = kSlideInInterval;
@@ -154,16 +154,16 @@ typedef enum {
                      }
                      completion:^(BOOL finished) {
                          [self completeSlideToLeftSide:self.selectedContent];
-                         if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideToLeft)]){
-                             [self.leftMenu.slideMenuDelegate slideMenuDidSlideToLeft];
+                         if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideToLeft:)]){
+                             [self.leftMenu.slideMenuDelegate slideMenuDidSlideToLeft:self.selectedContent];
                          }
                          [self enableGestureRecognizers];
                      }];
 }
 
 -(void) doSlideOut:(void (^)(BOOL completed))completion{
-    if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuWillSlideOut)]){
-        [self.leftMenu.slideMenuDelegate slideMenuWillSlideOut];
+    if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuWillSlideOut:)]){
+        [self.leftMenu.slideMenuDelegate slideMenuWillSlideOut:self.selectedContent];
     }
     [self disableGestureRecognizers];
     CGFloat duration = kSlideOutInterval;
@@ -177,16 +177,16 @@ typedef enum {
         if (completion) {
             completion(finished);
         }
-        if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideOut)]){
-            [self.leftMenu.slideMenuDelegate slideMenuDidSlideOut];
+        if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideOut:)]){
+            [self.leftMenu.slideMenuDelegate slideMenuDidSlideOut:self.selectedContent];
         }
         [self enableGestureRecognizers];
     }];
 }
 
 -(void) doSlideIn:(void (^)(BOOL completed))completion{
-    if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuWillSlideIn)]){
-        [self.leftMenu.slideMenuDelegate slideMenuWillSlideIn];
+    if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuWillSlideIn:)]){
+        [self.leftMenu.slideMenuDelegate slideMenuWillSlideIn:self.selectedContent];
     }
     [self disableGestureRecognizers];
     CGFloat duration = kSlideInInterval;
@@ -205,8 +205,8 @@ typedef enum {
             [self removeRightMenu];
         }
         [self completeSlideIn:self.selectedContent];
-        if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideIn)]){
-            [self.leftMenu.slideMenuDelegate slideMenuDidSlideIn];
+        if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideIn:)]){
+            [self.leftMenu.slideMenuDelegate slideMenuDidSlideIn:self.selectedContent];
         }
         [self enableGestureRecognizers];
     }];
@@ -391,8 +391,8 @@ typedef enum {
         [self addChildViewController:content];
         [self.view addSubview:content.view];
         self.selectedContent = content;
-        if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuWillSlideIn)]){
-            [self.leftMenu.slideMenuDelegate slideMenuWillSlideIn];
+        if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuWillSlideIn:)]){
+            [self.leftMenu.slideMenuDelegate slideMenuWillSlideIn:self.selectedContent];
         }
         [self slideIn:self.selectedContent];
         if (state == SASlideMenuStateRightMenu) {
@@ -401,8 +401,8 @@ typedef enum {
             [self.rightMenu removeFromParentViewController];
         }
         [self completeSlideIn:self.selectedContent];
-        if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideIn)]){
-            [self.leftMenu.slideMenuDelegate slideMenuDidSlideIn];
+        if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideIn:)]){
+            [self.leftMenu.slideMenuDelegate slideMenuDidSlideIn:self.selectedContent];
         }
         [content didMoveToParentViewController:self];
         self.view.userInteractionEnabled = YES;

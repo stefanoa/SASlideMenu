@@ -12,4 +12,6 @@
 
 @property (nonatomic,strong) IBOutlet UITapGestureRecognizer* tapGesture;
 
+-(IBAction)tap:(id)sender;
+
 @end

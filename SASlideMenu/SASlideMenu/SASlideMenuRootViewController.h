@@ -31,5 +31,5 @@
 -(void) rightMenuAction;
 
 
-
+-(void) panItem:(UIPanGestureRecognizer*)gesture;
 @end

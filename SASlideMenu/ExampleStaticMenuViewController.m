@@ -85,25 +85,30 @@
 #pragma mark -
 #pragma mark SASlideMenuDelegate
 
--(void) slideMenuWillSlideIn{
+
+-(void) slideMenuWillSlideIn:(UINavigationController *)selectedContent{
     NSLog(@"slideMenuWillSlideIn");
 }
--(void) slideMenuDidSlideIn{
+-(void) slideMenuDidSlideIn:(UINavigationController *)selectedContent{
     NSLog(@"slideMenuDidSlideIn");
 }
--(void) slideMenuWillSlideToSide{
-    NSLog(@"slideMenuWillSlideToSide");    
+-(void) slideMenuWillSlideToSide:(UINavigationController *)selectedContent{
+    NSLog(@"slideMenuWillSlideToSide");
 }
--(void) slideMenuDidSlideToSide{
+-(void) slideMenuDidSlideToSide:(UINavigationController *)selectedContent{
     NSLog(@"slideMenuDidSlideToSide");
-    
 }
--(void) slideMenuWillSlideOut{
+-(void) slideMenuWillSlideOut:(UINavigationController *)selectedContent{
     NSLog(@"slideMenuWillSlideOut");
-    
 }
--(void) slideMenuDidSlideOut{
+-(void) slideMenuDidSlideOut:(UINavigationController *)selectedContent{
     NSLog(@"slideMenuDidSlideOut");
+}
+-(void) slideMenuWillSlideToLeft:(UINavigationController *)selectedContent{
+    NSLog(@"slideMenuWillSlideToLeft");
+}
+-(void) slideMenuDidSlideToLeft:(UINavigationController *)selectedContent{
+    NSLog(@"slideMenuDidSlideToLeft");
 }
 
 @end

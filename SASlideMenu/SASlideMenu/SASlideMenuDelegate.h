@@ -12,16 +12,16 @@
 
 @optional
 
--(void)slideMenuWillSlideToSide;
--(void)slideMenuDidSlideToSide;
+-(void)slideMenuWillSlideToSide:(UINavigationController*) selectedContent;
+-(void)slideMenuDidSlideToSide:(UINavigationController*) selectedContent;
 
--(void)slideMenuWillSlideIn;
--(void)slideMenuDidSlideIn;
+-(void)slideMenuWillSlideIn:(UINavigationController*) selectedContent;
+-(void)slideMenuDidSlideIn:(UINavigationController*) selectedContent;
 
--(void)slideMenuWillSlideOut;
--(void)slideMenuDidSlideOut;
+-(void)slideMenuWillSlideOut:(UINavigationController*) selectedContent;
+-(void)slideMenuDidSlideOut:(UINavigationController*) selectedContent;
 
--(void) slideMenuWillSlideToLeft;
--(void) slideMenuDidSlideToLeft;
+-(void) slideMenuWillSlideToLeft:(UINavigationController*) selectedContent;
+-(void) slideMenuDidSlideToLeft:(UINavigationController*) selectedContent;
 
 @end
