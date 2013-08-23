@@ -12,7 +12,9 @@
 #import "MenuCell.h"
 #import "DarkViewController.h"
 #import "LightViewController.h"
-@interface ExampleStaticMenuViewController() <SASlideMenuDataSource,SASlideMenuDelegate> 
+#import "ShadesViewController.h"
+
+@interface ExampleStaticMenuViewController() <SASlideMenuDataSource,SASlideMenuDelegate>
 
 @end
 

@@ -68,6 +68,17 @@
     }
 }
 
+-(void) revealLeftMenu{
+    [self.rootController doSlideToSide];
+}
+-(void) revealRightMenu{
+    if ([self.slideMenuDataSource respondsToSelector:@selector(hasRightMenuForIndexPath:)]) {
+        if ([self.slideMenuDataSource hasRightMenuForIndexPath:self.selectedIndexPath]) {
+            [self.rootController doSlideToLeftSide];            
+        }
+    }
+}
+
 #pragma mark -
 #pragma mark UIGestureRecognizerDelegate
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {

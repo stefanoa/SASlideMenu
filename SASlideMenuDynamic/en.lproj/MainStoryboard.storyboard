@@ -318,7 +318,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IMv-df-JIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="150" y="-3337"/>
+            <point key="canvasLocation" x="251" y="-3337"/>
         </scene>
         <!--Slide Menu Root View Controller-->
         <scene sceneID="TLR-0O-KYb">
@@ -426,10 +426,10 @@
             </objects>
             <point key="canvasLocation" x="-857" y="-1713"/>
         </scene>
-        <!--View Controller-->
+        <!--Green View Controller-->
         <scene sceneID="RtY-ri-1Cz">
             <objects>
-                <viewController id="waD-kN-2Ac" sceneMemberID="viewController">
+                <viewController id="waD-kN-2Ac" customClass="GreenViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uee-ky-sd9">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -583,6 +583,12 @@
             <relationships>
                 <relationship kind="action" name="tap:"/>
                 <relationship kind="outlet" name="tapGesture" candidateClass="UITapGestureRecognizer"/>
+            </relationships>
+        </class>
+        <class className="GreenViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GreenViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="tap:"/>
             </relationships>
         </class>
         <class className="SASlideMenuNavigationController" superclassName="UINavigationController">

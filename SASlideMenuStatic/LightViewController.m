@@ -17,4 +17,9 @@
 -(IBAction)tap:(id)sender{
     [self.menuViewController selectContentAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] scrollPosition:UITableViewScrollPositionTop];
 }
+
+-(IBAction) leftMenu:(id)sender{
+    [self.menuViewController revealLeftMenu];
+}
+
 @end

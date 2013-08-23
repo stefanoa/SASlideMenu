@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SASlideMenuViewController.h"
 
 @interface ShadesViewController : UIViewController
 
 @property(nonatomic, strong) IBOutlet UIView* tableContainer;
+
 
 @end

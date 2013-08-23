@@ -28,6 +28,7 @@
 -(UINavigationController*) controllerForIndexPath:(NSIndexPath*) indexPath;
 
 -(void) doSlideToSide;
+-(void) doSlideToLeftSide;
 -(void) rightMenuAction;
 
 

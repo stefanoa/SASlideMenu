@@ -14,4 +14,6 @@
 @property (nonatomic,strong) SASlideMenuViewController* menuViewController;
 
 -(IBAction)tap:(id)sender;
+-(IBAction) leftMenu:(id)sender;
+
 @end

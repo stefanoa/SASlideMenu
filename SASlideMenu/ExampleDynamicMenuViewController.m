@@ -8,7 +8,7 @@
 
 #import "ExampleDynamicMenuViewController.h"
 #import "ColoredViewController.h"
-
+#import "GreenViewController.h"
 @interface ExampleDynamicMenuViewController ()<SASlideMenuDataSource,SASlideMenuDelegate, UITableViewDataSource>
 
 @property (nonatomic) CGFloat selectedHue;
@@ -45,6 +45,9 @@
     if ([controller isKindOfClass:[ColoredViewController class]]) {
         ColoredViewController* coloredViewController = (ColoredViewController*) controller;
         [coloredViewController setBackgroundHue:selectedHue brightness:selectedBrightness];
+    }else if ([controller isKindOfClass:[GreenViewController class]]) {
+        GreenViewController* greenController = (GreenViewController*) controller;
+        greenController.menuController = self;
     }
 }
 

@@ -11,6 +11,7 @@
 		7B27435C16D3638300F89C69 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 7B27435B16D3638300F89C69 /* CHANGELOG.md */; };
 		7B27436B16D7801E00F89C69 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B27436A16D7801E00F89C69 /* FirstViewController.m */; };
 		7B30325A17C516C00084BD15 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B30325917C516C00084BD15 /* SecondViewController.m */; };
+		7B30325D17C7ED2D0084BD15 /* GreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B30325C17C7ED2D0084BD15 /* GreenViewController.m */; };
 		7B38FC1916F0797400B7DFC3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8C3FDE15D8D55800E42A41 /* UIKit.framework */; };
 		7B38FC1A16F0797400B7DFC3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8C3FE015D8D55800E42A41 /* Foundation.framework */; };
 		7B38FC1B16F0797400B7DFC3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8C3FE215D8D55800E42A41 /* CoreGraphics.framework */; };
@@ -203,6 +204,8 @@
 		7B28D2F91664EE39000EE929 /* ColoredDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColoredDetailViewController.m; path = ../SASlideMenu/ColoredDetailViewController.m; sourceTree = "<group>"; };
 		7B30325817C516C00084BD15 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		7B30325917C516C00084BD15 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		7B30325B17C7ED2D0084BD15 /* GreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreenViewController.h; sourceTree = "<group>"; };
+		7B30325C17C7ED2D0084BD15 /* GreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreenViewController.m; sourceTree = "<group>"; };
 		7B38FC1816F0797400B7DFC3 /* SASlideMenuiPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SASlideMenuiPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B38FC1E16F0797400B7DFC3 /* SASlideMenuiPad-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SASlideMenuiPad-Info.plist"; sourceTree = "<group>"; };
 		7B38FC2016F0797400B7DFC3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -452,6 +455,8 @@
 				7B28D2A6165CCB10000EE929 /* ColoredViewController.m */,
 				7B28D2F81664EE37000EE929 /* ColoredDetailViewController.h */,
 				7B28D2F91664EE39000EE929 /* ColoredDetailViewController.m */,
+				7B30325B17C7ED2D0084BD15 /* GreenViewController.h */,
+				7B30325C17C7ED2D0084BD15 /* GreenViewController.m */,
 				7B27436916D7801E00F89C69 /* FirstViewController.h */,
 				7B27436A16D7801E00F89C69 /* FirstViewController.m */,
 				7B30325817C516C00084BD15 /* SecondViewController.h */,
@@ -795,6 +800,7 @@
 				7BFEA28D16C2573F00455A22 /* SASlideMenuNavigationController.m in Sources */,
 				7B27436B16D7801E00F89C69 /* FirstViewController.m in Sources */,
 				7B30325A17C516C00084BD15 /* SecondViewController.m in Sources */,
+				7B30325D17C7ED2D0084BD15 /* GreenViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
