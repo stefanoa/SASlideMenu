@@ -30,7 +30,7 @@
 -(void) doSlideToSide;
 -(void) doSlideToLeftSide;
 -(void) rightMenuAction;
-
+-(void) addRightMenu;
 
 -(void) panItem:(UIPanGestureRecognizer*)gesture;
 @end
