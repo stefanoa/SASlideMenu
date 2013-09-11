@@ -99,10 +99,11 @@
 }
 //Disable caching for the controller at the first row of each section
 -(Boolean) disableContentViewControllerCachingForIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row ==0) {
-        return YES;
-    }
-    return NO;
+//    if (indexPath.row ==0) {
+//        return YES;
+//    }
+//    return NO;
+    return YES;
 }
 
 //Enable the right menu for the the view controller in the first section
