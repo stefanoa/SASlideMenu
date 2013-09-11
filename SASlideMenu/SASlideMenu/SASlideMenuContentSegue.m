@@ -58,7 +58,7 @@
         layer.shadowPath =[UIBezierPath bezierPathWithRect:layer.bounds].CGPath;
     }
     
-    [rootController switchToContentViewController:destination];
+    [rootController switchToContentViewController:destination completion:nil];
 
     if ([rootController.leftMenu.slideMenuDataSource respondsToSelector:@selector(segueIdForIndexPath:)]) {
         [rootController addContentViewController:destination withIndexPath:selectedIndexPath];        

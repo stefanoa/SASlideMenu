@@ -32,9 +32,9 @@ typedef enum {
     SASlideMenuPanningState panningState;
     CGFloat panningPreviousPosition;
     NSDate* panningPreviousEventDate;
-    CGFloat panningXSpeed;  // panning speed expressed in px/ms 
+    CGFloat panningXSpeed;  // panning speed expressed in px/ms
     NSMutableDictionary* controllers;
-    
+
     UIPanGestureRecognizer* menuPanGesture;
     UITapGestureRecognizer* tapGesture;
 }
@@ -103,7 +103,7 @@ typedef enum {
 -(void) completeSlideToSide:(UINavigationController*) controller{
     [self addShield:controller];
     state = SASlideMenuStateMenu;
-    
+
 }
 
 -(void) completeSlideToLeftSide:(UINavigationController*) controller{
@@ -120,7 +120,7 @@ typedef enum {
     if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(slideInAnimationDuration)]) {
         duration = [self.leftMenu.slideMenuDataSource slideInAnimationDuration];
     }
-    
+
     [UIView animateWithDuration:duration
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseInOut
@@ -193,7 +193,7 @@ typedef enum {
     if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(slideInAnimationDuration)]) {
         duration = [self.leftMenu.slideMenuDataSource slideInAnimationDuration];
     }
-    
+
     [UIView animateWithDuration:duration delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self slideIn:self.selectedContent];
     } completion:^(BOOL finished) {
@@ -225,12 +225,12 @@ typedef enum {
 -(void) addRightMenu{
     CGRect bounds = self.view.bounds;
     CGFloat menuSize = [self rightMenuSize];
-    
+
     CGFloat visiblePortion = bounds.size.width-menuSize;
     CGRect frame  = CGRectMake(visiblePortion, 0, menuSize, bounds.size.height);
     self.rightMenu.view.frame = frame;
     self.rightMenu.view.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleHeight;
-    
+
     [self addChildViewController:self.rightMenu];
     [self.view insertSubview:self.rightMenu.view belowSubview:self.selectedContent.view];
 }
@@ -250,14 +250,14 @@ typedef enum {
     [self doSlideIn:nil];
 }
 -(void) tapItem:(UITapGestureRecognizer*)gesture{
-    [self switchToContentViewController:self.selectedContent];
+    [self switchToContentViewController:self.selectedContent completion:nil];
 }
 
--(void) panItem:(UIPanGestureRecognizer*)gesture{    
+-(void) panItem:(UIPanGestureRecognizer*)gesture{
     UIView* panningView = gesture.view;
     CGPoint translation = [gesture translationInView:panningView];
     UIView* movingView = self.selectedContent.view;
-    
+
     if ([gesture state] == UIGestureRecognizerStateBegan) {
 
         if (movingView.frame.origin.x + translation.x < 0 ) {
@@ -310,7 +310,7 @@ typedef enum {
                 translation.x= 0.0;
             }
         }
-        
+
         //when showing the right menu
         if (panningState == SASlideMenuPanningStateLeft) {
             if (movingView.frame.origin.x+translation.x > 0) {
@@ -321,10 +321,10 @@ typedef enum {
                 translation.x = 0.0;
             }
         }
-        
+
         [movingView setCenter:CGPointMake([movingView center].x + translation.x, [movingView center].y)];
         [gesture setTranslation:CGPointZero inView:[panningView superview]];
-        
+
         //calculate pan move speed
         if (panningPreviousEventDate != nil) {
             CGFloat movement = movingView.frame.origin.x - panningPreviousPosition;
@@ -340,49 +340,65 @@ typedef enum {
     return [controllers objectForKey:indexPath];
 }
 
--(void) switchToContentViewController:(UINavigationController*) content{
+-(void) switchToContentViewController:(UINavigationController*) content completion:(void (^)(void))completion{
     CGRect bounds = self.view.bounds;
     self.view.userInteractionEnabled = NO;
     if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(prepareForSwitchToContentViewController:)]) {
         [self.leftMenu.slideMenuDataSource prepareForSwitchToContentViewController:content];
     }
-    
+
     Boolean slideOutThenIn = NO;
     if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(slideOutThenIn)]){
         slideOutThenIn = [self.leftMenu.slideMenuDataSource slideOutThenIn];
     }
     BOOL hideContentOnStartup = ![self.leftMenu.slideMenuDataSource respondsToSelector:@selector(selectedIndexPath)];
-    
+
+    //    [self addChildViewController:content];
+    //    [self.view addSubview:content.view];
+
     if (state != SASlideMenuStateInitial || hideContentOnStartup) {
         if (slideOutThenIn) {
             [self doSlideOut:^(BOOL completed) {
+                NSLog(@"slide out complete: %@, content: %@", self.selectedContent.title, content.title);
                 [self.selectedContent willMoveToParentViewController:nil];
                 [self.selectedContent.view removeFromSuperview];
                 [self.selectedContent removeFromParentViewController];
-                
+
                 content.view.frame = CGRectMake(bounds.size.width,0,bounds.size.width,bounds.size.height);
+
                 [self addChildViewController:content];
                 [self.view addSubview:content.view];
                 self.selectedContent = content;
                 [self doSlideIn:^(BOOL slideInCompleted) {
+                    NSLog(@"slide in complete: %@, content: %@", self.selectedContent.title, content.title);
                     [content didMoveToParentViewController:self];
                     self.view.userInteractionEnabled = YES;
+                    if (completion) {
+                        completion();
+                    }
                 }];
             }];
         }else{
             [self.selectedContent willMoveToParentViewController:nil];
             [self.selectedContent.view removeFromSuperview];
             [self.selectedContent removeFromParentViewController];
+
             [self slideToSide:content];
+            NSLog(@"slide start: %@, content: %@", self.selectedContent.title, content.title);
+
             [self addChildViewController:content];
             [self.view addSubview:content.view];
             self.selectedContent = content;
             [self doSlideIn:^(BOOL completed) {
+                NSLog(@"slide in complete: %@, content: %@", self.selectedContent.title, content.title);
                 [content didMoveToParentViewController:self];
                 self.view.userInteractionEnabled = YES;
+                if (completion) {
+                    completion();
+                }
             }];
         }
-        
+
     }else{
         [self.selectedContent willMoveToParentViewController:nil];
         [self.selectedContent.view removeFromSuperview];
@@ -406,7 +422,9 @@ typedef enum {
         }
         [content didMoveToParentViewController:self];
         self.view.userInteractionEnabled = YES;
-        
+        if (completion) {
+            completion();
+        }
     }
 }
 
@@ -426,13 +444,13 @@ typedef enum {
     SASlideMenuRootViewController* root = self;
     root.navigationController = navigationController;
     navigationController.rootController = root;
-    
+
     NSArray* ctrls = navigationController.viewControllers;
     UIViewController* empty = [[UIViewController alloc] init];
     NSArray* newControllers = [NSArray arrayWithObjects:empty,[ctrls objectAtIndex:0],nil];
     [navigationController setViewControllers:newControllers animated:NO];
     navigationController.lastController =[ctrls objectAtIndex:0];
-    
+
     CGRect bounds = root.view.bounds;
     navigationController.view.frame = CGRectMake(bounds.size.width,0.0,bounds.size.width,bounds.size.height);
     [root addChildViewController:navigationController];
@@ -479,16 +497,16 @@ typedef enum {
 
 -(void) viewDidLoad{
     [super viewDidLoad];
-    
+
     controllers = [[NSMutableDictionary alloc] init];
-    
+
     self.shieldWithMenu = [[UIView alloc] initWithFrame:CGRectZero];
     state = SASlideMenuStateInitial;
     panningState = SASlideMenuPanningStateStopped;
-    
+
     tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapShield:)];
     [self.shieldWithMenu addGestureRecognizer:tapGesture];
-    
+
     menuPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panItem:)];
     [menuPanGesture setMaximumNumberOfTouches:2];
     [self.shieldWithMenu addGestureRecognizer:menuPanGesture];
