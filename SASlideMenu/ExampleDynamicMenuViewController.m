@@ -179,7 +179,7 @@
 }
 #pragma mark -
 #pragma mark SASlideMenuDelegate
-/*
+
 -(void) slideMenuWillSlideIn:(UINavigationController *)selectedContent{
     NSLog(@"slideMenuWillSlideIn");
 }
@@ -204,5 +204,5 @@
 -(void) slideMenuDidSlideToLeft:(UINavigationController *)selectedContent{
     NSLog(@"slideMenuDidSlideToLeft");
 }
- */
+ 
 @end
