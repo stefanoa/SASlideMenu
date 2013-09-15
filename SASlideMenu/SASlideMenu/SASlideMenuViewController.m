@@ -43,7 +43,7 @@
     if ([self.slideMenuDataSource respondsToSelector:@selector(segueIdForIndexPath:)]) {
         UINavigationController* controller = [self.rootController controllerForIndexPath:indexPath];
         if (controller) {
-            [self.rootController switchToContentViewController:controller];
+            [self.rootController switchToContentViewController:controller completion:nil];
             return;
         }
         NSString* segueId = [self.slideMenuDataSource segueIdForIndexPath:indexPath];

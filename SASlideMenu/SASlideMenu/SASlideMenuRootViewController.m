@@ -250,7 +250,7 @@ typedef enum {
     [self doSlideIn:nil];
 }
 -(void) tapItem:(UITapGestureRecognizer*)gesture{
-    [self switchToContentViewController:self.selectedContent];
+    [self switchToContentViewController:self.selectedContent completion:nil];
 }
 
 -(void) panItem:(UIPanGestureRecognizer*)gesture{    
@@ -340,7 +340,7 @@ typedef enum {
     return [controllers objectForKey:indexPath];
 }
 
--(void) switchToContentViewController:(UINavigationController*) content{
+-(void) switchToContentViewController:(UINavigationController*) content completion:(void (^)(void))completion{
     CGRect bounds = self.view.bounds;
     self.view.userInteractionEnabled = NO;
     if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(prepareForSwitchToContentViewController:)]) {
@@ -364,8 +364,12 @@ typedef enum {
                 [self addChildViewController:content];
                 [self.view addSubview:content.view];
                 self.selectedContent = content;
+                [NSThread sleepForTimeInterval:1.0];
                 [self doSlideIn:^(BOOL slideInCompleted) {
                     [content didMoveToParentViewController:self];
+                    if(completion){
+                        completion();
+                    }
                     self.view.userInteractionEnabled = YES;
                 }];
             }];
@@ -379,6 +383,9 @@ typedef enum {
             self.selectedContent = content;
             [self doSlideIn:^(BOOL completed) {
                 [content didMoveToParentViewController:self];
+                if(completion){
+                    completion();
+                }
                 self.view.userInteractionEnabled = YES;
             }];
         }
@@ -405,8 +412,10 @@ typedef enum {
             [self.leftMenu.slideMenuDelegate slideMenuDidSlideIn:self.selectedContent];
         }
         [content didMoveToParentViewController:self];
+        if(completion){
+            completion();
+        }
         self.view.userInteractionEnabled = YES;
-        
     }
 }
 

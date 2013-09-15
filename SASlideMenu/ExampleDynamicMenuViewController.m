@@ -95,19 +95,15 @@
 }
 
 -(Boolean) slideOutThenIn{
-    return NO;
+    return YES;
 }
 //Disable caching for the controller at the first row of each section
 -(Boolean) disableContentViewControllerCachingForIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row ==0) {
-        return YES;
-    }
-    return NO;
+       return YES;
 }
 
 //Enable the right menu for the the view controller in the first section
 -(Boolean) hasRightMenuForIndexPath:(NSIndexPath *)indexPath{
-
     return YES;
 }
 
@@ -183,7 +179,7 @@
 }
 #pragma mark -
 #pragma mark SASlideMenuDelegate
-
+/*
 -(void) slideMenuWillSlideIn:(UINavigationController *)selectedContent{
     NSLog(@"slideMenuWillSlideIn");
 }
@@ -208,4 +204,5 @@
 -(void) slideMenuDidSlideToLeft:(UINavigationController *)selectedContent{
     NSLog(@"slideMenuDidSlideToLeft");
 }
+ */
 @end
