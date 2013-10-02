@@ -50,6 +50,8 @@ typedef enum {
 
 @implementation SASlideMenuRootViewController
 
+@synthesize menuView;
+
 #pragma mark -
 #pragma mark SASlideMenuRootViewController
 
@@ -488,7 +490,7 @@ typedef enum {
 
 -(void) viewDidLoad{
     [super viewDidLoad];
-    
+
     controllers = [[NSMutableDictionary alloc] init];
     
     self.shieldWithMenu = [[UIView alloc] initWithFrame:CGRectZero];

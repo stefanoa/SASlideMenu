@@ -20,7 +20,7 @@
 
     [leftMenu willMoveToParentViewController:rootViewController];
     [rootViewController addChildViewController:leftMenu];
-    [rootViewController.view addSubview:leftMenu.view];
+    [rootViewController.menuView addSubview:leftMenu.view];
     rootViewController.leftMenu = leftMenu;
     
     leftMenu.rootController = rootViewController;

@@ -33,6 +33,11 @@
     
 }
 
+-(void) viewDidLoad{
+    [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+}
 -(BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
     return YES;
 }

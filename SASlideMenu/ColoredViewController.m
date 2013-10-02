@@ -39,6 +39,7 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
+    [NSThread sleepForTimeInterval:3.0];
     UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
     [self.view addGestureRecognizer:tapRecognizer];
 }
