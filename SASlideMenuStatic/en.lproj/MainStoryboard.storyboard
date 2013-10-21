@@ -1,19 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="VKh-QN-AtT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="VKh-QN-AtT">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
         <!--Slide Menu Root View Controller-->
         <scene sceneID="iWD-XT-9aQ">
             <objects>
                 <viewController id="VKh-QN-AtT" customClass="SASlideMenuRootViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8pj-J1-vq7"/>
+                        <viewControllerLayoutGuide type="bottom" id="fZ4-5D-4l7"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5Iy-73-w7Q">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qs1-wT-9jn">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fZ4-5D-4l7" firstAttribute="top" secondItem="Qs1-wT-9jn" secondAttribute="bottom" id="0cD-RI-r9q"/>
+                            <constraint firstAttribute="trailing" secondItem="Qs1-wT-9jn" secondAttribute="trailing" id="1hZ-UV-4FO"/>
+                            <constraint firstItem="Qs1-wT-9jn" firstAttribute="leading" secondItem="5Iy-73-w7Q" secondAttribute="leading" id="EaL-Vg-q4S"/>
+                            <constraint firstItem="Qs1-wT-9jn" firstAttribute="top" secondItem="8pj-J1-vq7" secondAttribute="bottom" id="oM8-cx-Fet"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="menuView" destination="Qs1-wT-9jn" id="4Pf-pP-wPc"/>
                         <segue destination="C3g-DQ-fRD" kind="custom" identifier="leftMenu" customClass="SASlideMenuLeftMenuSegue" id="PVD-2Y-rxg"/>
                     </connections>
                 </viewController>
@@ -26,7 +45,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="Static" id="C3g-DQ-fRD" customClass="ExampleStaticMenuViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bounces="NO" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="O8j-gz-Sfk">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.19898437499999999" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -35,94 +54,64 @@
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Yao-AR-fRV" customClass="MenuCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yao-AR-fRV" id="IIg-Ix-Wru">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rowselected.png" id="hCN-FM-76I">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="row.png" id="uAM-3m-M2T">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                                </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Dark" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Fnc-Dq-dWr">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Dark" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Fnc-Dq-dWr">
                                                     <rect key="frame" x="20" y="11" width="211" height="22"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="disclosure.png" id="kqn-D2-Ux9">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="disclosure.png" translatesAutoresizingMaskIntoConstraints="NO" id="kqn-D2-Ux9">
                                                     <rect key="frame" x="250" y="12" width="20" height="20"/>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="backgroundView" destination="uAM-3m-M2T" id="bii-rk-cub"/>
                                             <outlet property="disclosureImage" destination="kqn-D2-Ux9" id="gt9-Za-aDW"/>
-                                            <outlet property="selectedBackgroundView" destination="hCN-FM-76I" id="N0d-qH-PN3"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Y5R-hn-9ln" customClass="MenuCell">
                                         <rect key="frame" x="0.0" y="44" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y5R-hn-9ln" id="HJF-45-vQi">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rowselected.png" id="a6A-9P-Yas">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="row.png" id="jJO-1q-bSw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="disclosure.png" id="wgh-IC-uH4">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="disclosure.png" translatesAutoresizingMaskIntoConstraints="NO" id="wgh-IC-uH4">
                                                     <rect key="frame" x="250" y="10" width="20" height="20"/>
                                                 </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Light" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="KbX-ze-Lzv">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Light" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KbX-ze-Lzv">
                                                     <rect key="frame" x="20" y="11" width="211" height="22"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="backgroundView" destination="jJO-1q-bSw" id="gaZ-GN-biu"/>
                                             <outlet property="disclosureImage" destination="wgh-IC-uH4" id="Kw8-Nk-3yX"/>
-                                            <outlet property="selectedBackgroundView" destination="a6A-9P-Yas" id="c2a-vN-2AG"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="EGj-9f-HYm" customClass="MenuCell">
                                         <rect key="frame" x="0.0" y="88" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EGj-9f-HYm" id="PZq-NS-F6W">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rowselected.png" id="9Of-bR-Ha6">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="row.png" id="Ave-6G-f2k">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="disclosure.png" id="PM1-63-jf9">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="disclosure.png" translatesAutoresizingMaskIntoConstraints="NO" id="PM1-63-jf9">
                                                     <rect key="frame" x="250" y="10" width="20" height="20"/>
                                                 </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Shades" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="IRv-6F-pnO">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Shades" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="IRv-6F-pnO">
                                                     <rect key="frame" x="20" y="11" width="211" height="22"/>
-                                                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="backgroundView" destination="Ave-6G-f2k" id="fdb-pf-WU8"/>
                                             <outlet property="disclosureImage" destination="PM1-63-jf9" id="dH4-iU-Gef"/>
-                                            <outlet property="selectedBackgroundView" destination="9Of-bR-Ha6" id="jkF-i0-F05"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -133,7 +122,7 @@
                             <outlet property="delegate" destination="C3g-DQ-fRD" id="fNz-SL-hmC"/>
                         </connections>
                     </tableView>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <connections>
                         <segue destination="doc-P0-YCL" kind="custom" identifier="dark" customClass="SASlideMenuContentSegue" id="POg-Df-gpJ"/>
                         <segue destination="FgT-Db-JXl" kind="custom" identifier="light" customClass="SASlideMenuContentSegue" id="jgz-po-BPx"/>
@@ -148,7 +137,7 @@
         <scene sceneID="bZ3-Hh-inT">
             <objects>
                 <navigationController definesPresentationContext="YES" id="doc-P0-YCL" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="N6o-yJ-8r8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="N6o-yJ-8r8">
                         <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -169,12 +158,16 @@
         <scene sceneID="iFg-Ki-Uxm">
             <objects>
                 <viewController id="x2E-WD-CCp" customClass="DarkViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6Vg-vf-f1J"/>
+                        <viewControllerLayoutGuide type="bottom" id="KeJ-XQ-Qwh"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KRY-fP-1Dk">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <slider contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.33000001311302185" minValue="0.0" maxValue="1" id="kor-y8-JBs">
-                                <rect key="frame" x="18" y="80" width="284" height="23"/>
+                            <slider contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.33000001311302185" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="kor-y8-JBs">
+                                <rect key="frame" x="18" y="87" width="284" height="34"/>
                                 <color key="minimumTrackTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="thumbTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -182,8 +175,8 @@
                                     <action selector="changeDarkness:" destination="x2E-WD-CCp" eventType="valueChanged" id="bfP-6O-Fse"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Darkness" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RlY-60-SEB">
-                                <rect key="frame" x="20" y="20" width="280" height="35"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Darkness" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RlY-60-SEB">
+                                <rect key="frame" x="20" y="23" width="280" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -204,13 +197,13 @@
         <scene sceneID="1bs-EI-xmB">
             <objects>
                 <navigationController definesPresentationContext="YES" id="79Z-YM-vAE" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="iz7-93-LxL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="iz7-93-LxL">
                         <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="b4C-tU-pxk" kind="relationship" relationship="rootViewController" id="eh1-q4-wth"/>
+                        <segue destination="ZEV-K1-6UB" kind="relationship" relationship="rootViewController" id="rAW-BN-ULm"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PmC-ed-kt2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -237,12 +230,16 @@
         <scene sceneID="73w-vS-Yma">
             <objects>
                 <viewController id="CJX-Z9-Ud1" customClass="LightViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="S1C-FB-5y8"/>
+                        <viewControllerLayoutGuide type="bottom" id="vNN-HI-AdU"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KiK-IR-cBq">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xWG-5D-zlw">
-                                <rect key="frame" x="115" y="154" width="92" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xWG-5D-zlw">
+                                <rect key="frame" x="115" y="175" width="92" height="44"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Back to Dark">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -255,8 +252,8 @@
                                     <action selector="tap:" destination="CJX-Z9-Ud1" eventType="touchUpInside" id="Zu3-xd-KNr"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TnT-C8-lYJ">
-                                <rect key="frame" x="115" y="196" width="92" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnT-C8-lYJ">
+                                <rect key="frame" x="115" y="223" width="92" height="44"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Left Menu">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -279,99 +276,49 @@
             <point key="canvasLocation" x="290" y="-243"/>
         </scene>
         <!--Shades View Controller-->
-        <scene sceneID="3Xd-6J-ylE">
+        <scene sceneID="fru-Nu-a6v">
             <objects>
-                <viewController id="b4C-tU-pxk" customClass="ShadesViewController" sceneMemberID="viewController">
-                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="XuP-hg-UCV">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                <viewController id="ZEV-K1-6UB" customClass="ShadesViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uJn-u0-x7C"/>
+                        <viewControllerLayoutGuide type="bottom" id="AML-pT-58h"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fAr-dn-40F">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" id="Mp0-bZ-ANQ">
-                                <rect key="frame" x="10" y="10" width="300" height="484"/>
-                                <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="drT-CR-3Zj">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="484"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="light" id="kvS-qX-c7H">
-                                                <rect key="frame" x="0.0" y="46" width="300" height="45"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="10" y="1" width="280" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                </view>
-                                            </tableViewCell>
-                                        </prototypes>
-                                        <connections>
-                                            <outlet property="dataSource" destination="b4C-tU-pxk" id="IwN-cH-LLM"/>
-                                            <outlet property="delegate" destination="b4C-tU-pxk" id="7AP-Ew-h7I"/>
-                                        </connections>
-                                    </tableView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cvg-Ep-ua5">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="light" id="SHb-O2-R7e">
+                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SHb-O2-R7e">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ZEV-K1-6UB" id="oru-q9-h0K"/>
+                                    <outlet property="delegate" destination="ZEV-K1-6UB" id="inT-7s-NDo"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="42r-fO-eRr"/>
-                    <connections>
-                        <outlet property="tableContainer" destination="Mp0-bZ-ANQ" id="EFU-7b-tbf"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="MLT-bw-qls"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hld-U0-TVs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="zG4-Lc-drg">
-                    <connections>
-                        <action selector="tap:" destination="b4C-tU-pxk" id="Dcw-sR-Svj"/>
-                    </connections>
-                </pongPressGestureRecognizer>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IKg-ju-4Qe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="290" y="414"/>
         </scene>
     </scenes>
     <resources>
         <image name="disclosure.png" width="20" height="20"/>
-        <image name="row.png" width="1" height="44"/>
-        <image name="rowselected.png" width="1" height="44"/>
     </resources>
-    <classes>
-        <class className="DarkViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DarkViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="changeDarkness:"/>
-                <relationship kind="outlet" name="darknessSlider" candidateClass="UISlider"/>
-            </relationships>
-        </class>
-        <class className="ExampleStaticMenuViewController" superclassName="SASlideMenuViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExampleStaticMenuViewController.h"/>
-        </class>
-        <class className="LightViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LightViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="leftMenu:"/>
-                <relationship kind="action" name="tap:"/>
-            </relationships>
-        </class>
-        <class className="MenuCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="disclosureImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="itemDescription" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SASlideMenuRootViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SASlideMenuRootViewController.h"/>
-        </class>
-        <class className="SASlideMenuViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SASlideMenuViewController.h"/>
-        </class>
-        <class className="ShadesViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ShadesViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableContainer" candidateClass="UIView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

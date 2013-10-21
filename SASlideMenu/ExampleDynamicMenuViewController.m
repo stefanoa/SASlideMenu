@@ -99,9 +99,6 @@
     return result;
 }
 
--(Boolean) slideOutThenIn{
-    return YES;
-}
 //Disable caching for the controller at the first row of each section
 -(Boolean) disableContentViewControllerCachingForIndexPath:(NSIndexPath *)indexPath{
        return YES;

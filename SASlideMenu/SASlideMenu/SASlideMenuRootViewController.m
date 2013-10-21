@@ -366,7 +366,6 @@ typedef enum {
                 [self addChildViewController:content];
                 [self.view addSubview:content.view];
                 self.selectedContent = content;
-                [NSThread sleepForTimeInterval:1.0];
                 [self doSlideIn:^(BOOL slideInCompleted) {
                     [content didMoveToParentViewController:self];
                     if(completion){
