@@ -35,8 +35,6 @@
 
 -(void) viewDidLoad{
     [super viewDidLoad];
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
 }
 -(BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
     return YES;
@@ -59,21 +57,13 @@
 // It configure the menu button. The beahviour of the button should not be modified
 -(void) configureMenuButton:(UIButton *)menuButton{
     menuButton.frame = CGRectMake(0, 0, 40, 29);
-    [menuButton setImage:[UIImage imageNamed:@"menuicon.png"] forState:UIControlStateNormal];
-    [menuButton setBackgroundImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
-    [menuButton setBackgroundImage:[UIImage imageNamed:@"menuhighlighted.png"] forState:UIControlStateHighlighted];
-    [menuButton setAdjustsImageWhenHighlighted:NO];
-    [menuButton setAdjustsImageWhenDisabled:NO];
+    [menuButton setImage:[UIImage imageNamed:@"menuicon"] forState:UIControlStateNormal];
 }
 
 // It configure the right menu button. The beahviour of the button should not be modified
 -(void) configureRightMenuButton:(UIButton *)menuButton{
     menuButton.frame = CGRectMake(0, 0, 40, 29);
-    [menuButton setImage:[UIImage imageNamed:@"menuright.png"] forState:UIControlStateNormal];
-    [menuButton setBackgroundImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
-    [menuButton setBackgroundImage:[UIImage imageNamed:@"menuhighlighted.png"] forState:UIControlStateHighlighted];
-    [menuButton setAdjustsImageWhenHighlighted:NO];
-    [menuButton setAdjustsImageWhenDisabled:NO];
+    [menuButton setImage:[UIImage imageNamed:@"menuiconright"] forState:UIControlStateNormal];
 }
 
 // This is the segue you want visibile when the controller is loaded the first time
@@ -99,12 +89,10 @@
     return result;
 }
 
-//Disable caching for the controller at the first row of each section
 -(Boolean) disableContentViewControllerCachingForIndexPath:(NSIndexPath *)indexPath{
        return YES;
 }
 
-//Enable the right menu for the the view controller in the first section
 -(Boolean) hasRightMenuForIndexPath:(NSIndexPath *)indexPath{
     return YES;
 }
@@ -149,11 +137,11 @@
 }
 
 -(CGFloat) leftMenuVisibleWidth{
-    return 280;
+    return 260;
 }
 
 -(CGFloat) rightMenuVisibleWidth{
-    return 300;
+    return 260;
 }
 
 //restricts pan gesture interation to 50px on the left and right of the view.

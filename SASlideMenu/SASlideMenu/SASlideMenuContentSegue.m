@@ -52,7 +52,7 @@
         CALayer* layer = destination.view.layer;
         layer.shadowColor = [UIColor blackColor].CGColor;
         layer.shadowOpacity = 0.3;
-        layer.shadowOffset = CGSizeMake(-15, 0);
+        layer.shadowOffset = CGSizeMake(-5, 0);
         layer.shadowRadius = 10;
         layer.masksToBounds = NO;
         layer.shadowPath =[UIBezierPath bezierPathWithRect:layer.bounds].CGPath;

@@ -14,3 +14,8 @@ Version 1.3.0
 * Fixed issues #86. The SASlideMenuDelegate changed in order to add the selected controller has a parameter on each method.
 * Fixed issue #89. The SASlideMenuNavigationViewController now implements popToRootViewControllerAnimated:.
 
+Version 2.0.0
+* iOS7 support
+* Modified all the sample icons to better suite iOS7
+
+

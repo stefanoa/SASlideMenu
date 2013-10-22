@@ -47,7 +47,6 @@
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bounces="NO" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="O8j-gz-Sfk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.19898437499999999" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection id="oDp-mW-YFf">
                                 <cells>
@@ -63,14 +62,8 @@
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="disclosure.png" translatesAutoresizingMaskIntoConstraints="NO" id="kqn-D2-Ux9">
-                                                    <rect key="frame" x="250" y="12" width="20" height="20"/>
-                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="disclosureImage" destination="kqn-D2-Ux9" id="gt9-Za-aDW"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Y5R-hn-9ln" customClass="MenuCell">
                                         <rect key="frame" x="0.0" y="44" width="320" height="44"/>
@@ -79,9 +72,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="disclosure.png" translatesAutoresizingMaskIntoConstraints="NO" id="wgh-IC-uH4">
-                                                    <rect key="frame" x="250" y="10" width="20" height="20"/>
-                                                </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Light" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KbX-ze-Lzv">
                                                     <rect key="frame" x="20" y="11" width="211" height="22"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
@@ -89,9 +79,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="disclosureImage" destination="wgh-IC-uH4" id="Kw8-Nk-3yX"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="EGj-9f-HYm" customClass="MenuCell">
                                         <rect key="frame" x="0.0" y="88" width="320" height="44"/>
@@ -100,9 +87,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="disclosure.png" translatesAutoresizingMaskIntoConstraints="NO" id="PM1-63-jf9">
-                                                    <rect key="frame" x="250" y="10" width="20" height="20"/>
-                                                </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Shades" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="IRv-6F-pnO">
                                                     <rect key="frame" x="20" y="11" width="211" height="22"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
@@ -110,9 +94,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="disclosureImage" destination="PM1-63-jf9" id="dH4-iU-Gef"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -137,7 +118,7 @@
         <scene sceneID="bZ3-Hh-inT">
             <objects>
                 <navigationController definesPresentationContext="YES" id="doc-P0-YCL" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="N6o-yJ-8r8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="N6o-yJ-8r8">
                         <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -197,7 +178,7 @@
         <scene sceneID="1bs-EI-xmB">
             <objects>
                 <navigationController definesPresentationContext="YES" id="79Z-YM-vAE" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="iz7-93-LxL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iz7-93-LxL">
                         <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -316,9 +297,6 @@
             <point key="canvasLocation" x="290" y="414"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="disclosure.png" width="20" height="20"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -27,9 +27,7 @@
 
 #pragma mark -
 #pragma mark SASlideMenuDataSource
-// The SASlideMenuDataSource is used to provide the initial segueid that represents the initial visibile view controller and to provide eventual additional configuration to the menu button
 
-// This is the indexPath selected at start-up
 -(NSIndexPath*) selectedIndexPath{
     return [NSIndexPath indexPathForRow:0 inSection:0];
 }
@@ -55,27 +53,22 @@
     return NO;
 }
 
-// This is used to configure the menu button. The beahviour of the button should not be modified
 -(void) configureMenuButton:(UIButton *)menuButton{
     menuButton.frame = CGRectMake(0, 0, 40, 29);
-    [menuButton setImage:[UIImage imageNamed:@"menuicon.png"] forState:UIControlStateNormal];
-    [menuButton setBackgroundImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
-    [menuButton setBackgroundImage:[UIImage imageNamed:@"menuhighlighted.png"] forState:UIControlStateHighlighted];
-    [menuButton setAdjustsImageWhenHighlighted:NO];
-    [menuButton setAdjustsImageWhenDisabled:NO];
+    [menuButton setImage:[UIImage imageNamed:@"menuicon"] forState:UIControlStateNormal];
 }
 
 -(void) configureSlideLayer:(CALayer *)layer{
     layer.shadowColor = [UIColor blackColor].CGColor;
     layer.shadowOpacity = 0.3;
-    layer.shadowOffset = CGSizeMake(-15, 0);
-    layer.shadowRadius = 10;
+    layer.shadowOffset = CGSizeMake(-5, 0);
+    layer.shadowRadius = 5;
     layer.masksToBounds = NO;
     layer.shadowPath =[UIBezierPath bezierPathWithRect:layer.bounds].CGPath;
 }
 
 -(CGFloat) leftMenuVisibleWidth{
-    return 280;
+    return 260;
 }
 -(void) prepareForSwitchToContentViewController:(UINavigationController *)content{
     UIViewController* controller = [content.viewControllers objectAtIndex:0];

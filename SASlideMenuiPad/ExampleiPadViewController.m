@@ -21,6 +21,13 @@
 -(BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
     return YES;
 }
+-(id) initWithCoder:(NSCoder *)aDecoder{
+    if (self = [super initWithCoder:aDecoder]) {
+        self.selectedHue = 0.0;
+        self.selectedBrightness = 1.0;
+    }
+    return self;
+}
 
 #pragma mark -
 #pragma mark SASlideMenuDataSource
@@ -33,32 +40,14 @@
     }
 }
 
-// It configure the menu button. The beahviour of the button should not be modified
 -(void) configureMenuButton:(UIButton *)menuButton{
     menuButton.frame = CGRectMake(0, 0, 40, 29);
-    [menuButton setImage:[UIImage imageNamed:@"menuicon.png"] forState:UIControlStateNormal];
-    [menuButton setBackgroundImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
-    [menuButton setBackgroundImage:[UIImage imageNamed:@"menuhighlighted.png"] forState:UIControlStateHighlighted];
-    [menuButton setAdjustsImageWhenHighlighted:NO];
-    [menuButton setAdjustsImageWhenDisabled:NO];
+    [menuButton setImage:[UIImage imageNamed:@"menuicon"] forState:UIControlStateNormal];
 }
 
-// It configure the right menu button. The beahviour of the button should not be modified
--(void) configureRightMenuButton:(UIButton *)menuButton{
-    menuButton.frame = CGRectMake(0, 0, 40, 29);
-    [menuButton setImage:[UIImage imageNamed:@"menuright.png"] forState:UIControlStateNormal];
-    [menuButton setBackgroundImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
-    [menuButton setBackgroundImage:[UIImage imageNamed:@"menuhighlighted.png"] forState:UIControlStateHighlighted];
-    [menuButton setAdjustsImageWhenHighlighted:NO];
-    [menuButton setAdjustsImageWhenDisabled:NO];
-}
-
-// This is the segue you want visibile when the controller is loaded the first time
 -(NSIndexPath*) selectedIndexPath{
     return [NSIndexPath indexPathForRow:0 inSection:0];
 }
-
-// It maps each indexPath to the segueId to be used. The segue is performed only the first time the controller needs to loaded, subsequent switch to the content controller will use the already loaded controller
 
 -(NSString*) segueIdForIndexPath:(NSIndexPath *)indexPath{
     return @"colored";
@@ -82,10 +71,10 @@
 }
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 4;
+    return 10;
 }
 -(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    CGFloat brightness = 1-((double) indexPath.row)/5;
+    CGFloat brightness = 1-((double) indexPath.row)/11;
     NSInteger section = indexPath.section;
     CGFloat hue=0;
     if (section == 0) {
@@ -107,14 +96,10 @@
     return 600;
 }
 
--(CGFloat) rightMenuVisibleWidth{
-    return 300;
-}
-
 #pragma mark -
 #pragma mark UITableViewDelegate
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    CGFloat brightness = 1-((double) indexPath.row)/5;
+    CGFloat brightness = 1-((double) indexPath.row)/11;
     NSInteger section = indexPath.section;
     CGFloat hue=0;
     if (section == 0) {

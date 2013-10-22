@@ -2,12 +2,13 @@
 
 Created by **stefanoa**
 
-A simple library to create sliding menus that can be used in storyboards and support static cells. Sliding menus are used in a number of popular applications like Facebook, Path 2.0, GMail, Glassboard and many others.
+A simple library to create sliding menus that can be used in storyboards and support static cells. Sliding menus are used in a number of popular applications like Path 2.0, GMail, TechCrunch, Glassboard and many others.
 
-The repository is an Xcode 4 project that contains two example of the usage of the library and the library itself.
+The repository is an Xcode 4 project that contains three examples of the usage of the library and the library itself.
 
 # Usage
-You can use SASlide menu with both static cells and dynamic cell prototypes. In the project you will find two different target that use both type of cells to create a slide menu.
+You can use SASlide menu with both static cells and dynamic cell prototypes. In the project you will find two different target that use both type of cells to create a slide menu. There is also an iPad app example
+
 To use it in your project follow these steps:
 * Add the SASlideMenu subdir and it's contents to your project
 * Add a new class that inherits from **SASlideMenuViewController** and include/implement **SASlideMenuDataSource** and **SASlideMenuDelegate**.
@@ -31,9 +32,11 @@ Test it and you are done!
 
 ![Static](https://raw.github.com/stefanoa/SASlideMenu/master/SASlideMenu/Screenshot-Static-Menu.png)
 
+![iPad](https://raw.github.com/stefanoa/SASlideMenu/master/SASlideMenu/Screenshot-iPad.png)
+
 # Requirements
 
-It needs iOS 5.1
+It needs iOS 7.
 # License
 
 **SASlideMenu** is available under the MIT license:
