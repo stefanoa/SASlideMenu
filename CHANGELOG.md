@@ -18,4 +18,5 @@ Version 2.0.0
 * iOS7 support
 * Modified all the sample icons to better suite iOS7
 
-
+Version 2.0.1
+* Fixed some typos to SASlideMenu.podspec
