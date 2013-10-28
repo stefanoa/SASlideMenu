@@ -20,3 +20,6 @@ Version 2.0.0
 
 Version 2.0.1
 * Fixed some typos to SASlideMenu.podspec
+
+Version 2.0.2
+* Fixed the correct version to SASlideMenu.podspec
