@@ -23,3 +23,6 @@ Version 2.0.1
 
 Version 2.0.2
 * Fixed the correct version to SASlideMenu.podspec
+
+Version 2.0.3
+* Fixed the correct tag name in SASlideMenu.podspec
