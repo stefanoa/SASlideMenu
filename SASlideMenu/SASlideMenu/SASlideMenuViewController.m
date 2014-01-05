@@ -41,6 +41,7 @@
 
 - (void)loadContentAtIndexPath:(NSIndexPath*)indexPath {
     if ([self.slideMenuDataSource respondsToSelector:@selector(segueIdForIndexPath:)]) {
+        self.currentContentIndexPath = indexPath;
         UINavigationController* controller = [self.rootController controllerForIndexPath:indexPath];
         if (controller) {
             [self.rootController switchToContentViewController:controller completion:nil];
@@ -48,7 +49,6 @@
         }
         NSString* segueId = [self.slideMenuDataSource segueIdForIndexPath:indexPath];
         [self performSegueWithIdentifier:segueId sender:self];
-        self.currentContentIndexPath = indexPath;
     }
 }
 
@@ -59,11 +59,6 @@
     if ([self.slideMenuDataSource respondsToSelector:@selector(segueIdForIndexPath:)]) {
         [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:scrollPosition];
      
-        Boolean disableContentViewControllerCaching= NO;
-        if ([self.slideMenuDataSource respondsToSelector:@selector(disableContentViewControllerCachingForIndexPath:)]) {
-            disableContentViewControllerCaching = [self.slideMenuDataSource disableContentViewControllerCachingForIndexPath:indexPath];
-        }
-
         [self loadContentAtIndexPath:indexPath];
     }
 }

@@ -27,7 +27,7 @@ typedef enum {
     SASlideMenuPanningStateLeft
 } SASlideMenuPanningState;
 
-@interface SASlideMenuRootViewController (){
+@interface SASlideMenuRootViewController ()<UIDynamicAnimatorDelegate>{
     SASlideMenuState state;
     SASlideMenuPanningState panningState;
     CGFloat panningPreviousPosition;
@@ -37,10 +37,16 @@ typedef enum {
     
     UIPanGestureRecognizer* menuPanGesture;
     UITapGestureRecognizer* tapGesture;
+
+    UIDynamicAnimator *animator;
+    UICollisionBehavior *collisionBehaviour;
+    UIPushBehavior *pushBehavior;
+    UIGravityBehavior *gravityBehavior;
 }
 
 @property (nonatomic,strong) UINavigationController* selectedContent;
 @property (nonatomic, strong) UIView* shieldWithMenu;
+
 
 @end
 
@@ -191,6 +197,7 @@ typedef enum {
         [self.leftMenu.slideMenuDelegate slideMenuWillSlideIn:self.selectedContent];
     }
     [self disableGestureRecognizers];
+
     CGFloat duration = kSlideInInterval;
     if ([self.leftMenu.slideMenuDataSource respondsToSelector:@selector(slideInAnimationDuration)]) {
         duration = [self.leftMenu.slideMenuDataSource slideInAnimationDuration];
@@ -212,6 +219,7 @@ typedef enum {
         }
         [self enableGestureRecognizers];
     }];
+    
 }
 
 - (void)disableGestureRecognizers {
@@ -254,6 +262,21 @@ typedef enum {
 -(void) tapItem:(UITapGestureRecognizer*)gesture{
     [self switchToContentViewController:self.selectedContent completion:nil];
 }
+#pragma  mark --
+#pragma mark UIDynamicAnimatorDelegate
+- (void)dynamicAnimatorDidPause:(UIDynamicAnimator *)a{
+    [animator removeAllBehaviors];
+    if (panningState == SASlideMenuPanningStateLeft
+        || state == SASlideMenuStateRightMenu) {
+        [self removeRightMenu];
+    }
+    [self completeSlideIn:self.selectedContent];
+    [self enableGestureRecognizers];
+
+}
+- (void)dynamicAnimatorWillResume:(UIDynamicAnimator *)animator{
+    
+}
 
 -(void) panItem:(UIPanGestureRecognizer*)gesture{    
     UIView* panningView = gesture.view;
@@ -279,14 +302,34 @@ typedef enum {
         //  - The move speed is high enough.
         //  - The move speed is not high enough, but the view has been dragged more than half of the way to the side.
         CGFloat originx = movingView.frame.origin.x;
+        CGFloat t =self.selectedContent.view.frame.origin.x;
+        CGFloat limit = self.view.frame.size.width/2;
         if (panningState == SASlideMenuPanningStateRight) {
-            if (panningXSpeed < -kSwipeMinDetectionSpeed) {
-                [self doSlideIn:nil];
+            if (t < limit) {
+                //[self doSlideIn:nil];
+                
+                CGPoint velocity = [gesture velocityInView:self.view];
+                
+                gravityBehavior = [[UIGravityBehavior alloc] init];
+                gravityBehavior.gravityDirection = CGVectorMake(-1, 0);
+                [gravityBehavior addItem:self.selectedContent.view];
+                [animator addBehavior:gravityBehavior];
+                
+                
+                collisionBehaviour = [[UICollisionBehavior alloc] init];
+                [collisionBehaviour addItem:self.selectedContent.view];
+                [collisionBehaviour setTranslatesReferenceBoundsIntoBoundaryWithInsets:UIEdgeInsetsMake(0, 0, 0, -280)];
+                [animator addBehavior:collisionBehaviour];
+
+                pushBehavior = [[UIPushBehavior alloc] init];
+                pushBehavior.pushDirection = CGVectorMake(velocity.x, 0);
+                [pushBehavior addItem:self.selectedContent.view];
+                pushBehavior.active = YES;
+
+
+                [animator addBehavior:pushBehavior];
+
             } else if (panningXSpeed > kSwipeMinDetectionSpeed) {
-                [self doSlideToSide];
-            } else if (originx < [self leftMenuSize] / 2.0f) {
-                [self doSlideIn:nil];
-            } else {
                 [self doSlideToSide];
             }
         }
@@ -487,11 +530,16 @@ typedef enum {
     }
 }
 
+-(void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+}
 -(void) viewDidLoad{
     [super viewDidLoad];
 
     controllers = [[NSMutableDictionary alloc] init];
-    
+    animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+    animator.delegate = self;
+
     self.shieldWithMenu = [[UIView alloc] initWithFrame:CGRectZero];
     state = SASlideMenuStateInitial;
     panningState = SASlideMenuPanningStateStopped;
