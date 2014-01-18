@@ -27,9 +27,15 @@ typedef enum {
     SASlideMenuPanningStateLeft
 } SASlideMenuPanningState;
 
+typedef enum {
+    SASlideMenuContentSlidingOut,
+    SASlideMenuContentSlidingIn
+} SASlideMenuContentSliding;
+
 @interface SASlideMenuRootViewController ()<UIDynamicAnimatorDelegate>{
     SASlideMenuState state;
     SASlideMenuPanningState panningState;
+    SASlideMenuContentSliding contentSliding;
     CGFloat panningPreviousPosition;
     NSDate* panningPreviousEventDate;
     CGFloat panningXSpeed;  // panning speed expressed in px/ms 
@@ -265,15 +271,29 @@ typedef enum {
 #pragma  mark --
 #pragma mark UIDynamicAnimatorDelegate
 - (void)dynamicAnimatorDidPause:(UIDynamicAnimator *)a{
-    [animator removeAllBehaviors];
-    if (panningState == SASlideMenuPanningStateLeft
-        || state == SASlideMenuStateRightMenu) {
-        [self removeRightMenu];
+    if ([animator.behaviors count] >0) {
+        [animator removeAllBehaviors];
+        
+        if (panningState == SASlideMenuPanningStateLeft
+            || state == SASlideMenuStateRightMenu) {
+            [self removeRightMenu];
+        }
+        if (contentSliding == SASlideMenuContentSlidingIn) {
+            [self completeSlideIn:self.selectedContent];
+            if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideIn:)]){
+                [self.leftMenu.slideMenuDelegate slideMenuDidSlideIn:self.selectedContent];
+            }
+            [self enableGestureRecognizers];
+        }else{
+            [self completeSlideToSide:self.selectedContent];
+            if ([self.leftMenu.slideMenuDelegate respondsToSelector:@selector(slideMenuDidSlideToSide:)]){
+                [self.leftMenu.slideMenuDelegate slideMenuDidSlideToSide:self.selectedContent];
+            }
+            [self enableGestureRecognizers];
+        }
     }
-    [self completeSlideIn:self.selectedContent];
-    [self enableGestureRecognizers];
-
 }
+
 - (void)dynamicAnimatorWillResume:(UIDynamicAnimator *)animator{
     
 }
@@ -305,32 +325,37 @@ typedef enum {
         CGFloat t =self.selectedContent.view.frame.origin.x;
         CGFloat limit = self.view.frame.size.width/2;
         if (panningState == SASlideMenuPanningStateRight) {
+            CGPoint velocity = [gesture velocityInView:self.view];
+            
+            collisionBehaviour = [[UICollisionBehavior alloc] init];
+            [collisionBehaviour addItem:self.selectedContent.view];
+            
+            CGFloat leftMenuWidth = [self leftMenuSize];
+            [collisionBehaviour setTranslatesReferenceBoundsIntoBoundaryWithInsets:UIEdgeInsetsMake(0, 0, 0, -leftMenuWidth)];
+
+            pushBehavior = [[UIPushBehavior alloc] init];
+            pushBehavior.pushDirection = CGVectorMake(velocity.x, 0);
+            [pushBehavior addItem:self.selectedContent.view];
+            pushBehavior.active = YES;
+            [animator addBehavior:collisionBehaviour];
+            [animator addBehavior:pushBehavior];
+            
             if (t < limit) {
                 //[self doSlideIn:nil];
-                
-                CGPoint velocity = [gesture velocityInView:self.view];
-                
                 gravityBehavior = [[UIGravityBehavior alloc] init];
                 gravityBehavior.gravityDirection = CGVectorMake(-1, 0);
                 [gravityBehavior addItem:self.selectedContent.view];
+                contentSliding = SASlideMenuContentSlidingIn;
                 [animator addBehavior:gravityBehavior];
-                
-                
-                collisionBehaviour = [[UICollisionBehavior alloc] init];
-                [collisionBehaviour addItem:self.selectedContent.view];
-                [collisionBehaviour setTranslatesReferenceBoundsIntoBoundaryWithInsets:UIEdgeInsetsMake(0, 0, 0, -280)];
-                [animator addBehavior:collisionBehaviour];
 
-                pushBehavior = [[UIPushBehavior alloc] init];
-                pushBehavior.pushDirection = CGVectorMake(velocity.x, 0);
-                [pushBehavior addItem:self.selectedContent.view];
-                pushBehavior.active = YES;
+            } else {
+                //[self doSlideToSide];
+                gravityBehavior = [[UIGravityBehavior alloc] init];
+                gravityBehavior.gravityDirection = CGVectorMake(1, 0);
+                [gravityBehavior addItem:self.selectedContent.view];
+                [animator addBehavior:gravityBehavior];
 
-
-                [animator addBehavior:pushBehavior];
-
-            } else if (panningXSpeed > kSwipeMinDetectionSpeed) {
-                [self doSlideToSide];
+                contentSliding = SASlideMenuContentSlidingOut;
             }
         }
         if (panningState == SASlideMenuPanningStateLeft) {
