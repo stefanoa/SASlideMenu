@@ -78,7 +78,11 @@
             [panGesture setMaximumNumberOfTouches:2];
             [panGesture setDelegate:source];
             [destination.view addGestureRecognizer:panGesture];
-        }        
+        }
+        
+        UISwipeGestureRecognizer* swipeGesture= [[UISwipeGestureRecognizer alloc] initWithTarget:rootController action:@selector(swipeItem:)];
+        [swipeGesture setDelegate:source];
+        [destination.view addGestureRecognizer:swipeGesture];
     }];
 
 }

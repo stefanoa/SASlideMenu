@@ -42,6 +42,7 @@ typedef enum {
     NSMutableDictionary* controllers;
     
     UIPanGestureRecognizer* menuPanGesture;
+    UISwipeGestureRecognizer* menuSwipeGesture;
     UITapGestureRecognizer* tapGesture;
 
     UIDynamicAnimator *animator;
@@ -406,6 +407,15 @@ typedef enum {
     }
 }
 
+- (void) swipeItem:(UISwipeGestureRecognizer*)gesture {
+    if(gesture.direction == UISwipeGestureRecognizerDirectionRight) {
+        [self doSlideToSide];
+    } else if(gesture.direction == UISwipeGestureRecognizerDirectionLeft) {
+        [self doSlideIn:nil];
+    }
+
+}
+
 -(UINavigationController*) controllerForIndexPath:(NSIndexPath*) indexPath{
     return [controllers objectForKey:indexPath];
 }
@@ -571,6 +581,9 @@ typedef enum {
     
     tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapShield:)];
     [self.shieldWithMenu addGestureRecognizer:tapGesture];
+    
+//    menuSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeItem:)];
+//    [self.shieldWithMenu addGestureRecognizer:menuSwipeGesture];
     
     menuPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panItem:)];
     [menuPanGesture setMaximumNumberOfTouches:2];
