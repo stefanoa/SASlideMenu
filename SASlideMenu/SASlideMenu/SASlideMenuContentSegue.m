@@ -80,9 +80,15 @@
             [destination.view addGestureRecognizer:panGesture];
         }
         
-        UISwipeGestureRecognizer* swipeGesture= [[UISwipeGestureRecognizer alloc] initWithTarget:rootController action:@selector(swipeItem:)];
-        [swipeGesture setDelegate:source];
-        [destination.view addGestureRecognizer:swipeGesture];
+        Boolean disableSwipeGesture= NO;
+        if ([rootController.leftMenu.slideMenuDataSource respondsToSelector:@selector(disableSwipeGestureForIndexPath:)]) {
+            disableSwipeGesture = [rootController.leftMenu.slideMenuDataSource disableSwipeGestureForIndexPath:selectedIndexPath];
+        }
+        if(disablePanGesture && !disableSwipeGesture) {
+            UISwipeGestureRecognizer* swipeGesture= [[UISwipeGestureRecognizer alloc] initWithTarget:rootController action:@selector(swipeItem:)];
+            [swipeGesture setDelegate:source];
+            [destination.view addGestureRecognizer:swipeGesture];
+        }
     }];
 
 }

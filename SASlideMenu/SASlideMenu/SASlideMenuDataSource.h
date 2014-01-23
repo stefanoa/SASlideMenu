@@ -53,6 +53,9 @@
 // It is used to selectively disable the pan gesture that slide the view controller. If not implemented the pan gesture is active for all the view controller.
 -(Boolean) disablePanGestureForIndexPath:(NSIndexPath*) indexPath;
 
+// It is used to selectively disable the swipe gesture that slide the view controller. If not implemented the swipe gesture is active for all the view controller if pan gesture is disabled.
+-(Boolean) disableSwipeGestureForIndexPath:(NSIndexPath*) indexPath;
+
 // It is used to enable the pan gesture that slide the view controller only on certain view zones. If not implemented the pan gesture is active for the entier view.
 -(Boolean) shouldRespondToGesture:(UIGestureRecognizer*) gesture forIndexPath:(NSIndexPath*)indexPath;
 @end
