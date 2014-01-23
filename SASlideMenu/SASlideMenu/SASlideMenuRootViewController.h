@@ -31,6 +31,7 @@
 
 -(void) doSlideToSide;
 -(void) doSlideToLeftSide;
+-(void) doSlideIn:(void (^)(BOOL completed))completion;
 -(void) rightMenuAction;
 -(void) addRightMenu;
 
