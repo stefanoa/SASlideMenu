@@ -580,6 +580,16 @@ typedef enum {
     [self performSegueWithIdentifier:@"leftMenu" sender:self];
 }
 
+- (void)viewDidLayoutSubviews {
+  
+  [super viewDidLayoutSubviews];
+  
+  CGRect frame = [self.view bounds];
+  frame.size.width = [self leftMenuSize];
+  self.menuView.frame = frame;
+}
+
+
 -(void) didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     [controllers removeAllObjects];
