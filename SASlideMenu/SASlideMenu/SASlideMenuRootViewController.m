@@ -555,6 +555,13 @@ typedef enum {
     }
 }
 
+- (BOOL) shouldAutorotate {
+    if (self.leftMenu && [self.leftMenu respondsToSelector:@selector(shouldAutorotate)]) {
+        return [self.leftMenu shouldAutorotate];
+    }
+    return YES;
+}
+
 - (UIInterfaceOrientation) preferredInterfaceOrientationForPresentation {
     if (self.leftMenu && [self.leftMenu respondsToSelector:@selector(preferredInterfaceOrientationForPresentation)])
         return [self.leftMenu preferredInterfaceOrientationForPresentation];
