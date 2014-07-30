@@ -555,6 +555,20 @@ typedef enum {
     }
 }
 
+- (UIInterfaceOrientation) preferredInterfaceOrientationForPresentation {
+    if (self.leftMenu && [self.leftMenu respondsToSelector:@selector(preferredInterfaceOrientationForPresentation)])
+        return [self.leftMenu preferredInterfaceOrientationForPresentation];
+    return UIInterfaceOrientationPortrait | UIInterfaceOrientationPortraitUpsideDown | UIInterfaceOrientationLandscapeLeft | UIInterfaceOrientationLandscapeRight;
+}
+
+- (NSUInteger) supportedInterfaceOrientations {
+    if (self.leftMenu && [self.leftMenu respondsToSelector:@selector(supportedInterfaceOrientations)]) {
+        return [self.leftMenu supportedInterfaceOrientations];
+    }
+    
+    return UIInterfaceOrientationMaskAll;
+}
+
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 }
