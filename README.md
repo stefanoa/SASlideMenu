@@ -15,6 +15,7 @@ To use it in your project follow these steps:
   * **SASlideMenuDataSource** is where you will code your customization while **SASlideMenuDelegate** is where you will add your code to implement the behavior of your app related to the **SASlideMenu** events.
 
 * Add a new **SASlideMenuRootViewController** in your storyboard
+* Add a view to **SASlideMenuRootViewController** and connect it to the **menuView** outlet. This view will contain the **UITableView** with the menu items, you can make it full screen or reduce the size to avoid interference with the status bar or other elements.
 * Add a **UITableViewController** and make it of the **SASlideMenuViewController** subclass you already implemented and customize it in accordance with your needs.
 * Connect the **SASlideMenuRootViewController** with your subclass with a custom segue of type **SASlideMenuLeftMenuSegue**, set the segue identifier to **leftMenu**.
 * To add Content ViewController you have to to do the following:
