@@ -578,9 +578,9 @@ typedef enum {
 
 - (BOOL) prefersStatusBarHidden {
     if (self.leftMenu && [self.leftMenu respondsToSelector:@selector(prefersStatusBarHidden)]) {
-        return [self.leftMenu performSelector:@selector(prefersStatusBarHidden) withObject:nil];
+        return [self.leftMenu prefersStatusBarHidden];
     } else if (self.rightMenu && [self.rightMenu respondsToSelector:@selector(prefersStatusBarHidden)]) {
-        return [self.rightMenu performSelector:@selector(prefersStatusBarHidden) withObject:nil];
+        return [self.rightMenu prefersStatusBarHidden];
     }
     return NO;
 }
