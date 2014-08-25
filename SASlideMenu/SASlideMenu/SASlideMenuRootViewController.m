@@ -576,6 +576,15 @@ typedef enum {
     return UIInterfaceOrientationMaskAll;
 }
 
+- (BOOL) prefersStatusBarHidden {
+    if (self.leftMenu && [self.leftMenu respondsToSelector:@selector(prefersStatusBarHidden)]) {
+        return [self.leftMenu performSelector:@selector(prefersStatusBarHidden) withObject:nil];
+    } else if (self.rightMenu && [self.rightMenu respondsToSelector:@selector(prefersStatusBarHidden)]) {
+        return [self.rightMenu performSelector:@selector(prefersStatusBarHidden) withObject:nil];
+    }
+    return NO;
+}
+
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 }
