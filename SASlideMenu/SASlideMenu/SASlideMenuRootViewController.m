@@ -42,7 +42,6 @@ typedef enum {
     NSMutableDictionary* controllers;
     
     UIPanGestureRecognizer* menuPanGesture;
-    UISwipeGestureRecognizer* menuSwipeGesture;
     UITapGestureRecognizer* tapGesture;
 
     UIDynamicAnimator *animator;
