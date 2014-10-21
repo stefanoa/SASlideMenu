@@ -582,9 +582,6 @@ typedef enum {
     tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapShield:)];
     [self.shieldWithMenu addGestureRecognizer:tapGesture];
     
-//    menuSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeItem:)];
-//    [self.shieldWithMenu addGestureRecognizer:menuSwipeGesture];
-    
     menuPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panItem:)];
     [menuPanGesture setMaximumNumberOfTouches:2];
     [self.shieldWithMenu addGestureRecognizer:menuPanGesture];
