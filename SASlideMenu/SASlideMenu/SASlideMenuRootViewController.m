@@ -332,7 +332,7 @@ typedef enum {
             [collisionBehaviour addItem:self.selectedContent.view];
             
             CGFloat leftMenuWidth = [self leftMenuSize];
-            [collisionBehaviour setTranslatesReferenceBoundsIntoBoundaryWithInsets:UIEdgeInsetsMake(0, 0, 0, -leftMenuWidth)];
+            [collisionBehaviour setTranslatesReferenceBoundsIntoBoundaryWithInsets:UIEdgeInsetsMake(0, 1, 0, -leftMenuWidth)];
 
             pushBehavior = [[UIPushBehavior alloc] init];
             pushBehavior.pushDirection = CGVectorMake(velocity.x, 0);
