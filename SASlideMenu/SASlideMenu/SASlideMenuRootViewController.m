@@ -13,6 +13,8 @@
 #define kMenuTableSize 280
 #define kSwipeMinDetectionSpeed 0.1f
 
+NSString * const cachingKeyFormat = @"%li,%li";
+
 
 typedef enum {
     SASlideMenuStateInitial,
@@ -407,7 +409,12 @@ typedef enum {
 }
 
 -(UINavigationController*) controllerForIndexPath:(NSIndexPath*) indexPath{
-    return [controllers objectForKey:indexPath];
+    return [controllers objectForKey:[self getNSIndexPathKey:indexPath]];
+}
+
+-(NSString*)getNSIndexPathKey:(NSIndexPath*)indexPath
+{
+    return [NSString stringWithFormat:cachingKeyFormat, indexPath.section, indexPath.row];
 }
 
 -(void) switchToContentViewController:(UINavigationController*) content completion:(void (^)(void))completion{
@@ -495,7 +502,7 @@ typedef enum {
             disableContentViewControllerCaching = [self.leftMenu.slideMenuDataSource disableContentViewControllerCachingForIndexPath:indexPath];
         }
         if (!disableContentViewControllerCaching) {
-            [controllers setObject:content forKey:indexPath];
+            [controllers setObject:content forKey:[self getNSIndexPathKey:indexPath]];
         }
     }
 }
