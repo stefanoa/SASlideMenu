@@ -31,8 +31,10 @@
 
 -(void) doSlideToSide;
 -(void) doSlideToLeftSide;
+-(void) doSlideIn:(void (^)(BOOL completed))completion;
 -(void) rightMenuAction;
 -(void) addRightMenu;
 
 -(void) panItem:(UIPanGestureRecognizer*)gesture;
+- (void) swipeItem:(UISwipeGestureRecognizer*)gesture;
 @end

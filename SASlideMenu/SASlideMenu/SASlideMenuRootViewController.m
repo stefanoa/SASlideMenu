@@ -331,7 +331,7 @@ typedef enum {
             [collisionBehaviour addItem:self.selectedContent.view];
             
             CGFloat leftMenuWidth = [self leftMenuSize];
-            [collisionBehaviour setTranslatesReferenceBoundsIntoBoundaryWithInsets:UIEdgeInsetsMake(0, 0, 0, -leftMenuWidth)];
+            [collisionBehaviour setTranslatesReferenceBoundsIntoBoundaryWithInsets:UIEdgeInsetsMake(0, 1, 0, -leftMenuWidth)];
 
             pushBehavior = [[UIPushBehavior alloc] init];
             pushBehavior.pushDirection = CGVectorMake(velocity.x, 0);
@@ -404,6 +404,15 @@ typedef enum {
         panningPreviousEventDate = [NSDate date];
         panningPreviousPosition = movingView.frame.origin.x;
     }
+}
+
+- (void) swipeItem:(UISwipeGestureRecognizer*)gesture {
+    if(gesture.direction == UISwipeGestureRecognizerDirectionRight) {
+        [self doSlideToSide];
+    } else if(gesture.direction == UISwipeGestureRecognizerDirectionLeft) {
+        [self doSlideIn:nil];
+    }
+
 }
 
 -(UINavigationController*) controllerForIndexPath:(NSIndexPath*) indexPath{

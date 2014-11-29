@@ -1,0 +1,27 @@
+
+/* Class = "IBUILabel"; text = "Brigthness"; ObjectID = "4GY-rn-OIy"; */
+"4GY-rn-OIy.text" = "Brigthness";
+
+/* Class = "IBUILabel"; text = "Hue"; ObjectID = "PoZ-Le-dnE"; */
+"PoZ-Le-dnE.text" = "Hue";
+
+/* Class = "IBUINavigationItem"; title = "Second"; ObjectID = "RYj-gg-Xxr"; */
+"RYj-gg-Xxr.title" = "Second";
+
+/* Class = "IBUINavigationItem"; title = "First"; ObjectID = "Y9V-OI-yLR"; */
+"Y9V-OI-yLR.title" = "First";
+
+/* Class = "IBUILabel"; text = "100"; ObjectID = "gfC-SH-g6m"; */
+"gfC-SH-g6m.text" = "100";
+
+/* Class = "IBUILabel"; text = "70%"; ObjectID = "kcZ-od-SS0"; */
+"kcZ-od-SS0.text" = "70%";
+
+/* Class = "IBUILabel"; text = "360"; ObjectID = "mAa-dA-voK"; */
+"mAa-dA-voK.text" = "360";
+
+/* Class = "IBUILabel"; text = "Color"; ObjectID = "pU9-Fl-EKa"; */
+"pU9-Fl-EKa.text" = "Color";
+
+/* Class = "IBUILabel"; text = "Saturation"; ObjectID = "qNX-Or-eOh"; */
+"qNX-Or-eOh.text" = "Saturation";

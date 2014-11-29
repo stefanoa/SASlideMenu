@@ -78,7 +78,17 @@
             [panGesture setMaximumNumberOfTouches:2];
             [panGesture setDelegate:source];
             [destination.view addGestureRecognizer:panGesture];
-        }        
+        }
+        
+        Boolean disableSwipeGesture= NO;
+        if ([rootController.leftMenu.slideMenuDataSource respondsToSelector:@selector(disableSwipeGestureForIndexPath:)]) {
+            disableSwipeGesture = [rootController.leftMenu.slideMenuDataSource disableSwipeGestureForIndexPath:selectedIndexPath];
+        }
+        if(disablePanGesture && !disableSwipeGesture) {
+            UISwipeGestureRecognizer* swipeGesture= [[UISwipeGestureRecognizer alloc] initWithTarget:rootController action:@selector(swipeItem:)];
+            [swipeGesture setDelegate:source];
+            [destination.view addGestureRecognizer:swipeGesture];
+        }
     }];
 
 }
