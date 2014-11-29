@@ -1,0 +1,18 @@
+
+/* Class = "IBUILabel"; text = "Dark"; ObjectID = "Fnc-Dq-dWr"; */
+"Fnc-Dq-dWr.text" = "Dark";
+
+/* Class = "IBUILabel"; text = "Shades"; ObjectID = "IRv-6F-pnO"; */
+"IRv-6F-pnO.text" = "Shades";
+
+/* Class = "IBUILabel"; text = "Light"; ObjectID = "KbX-ze-Lzv"; */
+"KbX-ze-Lzv.text" = "Light";
+
+/* Class = "IBUILabel"; text = "Darkness"; ObjectID = "RlY-60-SEB"; */
+"RlY-60-SEB.text" = "Darkness";
+
+/* Class = "IBUIButton"; normalTitle = "Left Menu"; ObjectID = "TnT-C8-lYJ"; */
+"TnT-C8-lYJ.normalTitle" = "Left Menu";
+
+/* Class = "IBUIButton"; normalTitle = "Back to Dark"; ObjectID = "xWG-5D-zlw"; */
+"xWG-5D-zlw.normalTitle" = "Back to Dark";

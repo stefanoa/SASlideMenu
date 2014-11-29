@@ -1,0 +1,21 @@
+
+/* Class = "IBUILabel"; text = "360"; ObjectID = "4fz-tO-4Oc"; */
+"4fz-tO-4Oc.text" = "360";
+
+/* Class = "IBUILabel"; text = "70%"; ObjectID = "BUE-1P-7Xd"; */
+"BUE-1P-7Xd.text" = "70%";
+
+/* Class = "IBUILabel"; text = "Hue"; ObjectID = "INn-CT-Jne"; */
+"INn-CT-Jne.text" = "Hue";
+
+/* Class = "IBUILabel"; text = "Saturation"; ObjectID = "TTQ-A6-vD3"; */
+"TTQ-A6-vD3.text" = "Saturation";
+
+/* Class = "IBUILabel"; text = "100"; ObjectID = "V82-kJ-gGM"; */
+"V82-kJ-gGM.text" = "100";
+
+/* Class = "IBUILabel"; text = "Brigthness"; ObjectID = "mVh-kk-Zaf"; */
+"mVh-kk-Zaf.text" = "Brigthness";
+
+/* Class = "IBUILabel"; text = "Color"; ObjectID = "ts0-gd-xhY"; */
+"ts0-gd-xhY.text" = "Color";
