@@ -12,7 +12,7 @@
 
 #define kMenuTableSize 280
 #define kSwipeMinDetectionSpeed 0.1f
-
+#define kSlidingInVelocityThreshold -100 // minus for direction
 
 typedef enum {
     SASlideMenuStateInitial,
@@ -32,7 +32,7 @@ typedef enum {
     SASlideMenuContentSlidingIn
 } SASlideMenuContentSliding;
 
-@interface SASlideMenuRootViewController ()<UIDynamicAnimatorDelegate>{
+@interface SASlideMenuRootViewController ()<UIDynamicAnimatorDelegate, UICollisionBehaviorDelegate>{
     SASlideMenuState state;
     SASlideMenuPanningState panningState;
     SASlideMenuContentSliding contentSliding;
@@ -298,6 +298,11 @@ typedef enum {
     
 }
 
+- (void)collisionBehavior:(UICollisionBehavior *)behavior beganContactForItem:(id<UIDynamicItem>)item withBoundaryIdentifier:(id<NSCopying>)identifier atPoint:(CGPoint)p
+{
+    pushBehavior.active = NO;
+}
+
 -(void) panItem:(UIPanGestureRecognizer*)gesture{    
     UIView* panningView = gesture.view;
     CGPoint translation = [gesture translationInView:panningView];
@@ -329,10 +334,10 @@ typedef enum {
             
             collisionBehaviour = [[UICollisionBehavior alloc] init];
             [collisionBehaviour addItem:self.selectedContent.view];
+            collisionBehaviour.collisionDelegate = self;
             
             CGFloat leftMenuWidth = [self leftMenuSize];
             [collisionBehaviour setTranslatesReferenceBoundsIntoBoundaryWithInsets:UIEdgeInsetsMake(0, 0, 0, -leftMenuWidth)];
-
             pushBehavior = [[UIPushBehavior alloc] init];
             pushBehavior.pushDirection = CGVectorMake(velocity.x, 0);
             [pushBehavior addItem:self.selectedContent.view];
@@ -340,7 +345,7 @@ typedef enum {
             [animator addBehavior:collisionBehaviour];
             [animator addBehavior:pushBehavior];
             
-            if (t < limit) {
+            if (t < limit || velocity.x < kSlidingInVelocityThreshold) {
                 //[self doSlideIn:nil];
                 gravityBehavior = [[UIGravityBehavior alloc] init];
                 gravityBehavior.gravityDirection = CGVectorMake(-1, 0);
