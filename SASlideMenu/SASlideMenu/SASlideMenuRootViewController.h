@@ -34,5 +34,7 @@
 -(void) rightMenuAction;
 -(void) addRightMenu;
 
+-(void) doSlideIn;
+
 -(void) panItem:(UIPanGestureRecognizer*)gesture;
 @end
