@@ -251,6 +251,11 @@ typedef enum {
     [self.view insertSubview:self.rightMenu.view belowSubview:self.selectedContent.view];
 }
 
+-(void) doSlideIn
+{
+    [self doSlideIn:nil];
+}
+
 - (void)removeRightMenu {
     [self.rightMenu willMoveToParentViewController:nil];
     [self.rightMenu.view removeFromSuperview];
