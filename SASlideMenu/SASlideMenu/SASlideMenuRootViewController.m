@@ -565,6 +565,36 @@ typedef enum {
     }
 }
 
+- (BOOL) shouldAutorotate {
+    if (self.leftMenu && [self.leftMenu respondsToSelector:@selector(shouldAutorotate)]) {
+        return [self.leftMenu shouldAutorotate];
+    }
+    return YES;
+}
+
+- (UIInterfaceOrientation) preferredInterfaceOrientationForPresentation {
+    if (self.leftMenu && [self.leftMenu respondsToSelector:@selector(preferredInterfaceOrientationForPresentation)])
+        return [self.leftMenu preferredInterfaceOrientationForPresentation];
+    return UIInterfaceOrientationPortrait | UIInterfaceOrientationPortraitUpsideDown | UIInterfaceOrientationLandscapeLeft | UIInterfaceOrientationLandscapeRight;
+}
+
+- (NSUInteger) supportedInterfaceOrientations {
+    if (self.leftMenu && [self.leftMenu respondsToSelector:@selector(supportedInterfaceOrientations)]) {
+        return [self.leftMenu supportedInterfaceOrientations];
+    }
+    
+    return UIInterfaceOrientationMaskAll;
+}
+
+- (BOOL) prefersStatusBarHidden {
+    if (self.leftMenu && [self.leftMenu respondsToSelector:@selector(prefersStatusBarHidden)]) {
+        return [self.leftMenu prefersStatusBarHidden];
+    } else if (self.rightMenu && [self.rightMenu respondsToSelector:@selector(prefersStatusBarHidden)]) {
+        return [self.rightMenu prefersStatusBarHidden];
+    }
+    return NO;
+}
+
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 }
