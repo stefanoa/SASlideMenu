@@ -40,6 +40,7 @@ typedef enum {
     NSDate* panningPreviousEventDate;
     CGFloat panningXSpeed;  // panning speed expressed in px/ms 
     NSMutableDictionary* controllers;
+    NSMutableDictionary* controllersDict;
     
     UIPanGestureRecognizer* menuPanGesture;
     UITapGestureRecognizer* tapGesture;
@@ -416,7 +417,7 @@ typedef enum {
 }
 
 -(UINavigationController*) controllerForIndexPath:(NSIndexPath*) indexPath{
-    return [controllers objectForKey:indexPath];
+    return [controllersDict objectForKey:[controllers objectForKey:indexPath]];
 }
 
 -(void) switchToContentViewController:(UINavigationController*) content completion:(void (^)(void))completion{
@@ -504,7 +505,9 @@ typedef enum {
             disableContentViewControllerCaching = [self.leftMenu.slideMenuDataSource disableContentViewControllerCachingForIndexPath:indexPath];
         }
         if (!disableContentViewControllerCaching) {
-            [controllers setObject:content forKey:indexPath];
+            
+            [controllersDict setObject:content forKey:@(content.hash)];
+            [controllers setObject:@(content.hash) forKey:indexPath];
         }
     }
 }
@@ -569,8 +572,9 @@ typedef enum {
 }
 -(void) viewDidLoad{
     [super viewDidLoad];
-
+    
     controllers = [[NSMutableDictionary alloc] init];
+    controllersDict = [[NSMutableDictionary alloc] init];
     animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
     animator.delegate = self;
 
@@ -591,6 +595,11 @@ typedef enum {
 
 -(void) didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
+    [controllers removeAllObjects];
+    [controllersDict removeAllObjects];
+}
+
+- (void) clearControllers {
     [controllers removeAllObjects];
 }
 

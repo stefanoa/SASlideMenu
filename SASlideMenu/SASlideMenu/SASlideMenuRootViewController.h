@@ -37,4 +37,5 @@
 
 -(void) panItem:(UIPanGestureRecognizer*)gesture;
 - (void) swipeItem:(UISwipeGestureRecognizer*)gesture;
+- (void) clearControllers;
 @end
